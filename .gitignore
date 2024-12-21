@@ -1,0 +1,14 @@
+# Ignore specific folders
+temp_folder/
+logs/
+build/
+ROM/*
+
+# Ignore specific file types
+*.log
+*.bak
+*.tmp
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
