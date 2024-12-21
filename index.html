@@ -13,6 +13,10 @@
 
     <body>
         <div id="main-wrapper">
+            <div id="browser-warning">
+                <p><span class="warning-icon">/!\ </span>This experience is optimized for <a href="https://www.google.com/intl/fr/chrome/">Google Chrome</a>. Firefox users may expect bugs and reduced perfomance in emulation.</p>
+                <button class="close-btn" onclick="closeWarning()">×</button>
+              </div>
 
         <header>
             <div class="header-wrapper">
@@ -57,6 +61,7 @@
                 </div>
             </div>
         </div>
+        <script src="browserwarning.js"></script>
         <script src="gamecards.js"></script>
         <script src="coreselect.js"></script>
 

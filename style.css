@@ -154,6 +154,10 @@ a:visited {
     background-color: #13151a;
 }
 
+#featured-games::-webkit-scrollbar {
+    display: none;
+}
+
 #card {
     flex: 1;
     image-rendering: pixelated;
@@ -161,14 +165,13 @@ a:visited {
     min-width: 250px;
     max-width: 250px;
     margin: 10px 10px 20px 10px;
-    border: 3px solid grey;
     border-radius: 5px;
     transition: border 0.5s;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    border-top: 5px solid rgb(114, 114, 114);
-    border-left: 5px solid rgb(114, 114, 114);
+    border-top: 5px solid rgb(161, 161, 161);
+    border-left: 5px solid rgb(161, 161, 161);
     border-right: 5px solid rgb(59, 59, 59);
     border-bottom: 5px solid rgb(59, 59, 59);
 }
@@ -251,6 +254,7 @@ header {
     width: 200px;
     height: 280px;
     object-fit: contain;
+    pointer-events: none;
 }
 
 .play-button {
@@ -280,6 +284,7 @@ header {
 
 .play-button p {
     line-height: 30px;
+    font-size: 1em;
 }
 
 #game-popup {
@@ -427,6 +432,12 @@ select:hover, button:hover {
     .logo {
         width: 60px;
     }
+
+    #browser-warning {
+        width: 300px;
+        top: 0;
+        left: 0;
+    }
 }
 
 /* BODY SCAN LINES */
@@ -447,4 +458,87 @@ body::after {
     );
     pointer-events: none;
     z-index: 9999;
+}
+
+/* Browser warning */
+#browser-warning {
+    display: none;
+    position: fixed;
+    height: 150px;
+    width: 600px;
+    top: 0;
+    left: 50;
+    right: 0;
+    background-color: rgb(26, 45, 54);
+    color: white;
+    text-align: justify;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    z-index: 1000;
+    border-top: 5px solid rgb(54, 92, 99);
+    border-left: 5px solid rgb(54, 92, 99);
+    border-right: 5px solid rgb(16, 22, 29);
+    border-bottom: 5px solid rgb(16, 22, 29);
+    border-radius: 5px;
+    animation: slideDown 0.5s ease forwards;
+}
+
+@keyframes slideDown {
+    0% {
+      top: -100px;
+    }
+    100% {
+      top: 0;
+    }
+  }
+
+.warning-icon {
+    color: orange;
+}
+
+#browser-warning p {
+    font-family: "Press Start 2P", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-size: 0.9em;
+    margin-top: 10px;
+    width: 500px;
+    padding: 10px;
+    line-height: 23px;
+}
+
+  /* Close button styles */
+#browser-warning .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: #ff6f61;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    line-height: 18px;
+    cursor: pointer;
+    text-align: center;
+    outline: none;
+}
+
+#browser-warning .close-btn:hover {
+    background: #e55b50;
+}
+
+
+  /* Chrome Scrollbars Begone */
+
+#featured-games::-webkit-scrollbar {
+    display: none;
+}
+
+#pokemon-games::-webkit-scrollbar {
+    display: none;
+}
+#retour-vers-le-futur::-webkit-scrollbar {
+    display: none;
 }

@@ -160,7 +160,7 @@ class GameCardsManager {
                     <span class="gameinfo">${gameData.developer}</span>
                 </div>
                 <div class="play-button" data-game="${gameData.romPath}">
-                    <p class="play-button-text center">PLAY!</p>
+                    <p class="play-button-text center">PLAY</p>
                 </div>
             </div>
         `;
