@@ -9,12 +9,23 @@
     margin-left: 100px;
 }
 
+.main-title-sub {
+    font-family: "Micro 5", serif;
+    font-weight: 400;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 2em;
+    position: absolute;
+    margin-left: 100px;
+    margin-top: 63px;
+}
+
 .game-title {
     font-family: "Press Start 2P", serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    background: grey;
+    background: rgb(122, 122, 122);
     border-bottom: 2px solid #444;
     color: white;
     margin: 0;
@@ -160,7 +171,7 @@ a:visited {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: grey;
+    background: rgb(122, 122, 122);
     border-top: 5px solid rgb(161, 161, 161);
     border-left: 5px solid rgb(161, 161, 161);
     border-right: 5px solid rgb(59, 59, 59);
@@ -188,7 +199,7 @@ a.main-menu-item {
 }
 
 #main-menu li:hover{
-    background-color: rgb(102, 102, 102);
+    background: rgb(109, 109, 109);
     border-top: 5px solid rgb(59, 59, 59);
     border-left: 5px solid rgb(59, 59, 59);
     border-right: 5px solid rgb(161, 161, 161);    
@@ -297,6 +308,7 @@ a.main-menu-item {
 header {
     height: 200px;
     margin: 0 10px 0 10px;
+    pointer-events: none;
 }
 
 .header-wrapper {
@@ -482,7 +494,6 @@ select:hover, button:hover {
 
     .logo {
         width: 60px;
-        pointer-events: none;
     }
 
     #browser-warning {
