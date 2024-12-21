@@ -118,7 +118,7 @@
 /* GLOBAL SETTINGS */
 
 body, html {
-    background-color: #13151a;
+    background-color: #0a0a0e;
     cursor: url('docs/assets/cursor.png'), auto;
 }
 
@@ -151,6 +151,7 @@ a:visited {
 #main-wrapper{
     display:block;
     margin: 0 400px 0 400px;
+    background-color: #13151a;
 }
 
 #card {
@@ -216,6 +217,11 @@ a:visited {
     border-top-right-radius: 10px;
 }
 
+/* inner content margin */
+.featured-games-title-wrapper, #content {
+    margin: 0 40px 0 40px;
+}
+
 #featured-container {
     display: flex;
 }
@@ -233,8 +239,12 @@ a:visited {
 }
 
 header {
-    height: 110px;
-    margin: 50px 10px 50px 10px;
+    height: 200px;
+    margin: 0 10px 0 10px;
+}
+
+.header-wrapper {
+    padding: 50px 0 0 50px;
 }
 
 .boxart {
@@ -250,21 +260,21 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgb(90, 0, 180);
-    border-top: 5px solid rgb(123, 18, 209);
-    border-left: 5px solid rgb(123, 18, 209);
-    border-right: 5px solid rgb(59, 6, 129);
-    border-bottom: 5px solid rgb(59, 6, 129);
+    background: rgb(0, 130, 200);
+    border-top: 5px solid rgb(44, 174, 235);
+    border-left: 5px solid rgb(44, 174, 235);
+    border-right: 5px solid rgb(10, 60, 117);
+    border-bottom: 5px solid rgb(10, 60, 117);
     transition: background-color 0.3s;
     transition: border 0.3s;
 }
 
 .play-button:hover {
-    background: rgb(79, 3, 155);
-    border-top: 5px solid rgb(59, 6, 129);
-    border-left: 5px solid rgb(59, 6, 129);
-    border-right: 5px solid rgb(123, 18, 209);
-    border-bottom: 5px solid rgb(123, 18, 209);
+    background: rgb(3, 115, 175);
+    border-top: 5px solid rgb(10, 60, 117);
+    border-left: 5px solid rgb(10, 60, 117);
+    border-right: 5px solid rgb(44, 174, 235);
+    border-bottom: 5px solid rgb(44, 174, 235);
     cursor: url('docs/assets/cursor-click.png'), auto;
 }
 
