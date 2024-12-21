@@ -464,7 +464,7 @@ body::after {
 #browser-warning {
     display: none;
     position: fixed;
-    height: 150px;
+    height: 180px;
     width: 600px;
     top: 0;
     left: 50;
