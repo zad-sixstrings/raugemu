@@ -2,7 +2,6 @@
 temp_folder/
 logs/
 build/
-ROM/*
 
 # Ignore specific file types
 *.log
@@ -12,3 +11,7 @@ ROM/*
 # Ignore OS-specific files
 .DS_Store
 Thumbs.db
+
+# Ignore the content of the ROM folder
+ROM/*
+!ROM/
