@@ -5,7 +5,7 @@ const GAMES_DATA = [
         boxArtPath: "docs/boxart/smw.png",
         year: "1990",
         console: "SNES",
-        publisher: "Nintendo",
+        developer: "Nintendo",
         romPath: "ROM/smw.sfc",
         categories: ["featured"]  
     },
@@ -14,7 +14,7 @@ const GAMES_DATA = [
         boxArtPath: "docs/boxart/supermetroid.jpg",
         year: "1994",
         console: "SNES",
-        publisher: "Nintendo",
+        developer: "Nintendo",
         romPath: "ROM/supermetroid.sfc",
         categories: ["featured"]  
     },
@@ -23,7 +23,7 @@ const GAMES_DATA = [
         boxArtPath: "docs/boxart/alttp.jpg",
         year: "1991",
         console: "SNES",
-        publisher: "Nintendo",
+        developer: "Nintendo",
         romPath: "ROM/alttp.sfc",
         categories: ["featured"]  
     },
@@ -32,7 +32,7 @@ const GAMES_DATA = [
         boxArtPath: "docs/boxart/1080.jpg",
         year: "1998",
         console: "SNES",
-        publisher: "Nintendo",
+        developer: "Nintendo",
         romPath: "ROM/1080.z64",
         categories: ["featured"] 
     },
@@ -41,7 +41,7 @@ const GAMES_DATA = [
         boxArtPath: "docs/boxart/tetris.jpg",
         year: "1989",
         console: "SNES",
-        publisher: "Nintendo",
+        developer: "Blue Planet Software",
         romPath: "ROM/tetris.nes",
         categories: ["featured"] 
     },
@@ -52,7 +52,7 @@ const GAMES_DATA = [
         boxArtPath: "docs/boxart/pkmnvf.jpg",
         year: "2004",
         console: "GBA",
-        publisher: "Nintendo",
+        developer: "Nintendo",
         romPath: "ROM/pkmnvf.gba",
         categories: ["pokemon"] 
     },
@@ -61,7 +61,7 @@ const GAMES_DATA = [
         boxArtPath: "docs/boxart/pkmnor.jpg",
         year: "1999",
         console: "GBC",
-        publisher: "Nintendo",
+        developer: "Nintendo",
         romPath: "ROM/pkmnor.gbc",
         categories: ["pokemon"] 
     },
@@ -70,7 +70,7 @@ const GAMES_DATA = [
         boxArtPath: "docs/boxart/pkmnemeraude.jpg",
         year: "2004",
         console: "GBA",
-        publisher: "Nintendo",
+        developer: "Nintendo",
         romPath: "ROM/pkmnemeraude.gba",
         categories: ["pokemon"] 
     },
@@ -79,7 +79,7 @@ const GAMES_DATA = [
         boxArtPath: "docs/boxart/pkmncrystal.jpg",
         year: "2000",
         console: "GBC",
-        publisher: "Nintendo",
+        developer: "Nintendo",
         romPath: "ROM/pkmncrystal.gbc",
         categories: ["pokemon"] 
     },
@@ -90,7 +90,7 @@ const GAMES_DATA = [
         boxArtPath: "docs/boxart/dragonfire.jpg",
         year: "1982",
         console: "Atari 2600",
-        publisher: "Imagic",
+        developer: "Imagic",
         romPath: "ROM/dragonfire.a26",
         categories: ["retourverslefutur"] 
     },
@@ -99,7 +99,7 @@ const GAMES_DATA = [
         boxArtPath: "docs/boxart/asteroids.jpg",
         year: "1981",
         console: "Atari 2600",
-        publisher: "Atari",
+        developer: "Atari",
         romPath: "ROM/asteroids.a26",
         categories: ["retourverslefutur"] 
     },
@@ -108,7 +108,7 @@ const GAMES_DATA = [
         boxArtPath: "docs/boxart/demonattack.jpg",
         year: "1982",
         console: "Atari 2600",
-        publisher: "Imagic",
+        developer: "Imagic",
         romPath: "ROM/demonattack.a26",
         categories: ["retourverslefutur"] 
     },
@@ -117,7 +117,7 @@ const GAMES_DATA = [
         boxArtPath: "docs/boxart/adventure.png",
         year: "1980",
         console: "Atari 2600",
-        publisher: "Atari",
+        developer: "Atari",
         romPath: "ROM/adventure.a26",
         categories: ["retourverslefutur"] 
     },
@@ -126,7 +126,7 @@ const GAMES_DATA = [
         boxArtPath: "docs/boxart/pitfall.jpg",
         year: "1982",
         console: "Atari 2600",
-        publisher: "Activision",
+        developer: "Activision",
         romPath: "ROM/pitfall.a26",
         categories: ["retourverslefutur"] 
     }
@@ -138,7 +138,8 @@ class GameCardsManager {
         this.containers = new Map([
             ['featured', document.querySelector('#featured-games #featured-container')],
             ['pokemon', document.querySelector('#pokemon-games #featured-container')],
-            ['retourverslefutur', document.querySelector('#retour-vers-le-futur #featured-container')]    
+            ['retourverslefutur', document.querySelector('#retour-vers-le-futur #featured-container')],
+            ['pa', document.querySelector('#pa #featured-container')] 
         ]);
     }
 
@@ -156,7 +157,7 @@ class GameCardsManager {
                 <div class="game-content">
                     <img class="boxart" src="${gameData.boxArtPath}" alt="Box art">
                     <span class="gameinfo">${gameData.year} - ${gameData.console}</span>
-                    <span class="gameinfo">${gameData.publisher}</span>
+                    <span class="gameinfo">${gameData.developer}</span>
                 </div>
                 <div class="play-button" data-game="${gameData.romPath}">
                     <p class="play-button-text center">PLAY!</p>
