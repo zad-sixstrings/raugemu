@@ -45,6 +45,15 @@ const GAMES_DATA = [
         romPath: "ROM/tetris.nes",
         categories: ["featured"] 
     },
+    {
+        title: "Soul Blade",
+        boxArtPath: "docs/boxart/soulblade.jpg",
+        year: "1995",
+        console: "PS1",
+        developer: "Namco",
+        romPath: "ROM/PS1/soulblade.chd",
+        categories: ["featured"] 
+    },
 
     // POKEMON EXTRAVAGANZA
     {

@@ -6,7 +6,8 @@ const CONFIG = {
         gba: ['gba'],
         gb: ['gb', 'gbc'],
         n64: ['n64', 'z64', 'v64'],
-        atari2600: ['a26']
+        atari2600: ['a26'],
+        psx: ['chd']
     },
     SELECTORS: {
         playButtons: '.play-button',
@@ -92,7 +93,7 @@ class EmulatorManager {
             this.hideEmulator();
         } catch (error) {
             console.error('Error during emulator cleanup:', error);
-            // Still try to hide the UI even if cleanup fails
+            // Try to hide the UI even if cleanup fails
             this.hideEmulator();
         }
     }
@@ -142,7 +143,6 @@ class EmulatorManager {
     }
 
     showError(message) {
-        // You could replace this with a custom error UI component
         alert(message);
     }
 }
