@@ -156,7 +156,6 @@ a:visited {
 /* LOGO */
 .logo {
     width: 60px;
-
 }
 
 /* MAIN MENU */
@@ -488,48 +487,6 @@ select:hover, button:hover {
     color: #ddd
 } */
 
-/* RESPONSIVE */
-@media (max-width: 1920px) {
-    #main-wrapper {
-        margin: 50px 200px 0 200px;
-    }
-}
-
-@media (max-width: 1300px) {
-    #main-wrapper {
-        margin: 50px 100px 0 100px;
-    }
-}
-
-@media (max-width: 700px) {
-    #featured-container {
-        flex-direction: column;
-    }
-
-    #main-wrapper {
-        margin: 20px 20px 0 20px;
-    }
-
-    #card {
-        min-height: 500px;
-    }
-
-    .main-title {
-        font-size: 3em;
-        margin-left: 90px;
-    }
-
-    .logo {
-        width: 60px;
-    }
-
-    #browser-warning {
-        width: 300px;
-        top: 0;
-        left: 0;
-    }
-}
-
 /* BODY SCAN LINES */
 
 body::after {
@@ -620,8 +577,7 @@ body::after {
 }
 
 
-  /* Chrome Scrollbars Begone */
-
+/* Chrome Scrollbars Begone */
 #featured-games::-webkit-scrollbar {
     display: none;
 }
@@ -631,4 +587,103 @@ body::after {
 }
 #retour-vers-le-futur::-webkit-scrollbar {
     display: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1920px) {
+    #main-wrapper {
+        margin: 50px 200px 0 200px;
+    }
+}
+
+@media (max-width: 1200px) {
+    #main-wrapper {
+        margin: 50px 100px 0 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    #featured-container {
+        flex-direction: column;
+    }
+
+    #main-wrapper {
+        margin: 20px 20px 0 20px;
+    }
+
+    #card {
+        min-height: 500px;
+    }
+
+    .main-title {
+        font-size: 3em;
+        margin-left: 90px;
+    }
+
+    .logo {
+        width: 60px;
+    }
+
+    #browser-warning {
+        width: 300px;
+        top: 0;
+        left: 0;
+    }
+}
+
+@media (max-width: 420px) {
+    #featured-container {
+        flex-direction: column;
+    }
+
+    #main-wrapper {
+        margin: 20px 0 0 0;
+    }
+
+    .header-wrapper {
+        padding: 30px 0 0 0;
+    }
+
+    header {
+        height: 100px;
+        margin: 0 10px 0 10px;
+        pointer-events: none;
+    }
+
+    .main-title-sub {
+        display: none;
+    }
+
+    #main-menu {
+        display: none;
+    }
+
+    .featured-games-title {
+        text-align: center;
+        padding: 0;
+    }
+
+    #card {
+        min-height: 500px;
+    }
+
+    .main-title {
+        font-size: 2em;
+        text-align: right;
+    }
+
+    .main-title sub {
+        text-align: center;
+    }
+
+    .logo {
+        width: 30px;
+        margin-left: 10px;
+    }
+
+    #browser-warning {
+        width: 300px;
+        top: 0;
+        left: 0;
+    }
 }
