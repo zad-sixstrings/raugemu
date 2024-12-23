@@ -1,9 +1,8 @@
 <template>
-  <div>
     <div
       v-for="category in categories"
       :key="category.title"
-      class="featured-games-wrapper"
+      class="catchme"
     >
       <div class="featured-games-title-wrapper">
         <h2 class="featured-games-title">{{ category.title }}</h2>
@@ -23,7 +22,6 @@
       :game-url="selectedGameUrl"
       @close="closeEmulator"
     />
-  </div>
 </template>
 
 <script>
