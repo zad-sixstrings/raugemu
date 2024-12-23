@@ -1,138 +1,137 @@
 [
-
-    {
-        "title": "Super Mario World",
-        "boxArtPath": "docs/boxart/smw.png",
-        "year": "1990",
-        "console": "SNES",
-        "developer": "Nintendo",
-        "romPath": "ROM/smw.sfc",
-        "categories": ["featured", "SNES"]  
-    },
-    {
-        "title": "Super Metroid",
-        "boxArtPath": "docs/boxart/supermetroid.jpg",
-        "year": "1994",
-        "console": "SNES",
-        "developer": "Nintendo",
-        "romPath": "ROM/supermetroid.sfc",
-        "categories": ["featured", "SNES"]  
-    },
-    {
-        "title": "The Legend of Zelda: A Link to the Past",
-        "boxArtPath": "docs/boxart/alttp.jpg",
-        "year": "1991",
-        "console": "SNES",
-        "developer": "Nintendo",
-        "romPath": "ROM/alttp.sfc",
-        "categories": ["featured", "SNES"]  
-    },
-    {
-        "title": "1080° Snowboarding",
-        "boxArtPath": "docs/boxart/1080.jpg",
-        "year": "1998",
-        "console": "SNES",
-        "developer": "Nintendo",
-        "romPath": "ROM/1080.z64",
-        "categories": ["featured", "N64"] 
-    },
-    {
-        "title": "Tetris",
-        "boxArtPath": "docs/boxart/tetris.jpg",
-        "year": "1989",
-        "console": "SNES",
-        "developer": "Blue Planet Software",
-        "romPath": "ROM/tetris.nes",
-        "categories": ["featured"] 
-    },
-    {
-        "title": "Soul Blade",
-        "boxArtPath": "docs/boxart/soulblade.jpg",
-        "year": "1995",
-        "console": "PS1",
-        "developer": "Namco",
-        "romPath": "ROM/PS1/soulblade.chd",
-        "categories": ["featured"] 
-    },
-    {
-        "title": "Pokémon Vert Feuille",
-        "boxArtPath": "docs/boxart/pkmnvf.jpg",
-        "year": "2004",
-        "console": "GBA",
-        "developer": "Nintendo",
-        "romPath": "ROM/pkmnvf.gba",
-        "categories": ["pokemon"] 
-    },
-    {
-        "title": "Pokemon Or",
-        "boxArtPath": "docs/boxart/pkmnor.jpg",
-        "year": "1999",
-        "console": "GBC",
-        "developer": "Nintendo",
-        "romPath": "ROM/pkmnor.gbc",
-        "categories": ["pokemon"] 
-    },
-    {
-        "title": "Pokémon Emeraude",
-        "boxArtPath": "docs/boxart/pkmnemeraude.jpg",
-        "year": "2004",
-        "console": "GBA",
-        "developer": "Nintendo",
-        "romPath": "ROM/pkmnemeraude.gba",
-        "categories": ["pokemon"] 
-    },
-    {
-        "title": "Pokémon Crystal",
-        "boxArtPath": "docs/boxart/pkmncrystal.jpg",
-        "year": "2000",
-        "console": "GBC",
-        "developer": "Nintendo",
-        "romPath": "ROM/pkmncrystal.gbc",
-        "categories": ["pokemon"] 
-    },
-    {
-        "title": "Dragonfire",
-        "boxArtPath": "docs/boxart/dragonfire.jpg",
-        "year": "1982",
-        "console": "Atari 2600",
-        "developer": "Imagic",
-        "romPath": "ROM/dragonfire.a26",
-        "categories": ["retourverslefutur"] 
-    },
-    {
-        "title": "Asteroids",
-        "boxArtPath": "docs/boxart/asteroids.jpg",
-        "year": "1981",
-        "console": "Atari 2600",
-        "developer": "Atari",
-        "romPath": "ROM/asteroids.a26",
-        "categories": ["retourverslefutur"] 
-    },
-    {
-        "title": "Demon Attack",
-        "boxArtPath": "docs/boxart/demonattack.jpg",
-        "year": "1982",
-        "console": "Atari 2600",
-        "developer": "Imagic",
-        "romPath": "ROM/demonattack.a26",
-        "categories": ["retourverslefutur"] 
-    },
-    {
-        "title": "Adventure",
-        "boxArtPath": "docs/boxart/adventure.png",
-        "year": "1980",
-        "console": "Atari 2600",
-        "developer": "Atari",
-        "romPath": "ROM/adventure.a26",
-        "categories": ["retourverslefutur"] 
-    },
-    {
-        "title": "Pitfall!",
-        "boxArtPath": "docs/boxart/pitfall.jpg",
-        "year": "1982",
-        "console": "Atari 2600",
-        "developer": "Activision",
-        "romPath": "ROM/pitfall.a26",
-        "categories": ["retourverslefutur"] 
-    }
+  {
+    "title": "Super Mario World",
+    "boxArtPath": "./src/assets/boxart/smw.png",
+    "year": "1990",
+    "console": "SNES",
+    "developer": "Nintendo",
+    "romPath": "./ROM/smw.sfc",
+    "categories": ["featured", "SNES"]
+  },
+  {
+    "title": "Super Metroid",
+    "boxArtPath": "./src/assets/boxart/supermetroid.jpg",
+    "year": "1994",
+    "console": "SNES",
+    "developer": "Nintendo",
+    "romPath": "ROM/supermetroid.sfc",
+    "categories": ["featured", "SNES"]
+  },
+  {
+    "title": "The Legend of Zelda: A Link to the Past",
+    "boxArtPath": "./src/assets/boxart/alttp.jpg",
+    "year": "1991",
+    "console": "SNES",
+    "developer": "Nintendo",
+    "romPath": "ROM/alttp.sfc",
+    "categories": ["featured", "SNES"]
+  },
+  {
+    "title": "1080° Snowboarding",
+    "boxArtPath": "./src/assets/boxart/1080.jpg",
+    "year": "1998",
+    "console": "SNES",
+    "developer": "Nintendo",
+    "romPath": "ROM/1080.z64",
+    "categories": ["featured", "N64"]
+  },
+  {
+    "title": "Tetris",
+    "boxArtPath": "./src/assets/boxart/tetris.jpg",
+    "year": "1989",
+    "console": "SNES",
+    "developer": "Blue Planet Software",
+    "romPath": "ROM/tetris.nes",
+    "categories": ["featured"]
+  },
+  {
+    "title": "Soul Blade",
+    "boxArtPath": "./src/assets/boxart/soulblade.jpg",
+    "year": "1995",
+    "console": "PS1",
+    "developer": "Namco",
+    "romPath": "ROM/PS1/soulblade.chd",
+    "categories": ["featured"]
+  },
+  {
+    "title": "Pokémon Vert Feuille",
+    "boxArtPath": "./src/assets/boxart/pkmnvf.jpg",
+    "year": "2004",
+    "console": "GBA",
+    "developer": "Nintendo",
+    "romPath": "ROM/pkmnvf.gba",
+    "categories": ["pokemon"]
+  },
+  {
+    "title": "Pokemon Or",
+    "boxArtPath": "./src/assets/boxart/pkmnor.jpg",
+    "year": "1999",
+    "console": "GBC",
+    "developer": "Nintendo",
+    "romPath": "ROM/pkmnor.gbc",
+    "categories": ["pokemon"]
+  },
+  {
+    "title": "Pokémon Emeraude",
+    "boxArtPath": "./src/assets/boxart/pkmnemeraude.jpg",
+    "year": "2004",
+    "console": "GBA",
+    "developer": "Nintendo",
+    "romPath": "ROM/pkmnemeraude.gba",
+    "categories": ["pokemon"]
+  },
+  {
+    "title": "Pokémon Crystal",
+    "boxArtPath": "./src/assets/boxart/pkmncrystal.jpg",
+    "year": "2000",
+    "console": "GBC",
+    "developer": "Nintendo",
+    "romPath": "ROM/pkmncrystal.gbc",
+    "categories": ["pokemon"]
+  },
+  {
+    "title": "Dragonfire",
+    "boxArtPath": "./src/assets/boxart/dragonfire.jpg",
+    "year": "1982",
+    "console": "Atari 2600",
+    "developer": "Imagic",
+    "romPath": "ROM/dragonfire.a26",
+    "categories": ["retourverslefutur"]
+  },
+  {
+    "title": "Asteroids",
+    "boxArtPath": "./src/assets/boxart/asteroids.jpg",
+    "year": "1981",
+    "console": "Atari 2600",
+    "developer": "Atari",
+    "romPath": "ROM/asteroids.a26",
+    "categories": ["retourverslefutur"]
+  },
+  {
+    "title": "Demon Attack",
+    "boxArtPath": "./src/assets/boxart/demonattack.jpg",
+    "year": "1982",
+    "console": "Atari 2600",
+    "developer": "Imagic",
+    "romPath": "ROM/demonattack.a26",
+    "categories": ["retourverslefutur"]
+  },
+  {
+    "title": "Adventure",
+    "boxArtPath": "./src/assets/boxart/adventure.png",
+    "year": "1980",
+    "console": "Atari 2600",
+    "developer": "Atari",
+    "romPath": "ROM/adventure.a26",
+    "categories": ["retourverslefutur"]
+  },
+  {
+    "title": "Pitfall!",
+    "boxArtPath": "./src/assets/boxart/pitfall.jpg",
+    "year": "1982",
+    "console": "Atari 2600",
+    "developer": "Activision",
+    "romPath": "ROM/pitfall.a26",
+    "categories": ["retourverslefutur"]
+  }
 ]

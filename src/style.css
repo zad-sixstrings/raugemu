@@ -131,7 +131,7 @@
 
 body, html {
   background-color: #0a0a0e;
-  cursor: url('docs/assets/cursor.png'), auto;
+  cursor: url('./src/assets/cursor.png'), auto;
 }
 
 .hidden {
@@ -145,7 +145,7 @@ a {
 
 a:hover {
   text-decoration: underline;
-  cursor: url('docs/assets/cursor-click.png'), auto;
+  cursor: url('./src/assets/cursor-click.png'), auto;
 }
 
 a:visited {
@@ -316,7 +316,10 @@ a.sub-menu-item:hover {
 }
 
 #featured-container {
-  display: flex;
+  display: flex; /* Lay out cards horizontally */
+  flex-wrap: wrap; /* Allow wrapping to new rows if needed */
+  justify-content: space-around; /* Add spacing between cards */
+  align-items: flex-start; /* Align cards to the top */
 }
 
 #featured-games, #pokemon-games, #retour-vers-le-futur {
@@ -370,7 +373,7 @@ header {
   border-left: 5px solid rgb(10, 60, 117);
   border-right: 5px solid rgb(44, 174, 235);
   border-bottom: 5px solid rgb(44, 174, 235);
-  cursor: url('docs/assets/cursor-click.png'), auto;
+  cursor: url('./src/assets/cursor-click.png'), auto;
 }
 
 .play-button p {

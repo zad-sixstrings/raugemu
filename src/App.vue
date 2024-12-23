@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import BrowserWarning from './components/BrowserWarning.vue'
-import Header from './components/Header.vue'
-import MainNav from './components/MainNav.vue'
-import Home from './components/Home.vue'
-import Footer from './components/Footer.vue'
+import BrowserWarning from "./components/BrowserWarning.vue";
+import Header from "./components/Header.vue";
+import MainNav from "./components/MainNav.vue";
+import Home from "./components/Home.vue";
+import Footer from "./components/Footer.vue";
 </script>
 
 <template>
@@ -13,4 +13,3 @@ import Footer from './components/Footer.vue'
   <Home />
   <Footer />
 </template>
-

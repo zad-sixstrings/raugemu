@@ -1,32 +1,35 @@
 <template>
-    <div>
-      <h2 class="featured-games-title">{{ title }}</h2>
-      <div id="content">
-        <div class="game-list">
-          <div v-for="game in games" :key="game.title" class="game.card">
-            <h3>{{ game.title }}</h3>
-            <img :src="game.boxArtPath" alt="Box Art">
-            <p>{{ game.year }} - {{ game.console }}</p>
-            <p>{{ game.developer }}</p>
-            <button @click="playGame(game.romPath)">Play</button>
-          </div>
-        </div>
+  <template v-for="game in games" :key="game.title">
+    <div id="card" class="card-wrapper">
+      <h3 class="game-title center">{{ game.title }}</h3>
+      <img :src="game.boxArtPath" alt="Box art" class="boxart" />
+      <span class="gameinfo">{{ game.year }} - {{ game.console }}</span>
+      <span class="gameinfo">{{ game.developer }}</span>
+      <div
+        class="play-button"
+        :data-game="game.romPath"
+        @click="startGame(game.romPath)"
+      >
+        <p class="play-button-text center">PLAY</p>
       </div>
     </div>
   </template>
-  
-  <script>
-  export default {
-    props: {
-      title: String,
-      games: Array
+</template>
+
+<script>
+export default {
+  name: "GameCard",
+  props: {
+    games: {
+      type: Array,
+      required: true,
     },
-    methods: {
-      playGame(romPath) {
-        console.log(`Playing game: ${romPath}`);
-        // Add your logic for playing the game
-      }
-    }
-  };
-  </script>
-  
+  },
+  emits: ["game-selected"],
+  methods: {
+    startGame(romPath) {
+      this.$emit("game-selected", romPath);
+    },
+  },
+};
+</script>
