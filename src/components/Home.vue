@@ -2,7 +2,6 @@
     <div
       v-for="category in categories"
       :key="category.title"
-      class="catchme"
     >
       <div class="featured-games-title-wrapper">
         <h2 class="featured-games-title">{{ category.title }}</h2>

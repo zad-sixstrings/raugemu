@@ -239,7 +239,7 @@ a.sub-menu-item:hover {
 /* DIVS LAYOUT */
 #main-wrapper {
   display: block;
-  margin: 50px 400px 0 400px;
+  margin: 50px 400px 50px 400px;
   background-color: #13151a;
   border-top: 5px solid #353f4b;
   border-left: 5px solid #353f4b;
@@ -321,18 +321,20 @@ a.sub-menu-item:hover {
 }
 
 #featured-container {
-  display: flex; /* Lay out cards horizontally */
-  flex-wrap: wrap; /* Allow wrapping to new rows if needed */
-  justify-content: space-around; /* Add spacing between cards */
-  align-items: flex-start; /* Align cards to the top */
+  /* <------------------ THIS ONE RIGHT HERE OFFICER !!!!!!!!!!!!!!!!! */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   border-left: 5px solid rgb(123, 18, 209);
   border-bottom: 5px solid rgb(59, 6, 129);
   border-right: 5px solid rgb(59, 6, 129);
   border-top: none;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   overflow: scroll;
+  padding: 20px;
+  background-color: #1c2029;
 }
 
 header {
@@ -428,6 +430,29 @@ footer {
   text-align: center;
   padding-top: 50px;
   color: white;
+  margin-bottom: 100px;
+}
+
+#footer-menu {
+  display: block;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+#footer-menu ul {
+  list-style-type: none;
+}
+
+#footer-menu li {
+  position: relative;
+  padding: 5px;
+}
+
+#footer-menu li a {
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-size: 0.7em;
+  text-align: center;
 }
 
 /* BODY SCAN LINES */
@@ -519,27 +544,20 @@ body::after {
 }
 
 /* Chrome Scrollbars Begone */
-#featured-games::-webkit-scrollbar {
-  display: none;
-}
-
-#pokemon-games::-webkit-scrollbar {
-  display: none;
-}
-#retour-vers-le-futur::-webkit-scrollbar {
+#featured-container::-webkit-scrollbar {
   display: none;
 }
 
 /* RESPONSIVE */
 @media (max-width: 1920px) {
   #main-wrapper {
-    margin: 50px 200px 0 200px;
+    margin: 50px 200px 50px 200px;
   }
 }
 
 @media (max-width: 1200px) {
   #main-wrapper {
-    margin: 50px 100px 0 100px;
+    margin: 50px 100px 50px 100px;
   }
 }
 
@@ -549,7 +567,7 @@ body::after {
   }
 
   #main-wrapper {
-    margin: 20px 20px 0 20px;
+    margin: 20px 20px 20px 20px;
   }
 
   #card {
@@ -578,7 +596,7 @@ body::after {
   }
 
   #main-wrapper {
-    margin: 20px 0 0 0;
+    margin: 20px 0 20px 0;
   }
 
   .header-wrapper {
@@ -629,6 +647,7 @@ body::after {
   }
 }
 
+/* Class for identifying elements visually in case we can't find them */
 .catchme {
-  background-color:#e55b50;
+  background-color: #e55b50;
 }

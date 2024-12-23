@@ -1,5 +1,22 @@
 <template>
   <footer>
+    <div id="footer-menu">
+      <ul>
+        <li>
+          <a href="https://www.gnu.org/licenses/gpl-3.0.fr.html#license-text"
+            >License</a
+          >
+        </li>
+        <li><a href="#">A propos</a></li>
+        <li>
+          <a
+            href="https://github.com/zad-sixstrings/raugemu
+          "
+            >Source</a
+          >
+        </li>
+      </ul>
+    </div>
     <div id="footer-text">
       <p class="credentials">
         Powered by <a href="https://emulatorjs.org/">EmulatorJS</a> - Developed

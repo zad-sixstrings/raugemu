@@ -6,7 +6,7 @@
     "console": "SNES",
     "developer": "Nintendo",
     "romPath": "./ROM/smw.sfc",
-    "categories": ["featured", "SNES"]
+    "categories": ["featured"]
   },
   {
     "title": "Super Metroid",
@@ -15,7 +15,7 @@
     "console": "SNES",
     "developer": "Nintendo",
     "romPath": "ROM/supermetroid.sfc",
-    "categories": ["featured", "SNES"]
+    "categories": ["featured"]
   },
   {
     "title": "The Legend of Zelda: A Link to the Past",
@@ -24,7 +24,7 @@
     "console": "SNES",
     "developer": "Nintendo",
     "romPath": "ROM/alttp.sfc",
-    "categories": ["featured", "SNES"]
+    "categories": ["featured"]
   },
   {
     "title": "1080° Snowboarding",
@@ -33,7 +33,7 @@
     "console": "SNES",
     "developer": "Nintendo",
     "romPath": "ROM/1080.z64",
-    "categories": ["featured", "N64"]
+    "categories": ["featured"]
   },
   {
     "title": "Tetris",
