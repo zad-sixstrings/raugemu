@@ -70,17 +70,17 @@ export default {
         gameContainer.innerHTML = '<div id="emulator"></div>';
       }
 
-      // Setup EJS properties
+      // Setup EJS properties with correct paths
       window.EJS_player = "#emulator";
-      window.EJS_gameUrl = gameUrl;
+      window.EJS_gameUrl = gameUrl; // This should now be something like '/ROM/game.smc'
       window.EJS_core = core;
-      window.EJS_pathtodata = "/data/";
+      window.EJS_pathtodata = "data/"; // Remove leading slash for relative path
       window.EJS_startOnLoad = true;
 
       // Create and load emulator script
       return new Promise((resolve, reject) => {
         const script = document.createElement("script");
-        script.src = "/data/loader.js";
+        script.src = "data/loader.js"; // Remove leading slash for relative path
         script.async = true;
 
         script.onload = () => {
@@ -109,8 +109,8 @@ export default {
         }
       }
 
-      // Remove loader script
-      const oldScript = document.querySelector('script[src="/data/loader.js"]');
+      // Remove loader script with updated path
+      const oldScript = document.querySelector('script[src="data/loader.js"]');
       if (oldScript) oldScript.remove();
 
       // Clear EJS properties
@@ -173,8 +173,8 @@ export default {
 <style scoped>
 #game-popup {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 50;
+  left: 50;
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.8);
@@ -244,15 +244,14 @@ export default {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 
-/* Ensure proper sizing for the EmulatorJS canvas */
+/* Sizing for the EJS canvas (at least I tried...) */
 :deep(canvas) {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
 }
 </style>
-

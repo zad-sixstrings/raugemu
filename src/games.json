@@ -5,7 +5,7 @@
     "year": "1990",
     "console": "SNES",
     "developer": "Nintendo",
-    "romPath": "./ROM/smw.sfc",
+    "romPath": "ROM/smw.sfc",
     "categories": ["featured"]
   },
   {
