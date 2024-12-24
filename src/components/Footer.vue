@@ -19,11 +19,12 @@
     </div>
     <div id="footer-text">
       <p class="credentials">
-        Powered by <a href="https://emulatorjs.org/">EmulatorJS</a> - Developed
-        by <a href="https://github.com/zad-sixstrings">Zad Sixstrings</a> -
-        Hosted by <a href="https://raug-info.ch">Raug Info</a>
+        Propulsé par <a href="https://emulatorjs.org/">EmulatorJS</a> -
+        Developpé par
+        <a href="https://github.com/zad-sixstrings">Zad Sixstrings</a> - Hébergé
+        par <a href="https://raug-info.ch">Raug Info</a>
       </p>
-      <p class="copyright">2024 - All rights reserved</p>
+      <p class="copyright">2024 - Tous droits réservés</p>
     </div>
   </footer>
 </template>
