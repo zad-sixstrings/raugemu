@@ -1,3 +1,22 @@
+**English below**
+
+# Kézako?
+Un projet de vacances avec mon ami Raugdae : un site web qui utilise EmulatorJS pour émuler des jeux rétro directement dans le navigateur, avec une interface rétro super stylée.
+
+# C'est pour qui?
+Pour nous, et pour tous ceux qui veulent héberger leur propre plateforme d'émulation dans le navigateur.
+
+# Et les ROMs alors?
+Nous ne distribuons pas de fichiers ROM. Vous devrez utiliser les vôtres.
+Nous sommes fermement opposés au piratage et encourageons tout le monde à obtenir leurs ROMs légalement via des canaux appropriés.
+
+# M... mais et ce slogan?
+"Vous les extrayez, on les émule !"
+C'est juste une blague, inspirée par une [créatrice de contenu](https://www.instagram.com/p/DDclfh1Oesu/) qui utilise des slogans amusants pour répondre aux arnaqueurs téléphoniques. Merci de ne pas prendre ça comme une suggestion qu’on fournit des ROMs, ce n’est pas le cas.
+
+---
+
+
 # What's this?
 Just a holiday project with my friend Raugdae, a website that uses EmulatorJS to emulate retro games directly in the browser, all with a cool retro looking UI.
 
