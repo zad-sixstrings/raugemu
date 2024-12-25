@@ -41,7 +41,7 @@ export default {
   methods: {
     async loadGamesData() {
       try {
-        const response = await fetch("./src/games.json");
+        const response = await fetch("./games.json");
         const gamesData = await response.json();
         const categories = [
           {
