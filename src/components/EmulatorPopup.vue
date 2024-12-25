@@ -52,7 +52,7 @@ export default {
 
     const setupEmulator = async (gameUrl) => {
       if (currentGameUrl.value === gameUrl && emulatorLoaded.value) {
-        return; // Prevent duplicate setup
+        return;
       }
 
       const core = determineCore(gameUrl);
@@ -61,33 +61,31 @@ export default {
         return;
       }
 
-      // Clean up previous instance
       await cleanupEmulator();
 
-      // Create a new container for the emulator
       const gameContainer = document.querySelector("#game");
       if (gameContainer) {
         gameContainer.innerHTML = '<div id="emulator"></div>';
       }
 
-      // Setup EJS properties with correct paths
-      window.EJS_player = "#emulator";
-      window.EJS_gameUrl = gameUrl; // This should now be something like '/ROM/game.smc'
-      window.EJS_core = core;
-      window.EJS_pathtodata = "data/"; // Remove leading slash for relative path
-      window.EJS_startOnLoad = true;
-
-      // Create and load emulator script
       return new Promise((resolve, reject) => {
-        const script = document.createElement("script");
-        script.src = "data/loader.js"; // Remove leading slash for relative path
-        script.async = true;
+        // Set up EJS properties
+        window.EJS_player = "#emulator";
+        window.EJS_gameUrl = gameUrl;
+        window.EJS_core = core;
+        window.EJS_pathtodata = "data/";
+        window.EJS_startOnLoad = true;
 
-        script.onload = () => {
+        // Add ready callback before loading script
+        window.EJS_onGameStart = () => {
           emulatorLoaded.value = true;
           currentGameUrl.value = gameUrl;
           resolve();
         };
+
+        const script = document.createElement("script");
+        script.src = "data/loader.js";
+        script.async = true;
 
         script.onerror = (error) => {
           console.error("Failed to load EmulatorJS:", error);
@@ -145,17 +143,23 @@ export default {
     // Watch for changes in gameUrl and visibility
     watch(
       [() => props.gameUrl, () => props.isVisible],
-      async ([newUrl, isVisible]) => {
+      async ([newUrl, isVisible], [oldUrl, oldVisible]) => {
         if (newUrl && isVisible) {
           try {
-            document.body.classList.add("popup-active");
-            await setupEmulator(newUrl);
+            if (newUrl !== oldUrl || (!oldVisible && isVisible)) {
+              document.body.classList.add("popup-active");
+              await setupEmulator(newUrl);
+            }
           } catch (error) {
             console.error("Failed to setup emulator:", error);
             emit("close");
           }
+        } else if (!isVisible && oldVisible) {
+          await cleanupEmulator();
+          document.body.classList.remove("popup-active");
         }
-      }
+      },
+      { immediate: true }
     );
 
     // Cleanup on component unmount

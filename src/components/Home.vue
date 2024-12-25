@@ -1,26 +1,22 @@
 <template>
-    <div
-      v-for="category in categories"
-      :key="category.title"
-    >
-      <div class="featured-games-title-wrapper">
-        <h2 class="featured-games-title">{{ category.title }}</h2>
-      </div>
-      <div id="content">
-        <div :id="generateId(category.title)" class="featured-games">
-          <div id="featured-container">
-            <GameList :games="category.games" @game-selected="openEmulator" />
-          </div>
+  <div v-for="category in categories" :key="category.title">
+    <div class="featured-games-title-wrapper">
+      <h2 class="featured-games-title">{{ category.title }}</h2>
+    </div>
+    <div id="content">
+      <div :id="generateId(category.title)" class="featured-games">
+        <div id="featured-container">
+          <GameList :games="category.games" @game-selected="openEmulator" />
         </div>
       </div>
     </div>
-
-    <EmulatorPopup
-      v-if="isEmulatorVisible"
-      :is-visible="isEmulatorVisible"
-      :game-url="selectedGameUrl"
-      @close="closeEmulator"
-    />
+  </div>
+  <!-- Keep component mounted, control visibility -->
+  <EmulatorPopup
+    :is-visible="isEmulatorVisible"
+    :game-url="selectedGameUrl"
+    @close="closeEmulator"
+  />
 </template>
 
 <script>
