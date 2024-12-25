@@ -196,21 +196,28 @@ export default {
   max-width: 1200px;
   height: 90%;
   max-height: 800px;
-  background: #fff;
-  border-radius: 8px;
+  background: rgb(122, 122, 122);
+  border-top: 5px solid rgb(161, 161, 161);
+  border-left: 5px solid rgb(161, 161, 161);
+  border-right: 5px solid rgb(59, 59, 59);
+  border-bottom: 5px solid rgb(59, 59, 59);
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 #close-popup {
   position: absolute;
-  right: 15px;
-  top: 15px;
+  right: 0;
+  top: 0;
   width: 30px;
-  height: 30px;
-  border-radius: 50%;
+  height: 20px;
+  border-radius: 10%;
   border: none;
   background: #ff4444;
+  border-top: 2px solid #f07a72;
+  border-left: 2px solid #f07a72;
+  border-right: 2px solid #ad1f2a;
+  border-bottom: 2px solid #ad1f2a;
   color: white;
   font-weight: bold;
   cursor: pointer;
@@ -222,7 +229,12 @@ export default {
 }
 
 #close-popup:hover {
-  background: #ff6666;
+  background: #da3434;
+  border-top: 2px solid #ad1f2a;
+  border-left: 2px solid #ad1f2a;
+  border-right: 2px solid #f07a72;
+  border-bottom: 2px solid #f07a72;
+  cursor: url("/assets/cursor-click.png"), auto;
 }
 
 .game-wrapper {
