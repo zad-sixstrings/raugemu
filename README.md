@@ -8,4 +8,4 @@ It's for us, and anyone who wants to host their own browser-based emulation plat
 We will not distribute any ROM file. You will have to use your own. We do not condone piracy in any way whatsoever, and we encourage people to get their ROMs legally.
 
 # B... but that catchphrase then?
-You rip 'em we emulate 'em? It's a joke. A reference to a content creator that answers phone scammers with silly catchphrases. Rip your own games, archive them, emulate them!
+You rip 'em we emulate 'em? It's a joke. A reference to a content creator that answers phone scammers with silly catchphrases. Don't expect us distributing ROMs, really.
