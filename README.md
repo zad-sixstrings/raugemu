@@ -1,5 +1,11 @@
-# Vue 3 + TypeScript + Vite
+# What's this?
+Just a holiday project with my friend Raugdae, a website that uses EmulatorJS to emulate retro games directly in the browser, all with a cool retro looking UI.
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+# Who's this for?
+It's for us, and anyone who wants to host their own browser-based emulation platform.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+# Where are the ROMs tho?
+We will not distribute any ROM file. You will have to use your own. We do not condone piracy in any way whatsoever, and we encourage people to get their ROMs legally.
+
+# B... but that catchphrase then?
+You rip 'em we emulate 'em? It's a joke. A reference to a content creator that answers phone scammers with silly catchphrases. Rip your own games, archive them, emulate them!
