@@ -11,7 +11,7 @@ Nous ne distribuons pas de fichiers ROM. Vous devrez utiliser les vôtres.
 Nous sommes fermement opposés au piratage et encourageons tout le monde à obtenir leurs ROMs légalement via des canaux appropriés.
 
 # M... mais et ce slogan?
-"Vous les extrayez, on les émule !"
+*"Vous les extrayez, on les émule !"*
 C'est juste une blague, inspirée par une [créatrice de contenu](https://www.instagram.com/p/DDclfh1Oesu/) qui utilise des slogans amusants pour répondre aux arnaqueurs téléphoniques. Merci de ne pas prendre ça comme une suggestion qu’on fournit des ROMs, ce n’est pas le cas.
 
 ---
