@@ -5,7 +5,9 @@ Just a holiday project with my friend Raugdae, a website that uses EmulatorJS to
 It's for us, and anyone who wants to host their own browser-based emulation platform.
 
 # Where are the ROMs tho?
-We will not distribute any ROM file. You will have to use your own. We do not condone piracy in any way whatsoever, and we encourage people to get their ROMs legally.
+**We do not distribute ROM files.** You'll need to use your own.  
+We stand firmly against piracy and encourage everyone to acquire their ROMs **legally** through proper channels.
 
 # B... but that catchphrase then?
-You rip 'em we emulate 'em? It's a joke. A reference to a content creator that answers phone scammers with silly catchphrases. Don't expect us distributing ROMs, really.
+*"You rip 'em, we emulate 'em!"*  
+It's just a joke, inspired by a [content creator](https://www.instagram.com/p/DDclfh1Oesu/) who uses witty catchphrases to deal with phone scammers. Please don’t mistake this as a suggestion that we provide ROMs—we don’t.  
