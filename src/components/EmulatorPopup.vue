@@ -188,6 +188,7 @@ export default {
   align-items: center;
   padding: 20px;
   box-sizing: border-box;
+  cursor: url("/assets/cursor.png"), auto;
 }
 
 .popup-content {
@@ -226,9 +227,15 @@ export default {
   justify-content: center;
   align-items: center;
   font-size: 16px;
+  transition: font-size 0.2s;
 }
 
 #close-popup:hover {
+  cursor: url("/assets/cursor-click.png"), auto;
+  font-size: 18px;
+}
+
+#close-popup:active {
   background: #da3434;
   border-top: 2px solid #ad1f2a;
   border-left: 2px solid #ad1f2a;
@@ -264,7 +271,6 @@ export default {
   align-items: center;
 }
 
-/* Sizing for the EJS canvas (at least I tried...) */
 :deep(canvas) {
   max-width: 100%;
   max-height: 100%;
