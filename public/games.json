@@ -45,15 +45,6 @@
     "categories": ["featured"]
   },
   {
-    "title": "Soul Blade",
-    "boxArtPath": "/assets/boxart/soulblade.jpg",
-    "year": "1995",
-    "console": "PS1",
-    "developer": "Namco",
-    "romPath": "ROM/PS1/soulblade.chd",
-    "categories": ["featured"]
-  },
-  {
     "title": "Pokémon Vert Feuille",
     "boxArtPath": "/assets/boxart/pkmnvf.jpg",
     "year": "2004",
