@@ -3,40 +3,68 @@
     <nav>
       <ul>
         <li>
-          <a class="main-menu-item" href="http://remote.raug-info.ch:8081/"
-            >Home</a
-          >
+          <router-link class="main-menu-item" to="/">Home</router-link>
         </li>
         <li>
           <a class="main-menu-item dropdown" href="#">Atari</a>
           <div class="dropdown-menu">
-            <a class="sub-menu-item" href="#">2600</a>
-            <a class="sub-menu-item" href="#">5200</a>
-            <a class="sub-menu-item" href="#">7800</a>
-            <a class="sub-menu-item" href="#">JAG</a>
-            <a class="sub-menu-item" href="#">LYNX</a>
+            <router-link class="sub-menu-item" to="/console/2600"
+              >2600</router-link
+            >
+            <router-link class="sub-menu-item" to="/console/5200"
+              >5200</router-link
+            >
+            <router-link class="sub-menu-item" to="/console/7800"
+              >7800</router-link
+            >
+            <router-link class="sub-menu-item" to="/console/JAG"
+              >JAG</router-link
+            >
+            <router-link class="sub-menu-item" to="/console/LYNX"
+              >LYNX</router-link
+            >
           </div>
         </li>
         <li>
           <a class="main-menu-item dropdown" href="#">Nintendo</a>
           <div class="dropdown-menu">
-            <a class="sub-menu-item" href="#">NES</a>
-            <a class="sub-menu-item" href="#">SNES</a>
-            <a class="sub-menu-item" href="#">N64</a>
-            <a class="sub-menu-item" href="#">GB</a>
-            <a class="sub-menu-item" href="#">GBC</a>
-            <a class="sub-menu-item" href="#">GBA</a>
+            <router-link class="sub-menu-item" to="/console/NES"
+              >NES</router-link
+            >
+            <router-link class="sub-menu-item" to="/console/SNES"
+              >SNES</router-link
+            >
+            <router-link class="sub-menu-item" to="/console/N64"
+              >N64</router-link
+            >
+            <router-link class="sub-menu-item" to="/console/GB">GB</router-link>
+            <router-link class="sub-menu-item" to="/console/GBC"
+              >GBC</router-link
+            >
+            <router-link class="sub-menu-item" to="/console/GBA"
+              >GBA</router-link
+            >
           </div>
         </li>
         <li>
           <a class="main-menu-item dropdown" href="#">Sega</a>
           <div class="dropdown-menu">
-            <a class="sub-menu-item" href="#">SMS</a>
-            <a class="sub-menu-item" href="#">SMD</a>
-            <a class="sub-menu-item" href="#">SGG</a>
+            <router-link class="sub-menu-item" to="/console/SMS"
+              >SMS</router-link
+            >
+            <router-link class="sub-menu-item" to="/console/SMD"
+              >SMD</router-link
+            >
+            <router-link class="sub-menu-item" to="/console/SGG"
+              >SGG</router-link
+            >
           </div>
         </li>
-        <li><a class="main-menu-item" href="#">Randomizer</a></li>
+        <li>
+          <router-link class="main-menu-item" to="/console/RAND"
+            >Randomizer</router-link
+          >
+        </li>
       </ul>
     </nav>
   </div>

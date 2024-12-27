@@ -11,7 +11,6 @@
       </div>
     </div>
   </div>
-  <!-- Keep component mounted, control visibility -->
   <EmulatorPopup
     :is-visible="isEmulatorVisible"
     :game-url="selectedGameUrl"
@@ -41,29 +40,22 @@ export default {
   methods: {
     async loadGamesData() {
       try {
-        const response = await fetch("./games.json");
+        const response = await fetch("/games.json");
         const gamesData = await response.json();
-        const categories = [
+        this.categories = [
           {
             title: "SELECTION",
-            games: gamesData.filter((game) =>
-              game.categories.includes("featured")
-            ),
+            games: gamesData.filter((game) => game.categories.includes("featured")),
           },
           {
             title: "POKEMON EXTRAVAGANZA",
-            games: gamesData.filter((game) =>
-              game.categories.includes("pokemon")
-            ),
+            games: gamesData.filter((game) => game.categories.includes("pokemon")),
           },
           {
             title: "RETOUR VERS LE FUTUR",
-            games: gamesData.filter((game) =>
-              game.categories.includes("retourverslefutur")
-            ),
+            games: gamesData.filter((game) => game.categories.includes("retourverslefutur")),
           },
         ];
-        this.categories = categories;
       } catch (error) {
         console.error("Failed to load games data:", error);
       }
