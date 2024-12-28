@@ -56,6 +56,9 @@ export default {
       }
 
       const core = determineCore(gameUrl);
+      console.log("Selected core:", core); // Add this
+      console.log("Game URL:", gameUrl); // Add this
+
       if (!core) {
         console.error("Unsupported game type!");
         return;
@@ -71,13 +74,26 @@ export default {
       return new Promise((resolve, reject) => {
         // Set up EJS properties
         window.EJS_player = "#emulator";
-        window.EJS_gameUrl = gameUrl;
+        if (!gameUrl.startsWith("/")) {
+          window.EJS_gameUrl = `/${gameUrl}`; // Add leading slash
+        } else {
+          window.EJS_gameUrl = gameUrl;
+        }
         window.EJS_core = core;
-        window.EJS_pathtodata = "data/";
+        window.EJS_pathtodata = "/data/";
         window.EJS_startOnLoad = true;
+
+        console.log("EJS configuration:", {
+          // Add this debug block
+          player: window.EJS_player,
+          gameUrl: window.EJS_gameUrl,
+          core: window.EJS_core,
+          pathtodata: window.EJS_pathtodata,
+        });
 
         // Add ready callback before loading script
         window.EJS_onGameStart = () => {
+          console.log("Game started!"); // Add this
           emulatorLoaded.value = true;
           currentGameUrl.value = gameUrl;
           resolve();
@@ -108,7 +124,7 @@ export default {
       }
 
       // Remove loader script with updated path
-      const oldScript = document.querySelector('script[src="data/loader.js"]');
+      const oldScript = document.querySelector('script[src="/data/loader.js"]');
       if (oldScript) oldScript.remove();
 
       // Clear EJS properties
