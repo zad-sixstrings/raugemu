@@ -189,6 +189,8 @@ a:visited {
   border-left: 5px solid rgb(161, 161, 161);
   border-right: 5px solid rgb(59, 59, 59);
   border-bottom: 5px solid rgb(59, 59, 59);
+  transition: border 0.2s;
+  transition: background-color 0.2s;
 }
 
 .dropdown-menu {
@@ -216,10 +218,12 @@ a.sub-menu-item {
   text-align: center;
   padding: 0 20px 0 20px;
   text-decoration: none;
+  transition: border 0.1s;
+  transition: background-color 0.1s;
 }
 
 .sub-menu-item:hover {
-  background: rgb(109, 109, 109);
+  background-color: rgb(109, 109, 109);
   border-top: 5px solid rgb(59, 59, 59);
   border-left: 5px solid rgb(59, 59, 59);
   border-right: 5px solid rgb(161, 161, 161);
@@ -227,7 +231,7 @@ a.sub-menu-item {
 }
 
 #main-menu li:hover {
-  background: rgb(109, 109, 109);
+  background-color: rgb(109, 109, 109);
   border-top: 5px solid rgb(59, 59, 59);
   border-left: 5px solid rgb(59, 59, 59);
   border-right: 5px solid rgb(161, 161, 161);
