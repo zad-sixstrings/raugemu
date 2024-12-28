@@ -199,26 +199,43 @@ export default {
 <style scoped>
 #game-popup {
   position: fixed;
-  top: 50;
-  left: 50;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
   padding: 20px;
-  box-sizing: border-box;
+  max-width: 1200px;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.8);
   cursor: url("/assets/cursor.png"), auto;
 }
 
+#close-popup {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: url("/assets/cursor.png"), auto;
+  z-index: 1001;
+  color: white;
+  background-color: rgb(216, 11, 55);
+  border-radius: 10px;
+}
+
+
 .popup-content {
   position: relative;
-  width: 90%;
-  max-width: 1200px;
-  height: 90%;
-  max-height: 800px;
+  width: 100%;
+  height: 100%;
+  max-height: 850px;
   background: rgb(122, 122, 122);
   border-top: 5px solid rgb(161, 161, 161);
   border-left: 5px solid rgb(161, 161, 161);
@@ -234,7 +251,7 @@ export default {
   top: 0;
   width: 30px;
   height: 20px;
-  border-radius: 10%;
+  border-radius: 2%;
   border: none;
   background: #ff4444;
   border-top: 2px solid #f07a72;
@@ -243,18 +260,17 @@ export default {
   border-bottom: 2px solid #ad1f2a;
   color: white;
   font-weight: bold;
-  cursor: pointer;
+  font-size: 14px;
   z-index: 1001;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
   transition: font-size 0.2s;
 }
 
 #close-popup:hover {
   cursor: url("/assets/cursor-click.png"), auto;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 #close-popup:active {
@@ -277,7 +293,7 @@ export default {
 }
 
 #game {
-  width: 100%;
+  width: 200%;
   height: 100%;
   position: relative;
   display: flex;
@@ -298,4 +314,5 @@ export default {
   max-height: 100%;
   object-fit: contain;
 }
+
 </style>

@@ -392,39 +392,6 @@ header {
   cursor: url("/assets/cursor-click.png"), auto;
 }
 
-#game-popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  height: auto;
-  max-width: 700px;
-  z-index: 1000;
-  border-radius: 10px;
-}
-
-.game-wrapper {
-  width: 640px;
-  height: 480px;
-  max-width: 100%;
-}
-
-#close-popup {
-  position: absolute;
-  top: 0;
-  right: 20px;
-  width: 30px;
-  height: 30px;
-  background: transparent;
-  border: none;
-  font-size: 18px;
-  cursor: url("/assets/cursor.png"), auto;
-  z-index: 1001;
-  color: white;
-  background-color: rgb(216, 11, 55);
-  border-radius: 10px;
-}
 
 footer {
   display: block;
