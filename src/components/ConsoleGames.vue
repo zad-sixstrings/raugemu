@@ -75,7 +75,9 @@ export default {
     },
     loadEmulatorScript() {
       const script = document.createElement("script");
-      script.src = `${window.location.origin}/data/loader.js`; // Absolute path because router goes nuts with it
+
+      // Force absolute path regardless of Vue Router's behavior
+      script.src = "data/loader.js";
       script.async = true;
 
       script.onload = () => {
@@ -86,7 +88,7 @@ export default {
         console.error("Failed to load EmulatorJS:", error);
       };
 
-      document.head.appendChild(script);  // Append loader.js to head after EJS_player
+      document.head.appendChild(script); // Append loader.js to head
     },
     openEmulator(romPath) {
       this.selectedGameUrl = romPath;
@@ -99,4 +101,3 @@ export default {
   },
 };
 </script>
-
