@@ -43,15 +43,15 @@ export default {
   },
   computed: {
     filteredGames() {
-  console.log("Console prop:", this.console);  // Log selected console
-  console.log("All games:", this.games);      // Log all the games
-  const filtered = this.games.filter((game) => {
-    console.log("Checking game:", game.title, "Console:", game.console);  // Log each game's console
-    return game.console.toUpperCase() === this.console.toUpperCase();
-  });
-  console.log("Filtered games for console:", this.console, filtered);  // Check filtered games
-  return filtered;
-}
+      console.log("Console prop:", this.console); // Log selected console
+      console.log("All games:", this.games); // Log all the games
+      const filtered = this.games.filter((game) => {
+        console.log("Checking game:", game.title, "Console:", game.console); // Log each game's console
+        return game.console.toUpperCase() === this.console.toUpperCase();
+      });
+      console.log("Filtered games for console:", this.console, filtered); // Check filtered games
+      return filtered;
+    },
   },
   watch: {
     // Watch for changes to the console prop
@@ -60,6 +60,7 @@ export default {
     },
   },
   async mounted() {
+    // Load the games data first
     await this.loadGamesData();
   },
   methods: {
@@ -72,6 +73,30 @@ export default {
         console.error("Failed to load games data:", error);
       }
     },
+    loadEmulatorScript() {
+      const script = document.createElement("script");
+      script.src = `${window.location.origin}/data/loader.js`; // Absolute path because router goes nuts with it
+      script.async = true;
+
+      script.onload = () => {
+        console.log("EmulatorJS loaded successfully");
+      };
+
+      script.onerror = (error) => {
+        console.error("Failed to load EmulatorJS:", error);
+      };
+
+      document.head.appendChild(script);  // Append loader.js to head after EJS_player
+    },
+    openEmulator(romPath) {
+      this.selectedGameUrl = romPath;
+      this.isEmulatorVisible = true;
+    },
+    closeEmulator() {
+      this.isEmulatorVisible = false;
+      this.selectedGameUrl = "";
+    },
   },
 };
 </script>
+
