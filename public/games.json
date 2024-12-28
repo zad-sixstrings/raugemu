@@ -199,7 +199,7 @@
   },
   {
     "title": "Duck Tales",
-    "boxArtPath": "/assets/boxart/ducktales.png",
+    "boxArtPath": "/assets/boxart/ducktales.jpg",
     "year": "1989",
     "console": "NES",
     "developer": "Capcom",
@@ -208,7 +208,7 @@
   },
   {
     "title": "Duck Tales 2",
-    "boxArtPath": "/assets/boxart/ducktales2.png",
+    "boxArtPath": "/assets/boxart/ducktales2.jpg",
     "year": "1993",
     "console": "NES",
     "developer": "Capcom",
