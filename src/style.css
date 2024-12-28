@@ -196,7 +196,7 @@ a:visited {
   position: absolute;
   top: 120%;
   left: 0;
-  width: 100%;
+  width: 170px;
   z-index: 5;
   background: rgb(122, 122, 122);
   border-top: 5px solid rgb(161, 161, 161);
@@ -218,7 +218,7 @@ a.sub-menu-item {
   text-decoration: none;
 }
 
-router-link.sub-menu-item:hover {
+.sub-menu-item:hover {
   background: rgb(109, 109, 109);
   border-top: 5px solid rgb(59, 59, 59);
   border-left: 5px solid rgb(59, 59, 59);

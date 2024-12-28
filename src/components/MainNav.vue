@@ -63,10 +63,10 @@
         <li>
           <a class="main-menu-item dropdown" href="#">Hacks</a>
           <div class="dropdown-menu">
-            <router-link class="main-menu-item" to="/console/RAND"
+            <router-link class="sub-menu-item" to="/console/RAND"
               >Randomizer</router-link
             >
-            <router-link class="main-menu-item" to="/console/ROMHACK"
+            <router-link class="sub-menu-item" to="/console/ROMHACK"
               >RomHacks</router-link
             >
           </div>
