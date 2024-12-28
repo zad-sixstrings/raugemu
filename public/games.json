@@ -54,6 +54,15 @@
     "categories": [""]
   },
   {
+    "title": "Perfect Dark",
+    "boxArtPath": "/assets/boxart/perfectdark.jpg",
+    "year": "2000",
+    "console": "N64",
+    "developer": "Rare",
+    "romPath": "ROM/Nintendo/N64/perfectdark.z64",
+    "categories": [""]
+  },
+  {
     "title": "007 GoldenEye",
     "boxArtPath": "/assets/boxart/goldeneye.jpg",
     "year": "1998",
@@ -73,7 +82,7 @@
   },
   {
     "title": "Banjo Kazooie",
-    "boxArtPath": "/assets/boxart/banjokazooie.png",
+    "boxArtPath": "/assets/boxart/banjokazooie.jpg",
     "year": "1998",
     "console": "N64",
     "developer": "Rare",
@@ -289,7 +298,7 @@
   },
   {
     "title": "Super Mario Land",
-    "boxArtPath": "/assets/boxart/sml.png",
+    "boxArtPath": "/assets/boxart/sml.jpg",
     "year": "1989",
     "console": "GB",
     "developer": "Nintendo",
@@ -406,7 +415,7 @@
   },
   {
     "title": "Millipede",
-    "boxArtPath": "/assets/boxart/millipede.png",
+    "boxArtPath": "/assets/boxart/millipede.jpg",
     "year": "1984",
     "console": "5200",
     "developer": "Atari",
@@ -433,7 +442,7 @@
   },
   {
     "title": "Double Dragon",
-    "boxArtPath": "/assets/boxart/doubledragon.png",
+    "boxArtPath": "/assets/boxart/doubledragon.jpg",
     "year": "1991",
     "console": "LYNX",
     "developer": "Arc System Works",
@@ -451,7 +460,7 @@
   },
   {
     "title": "Sonic 3 & Knuckles",
-    "boxArtPath": "/assets/boxart/sonic3knuckles.png",
+    "boxArtPath": "/assets/boxart/sonic3knuckles.jpg",
     "year": "1994",
     "console": "SMD",
     "developer": "Sonic Team",
