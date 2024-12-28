@@ -33,7 +33,7 @@
     "console": "N64",
     "developer": "Nintendo",
     "romPath": "ROM/Nintendo/N64/1080.z64",
-    "categories": ["featured"]
+    "categories": [""]
   },
   {
     "title": "The Legend of Zelda: Ocarina of Time",
@@ -321,7 +321,7 @@
     "console": "GBC",
     "developer": "Nintendo",
     "romPath": "ROM/Nintendo/GBC/pkmnor.gbc",
-    "categories": ["pokemon"]
+    "categories": [""]
   },
   {
     "title": "Pokémon Crystal",
