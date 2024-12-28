@@ -84,7 +84,7 @@ export default {
         };
 
         const script = document.createElement("script");
-        script.src = "data/loader.js";
+        script.src = `${window.location.origin}/data/loader.js`;
         script.async = true;
 
         script.onerror = (error) => {

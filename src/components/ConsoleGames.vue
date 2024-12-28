@@ -1,103 +1,80 @@
 <template>
-  <div class="console-games">
-    <div class="featured-games-title-wrapper">
-      <h2 class="featured-games-title">{{ console }} Games</h2>
-    </div>
-    <div id="content">
-      <div class="featured-games">
-        <div id="featured-container">
-          <GameCard :games="filteredGames" @game-selected="openEmulator" />
+    <div class="console-games">
+      <div class="featured-games-title-wrapper">
+        <h2 class="featured-games-title">{{ console }} Games</h2>
+      </div>
+      <div id="content">
+        <div class="featured-games">
+          <div id="featured-container">
+            <GameCard :games="filteredGames" @game-selected="openEmulator" />
+          </div>
         </div>
       </div>
+      <!-- EmulatorPopup should only handle the emulator logic, no need to load scripts here -->
+      <EmulatorPopup
+        :is-visible="isEmulatorVisible"
+        :game-url="selectedGameUrl"
+        @close="closeEmulator"
+      />
     </div>
-    <EmulatorPopup
-      :is-visible="isEmulatorVisible"
-      :game-url="selectedGameUrl"
-      @close="closeEmulator"
-    />
-  </div>
-</template>
-
-<script>
-import GameCard from "./GameCard.vue";
-import EmulatorPopup from "./EmulatorPopup.vue";
-
-export default {
-  name: "ConsoleGames",
-  components: {
-    GameCard,
-    EmulatorPopup,
-  },
-  props: {
-    console: {
-      type: String,
-      required: true,
+  </template>
+  
+  <script>
+  import GameCard from "./GameCard.vue";
+  import EmulatorPopup from "./EmulatorPopup.vue";
+  
+  export default {
+    name: "ConsoleGames",
+    components: {
+      GameCard,
+      EmulatorPopup,
     },
-  },
-  data() {
-    return {
-      games: [],
-      isEmulatorVisible: false,
-      selectedGameUrl: "",
-    };
-  },
-  computed: {
-    filteredGames() {
-      console.log("Console prop:", this.console); // Log selected console
-      console.log("All games:", this.games); // Log all the games
-      const filtered = this.games.filter((game) => {
-        console.log("Checking game:", game.title, "Console:", game.console); // Log each game's console
-        return game.console.toUpperCase() === this.console.toUpperCase();
-      });
-      console.log("Filtered games for console:", this.console, filtered); // Check filtered games
-      return filtered;
+    props: {
+      console: {
+        type: String,
+        required: true,
+      },
     },
-  },
-  watch: {
-    // Watch for changes to the console prop
-    console(newConsole) {
-      this.loadGamesData();
-    },
-  },
-  async mounted() {
-    // Load the games data first
-    await this.loadGamesData();
-  },
-  methods: {
-    async loadGamesData() {
-      try {
-        const response = await fetch("/games.json");
-        const gamesData = await response.json();
-        this.games = gamesData;
-      } catch (error) {
-        console.error("Failed to load games data:", error);
-      }
-    },
-    loadEmulatorScript() {
-      const script = document.createElement("script");
-
-      // Force absolute path regardless of Vue Router's behavior
-      script.src = "data/loader.js";
-      script.async = true;
-
-      script.onload = () => {
-        console.log("EmulatorJS loaded successfully");
+    data() {
+      return {
+        games: [],
+        isEmulatorVisible: false,
+        selectedGameUrl: "",
       };
-
-      script.onerror = (error) => {
-        console.error("Failed to load EmulatorJS:", error);
-      };
-
-      document.head.appendChild(script); // Append loader.js to head
     },
-    openEmulator(romPath) {
-      this.selectedGameUrl = romPath;
-      this.isEmulatorVisible = true;
+    computed: {
+      filteredGames() {
+        // Filtering the games by the selected console
+        return this.games.filter((game) => game.console.toUpperCase() === this.console.toUpperCase());
+      },
     },
-    closeEmulator() {
-      this.isEmulatorVisible = false;
-      this.selectedGameUrl = "";
+    watch: {
+      console(newConsole) {
+        this.loadGamesData(); // Reload games when the console changes
+      },
     },
-  },
-};
-</script>
+    async mounted() {
+      await this.loadGamesData(); // Load games data when the component is mounted
+    },
+    methods: {
+      async loadGamesData() {
+        try {
+          const response = await fetch("/games.json");
+          const gamesData = await response.json();
+          this.games = gamesData;
+        } catch (error) {
+          console.error("Failed to load games data:", error);
+        }
+      },
+      openEmulator(romPath) {
+        this.selectedGameUrl = romPath;
+        this.isEmulatorVisible = true; // Show the emulator when a game is selected
+      },
+      closeEmulator() {
+        this.isEmulatorVisible = false;
+        this.selectedGameUrl = "";
+      },
+    },
+  };
+  </script>
+  
