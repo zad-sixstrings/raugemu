@@ -185,6 +185,7 @@ a:visited {
   position: relative;
   float: left;
   height: 60px;
+  background-color: rgb(122, 122, 122);
   border-top: 5px solid rgb(161, 161, 161);
   border-left: 5px solid rgb(161, 161, 161);
   border-right: 5px solid rgb(59, 59, 59);
