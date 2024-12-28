@@ -36,6 +36,60 @@
     "categories": ["featured"]
   },
   {
+    "title": "The Legend of Zelda: Ocarina of Time",
+    "boxArtPath": "/assets/boxart/oot.jpg",
+    "year": "1997",
+    "console": "N64",
+    "developer": "Nintendo",
+    "romPath": "ROM/Nintendo/N64/oot.z64",
+    "categories": ["featured"]
+  },
+  {
+    "title": "The Legend of Zelda: Majora's Mask",
+    "boxArtPath": "/assets/boxart/majora.jpg",
+    "year": "2000",
+    "console": "N64",
+    "developer": "Nintendo",
+    "romPath": "ROM/Nintendo/N64/majora.z64",
+    "categories": [""]
+  },
+  {
+    "title": "007 GoldenEye",
+    "boxArtPath": "/assets/boxart/goldeneye.jpg",
+    "year": "1998",
+    "console": "N64",
+    "developer": "Rare",
+    "romPath": "ROM/Nintendo/N64/goldeneye.z64",
+    "categories": [""]
+  },
+  {
+    "title": "Mario Kart 64",
+    "boxArtPath": "/assets/boxart/mariokart64.jpg",
+    "year": "1997",
+    "console": "N64",
+    "developer": "Nintendo",
+    "romPath": "ROM/Nintendo/N64/mariokart64.z64",
+    "categories": [""]
+  },
+  {
+    "title": "Banjo Kazooie",
+    "boxArtPath": "/assets/boxart/banjokazooie.png",
+    "year": "1998",
+    "console": "N64",
+    "developer": "Rare",
+    "romPath": "ROM/Nintendo/N64/banjokazooie.z64",
+    "categories": [""]
+  },
+  {
+    "title": "Super Mario 64",
+    "boxArtPath": "/assets/boxart/mario64.jpg",
+    "year": "1996",
+    "console": "N64",
+    "developer": "Nintendo",
+    "romPath": "ROM/Nintendo/N64/mario64.z64",
+    "categories": [""]
+  },
+  {
     "title": "Mega Man",
     "boxArtPath": "/assets/boxart/megaman.jpg",
     "year": "1987",
@@ -234,13 +288,22 @@
     "categories": ["featured"]
   },
   {
-    "title": "Pokémon Vert Feuille",
-    "boxArtPath": "/assets/boxart/pkmnvf.jpg",
-    "year": "2004",
-    "console": "GBA",
+    "title": "Super Mario Land",
+    "boxArtPath": "/assets/boxart/sml.png",
+    "year": "1989",
+    "console": "GB",
     "developer": "Nintendo",
-    "romPath": "ROM/Nintendo/GBA/pkmnvf.gba",
-    "categories": ["pokemon"]
+    "romPath": "ROM/Nintendo/GB/sml.gb",
+    "categories": [""]
+  },
+  {
+    "title": "Super Mario Land 2 - 6 Golden Coins",
+    "boxArtPath": "/assets/boxart/sml2.jpg",
+    "year": "1992",
+    "console": "GB",
+    "developer": "Nintendo",
+    "romPath": "ROM/Nintendo/GB/sml2.gb",
+    "categories": [""]
   },
   {
     "title": "Pokemon Or",
@@ -249,6 +312,24 @@
     "console": "GBC",
     "developer": "Nintendo",
     "romPath": "ROM/Nintendo/GBC/pkmnor.gbc",
+    "categories": ["pokemon"]
+  },
+  {
+    "title": "Pokémon Crystal",
+    "boxArtPath": "/assets/boxart/pkmncrystal.jpg",
+    "year": "2000",
+    "console": "GBC",
+    "developer": "Nintendo",
+    "romPath": "ROM/Nintendo/GBC/pkmncrystal.gbc",
+    "categories": ["pokemon"]
+  },
+  {
+    "title": "Pokémon Vert Feuille",
+    "boxArtPath": "/assets/boxart/pkmnvf.jpg",
+    "year": "2004",
+    "console": "GBA",
+    "developer": "Nintendo",
+    "romPath": "ROM/Nintendo/GBA/pkmnvf.gba",
     "categories": ["pokemon"]
   },
   {
@@ -261,13 +342,22 @@
     "categories": ["pokemon"]
   },
   {
-    "title": "Pokémon Crystal",
-    "boxArtPath": "/assets/boxart/pkmncrystal.jpg",
-    "year": "2000",
-    "console": "GBC",
+    "title": "Castlevania: Dawn of Sorrow",
+    "boxArtPath": "/assets/boxart/dawnofsorrow.jpg",
+    "year": "2005",
+    "console": "NDS",
     "developer": "Nintendo",
-    "romPath": "ROM/Nintendo/GBC/pkmncrystal.gbc",
-    "categories": ["pokemon"]
+    "romPath": "ROM/Nintendo/NDS/dawnofsorrow.nds",
+    "categories": [""]
+  },
+  {
+    "title": "The Legend of Zelda: The Phantom Hourglass",
+    "boxArtPath": "/assets/boxart/phantomhourglass.jpg",
+    "year": "2007",
+    "console": "NDS",
+    "developer": "Nintendo",
+    "romPath": "ROM/Nintendo/NDS/phantomhourglass.nds",
+    "categories": [""]
   },
   {
     "title": "Dragonfire",
@@ -313,5 +403,86 @@
     "developer": "Activision",
     "romPath": "ROM/Atari/2600/pitfall.a26",
     "categories": ["retourverslefutur"]
+  },
+  {
+    "title": "Millipede",
+    "boxArtPath": "/assets/boxart/millipede.png",
+    "year": "1984",
+    "console": "5200",
+    "developer": "Atari",
+    "romPath": "ROM/Atari/5200/millipede.a52",
+    "categories": [""]
+  },
+  {
+    "title": "Joust",
+    "boxArtPath": "/assets/boxart/joust.jpg",
+    "year": "1982",
+    "console": "5200",
+    "developer": "Atari",
+    "romPath": "ROM/Atari/5200/joust.a52",
+    "categories": [""]
+  },
+  {
+    "title": "Alien Brigade",
+    "boxArtPath": "/assets/boxart/alienbrigade.jpg",
+    "year": "1990",
+    "console": "7800",
+    "developer": "Ken Grant",
+    "romPath": "ROM/Atari/7800/alienbrigade.a78",
+    "categories": [""]
+  },
+  {
+    "title": "Double Dragon",
+    "boxArtPath": "/assets/boxart/doubledragon.png",
+    "year": "1991",
+    "console": "LYNX",
+    "developer": "Arc System Works",
+    "romPath": "ROM/Atari/Lynx/doubledragon.lnx",
+    "categories": [""]
+  },
+  {
+    "title": "Psycho Fox",
+    "boxArtPath": "/assets/boxart/psychofox.jpg",
+    "year": "1989",
+    "console": "SMS",
+    "developer": "Vic Tokai",
+    "romPath": "ROM/Sega/SMS/psychofox.SMS",
+    "categories": [""]
+  },
+  {
+    "title": "Sonic 3 & Knuckles",
+    "boxArtPath": "/assets/boxart/sonic3knuckles.png",
+    "year": "1994",
+    "console": "SMD",
+    "developer": "Sonic Team",
+    "romPath": "ROM/Sega/SMD/sonic3knuckles.md",
+    "categories": [""]
+  },
+  {
+    "title": "Dynamite Headdy",
+    "boxArtPath": "/assets/boxart/dynamiteheaddy.jpg",
+    "year": "1994",
+    "console": "SGG",
+    "developer": "Treasure Co. Ltd",
+    "romPath": "ROM/Sega/SGG/dynamiteheaddy.gg",
+    "categories": [""]
+  },
+  {
+    "title": "COMING SOON",
+    "boxArtPath": "",
+    "year": "",
+    "console": "ROMHACK",
+    "developer": "",
+    "romPath": "",
+    "categories": [""]
+  },
+  {
+    "title": "OoT Rando",
+    "boxArtPath": "/assets/boxart/oot.jpg",
+    "year": "2024",
+    "console": "RAND",
+    "developer": "Easy",
+    "romPath": "ROM/RomHacks/rando/oot-rando-easy.z64",
+    "categories": [""]
   }
 ]
