@@ -9,6 +9,69 @@
     "categories": ["featured"]
   },
   {
+    "title": "Super Mario World 2: Yoshi's Island",
+    "boxArtPath": "/assets/boxart/smw2.jpg",
+    "year": "1995",
+    "console": "SNES",
+    "developer": "Nintendo",
+    "romPath": "ROM/Nintendo/SNES/smw2.sfc",
+    "categories": [""]
+  },
+  {
+    "title": "Super Mario RPG",
+    "boxArtPath": "/assets/boxart/smrpg.jpg",
+    "year": "1996",
+    "console": "SNES",
+    "developer": "Squaresoft",
+    "romPath": "ROM/Nintendo/SNES/smrpg.sfc",
+    "categories": [""]
+  },
+  {
+    "title": "Super Mario Kart",
+    "boxArtPath": "/assets/boxart/smkart.jpg",
+    "year": "1992",
+    "console": "SNES",
+    "developer": "Nintendo",
+    "romPath": "ROM/Nintendo/SNES/smkart.sfc",
+    "categories": [""]
+  },
+  {
+    "title": "Earthbound",
+    "boxArtPath": "/assets/boxart/earthbound.jpg",
+    "year": "1995",
+    "console": "SNES",
+    "developer": "Ape",
+    "romPath": "ROM/Nintendo/SNES/earthbound.sfc",
+    "categories": [""]
+  },
+  {
+    "title": "Chrono Trigger",
+    "boxArtPath": "/assets/boxart/chronotrigger.jpg",
+    "year": "1995",
+    "console": "SNES",
+    "developer": "Square",
+    "romPath": "ROM/Nintendo/SNES/chronotrigger.sfc",
+    "categories": [""]
+  },
+  {
+    "title": "Kirby Super Star",
+    "boxArtPath": "/assets/boxart/kirbyss.jpg",
+    "year": "1997",
+    "console": "SNES",
+    "developer": "HAL Laboratory",
+    "romPath": "ROM/Nintendo/SNES/kirbyss.sfc",
+    "categories": [""]
+  },
+  {
+    "title": "Kirby's Dream Land 3",
+    "boxArtPath": "/assets/boxart/kirbydl3.png",
+    "year": "1997",
+    "console": "SNES",
+    "developer": "HAL Laboratory",
+    "romPath": "ROM/Nintendo/SNES/kirbydl3.sfc",
+    "categories": [""]
+  },
+  {
     "title": "Super Metroid",
     "boxArtPath": "/assets/boxart/supermetroid.jpg",
     "year": "1994",
@@ -315,12 +378,102 @@
     "categories": [""]
   },
   {
+    "title": "Pokémon Rouge",
+    "boxArtPath": "/assets/boxart/pkmnred.jpg",
+    "year": "1998",
+    "console": "GB",
+    "developer": "Game Freak",
+    "romPath": "ROM/Nintendo/GB/pkmnred.gb",
+    "categories": [""]
+  },
+  {
+    "title": "Pokémon Bleu",
+    "boxArtPath": "/assets/boxart/pkmnblue.jpg",
+    "year": "1998",
+    "console": "GB",
+    "developer": "Game Freak",
+    "romPath": "ROM/Nintendo/GB/pkmnblue.gb",
+    "categories": [""]
+  },
+  {
+    "title": "Pokémon Jaune",
+    "boxArtPath": "/assets/boxart/pkmnyellow.jpg",
+    "year": "1999",
+    "console": "GB",
+    "developer": "Game Freak",
+    "romPath": "ROM/Nintendo/GB/pkmnyellow.gb",
+    "categories": [""]
+  },
+  {
+    "title": "Wario Land",
+    "boxArtPath": "/assets/boxart/warioland.png",
+    "year": "1994",
+    "console": "GB",
+    "developer": "Nintendo",
+    "romPath": "ROM/Nintendo/GB/warioland.gb",
+    "categories": [""]
+  },
+  {
+    "title": "Kirby's Dream Land",
+    "boxArtPath": "/assets/boxart/kirbydl.png",
+    "year": "1992",
+    "console": "GB",
+    "developer": "HAL Laboratory",
+    "romPath": "ROM/Nintendo/GB/kirbydl.gb",
+    "categories": [""]
+  },
+  {
+    "title": "Kirby's Dream Land",
+    "boxArtPath": "/assets/boxart/kirbydl2.png",
+    "year": "1995",
+    "console": "GB",
+    "developer": "HAL Laboratory",
+    "romPath": "ROM/Nintendo/GB/kirbydl2.gb",
+    "categories": [""]
+  },
+  {
+    "title": "Donkey Kong Land",
+    "boxArtPath": "/assets/boxart/dkland.png",
+    "year": "1995",
+    "console": "GB",
+    "developer": "Rare",
+    "romPath": "ROM/Nintendo/GB/dkland.gb",
+    "categories": [""]
+  },
+  {
+    "title": "Donkey Kong Land 2",
+    "boxArtPath": "/assets/boxart/dkland2.jpg",
+    "year": "1996",
+    "console": "GB",
+    "developer": "Rare",
+    "romPath": "ROM/Nintendo/GB/dkland2.gb",
+    "categories": [""]
+  },
+  {
+    "title": "Kid Dracula",
+    "boxArtPath": "/assets/boxart/kiddracula.jpg",
+    "year": "1993",
+    "console": "GB",
+    "developer": "Konami",
+    "romPath": "ROM/Nintendo/GB/kiddracula.gb",
+    "categories": [""]
+  },
+  {
     "title": "Pokémon Or",
     "boxArtPath": "/assets/boxart/pkmnor.jpg",
     "year": "1999",
     "console": "GBC",
-    "developer": "Nintendo",
+    "developer": "Game Freak",
     "romPath": "ROM/Nintendo/GBC/pkmnor.gbc",
+    "categories": [""]
+  },
+  {
+    "title": "Pokémon Argent",
+    "boxArtPath": "/assets/boxart/pkmnargent.png",
+    "year": "1999",
+    "console": "GBC",
+    "developer": "Game Freak",
+    "romPath": "ROM/Nintendo/GBC/pkmnargent.gbc",
     "categories": [""]
   },
   {
@@ -328,16 +481,88 @@
     "boxArtPath": "/assets/boxart/pkmncrystal.jpg",
     "year": "2000",
     "console": "GBC",
-    "developer": "Nintendo",
+    "developer": "Game Freak",
     "romPath": "ROM/Nintendo/GBC/pkmncrystal.gbc",
     "categories": ["pokemon"]
+  },
+  {
+    "title": "Pokémon Pinball",
+    "boxArtPath": "/assets/boxart/pkmnpinball.jpg",
+    "year": "1999",
+    "console": "GBC",
+    "developer": "HAL Laboratory",
+    "romPath": "ROM/Nintendo/GBC/pkmnpinball.gbc",
+    "categories": ["pokemon"]
+  },
+  {
+    "title": "Pokémon Trading Card Game",
+    "boxArtPath": "/assets/boxart/pkmntcg.png",
+    "year": "2000",
+    "console": "GBC",
+    "developer": "Creatures Inc.",
+    "romPath": "ROM/Nintendo/GBC/pkmntcg.gbc",
+    "categories": ["pokemon"]
+  },
+  {
+    "title": "Super Mario Bros. Deluxe",
+    "boxArtPath": "/assets/boxart/smbdx.jpg",
+    "year": "1999",
+    "console": "GBC",
+    "developer": "Nintendo",
+    "romPath": "ROM/Nintendo/GBC/smbdx.gbc",
+    "categories": [""]
+  },
+  {
+    "title": "Mario Tennis",
+    "boxArtPath": "/assets/boxart/mariotennis.png",
+    "year": "2000",
+    "console": "GBC",
+    "developer": "Nintendo",
+    "romPath": "ROM/Nintendo/GBC/mariotennis.gbc",
+    "categories": [""]
+  },
+  {
+    "title": "Mario Golf",
+    "boxArtPath": "/assets/boxart/mariogolf.jpg",
+    "year": "1999",
+    "console": "GBC",
+    "developer": "Nintendo",
+    "romPath": "ROM/Nintendo/GBC/mariogolf.gbc",
+    "categories": [""]
+  },
+  {
+    "title": "The Legend of Zelda: Oracle of Ages",
+    "boxArtPath": "/assets/boxart/zooa.jpg",
+    "year": "2001",
+    "console": "GBC",
+    "developer": "Flagship",
+    "romPath": "ROM/Nintendo/GBC/zooa.gbc",
+    "categories": [""]
+  },
+  {
+    "title": "The Legend of Zelda: Oracle of Seasons",
+    "boxArtPath": "/assets/boxart/zoos.jpg",
+    "year": "2001",
+    "console": "GBC",
+    "developer": "Flagship",
+    "romPath": "ROM/Nintendo/GBC/zoos.gbc",
+    "categories": [""]
+  },
+  {
+    "title": "The Legend of Zelda: Link's Awakening DX",
+    "boxArtPath": "/assets/boxart/zla.png",
+    "year": "1998",
+    "console": "GBC",
+    "developer": "Flagship",
+    "romPath": "ROM/Nintendo/GBC/zla.gbc",
+    "categories": [""]
   },
   {
     "title": "Pokémon Vert Feuille",
     "boxArtPath": "/assets/boxart/pkmnvf.jpg",
     "year": "2004",
     "console": "GBA",
-    "developer": "Nintendo",
+    "developer": "Game Freak",
     "romPath": "ROM/Nintendo/GBA/pkmnvf.gba",
     "categories": ["pokemon"]
   },
@@ -346,7 +571,7 @@
     "boxArtPath": "/assets/boxart/pkmnemeraude.jpg",
     "year": "2004",
     "console": "GBA",
-    "developer": "Nintendo",
+    "developer": "Game Freak",
     "romPath": "ROM/Nintendo/GBA/pkmnemeraude.gba",
     "categories": ["pokemon"]
   },
