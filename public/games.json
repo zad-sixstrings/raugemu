@@ -306,7 +306,7 @@
     "categories": [""]
   },
   {
-    "title": "Pokemon Or",
+    "title": "Pokémon Or",
     "boxArtPath": "/assets/boxart/pkmnor.jpg",
     "year": "1999",
     "console": "GBC",
@@ -366,7 +366,7 @@
     "console": "2600",
     "developer": "Imagic",
     "romPath": "ROM/Atari/2600/dragonfire.a26",
-    "categories": ["retourverslefutur"]
+    "categories": [""]
   },
   {
     "title": "Asteroids",
@@ -393,7 +393,7 @@
     "console": "2600",
     "developer": "Atari",
     "romPath": "ROM/Atari/2600/adventure.a26",
-    "categories": ["retourverslefutur"]
+    "categories": [""]
   },
   {
     "title": "Pitfall!",
@@ -429,7 +429,7 @@
     "console": "7800",
     "developer": "Ken Grant",
     "romPath": "ROM/Atari/7800/alienbrigade.a78",
-    "categories": [""]
+    "categories": ["retourverslefutur"]
   },
   {
     "title": "Double Dragon",
@@ -438,7 +438,7 @@
     "console": "LYNX",
     "developer": "Arc System Works",
     "romPath": "ROM/Atari/Lynx/doubledragon.lnx",
-    "categories": [""]
+    "categories": ["retourverslefutur"]
   },
   {
     "title": "Psycho Fox",
@@ -468,19 +468,28 @@
     "categories": [""]
   },
   {
-    "title": "COMING SOON",
-    "boxArtPath": "",
-    "year": "",
+    "title": "Pokémon Korosu",
+    "boxArtPath": "/assets/boxart/pkmnkorosu.jpg",
+    "year": "2016",
     "console": "ROMHACK",
-    "developer": "",
-    "romPath": "",
+    "developer": "GBA",
+    "romPath": "ROM/RomHacks/hacks/pkmnkorosu.gba",
+    "categories": ["pokemon"]
+  },
+  {
+    "title": "Corruption's Embrace",
+    "boxArtPath": "/assets/boxart/ootcorruption.jpg",
+    "year": "2024",
+    "console": "ROMHACK",
+    "developer": "N64",
+    "romPath": "ROM/RomHacks/hacks/ootcorruption.z64",
     "categories": [""]
   },
   {
     "title": "OoT Rando",
-    "boxArtPath": "/assets/boxart/oot.jpg",
+    "boxArtPath": "/assets/boxart/ootrando.jpg",
     "year": "2024",
-    "console": "RAND",
+    "console": "RANDO",
     "developer": "Easy",
     "romPath": "ROM/RomHacks/rando/oot-rando-easy.z64",
     "categories": [""]
