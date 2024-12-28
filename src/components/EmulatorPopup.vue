@@ -36,9 +36,15 @@ export default {
       nes: ["nes"],
       gba: ["gba"],
       gb: ["gb", "gbc"],
+      nds: ["nds"],
       n64: ["n64", "z64", "v64"],
       atari2600: ["a26"],
-      psx: ["chd"],
+      atari5200: ["a52"],
+      atari7800: ["a78"],
+      lynx: ["lnx"],
+      segaMS: ["sms", "SMS"],
+      segaMD: ["md"],
+      segaGG: ["gg"]
     };
 
     const determineCore = (url) => {

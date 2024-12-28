@@ -17,9 +17,6 @@
             <router-link class="sub-menu-item" to="/console/7800"
               >7800</router-link
             >
-            <router-link class="sub-menu-item" to="/console/JAG"
-              >JAG</router-link
-            >
             <router-link class="sub-menu-item" to="/console/LYNX"
               >LYNX</router-link
             >
@@ -44,6 +41,9 @@
             <router-link class="sub-menu-item" to="/console/GBA"
               >GBA</router-link
             >
+            <router-link class="sub-menu-item" to="/console/NDS"
+              >DS</router-link
+            >
           </div>
         </li>
         <li>
@@ -61,9 +61,15 @@
           </div>
         </li>
         <li>
-          <router-link class="main-menu-item" to="/console/RAND"
-            >Randomizer</router-link
-          >
+          <a class="main-menu-item dropdown" href="#">Hacks</a>
+          <div class="dropdown-menu">
+            <router-link class="main-menu-item" to="/console/RAND"
+              >Randomizer</router-link
+            >
+            <router-link class="main-menu-item" to="/console/ROMHACK"
+              >RomHacks</router-link
+            >
+          </div>
         </li>
       </ul>
     </nav>

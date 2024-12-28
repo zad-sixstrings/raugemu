@@ -1,7 +1,7 @@
 <template>
   <div class="console-games">
     <div class="featured-games-title-wrapper">
-      <h2 class="featured-games-title">{{ console }} Games</h2>
+      <h2 class="featured-games-title">{{ console }}</h2>
     </div>
     <div id="content">
       <div class="featured-games">
