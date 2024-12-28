@@ -56,8 +56,8 @@ export default {
       }
 
       const core = determineCore(gameUrl);
-      console.log("Selected core:", core); // Add this
-      console.log("Game URL:", gameUrl); // Add this
+      console.log("Selected core:", core);
+      console.log("Game URL:", gameUrl);
 
       if (!core) {
         console.error("Unsupported game type!");
@@ -75,7 +75,7 @@ export default {
         // Set up EJS properties
         window.EJS_player = "#emulator";
         if (!gameUrl.startsWith("/")) {
-          window.EJS_gameUrl = `/${gameUrl}`; // Add leading slash
+          window.EJS_gameUrl = `/${gameUrl}`;
         } else {
           window.EJS_gameUrl = gameUrl;
         }
@@ -93,7 +93,7 @@ export default {
 
         // Add ready callback before loading script
         window.EJS_onGameStart = () => {
-          console.log("Game started!"); // Add this
+          console.log("Game started!");
           emulatorLoaded.value = true;
           currentGameUrl.value = gameUrl;
           resolve();

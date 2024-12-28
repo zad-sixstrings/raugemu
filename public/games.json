@@ -1,7 +1,7 @@
 [
   {
     "title": "Super Mario World",
-    "boxArtPath": "/assets/boxart/smw.png",
+    "boxArtPath": "/assets/boxart/smw.jpg",
     "year": "1990",
     "console": "SNES",
     "developer": "Nintendo",
@@ -34,6 +34,195 @@
     "developer": "Nintendo",
     "romPath": "ROM/Nintendo/N64/1080.z64",
     "categories": ["featured"]
+  },
+  {
+    "title": "Mega Man",
+    "boxArtPath": "/assets/boxart/megaman.jpg",
+    "year": "1987",
+    "console": "NES",
+    "developer": "Capcom",
+    "romPath": "ROM/Nintendo/NES/megaman.nes",
+    "categories": [""]
+  },
+  {
+    "title": "Mega Man 2",
+    "boxArtPath": "/assets/boxart/megaman2.jpg",
+    "year": "1989",
+    "console": "NES",
+    "developer": "Capcom",
+    "romPath": "ROM/Nintendo/NES/megaman2.nes",
+    "categories": [""]
+  },
+  {
+    "title": "Mega Man 3",
+    "boxArtPath": "/assets/boxart/megaman3.jpg",
+    "year": "1990",
+    "console": "NES",
+    "developer": "Capcom",
+    "romPath": "ROM/Nintendo/NES/megaman3.nes",
+    "categories": [""]
+  },
+  {
+    "title": "Mega Man 4",
+    "boxArtPath": "/assets/boxart/megaman4.jpg",
+    "year": "1991",
+    "console": "NES",
+    "developer": "Capcom",
+    "romPath": "ROM/Nintendo/NES/megaman4.nes",
+    "categories": [""]
+  },
+  {
+    "title": "Mega Man 5",
+    "boxArtPath": "/assets/boxart/megaman5.jpg",
+    "year": "1992",
+    "console": "NES",
+    "developer": "Capcom",
+    "romPath": "ROM/Nintendo/NES/megaman5.nes",
+    "categories": [""]
+  },
+  {
+    "title": "Mega Man 6",
+    "boxArtPath": "/assets/boxart/megaman6.jpg",
+    "year": "1991",
+    "console": "NES",
+    "developer": "Capcom",
+    "romPath": "ROM/Nintendo/NES/megaman6.nes",
+    "categories": [""]
+  },
+  {
+    "title": "The Guardian Legend",
+    "boxArtPath": "/assets/boxart/theguardianlegend.jpg",
+    "year": "1989",
+    "console": "NES",
+    "developer": "Takayuki Hirono",
+    "romPath": "ROM/Nintendo/NES/theguardianlegend.nes",
+    "categories": [""]
+  },
+  {
+    "title": "The Legend of Zelda",
+    "boxArtPath": "/assets/boxart/zelda.jpg",
+    "year": "1986",
+    "console": "NES",
+    "developer": "Nintendo",
+    "romPath": "ROM/Nintendo/NES/zelda.nes",
+    "categories": [""]
+  },
+  {
+    "title": "Zelda II: The Adventure of Link",
+    "boxArtPath": "/assets/boxart/zelda2.jpg",
+    "year": "1987",
+    "console": "NES",
+    "developer": "Nintendo",
+    "romPath": "ROM/Nintendo/NES/zelda2.nes",
+    "categories": [""]
+  },
+  {
+    "title": "Probotector",
+    "boxArtPath": "/assets/boxart/probotector.jpg",
+    "year": "1988",
+    "console": "NES",
+    "developer": "Konami",
+    "romPath": "ROM/Nintendo/NES/probotector.nes",
+    "categories": [""]
+  },
+  {
+    "title": "Probotector 2: Return of the Evil Forces",
+    "boxArtPath": "/assets/boxart/probotector2.jpg",
+    "year": "1992",
+    "console": "NES",
+    "developer": "Konami",
+    "romPath": "ROM/Nintendo/NES/probotector2.nes",
+    "categories": [""]
+  },
+  {
+    "title": "Super Mario Bros.",
+    "boxArtPath": "/assets/boxart/supermariobros.jpg",
+    "year": "1985",
+    "console": "NES",
+    "developer": "Nintendo",
+    "romPath": "ROM/Nintendo/NES/supermariobros.nes",
+    "categories": [""]
+  },
+  {
+    "title": "Super Mario Bros. 2",
+    "boxArtPath": "/assets/boxart/supermariobros2.jpg",
+    "year": "1988",
+    "console": "NES",
+    "developer": "Nintendo",
+    "romPath": "ROM/Nintendo/NES/supermariobros2.nes",
+    "categories": [""]
+  },
+  {
+    "title": "Super Mario Bros. 3",
+    "boxArtPath": "/assets/boxart/supermariobros3.jpg",
+    "year": "1988",
+    "console": "NES",
+    "developer": "Nintendo",
+    "romPath": "ROM/Nintendo/NES/supermariobros3.nes",
+    "categories": [""]
+  },
+  {
+    "title": "Metroid",
+    "boxArtPath": "/assets/boxart/metroid.jpg",
+    "year": "1986",
+    "console": "NES",
+    "developer": "Nintendo",
+    "romPath": "ROM/Nintendo/NES/metroid.nes",
+    "categories": [""]
+  },
+  {
+    "title": "Castlevania",
+    "boxArtPath": "/assets/boxart/castlevania.jpg",
+    "year": "1987",
+    "console": "NES",
+    "developer": "Konami",
+    "romPath": "ROM/Nintendo/NES/castlevania.nes",
+    "categories": [""]
+  },
+  {
+    "title": "Castlevania II: Simon's Quest",
+    "boxArtPath": "/assets/boxart/castlevania2.jpg",
+    "year": "1988",
+    "console": "NES",
+    "developer": "Konami",
+    "romPath": "ROM/Nintendo/NES/castlevania2.nes",
+    "categories": [""]
+  },
+  {
+    "title": "Castlevania III: Dracula's Curse",
+    "boxArtPath": "/assets/boxart/castlevania3.jpg",
+    "year": "1987",
+    "console": "NES",
+    "developer": "Konami",
+    "romPath": "ROM/Nintendo/NES/castlevania3.nes",
+    "categories": [""]
+  },
+  {
+    "title": "Duck Tales",
+    "boxArtPath": "/assets/boxart/ducktales.png",
+    "year": "1989",
+    "console": "NES",
+    "developer": "Capcom",
+    "romPath": "ROM/Nintendo/NES/ducktales.nes",
+    "categories": [""]
+  },
+  {
+    "title": "Duck Tales 2",
+    "boxArtPath": "/assets/boxart/ducktales2.png",
+    "year": "1993",
+    "console": "NES",
+    "developer": "Capcom",
+    "romPath": "ROM/Nintendo/NES/ducktales2.nes",
+    "categories": [""]
+  },
+  {
+    "title": "Kirby's Adventure",
+    "boxArtPath": "/assets/boxart/kirby.jpg",
+    "year": "1993",
+    "console": "NES",
+    "developer": "HAL Laboratory",
+    "romPath": "ROM/Nintendo/NES/kirby.nes",
+    "categories": [""]
   },
   {
     "title": "Tetris",
@@ -109,7 +298,7 @@
   },
   {
     "title": "Adventure",
-    "boxArtPath": "/assets/boxart/adventure.png",
+    "boxArtPath": "/assets/boxart/adventure.jpg",
     "year": "1980",
     "console": "2600",
     "developer": "Atari",

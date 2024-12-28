@@ -10,7 +10,6 @@
         </div>
       </div>
     </div>
-    <!-- EmulatorPopup should only handle the emulator logic, no need to load scripts here -->
     <EmulatorPopup
       :is-visible="isEmulatorVisible"
       :game-url="selectedGameUrl"
