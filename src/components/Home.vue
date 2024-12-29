@@ -21,6 +21,7 @@
 <script>
 import GameList from "./GameCard.vue";
 import EmulatorPopup from "./EmulatorPopup.vue";
+import BrowserWarning from "./BrowserWarning.vue";
 
 export default {
   components: {
@@ -45,15 +46,21 @@ export default {
         this.categories = [
           {
             title: "SELECTION",
-            games: gamesData.filter((game) => game.categories.includes("featured")),
+            games: gamesData.filter((game) =>
+              game.categories.includes("featured")
+            ),
           },
           {
             title: "POKEMON EXTRAVAGANZA",
-            games: gamesData.filter((game) => game.categories.includes("pokemon")),
+            games: gamesData.filter((game) =>
+              game.categories.includes("pokemon")
+            ),
           },
           {
             title: "RETOUR VERS LE FUTUR",
-            games: gamesData.filter((game) => game.categories.includes("retourverslefutur")),
+            games: gamesData.filter((game) =>
+              game.categories.includes("retourverslefutur")
+            ),
           },
         ];
       } catch (error) {
