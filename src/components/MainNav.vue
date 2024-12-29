@@ -82,9 +82,9 @@
               >
             </template>
             <template v-else>
-              <router-link class="sub-menu-item" to="/login">Login</router-link>
+              <router-link class="sub-menu-item" to="/login">Connexion</router-link>
               <router-link class="sub-menu-item" to="/register"
-                >Register</router-link
+                >S'enregistrer</router-link
               >
             </template>
           </div>

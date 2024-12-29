@@ -21,34 +21,53 @@ const notificationStore = useNotificationStore();
 <style scoped>
 .notifications-container {
   position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 1000;
+  top: 15%;
+  right: 15%;
+  z-index: 1005;
 }
 
 .notification {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
   padding: 0.75rem 1.5rem;
-  border-radius: 4px;
+  border-radius: 10px;
   color: white;
   min-width: 200px;
   text-align: center;
+  font-family: "Press Start 2P", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
 }
 
 .success {
   background-color: #4caf50;
+  border-top: 5px solid #84df6e;
+  border-left: 5px solid #84df6e;
+  border-right: 5px solid #276e36;
+  border-bottom: 5px solid #276e36;
 }
 
 .error {
   background-color: #f44336;
+  border-top: 5px solid #f16615;
+  border-left: 5px solid #f16615;
+  border-right: 5px solid #911d1d;
+  border-bottom: 5px solid #911d1d;
 }
 
 .warning {
   background-color: #ff9800;
+  border-top: 5px solid #ffd13b;
+  border-left: 5px solid #ffd13b;
+  border-right: 5px solid #9e460c;
+  border-bottom: 5px solid #9e460c;
 }
 
 .info {
   background-color: #2196f3;
+  border-top: 5px solid #63ceff;
+  border-left: 5px solid #63ceff;
+  border-right: 5px solid #0c479e;
+  border-bottom: 5px solid #0c479e;
 }
 
 /* Transition animations */

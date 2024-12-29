@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <div id="footer-menu">
+    <!-- <div id="footer-menu">
       <ul>
         <li>
           <a href="https://www.gnu.org/licenses/gpl-3.0.fr.html#license-text"
@@ -16,7 +16,7 @@
           >
         </li>
       </ul>
-    </div>
+    </div> -->
     <div id="footer-text">
       <p class="credentials">
         Propulsé par <a href="https://emulatorjs.org/">EmulatorJS</a> -

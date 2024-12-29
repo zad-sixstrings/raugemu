@@ -56,7 +56,7 @@
         <p class="error-message"> {{ error }} </p>
       </div>
 
-      <button type="submit" :disabled="loading">
+      <button class="loginbutton" type="submit" :disabled="loading">
         {{ loading ? "Création..." : "Confirmer" }}
       </button>
     </form>

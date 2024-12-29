@@ -1,3 +1,5 @@
+![UI screenshot](https://i.imgur.com/5eyEsAv.png)
+
 **English below**
 
 # Kézako?

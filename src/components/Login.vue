@@ -35,7 +35,7 @@
         {{ error }}
       </div>
 
-      <button type="submit" :disabled="loading">
+      <button class="loginbutton" type="submit" :disabled="loading">
         {{ loading ? "Connexion..." : "Connexion" }}
       </button>
     </form>
@@ -69,7 +69,7 @@ async function handleSubmit() {
     authStore.setUser(user);
     router.push('/');
   } catch (err) {
-    error.value = 'Invalid email or password';
+    error.value = 'Email ou mot de passe invalide.';
   } finally {
     loading.value = false;
   }

@@ -1,7 +1,7 @@
 <template>
   <div v-if="isVisible" id="game-popup" :class="{ hidden: !isVisible }">
     <div class="popup-content">
-      <button id="close-popup" @click="closeEmulator">X</button>
+      <button class="close-popup" @click="closeEmulator">X</button>
       <div class="game-wrapper">
         <div id="game">
           <div id="emulator"></div>
@@ -214,23 +214,6 @@ export default {
   cursor: url("/assets/cursor.png"), auto;
 }
 
-#close-popup {
-  position: absolute;
-  top: 0;
-  right: 20px;
-  width: 30px;
-  height: 30px;
-  background: transparent;
-  border: none;
-  font-size: 18px;
-  cursor: url("/assets/cursor.png"), auto;
-  z-index: 1001;
-  color: white;
-  background-color: rgb(216, 11, 55);
-  border-radius: 10px;
-}
-
-
 .popup-content {
   position: relative;
   width: 100%;
@@ -245,22 +228,24 @@ export default {
   overflow: hidden;
 }
 
-#close-popup {
+button.close-popup {
   position: absolute;
-  right: 0;
   top: 0;
-  width: 30px;
-  height: 20px;
-  border-radius: 2%;
+  right: 0;
+  width: 40px;
+  height: 28px;
+  border-top-right-radius: 5px;
   border: none;
   background: #ff4444;
-  border-top: 2px solid #f07a72;
-  border-left: 2px solid #f07a72;
-  border-right: 2px solid #ad1f2a;
-  border-bottom: 2px solid #ad1f2a;
+  border-top: 3px solid #f38a83;
+  border-left: 3px solid #f38a83;
+  border-right: 3px solid #7a151d;
+  border-bottom: 3px solid #7a151d;
   color: white;
-  font-weight: bold;
-  font-size: 14px;
+  font-family: "Press Start 2P", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 10px;
   z-index: 1001;
   display: flex;
   justify-content: center;
@@ -268,18 +253,17 @@ export default {
   transition: font-size 0.2s;
 }
 
-#close-popup:hover {
+button.close-popup:hover {
   cursor: url("/assets/cursor-click.png"), auto;
-  font-size: 16px;
+  font-size: 13px;
 }
 
-#close-popup:active {
+button.close-popup:active {
   background: #da3434;
-  border-top: 2px solid #ad1f2a;
-  border-left: 2px solid #ad1f2a;
-  border-right: 2px solid #f07a72;
-  border-bottom: 2px solid #f07a72;
-  cursor: url("/assets/cursor-click.png"), auto;
+  border-top: 3px solid #7a151d;
+  border-left: 3px solid #7a151d;
+  border-right: 3px solid #f38a83;
+  border-bottom: 3px solid #f38a83;
 }
 
 .game-wrapper {
@@ -294,7 +278,7 @@ export default {
 
 #game {
   width: 200%;
-  height: 100%;
+  height: 98%;
   position: relative;
   display: flex;
   justify-content: center;
