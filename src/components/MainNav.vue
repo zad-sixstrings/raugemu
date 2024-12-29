@@ -73,11 +73,19 @@
         </li>
         <li>
           <a class="main-menu-item dropdown" href="#">\o/</a>
-          <div v-if="!authStore.isAuthenticated" class="dropdown-menu">
-            <router-link class="sub-menu-item" to="/login">Login</router-link>
-            <router-link class="sub-menu-item" to="/register">Register</router-link>
+          <div class="dropdown-menu">
+            <template v-if="!authStore.isAuthenticated">
+              <router-link class="sub-menu-item" to="/login">Login</router-link>
+              <router-link class="sub-menu-item" to="/register"
+                >Register</router-link
+              >
+            </template>
+            <template v-else>
+              <a href="#" class="sub-menu-item" @click.prevent="handleLogout"
+                >Logout</a
+              >
+            </template>
           </div>
-          <button v-else @click="handleLogout">Logout</button>
         </li>
       </ul>
     </nav>
@@ -93,6 +101,6 @@ const router = useRouter()
 
 const handleLogout = () => {
   authStore.logout()
-  router.push('/login')
+  router.push('/')  // Changed to redirect to home instead of login
 }
 </script>

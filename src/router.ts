@@ -4,7 +4,6 @@ import Home from './components/Home.vue'
 import ConsoleGames from './components/ConsoleGames.vue'
 import Login from './components/Login.vue'
 import Register from './components/Register.vue'
-import { useAuthStore } from './stores/auth'
 
 const routes: RouteRecordRaw[] = [
   { path: '/', component: Home },
@@ -14,7 +13,7 @@ const routes: RouteRecordRaw[] = [
     path: '/console/:console',
     component: ConsoleGames,
     props: true,
-    meta: { requiresAuth: true }
+    // Remove the requiresAuth meta field
   }
 ]
 
@@ -23,14 +22,11 @@ const router = createRouter({
   routes
 })
 
+// Remove or modify the authentication guard to only apply to protected routes
+// which you'll add in the future
 router.beforeEach((to, _from, next) => {
-  const authStore = useAuthStore()
-  
-  if (to.meta.requiresAuth && !authStore.isAuthenticated) {
-    next('/login')
-  } else {
-    next()
-  }
+  console.log('Navigating to:', to.path)
+  next()
 })
 
 export default router

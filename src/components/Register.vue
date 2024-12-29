@@ -47,18 +47,18 @@
         />
       </div>
 
-      <div v-if="error" class="error-message">
-        {{ error }}
+      <p class="auth-switch">
+        Vous avez déjà un compte?
+        <router-link class="auth-switch-link" to="/login">Se connecter</router-link>
+      </p>
+
+      <div v-if="error">
+        <p class="error-message"> {{ error }} </p>
       </div>
 
       <button type="submit" :disabled="loading">
         {{ loading ? "Creating account..." : "Register" }}
       </button>
-
-      <p class="auth-switch">
-        Vous avez déjà un compte?
-        <router-link class="auth-switch-link" to="/login">Se connecter</router-link>
-      </p>
     </form>
   </div>
 </template>
@@ -90,11 +90,6 @@ async function handleSubmit() {
     loading.value = true;
     error.value = "";
 
-    console.log("Sending registration data:", {
-      ...form,
-      password: "[REDACTED]",
-    });
-
     await authApi.register(form);
     router.push("/login");
   } catch (err) {
@@ -108,7 +103,6 @@ async function handleSubmit() {
 .auth-container {
   max-width: 400px;
   margin: 2rem auto;
-  padding: 2rem;
   border-radius: 10px;
   background: rgb(122, 122, 122);
   border-top: 5px solid rgb(161, 161, 161);
@@ -121,18 +115,18 @@ async function handleSubmit() {
   font-family: "Press Start 2P", serif;
   font-weight: 400;
   font-style: normal;
+  padding: 2rem;
 }
 
 .auth-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
 }
 
 .form-group {
   display: flex;
+  padding: 0 2rem 1.2rem 2rem;
   flex-direction: column;
-  gap: 0.5rem;
 }
 
 label {
@@ -141,16 +135,35 @@ label {
   font-size: 1.5em;
 }
 
+input[type=email], input[type=password], input[type=text] {
+  padding: 10px;
+  border-top: 5px solid rgb(59, 59, 59);
+  border-left: 5px solid rgb(59, 59, 59);
+  border-right: 5px solid rgb(161, 161, 161);
+  border-bottom: 5px solid rgb(161, 161, 161);
+  font-family: "Micro 5", serif;
+  font-weight: 400;
+  font-size: 1.2em;
+}
+
 .error-message {
-  color: #dc2626;
+  color: #b91313;
   font-size: 0.875rem;
+  text-align: center;
+  font-family: "Micro 5", serif;
+  font-weight: 400;
+  font-size: 1.2em;
+  padding-bottom: 10px;
 }
 
 button {
+  width: 100%;
+  height: 80px;
   padding: 0.75rem;
   color: white;
   border: none;
-  border-radius: 10px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   cursor: url("/assets/cursor-click.png"), auto;
   background: rgb(0, 130, 200);
   border-top: 5px solid rgb(44, 174, 235);
@@ -166,7 +179,7 @@ button {
   font-size: 0.7em;
   line-height: 30px;
   font-size: 1em;
-  transition: font-size 0.2s
+  transition: font-size 0.2s;
 }
 
 button:hover {
@@ -191,6 +204,7 @@ button:disabled {
   font-family: "Micro 5", serif;
   font-weight: 400;
   font-size: 1.2em;
+  padding-bottom: 1.2rem;
 }
 
 .auth-switch-link {
