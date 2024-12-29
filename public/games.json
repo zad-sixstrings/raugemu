@@ -576,6 +576,15 @@
     "categories": ["pokemon"]
   },
   {
+    "title": "Pokémon Pinball: Ruby & Sapphire",
+    "boxArtPath": "/assets/boxart/pkmnpinballrs.jpg",
+    "year": "2003",
+    "console": "GBA",
+    "developer": "Jupiter",
+    "romPath": "ROM/Nintendo/GBA/pkmnpinballrs.gba",
+    "categories": [""]
+  },
+  {
     "title": "Castlevania: Dawn of Sorrow",
     "boxArtPath": "/assets/boxart/dawnofsorrow.jpg",
     "year": "2005",
