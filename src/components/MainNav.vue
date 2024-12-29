@@ -71,9 +71,9 @@
             >
           </div>
         </li>
-        <li>
-          <a class="main-menu-item dropdown" href="#">\o/</a>
-          <div class="dropdown-menu">
+        <li class="last">
+          <a class="main-menu-item dropdown" href="#"><img class="account-icon" src="/assets/account.png"></a>
+          <div class="dropdown-menu dropdown-menu-last">
             <template v-if="!authStore.isAuthenticated">
               <router-link class="sub-menu-item" to="/login">Login</router-link>
               <router-link class="sub-menu-item" to="/register"
@@ -100,7 +100,8 @@ const authStore = useAuthStore()
 const router = useRouter()
 
 const handleLogout = () => {
+  localStorage.removeItem("token"); // Clear token
   authStore.logout()
-  router.push('/')  // Changed to redirect to home instead of login
+  router.push('/')
 }
 </script>
