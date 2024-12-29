@@ -57,7 +57,7 @@
       </div>
 
       <button type="submit" :disabled="loading">
-        {{ loading ? "Creating account..." : "Register" }}
+        {{ loading ? "Création..." : "Confirmer" }}
       </button>
     </form>
   </div>

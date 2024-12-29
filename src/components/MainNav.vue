@@ -72,17 +72,19 @@
           </div>
         </li>
         <li class="last">
-          <a class="main-menu-item dropdown" href="#"><img class="account-icon" src="/assets/account.png"></a>
+          <a class="main-menu-item dropdown" href="#"
+            ><img class="account-icon" src="/assets/account.png"
+          /></a>
           <div class="dropdown-menu dropdown-menu-last">
-            <template v-if="!authStore.isAuthenticated">
-              <router-link class="sub-menu-item" to="/login">Login</router-link>
-              <router-link class="sub-menu-item" to="/register"
-                >Register</router-link
+            <template v-if="isAuthenticated">
+              <a href="#" class="sub-menu-item" @click.prevent="handleLogout"
+                >Déconnexion</a
               >
             </template>
             <template v-else>
-              <a href="#" class="sub-menu-item" @click.prevent="handleLogout"
-                >Logout</a
+              <router-link class="sub-menu-item" to="/login">Login</router-link>
+              <router-link class="sub-menu-item" to="/register"
+                >Register</router-link
               >
             </template>
           </div>
@@ -93,15 +95,17 @@
 </template>
 
 <script setup lang="ts">
-import { useAuthStore } from '../stores/auth'
-import { useRouter } from 'vue-router'
+import { computed } from "vue";
+import { useAuthStore } from "../stores/auth";
+import { useRouter } from "vue-router";
 
-const authStore = useAuthStore()
-const router = useRouter()
+const authStore = useAuthStore();
+const router = useRouter();
+const isAuthenticated = computed(() => authStore.isAuthenticated);
 
 const handleLogout = () => {
   localStorage.removeItem("token"); // Clear token
-  authStore.logout()
-  router.push('/')
-}
+  authStore.logout();
+  router.push("/");
+};
 </script>

@@ -36,7 +36,7 @@
       </div>
 
       <button type="submit" :disabled="loading">
-        {{ loading ? "Logging in..." : "Login" }}
+        {{ loading ? "Connexion..." : "Connexion" }}
       </button>
     </form>
   </div>
