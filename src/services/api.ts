@@ -1,6 +1,10 @@
-import type { LoginCredentials, RegisterCredentials, User } from '../types/auth'
+import type { LoginCredentials, RegisterCredentials } from '../types/auth'
 
-const API_URL = 'http://remote.raug-info.ch:8083/api'
+const API_URL = import.meta.env.VITE_API_URL
+
+if (!API_URL) {
+  console.error('API_URL not configured. Please check your .env file.')
+}
 
 export const authApi = {
   async login(credentials: LoginCredentials) {
