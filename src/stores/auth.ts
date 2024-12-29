@@ -20,7 +20,6 @@ export const useAuthStore = defineStore("auth", () => {
   function initializeAuth() {
     const token = localStorage.getItem("token");
     if (token) {
-      // Here, you can optionally validate the token or fetch user data.
       isAuthenticated.value = true;
     }
   }
