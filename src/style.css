@@ -576,7 +576,6 @@ body::after {
 
 /* Browser warning */
 #browser-warning {
-  display: none;
   position: fixed;
   height: 180px;
   width: 600px;
