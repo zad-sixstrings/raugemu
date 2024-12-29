@@ -63,20 +63,14 @@ const form = reactive<LoginCredentials>({
 async function handleSubmit() {
   try {
     loading.value = true;
-    error.value = "";
-
-    const response = await authApi.login(form);
-    // Store token in localStorage
-    if (response.token) {
-      localStorage.setItem("token", response.token);
-    }
-
-    // Update auth store with user info
-    authStore.setUser(response.user);
-    router.push("/");
+    error.value = '';
+    
+    const user = await authApi.login(form);
+    
+    authStore.setUser(user);
+    router.push('/');
   } catch (err) {
-    error.value = "Email ou mot de passe erroné";
-    localStorage.removeItem("token"); // Clear any existing token on error
+    error.value = 'Invalid email or password';
   } finally {
     loading.value = false;
   }
