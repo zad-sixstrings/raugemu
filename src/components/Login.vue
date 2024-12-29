@@ -26,7 +26,9 @@
       </div>
       <p class="auth-switch">
         Pas de compte?
-        <router-link class="auth-switch-link" to="/register">S'enregistrer</router-link>
+        <router-link class="auth-switch-link" to="/register"
+          >S'enregistrer</router-link
+        >
       </p>
 
       <div v-if="error" class="error-message">
@@ -63,11 +65,18 @@ async function handleSubmit() {
     loading.value = true;
     error.value = "";
 
-    const user = await authApi.login(form);
-    authStore.setUser(user);
+    const response = await authApi.login(form);
+    // Store token in localStorage
+    if (response.token) {
+      localStorage.setItem("token", response.token);
+    }
+
+    // Update auth store with user info
+    authStore.setUser(response.user);
     router.push("/");
   } catch (err) {
     error.value = "Email ou mot de passe erroné";
+    localStorage.removeItem("token"); // Clear any existing token on error
   } finally {
     loading.value = false;
   }
@@ -110,7 +119,9 @@ label {
   font-size: 1.5em;
 }
 
-input[type=email], input[type=password], input[type=text] {
+input[type="email"],
+input[type="password"],
+input[type="text"] {
   padding: 10px;
   border-top: 5px solid rgb(59, 59, 59);
   border-left: 5px solid rgb(59, 59, 59);
