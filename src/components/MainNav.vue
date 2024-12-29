@@ -71,7 +71,28 @@
             >
           </div>
         </li>
+        <li>
+          <a class="main-menu-item dropdown" href="#">\o/</a>
+          <div v-if="!authStore.isAuthenticated" class="dropdown-menu">
+            <router-link class="sub-menu-item" to="/login">Login</router-link>
+            <router-link class="sub-menu-item" to="/register">Register</router-link>
+          </div>
+          <button v-else @click="handleLogout">Logout</button>
+        </li>
       </ul>
     </nav>
   </div>
 </template>
+
+<script setup lang="ts">
+import { useAuthStore } from '../stores/auth'
+import { useRouter } from 'vue-router'
+
+const authStore = useAuthStore()
+const router = useRouter()
+
+const handleLogout = () => {
+  authStore.logout()
+  router.push('/login')
+}
+</script>
