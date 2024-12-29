@@ -76,7 +76,7 @@
             ><img class="account-icon" src="/assets/account.png"
           /></a>
           <div class="dropdown-menu dropdown-menu-last">
-            <template v-if="isAuthenticated">
+            <template v-if="authStore.isAuthenticated">
               <a href="#" class="sub-menu-item" @click.prevent="handleLogout"
                 >Déconnexion</a
               >
@@ -95,16 +95,13 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
 import { useAuthStore } from "../stores/auth";
 import { useRouter } from "vue-router";
 
 const authStore = useAuthStore();
 const router = useRouter();
-const isAuthenticated = computed(() => authStore.isAuthenticated);
 
 const handleLogout = () => {
-  localStorage.removeItem("token"); // Clear token
   authStore.logout();
   router.push("/");
 };

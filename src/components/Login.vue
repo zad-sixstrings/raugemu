@@ -63,14 +63,13 @@ const form = reactive<LoginCredentials>({
 async function handleSubmit() {
   try {
     loading.value = true;
-    error.value = "";
-
+    error.value = '';
+    
     const user = await authApi.login(form);
-
     authStore.setUser(user);
-    router.push("/");
+    router.push('/');
   } catch (err) {
-    error.value = "Invalid email or password";
+    error.value = 'Invalid email or password';
   } finally {
     loading.value = false;
   }

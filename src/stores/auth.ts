@@ -1,26 +1,47 @@
-import { defineStore } from "pinia";
-import { ref } from "vue";
-import type { User } from "../types/auth";
+import { defineStore } from 'pinia';
+import { ref, computed } from 'vue';
+import type { User } from '../types/auth';
 
-export const useAuthStore = defineStore("auth", () => {
+export const useAuthStore = defineStore('auth', () => {
   const user = ref<User | null>(null);
-  const isAuthenticated = ref(false);
-
+  const isAuthenticated = computed(() => !!user.value);
+ 
   function setUser(newUser: User | null) {
     user.value = newUser;
-    isAuthenticated.value = !!newUser;
   }
 
   function logout() {
     user.value = null;
-    isAuthenticated.value = false;
-    localStorage.removeItem("token");
+    localStorage.removeItem('token');
   }
 
   function initializeAuth() {
-    const token = localStorage.getItem("token");
+    // Get the token from localStorage
+    const token = localStorage.getItem('token');
+    
     if (token) {
-      isAuthenticated.value = true;
+      // Here you would typically:
+      // 1. Validate the token
+      // 2. Fetch the user data from your API
+      // 3. Set the user in the store
+      
+      // For now, we'll just set a basic user object
+      // Replace this with actual API call to get user data
+      try {
+        // You can add your API call here
+        // const response = await fetchUserProfile(token);
+        // setUser(response.data);
+        
+        // Temporary solution until you add the API call:
+        setUser({
+          id: 'temp-id',
+          username: 'temp-username',
+          email: 'temp-email'
+        } as User);
+      } catch (error) {
+        console.error('Failed to initialize auth:', error);
+        logout(); // Clear invalid token/user data
+      }
     }
   }
 
@@ -29,6 +50,6 @@ export const useAuthStore = defineStore("auth", () => {
     isAuthenticated,
     setUser,
     logout,
-    initializeAuth,
+    initializeAuth, // Don't forget to expose the new method
   };
 });
