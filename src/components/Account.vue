@@ -45,8 +45,17 @@
       </div>
       <div v-if="userSaves.length >= 0" class="saves-section">
         <h3 class="account-subtitle">Sauvegardes enregistrées</h3>
-        <div class="saves-content">
-          <div v-for="save in userSaves" :key="save.id" class="save-item">
+        <!-- Search input -->
+        <div class="search-container">
+          <input
+            type="text"
+            v-model="searchQuery"
+            placeholder="Rechercher une sauvegarde..."
+            class="search-input"
+          />
+        </div>
+        <div v-if="filteredSaves.length >= 0" class="saves-content">
+          <div v-for="save in filteredSaves" :key="save.id" class="save-item">
             <div class="save-info">
               <div class="save-header">
                 <label class="profile-label">
@@ -70,6 +79,11 @@
               </span>
             </div>
           </div>
+        </div>
+        <div v-else class="no-results">
+          <p class="profile-span">
+            Aucune sauvegarde trouvée pour "{{ searchQuery }}"
+          </p>
         </div>
       </div>
     </div>
@@ -101,6 +115,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
+import { computed } from "vue";
 import { useAuthStore } from "../stores/auth";
 import { useRouter } from "vue-router";
 import {
@@ -120,6 +135,7 @@ const error = ref<string | null>(null);
 const showConfirmDialog = ref(false);
 const selectedSave = ref<UserSave | null>(null);
 const isDeleting = ref(false);
+const searchQuery = ref("");
 
 const formatDateTime = (timestamp: string): string => {
   if (!timestamp) return "";
@@ -181,6 +197,17 @@ const handleDelete = async () => {
     isDeleting.value = false;
   }
 };
+
+const filteredSaves = computed(() => {
+  if (!searchQuery.value.trim()) {
+    return userSaves.value;
+  }
+
+  const query = searchQuery.value.toLowerCase().trim();
+  return userSaves.value.filter((save) =>
+    save.game.toLowerCase().includes(query)
+  );
+});
 
 onMounted(async () => {
   if (!authStore.isAuthenticated) {
@@ -364,5 +391,37 @@ p.profile-error {
 .cancel-button {
   background-color: #e5e7eb;
   border: none;
+}
+
+/* SEARCH */
+.search-container {
+  margin-bottom: 1.5rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: rgb(38, 57, 66);
+  border: 1px solid rgb(74, 158, 255);
+  border-radius: 4px;
+  color: white;
+  font-family: "Pixelify Sans", serif;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-family: "Pixelify Sans", serif;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: rgb(74, 158, 255);
+  box-shadow: 0 0 0 2px rgba(74, 158, 255, 0.2);
+}
+
+.no-results {
+  text-align: center;
+  padding: 2rem;
+  color: red;
 }
 </style>
