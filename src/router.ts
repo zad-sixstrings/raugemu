@@ -5,6 +5,7 @@ import ConsoleGames from './components/ConsoleGames.vue'
 import Login from './components/Login.vue'
 import Register from './components/Register.vue'
 import About from './components/About.vue'
+import Account from './components/Account.vue'
 
 const routes: RouteRecordRaw[] = [
   { path: '/', component: Home },
@@ -14,12 +15,19 @@ const routes: RouteRecordRaw[] = [
     path: '/console/:console',
     component: ConsoleGames,
     props: true,
-    // Remove the requiresAuth meta field
   },
   {
     path: '/about',
     name: 'about',
     component: About
+  },
+  {
+    path: '/compte',
+    name: 'account',
+    component: Account,
+    meta: {
+      requiresAuth: true
+    }
   }
 ]
 
@@ -28,8 +36,6 @@ const router = createRouter({
   routes
 })
 
-// Remove or modify the authentication guard to only apply to protected routes
-// which you'll add in the future
 router.beforeEach((to, _from, next) => {
   console.log('Navigating to:', to.path)
   next()

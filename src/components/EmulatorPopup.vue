@@ -44,7 +44,7 @@ export default {
       lynx: ["lnx"],
       segaMS: ["sms", "SMS"],
       segaMD: ["md"],
-      segaGG: ["gg"]
+      segaGG: ["gg"],
     };
 
     const determineCore = (url) => {
@@ -157,6 +157,51 @@ export default {
     };
 
     const closeEmulator = async () => {
+      // Only proceed if emulator is loaded
+      if (window.EJS_emulator && emulatorLoaded.value) {
+        try {
+          // Pause the game first
+          await window.EJS_emulator.pause();
+
+          // Wait a moment for the pause to take effect
+          await new Promise((resolve) => setTimeout(resolve, 200));
+
+          const gameManager = window.EJS_emulator.gameManager;
+
+          if (gameManager && !gameManager.EJS.failedToStart) {
+            // Save files first
+            await new Promise((resolve) => {
+              gameManager.functions.saveSaveFiles();
+              setTimeout(resolve, 300); // Give it time to complete
+            });
+
+            // Then wait for server save
+            await new Promise((resolve) => {
+              gameManager.setSaveFileToServer();
+              setTimeout(resolve, 300); // Give it time to complete
+            });
+
+            // Finally unmount if FS exists
+            if (gameManager.FS) {
+              await new Promise((resolve) => {
+                try {
+                  gameManager.FS.unmount("/data/saves");
+                } catch (e) {
+                  console.warn("Unmount warning:", e);
+                }
+                resolve();
+              });
+            }
+          }
+
+          // Final wait before cleanup
+          await new Promise((resolve) => setTimeout(resolve, 200));
+        } catch (e) {
+          console.warn("Save process warning:", e);
+        }
+      }
+
+      // Now proceed with cleanup
       await cleanupEmulator();
       document.body.classList.remove("popup-active");
       emit("close");
@@ -298,5 +343,4 @@ button.close-popup:active {
   max-height: 100%;
   object-fit: contain;
 }
-
 </style>

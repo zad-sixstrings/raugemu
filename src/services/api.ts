@@ -1,54 +1,143 @@
-import type { LoginCredentials, RegisterCredentials } from '../types/auth'
+import type { LoginCredentials, RegisterCredentials } from "../types/auth";
 
-const API_URL = import.meta.env.VITE_API_URL
+export interface ExtendedUserProfile {
+  playTime: number;
+  saves: number;
+}
 
+export interface UserProfile {
+  id: string;
+  nickname: string;
+  email: string;
+  creation_date: string;
+}
+
+export interface UserSave {
+  id: string;
+  game: string;
+  console: string;
+  creation_date: string;
+  change_date: string;
+}
+
+const API_URL = import.meta.env.VITE_API_URL;
 if (!API_URL) {
-  console.error('API_URL not configured. Please check your .env file.')
+  console.error("API_URL not configured. Please check your .env file.");
 }
 
 export const authApi = {
   async login(credentials: LoginCredentials) {
     try {
       const response = await fetch(`${API_URL}/login`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(credentials),
-      })
-      
+      });
+
       if (!response.ok) {
-        throw new Error('Login failed')
+        throw new Error("Login failed");
       }
-      
-      const data = await response.json()
-      localStorage.setItem('token', data.token)
-      return data.user
+
+      const data = await response.json();
+      localStorage.setItem("token", data.token);
+      return data.user;
     } catch (error) {
-      console.error('Login error:', error)
-      throw error
+      console.error("Login error:", error);
+      throw error;
     }
   },
 
   async register(credentials: RegisterCredentials) {
     try {
       const response = await fetch(`${API_URL}/register`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(credentials),
-      })
-      
+      });
+
       if (!response.ok) {
-        throw new Error('Registration failed')
+        throw new Error("Registration failed");
       }
-      
-      const data = await response.json()
-      return data.user
+
+      const data = await response.json();
+      return data.user;
     } catch (error) {
-      console.error('Registration error:', error)
-      throw error
+      console.error("Registration error:", error);
+      throw error;
     }
   },
-}
+
+  async getUserProfile(): Promise<UserProfile> {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No authentication token found");
+      }
+
+      const response = await fetch(`${API_URL}/user/userprofile`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch user profile");
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error("Get user profile error:", error);
+      throw error;
+    }
+  },
+  async getUserProfileExtended(): Promise<ExtendedUserProfile> {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No authentication token found");
+      }
+      const response = await fetch(`${API_URL}/user/userprofileextended`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Failed to fetch extended user profile");
+      }
+      return await response.json();
+    } catch (error) {
+      console.error("Get extended user profile error:", error);
+      throw error;
+    }
+  },
+  async getUserSaves(): Promise<UserSave[]> {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No authentication token found");
+      }
+      const response = await fetch(`${API_URL}/user/usersavelist`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Failed to fetch user saves");
+      }
+      return await response.json();
+    } catch (error) {
+      console.error("Get user saves error:", error);
+      throw error;
+    }
+  },
+};

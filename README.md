@@ -32,3 +32,12 @@ We stand firmly against piracy and encourage everyone to acquire their ROMs **le
 # B... but that catchphrase then?
 *"You rip 'em, we emulate 'em!"*  
 It's just a joke, inspired by a [content creator](https://www.instagram.com/p/DDclfh1Oesu/) who uses witty catchphrases to deal with phone scammers. Please don’t mistake this as a suggestion that we provide ROMs—we don’t.  
+
+## TODO
+### High priority
+- Add gamemanager.js per-user save management (@ line 20) to EmulatorPopup.vue close button.
+- Add profile page
+- Add change/recover password feature
+
+### Low priority
+- Homogenize Login/Register view with game cards style

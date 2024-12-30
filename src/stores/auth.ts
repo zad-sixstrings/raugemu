@@ -25,7 +25,7 @@ export const useAuthStore = defineStore("auth", () => {
     user.value = null;
     localStorage.removeItem("token");
     const notificationStore = useNotificationStore();
-    notificationStore.addNotification("Déconnexion réussie", "success");
+    notificationStore.addNotification("Déconnecté", "info");
   }
 
   function initializeAuth() {

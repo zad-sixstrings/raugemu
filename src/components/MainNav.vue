@@ -72,25 +72,32 @@
           </div>
         </li>
         <li class="about">
-          <router-link class="main-menu-item" to="/about">
-            ?
-          </router-link>
+          <router-link class="main-menu-item" to="/about"> ? </router-link>
         </li>
         <li class="last">
-          <a class="main-menu-item dropdown" href="#"
-            > <img 
-              class="account-icon" 
-              :src="authStore.isAuthenticated ? '/assets/account-loggedin.png' : '/assets/account.png'"
+          <a class="main-menu-item dropdown" href="#">
+            <img
+              class="account-icon"
+              :src="
+                authStore.isAuthenticated
+                  ? '/assets/account-loggedin.png'
+                  : '/assets/account.png'
+              "
               :alt="authStore.isAuthenticated ? 'Connecté' : 'Non connecté'"
-            /></a>
+          /></a>
           <div class="dropdown-menu dropdown-menu-last">
             <template v-if="authStore.isAuthenticated">
+              <router-link class="sub-menu-item" to="/compte"
+                >Compte</router-link
+              >
               <a href="#" class="sub-menu-item" @click.prevent="handleLogout"
                 >Déconnexion</a
               >
             </template>
             <template v-else>
-              <router-link class="sub-menu-item" to="/login">Connexion</router-link>
+              <router-link class="sub-menu-item" to="/login"
+                >Connexion</router-link
+              >
               <router-link class="sub-menu-item" to="/register"
                 >S'enregistrer</router-link
               >
