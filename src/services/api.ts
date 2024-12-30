@@ -173,4 +173,26 @@ export const authApi = {
       throw error;
     }
   },
+  async deleteSave(saveId: string): Promise<void> {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No authentication token found");
+      }
+      const response = await fetch(`${API_URL}/user/userdeletesave`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ id: saveId }),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to delete save");
+      }
+    } catch (error) {
+      console.error("Delete save error:", error);
+      throw error;
+    }
+  }
 };
