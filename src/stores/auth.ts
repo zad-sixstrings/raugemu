@@ -7,11 +7,17 @@ export const useAuthStore = defineStore("auth", () => {
   const user = ref<User | null>(null);
   const isAuthenticated = computed(() => !!user.value);
 
+  // Add a new function for setting user silently (without notification)
+  function setUserSilently(newUser: User | null) {
+    user.value = newUser;
+  }
+
+  // Keep the original setUser for active login events
   function setUser(newUser: User | null) {
     user.value = newUser;
     if (newUser) {
       const notificationStore = useNotificationStore();
-      notificationStore.addNotification("Connecté!", "success");
+      notificationStore.addNotification("Connexion réussie", "success");
     }
   }
 
@@ -19,15 +25,15 @@ export const useAuthStore = defineStore("auth", () => {
     user.value = null;
     localStorage.removeItem("token");
     const notificationStore = useNotificationStore();
-    notificationStore.addNotification("Déconnecté!", "info");
+    notificationStore.addNotification("Déconnexion réussie", "success");
   }
 
   function initializeAuth() {
-    // Get the token from localStorage
     const token = localStorage.getItem("token");
     if (token) {
       try {
-        setUser({
+        // Use setUserSilently instead of setUser
+        setUserSilently({
           id: "temp-id",
           username: "temp-username",
           email: "temp-email",
@@ -43,6 +49,7 @@ export const useAuthStore = defineStore("auth", () => {
     user,
     isAuthenticated,
     setUser,
+    setUserSilently,
     logout,
     initializeAuth,
   };

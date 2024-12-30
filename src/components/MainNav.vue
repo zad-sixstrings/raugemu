@@ -78,8 +78,11 @@
         </li>
         <li class="last">
           <a class="main-menu-item dropdown" href="#"
-            ><img class="account-icon" src="/assets/account.png"
-          /></a>
+            > <img 
+              class="account-icon" 
+              :src="authStore.isAuthenticated ? '/assets/account-loggedin.png' : '/assets/account.png'"
+              :alt="authStore.isAuthenticated ? 'Connecté' : 'Non connecté'"
+            /></a>
           <div class="dropdown-menu dropdown-menu-last">
             <template v-if="authStore.isAuthenticated">
               <a href="#" class="sub-menu-item" @click.prevent="handleLogout"
@@ -111,8 +114,3 @@ const handleLogout = () => {
   router.push("/");
 };
 </script>
-<style scoped>
-#main-menu li.about {
-  float: right;
-}
-</style>

@@ -524,11 +524,11 @@ button.loginbutton {
   transition: font-size 0.2s;
 }
 
-button:hover {
+button.loginbutton:hover {
   font-size: 1.1em;
 }
 
-button:active {
+button.loginbutton:active {
   background: rgb(3, 115, 175);
   border-top: 5px solid rgb(10, 60, 117);
   border-left: 5px solid rgb(10, 60, 117);
@@ -536,7 +536,7 @@ button:active {
   border-bottom: 5px solid rgb(44, 174, 235);
 }
 
-button:disabled {
+button.loginbutton:disabled {
   opacity: 0.7;
   cursor: not-allowed;
 }
