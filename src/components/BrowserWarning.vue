@@ -7,7 +7,7 @@
         Utiliser un autre navigateur mênera inévitablement à des bugs et à une
         émulation moins performante.
       </p>
-      <button class="close-btn" @click="closeWarning">×</button>
+      <button class="browser-warning-close" @click="closeWarning">×</button>
     </div>
   </Transition>
 </template>

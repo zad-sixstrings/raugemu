@@ -576,16 +576,16 @@ body::after {
 /* Browser warning */
 #browser-warning {
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 180px;
   width: 600px;
-  top: 0;
-  left: 50;
-  right: 0;
+  top: 10%;
+  right: 10%;
   background-color: rgb(26, 45, 54);
   color: white;
-  text-align: justify;
   padding: 10px;
-  font-family: Arial, sans-serif;
   z-index: 1000;
   border-top: 5px solid rgb(54, 92, 99);
   border-left: 5px solid rgb(54, 92, 99);
@@ -595,6 +595,59 @@ body::after {
   animation: slideDown 0.5s ease forwards;
 }
 
+.warning-icon {
+  color: orange;
+}
+
+#browser-warning p {
+  font-family: "Pixelify Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 1.2em;
+  margin-top: 10px;
+  width: 500px;
+  padding: 10px;
+  line-height: 23px;
+}
+
+button.browser-warning-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 28px;
+  border-top-right-radius: 5px;
+  border: none;
+  background: #ff4444;
+  border-top: 3px solid #f38a83;
+  border-left: 3px solid #f38a83;
+  border-right: 3px solid #7a151d;
+  border-bottom: 3px solid #7a151d;
+  color: white;
+  font-family: "Press Start 2P", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 13px;
+  z-index: 1001;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: font-size 0.2s;
+}
+
+button.browser-warning-close:hover {
+  cursor: url("/assets/cursor-click.png"), auto;
+  font-size: 16px;
+}
+
+button.browser-warning-close:active {
+  background: #da3434;
+  border-top: 3px solid #7a151d;
+  border-left: 3px solid #7a151d;
+  border-right: 3px solid #f38a83;
+  border-bottom: 3px solid #f38a83;
+}
+
 @keyframes slideDown {
   0% {
     top: -100px;
@@ -602,21 +655,6 @@ body::after {
   100% {
     top: 0;
   }
-}
-
-.warning-icon {
-  color: orange;
-}
-
-#browser-warning p {
-  font-family: "Press Start 2P", serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-size: 0.9em;
-  margin-top: 10px;
-  width: 500px;
-  padding: 10px;
-  line-height: 23px;
 }
 
 /* Chrome Scrollbars Begone */
@@ -660,10 +698,12 @@ body::after {
   }
 
   #browser-warning {
-    width: 300px;
-    top: 0;
-    left: 0;
+    height: 200px;
+    width: 500px;
+    top: 0%;
+    right: 0;
   }
+
 }
 
 @media (max-width: 420px) {
@@ -717,9 +757,10 @@ body::after {
   }
 
   #browser-warning {
-    width: 300px;
-    top: 0;
-    left: 0;
+    height: 200px;
+    width: 350px;
+    top: 0%;
+    right: 0;
   }
 }
 
