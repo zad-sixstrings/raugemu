@@ -1,5 +1,23 @@
 <template>
   <div class="about-container">
+    <div class="api-status-wrapper">
+      <div class="api-status-div">
+        <p class="api-status">
+          Services: <span class="api-success" v-if="apiStatus"> En ligne</span
+          ><span class="api-error" v-else> Hors ligne</span>
+        </p>
+      </div>
+      <div class="api-status-tooltip">
+        <p class="api-status-under">
+          <span class="api-info" v-if="apiStatus"
+            >Les sauvegardes sont synchronisées.</span
+          >
+          <span class="api-info" v-else
+            >Les sauvegardes ne sont pas synchronisées.</span
+          >
+        </p>
+      </div>
+    </div>
     <h2 class="about-h2">Guide</h2>
     <div class="about-content">
       <section>
@@ -44,6 +62,41 @@
     </div>
   </div>
 </template>
+
+<script lang="ts">
+import { defineComponent, ref, onMounted } from "vue";
+import { authApi, type ApiStatus } from "../services/api";
+
+export default defineComponent({
+  name: "About",
+  setup() {
+    const apiStatus = ref<ApiStatus | null>(null); // State variable for API status
+    const errorMessage = ref<string | null>(null);
+
+    // Fetch API status on component mount
+    const fetchApiStatus = async () => {
+      try {
+        const status = await authApi.getApiStatus();
+        apiStatus.value = status; // Store the fetched status
+      } catch (error) {
+        errorMessage.value =
+          "Failed to fetch API status. Please try again later.";
+        console.error("Error fetching API status:", error);
+      }
+    };
+
+    // Call fetchApiStatus when the component is mounted
+    onMounted(() => {
+      fetchApiStatus();
+    });
+
+    return {
+      apiStatus,
+      errorMessage,
+    };
+  },
+});
+</script>
 
 <style scoped>
 .about-container {
@@ -92,5 +145,59 @@ a.about-link {
 
 a.about-link:hover {
   text-decoration: underline;
+}
+
+/* API STATUS */
+
+.api-status-wrapper {
+  width: 200px;
+  position: relative;
+  padding: 10px;
+  float: right;
+}
+
+.api-status-tooltip {
+  position: absolute;
+  width: 200px;
+  background-color: rgb(35, 32, 51);
+  border-top: 5px solid rgb(79, 80, 100);
+  border-left: 5px solid rgb(79, 80, 100);
+  border-right: 5px solid rgb(17, 14, 26);
+  border-bottom: 5px solid rgb(17, 14, 26);
+  top: 100%;
+  left: 0;
+  z-index: 70;
+  padding: 10px;
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.api-status-wrapper:hover .api-status-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.api-status {
+  color: #4a9eff;
+  font-family: "Pixelify Sans", serif;
+  font-weight: 400;
+  font-size: 1em;
+}
+
+.api-status-under {
+  display: block;
+  color: rgb(196, 196, 196);
+  font-family: "Pixelify Sans", serif;
+  font-weight: 400;
+  font-size: 1em;
+}
+
+.api-success {
+  color: yellowgreen;
+}
+
+.api-error {
+  color: rgb(212, 102, 69);
 }
 </style>

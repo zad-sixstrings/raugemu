@@ -1,6 +1,5 @@
 <template>
   <div class="account-container">
-    <h2 class="account-title">Mon compte</h2>
     <div v-if="loading" class="account-content">
       <p class="profile-error">Chargement...</p>
     </div>
@@ -22,8 +21,12 @@
           <div class="info-item">
             <label class="profile-label">Membre depuis:</label>
             <span class="profile-span">{{
-              formatDate(userData.creation_date)
+              formatDateTime(userData.creation_date)
             }}</span>
+          </div>
+          <div class="info-item">
+            <label class="profile-label">Bio:</label>
+            <span class="profile-span">{{ userData.profile }}</span>
           </div>
         </div>
       </div>
@@ -31,86 +34,99 @@
         <h3 class="account-subtitle">Statistiques</h3>
         <div class="stats-grid">
           <div class="stat-item">
-            <label>Temps de jeu:</label>
-            <span>{{ userStats?.playTime ?? 0 }}</span>
+            <label class="profile-label">Temps de jeu:</label>
+            <span class="profile-span">{{ userStats?.playTime ?? 0 }}</span>
           </div>
           <div class="stat-item">
-            <label>Sauvegardes:</label>
-            <span>{{ userStats?.saves ?? 0 }}</span>
+            <label class="profile-label">Sauvegardes:</label>
+            <span class="profile-span">{{ userStats?.saves ?? 0 }}</span>
           </div>
         </div>
       </div>
       <div v-if="userSaves.length > 0" class="saves-section">
-      <h3 class="account-subtitle">Sauvegardes disponibles</h3>
-      <div class="saves-grid">
-        <div v-for="save in userSaves" :key="save.id" class="save-item">
-          <div class="save-info">
-            <label>{{ save?.game ?? "coucou" }}</label>
-            <span>Créé le {{ formatDate(save.creation_date) }}</span>
-            <span>Modifié le {{ formatDate(save.change_date) }}</span>
+        <h3 class="account-subtitle">Sauvegardes enregistrées</h3>
+        <div class="saves-grid">
+          <div v-for="save in userSaves" :key="save.id" class="save-item">
+            <div class="save-info">
+              <label class="profile-label">{{ save?.game ?? "coucou" }}</label>
+              <br />
+              <span class="profile-span">
+                Créé le {{ formatDateTime(save.creation_date) + " / " }}
+              </span>
+              <span class="profile-span">
+                Modifié le {{ formatDateTime(save.change_date) }}
+              </span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { useAuthStore } from '../stores/auth'
-import { useRouter } from 'vue-router'
-import { authApi, type UserProfile, type ExtendedUserProfile, type UserSave } from '../services/api'
+import { ref, onMounted } from "vue";
+import { useAuthStore } from "../stores/auth";
+import { useRouter } from "vue-router";
+import {
+  authApi,
+  type UserProfile,
+  type ExtendedUserProfile,
+  type UserSave,
+} from "../services/api";
 
-const authStore = useAuthStore()
-const router = useRouter()
+const authStore = useAuthStore();
+const router = useRouter();
+const userData = ref<UserProfile | null>(null);
+const userStats = ref<ExtendedUserProfile | null>(null);
+const userSaves = ref<UserSave[]>([]);
+const loading = ref(true);
+const error = ref<string | null>(null);
 
-const userData = ref<UserProfile | null>(null)
-const userStats = ref<ExtendedUserProfile | null>(null)
-const userSaves = ref<UserSave[]>([])
-const loading = ref(true)
-const error = ref<string | null>(null)
-
-const formatDate = (dateString: string): string => {
-  return new Date(dateString).toLocaleDateString('fr-FR')
-}
+const formatDateTime = (timestamp: string): string => {
+  if (!timestamp) return "";
+  const date = new Date(timestamp);
+  const formattedDate = date.toLocaleDateString("fr-FR");
+  const formattedTime = date.toLocaleTimeString("fr-FR");
+  return `${formattedDate} à ${formattedTime}`;
+};
 
 const fetchUserData = async () => {
   try {
-    loading.value = true
-    error.value = null
-    
-    const userId = authStore.user?.id
+    loading.value = true;
+    error.value = null;
+
+    const userId = authStore.user?.id;
     if (!userId) {
-      throw new Error('User ID not found')
+      throw new Error("User ID not found");
     }
 
     // Fetch all user data in parallel
     const [profile, extendedProfile, saves] = await Promise.all([
       authApi.getUserProfile(),
       authApi.getUserProfileExtended(),
-      authApi.getUserSaves()
-    ])
+      authApi.getUserSaves(),
+    ]);
 
-    userData.value = profile
-    userStats.value = extendedProfile
-    userSaves.value = saves
+    userData.value = profile;
+    userStats.value = extendedProfile;
+    userSaves.value = saves;
   } catch (e) {
-    error.value = e instanceof Error ? e.message : 'An unknown error occurred'
-    console.error('Error fetching user data:', e)
+    error.value = e instanceof Error ? e.message : "An unknown error occurred";
+    console.error("Error fetching user data:", e);
   } finally {
-    loading.value = false
+    loading.value = false;
   }
-}
+};
 
 onMounted(async () => {
   if (!authStore.isAuthenticated) {
-    router.push('/login')
-    return
+    router.push("/login");
+    return;
   }
-  
-  await fetchUserData()
-})
+
+  await fetchUserData();
+});
 </script>
 
 <style scoped>
