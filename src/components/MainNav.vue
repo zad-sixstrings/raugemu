@@ -71,6 +71,11 @@
             >
           </div>
         </li>
+        <li class="about">
+          <router-link class="main-menu-item" to="/about">
+            ?
+          </router-link>
+        </li>
         <li class="last">
           <a class="main-menu-item dropdown" href="#"
             ><img class="account-icon" src="/assets/account.png"
@@ -106,3 +111,8 @@ const handleLogout = () => {
   router.push("/");
 };
 </script>
+<style scoped>
+#main-menu li.about {
+  float: right;
+}
+</style>

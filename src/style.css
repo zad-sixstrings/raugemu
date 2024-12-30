@@ -191,6 +191,11 @@ a:visited {
   float: right;
 }
 
+#main-menu li.about {
+  float: right;
+  font-size: 20px;
+}
+
 .dropdown-menu {
   display: none;
   position: absolute;
