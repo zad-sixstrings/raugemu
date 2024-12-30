@@ -26,7 +26,7 @@
           </div>
           <div class="info-item">
             <label class="profile-label">Bio:</label>
-            <span class="profile-span">{{ userData.profile }}</span>
+            <span class="profile-span">{{ userData?.profile ?? "Coming soon..." }}</span>
           </div>
         </div>
       </div>
@@ -311,25 +311,42 @@ p.profile-error {
 
 .save-info {
   margin-bottom: 20px;
-  background-color: rgb(78, 78, 78);
+  background-color: rgb(70, 70, 70);
   padding: 10px;
+  border-radius: 10px;
 }
 
 .delete-button {
-  color: #ef4444;
-  font-size: 0.875rem;
-  padding: 0.25rem 0.5rem;
+  width: 100px;
+  height: 40px;
+  font-family: "Pixelify Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  background: #ff4444;
+  border-top: 3px solid #f38a83;
+  border-left: 3px solid #f38a83;
+  border-right: 3px solid #7a151d;
+  border-bottom: 3px solid #7a151d;
+  color: white;
+  font-size: 0.8em;
+  padding: 5px 10px;
   margin-right: 20px;
-  border: 1px solid #ef4444;
   border-radius: 0.25rem;
-  background: none;
   cursor: pointer;
   transition: all 0.2s;
 }
 
+.delete-button:active {
+  background: #da3434;
+  border-top: 3px solid #7a151d;
+  border-left: 3px solid #7a151d;
+  border-right: 3px solid #f38a83;
+  border-bottom: 3px solid #f38a83;
+}
+
 .delete-button:hover {
-  background-color: #ef4444;
-  color: white;
+  font-size: 0.9em;
+  cursor: url("/assets/cursor-click.png"), auto;
 }
 
 .delete-button:disabled {
