@@ -4,6 +4,7 @@ import Home from './components/Home.vue'
 import ConsoleGames from './components/ConsoleGames.vue'
 import Login from './components/Login.vue'
 import Register from './components/Register.vue'
+import About from './components/About.vue'
 
 const routes: RouteRecordRaw[] = [
   { path: '/', component: Home },
@@ -14,6 +15,11 @@ const routes: RouteRecordRaw[] = [
     component: ConsoleGames,
     props: true,
     // Remove the requiresAuth meta field
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: About
   }
 ]
 
