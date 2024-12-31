@@ -169,7 +169,7 @@ a.about-link:hover {
 }
 
 .api-status-tooltip {
-  position: absolute;
+  position: inherit;
   width: 200px;
   background-color: rgb(35, 32, 51);
   border-top: 5px solid rgb(79, 80, 100);
