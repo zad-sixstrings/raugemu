@@ -1,24 +1,24 @@
 <template>
-  <div class="about-container">
-    <div class="api-status-wrapper">
-      <div class="api-status-div">
-        <p class="api-status">
-          Services: <span class="api-success" v-if="apiStatus"> En ligne</span
-          ><span class="api-error" v-else> Hors ligne</span>
-        </p>
-      </div>
-      <div class="api-status-tooltip">
-        <p class="api-status-under">
-          <span class="api-info" v-if="apiStatus"
-            >Les sauvegardes sont synchronisées.</span
-          >
-          <span class="api-info" v-else
-            >Les sauvegardes ne sont pas synchronisées.</span
-          >
-        </p>
-      </div>
+  <div class="api-status-wrapper">
+    <div class="api-status-div">
+      <p class="api-status">
+        Services: <span class="api-success" v-if="apiStatus"> En ligne</span
+        ><span class="api-error" v-else> Hors ligne</span>
+      </p>
     </div>
-    <h2 class="about-h2">Guide</h2>
+    <div class="api-status-tooltip">
+      <p class="api-status-under">
+        <span class="api-info" v-if="apiStatus"
+          >Les sauvegardes sont synchronisées.</span
+        >
+        <span class="api-info" v-else
+          >Les sauvegardes ne sont pas synchronisées.</span
+        >
+      </p>
+    </div>
+  </div>
+  <div class="about-container">
+    <h2 class="about-h2">Manuel d'utilisateur</h2>
     <div class="about-content">
       <section>
         <h3 class="about-h3">Qu'est-ce que RaugEmu?</h3>
@@ -36,6 +36,18 @@
           <a href="https://www.google.com/intl/fr/chrome/">Google Chrome</a>.
           L'émulation des consoles rétro nécessite un navigateur performant pour
           garantir une expérience de jeu fluide.
+        </p>
+      </section>
+
+      <section>
+        <h3 class="about-h3">Contrôleurs</h3>
+        <p class="about-p">
+          Certains émulateurs ont parfois du mal à détecter les manettes. Les
+          utilisateurs de manettes Dualsense, Dualshock 4, Switch Pro et Joycons
+          qui ont ce problème peuvent le régler en installant
+          <a href="https://ds4-windows.com/">DS4Windows</a> pour les systèmes
+          Windows, et
+          <a href="https://github.com/chrippa/ds4drv">ds4drv</a> sous Linux.
         </p>
       </section>
 
@@ -150,10 +162,11 @@ a.about-link:hover {
 /* API STATUS */
 
 .api-status-wrapper {
+  position: absolute;
   width: 200px;
-  position: relative;
-  padding: 10px;
-  float: right;
+  padding: 0;
+  top: 31%;
+  right: 10%;
 }
 
 .api-status-tooltip {

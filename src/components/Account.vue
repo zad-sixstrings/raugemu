@@ -35,7 +35,7 @@
         <div class="stats-content">
           <div class="stat-item">
             <label class="profile-label">Temps de jeu:</label>
-            <span class="profile-span">{{ userStats?.playTime ?? 0 }}</span>
+            <span class="profile-span">{{ userStats?.playTime ?? "Coming soon..." }}</span>
           </div>
           <div class="stat-item">
             <label class="profile-label">Sauvegardes:</label>
@@ -43,7 +43,7 @@
           </div>
         </div>
       </div>
-      <div v-if="userSaves.length >= 0" class="saves-section">
+      <div v-if="userSaves.length > 0" class="saves-section">
         <h3 class="account-subtitle">Sauvegardes enregistrées</h3>
         <!-- Search input -->
         <div class="search-container">
