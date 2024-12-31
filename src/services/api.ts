@@ -180,7 +180,7 @@ export const authApi = {
         throw new Error("No authentication token found");
       }
       const response = await fetch(`${API_URL}/user/userdeletesave`, {
-        method: "POST",
+        method: "DELETE",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
