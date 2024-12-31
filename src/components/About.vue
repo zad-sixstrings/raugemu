@@ -162,11 +162,10 @@ a.about-link:hover {
 /* API STATUS */
 
 .api-status-wrapper {
-  position: absolute;
+  position: inherit;
+  float: right;
   width: 200px;
   padding: 0;
-  top: 31%;
-  right: 10%;
 }
 
 .api-status-tooltip {
