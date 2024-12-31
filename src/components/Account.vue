@@ -43,51 +43,62 @@
           </div>
         </div>
       </div>
-      <div v-if="userSaves.length > 0" class="saves-section">
+      <div class="saves-section">
         <h3 class="account-subtitle">Sauvegardes enregistrées</h3>
-        <!-- Search input -->
-        <div class="search-container">
-          <input
-            type="text"
-            v-model="searchQuery"
-            placeholder="Rechercher une sauvegarde..."
-            class="search-input"
-          />
-        </div>
-        <div v-if="filteredSaves.length >= 0" class="saves-content">
-          <div v-for="save in filteredSaves" :key="save.id" class="save-item">
-            <div class="save-info">
-              <div class="save-header">
-                <label class="profile-label">
-                  {{ save?.game ?? "Pas de sauvegardes." }}
-                </label>
-                <button
-                  v-if="userSaves.length > 0"
-                  @click="confirmDelete(save)"
-                  class="delete-button"
-                  :disabled="isDeleting"
-                >
-                  Supprimer
-                </button>
+        
+        <!-- Show search and saves only if there are saves -->
+        <template v-if="userSaves.length > 0">
+          <div class="search-container">
+            <input
+              type="text"
+              v-model="searchQuery"
+              placeholder="Rechercher une sauvegarde..."
+              class="search-input"
+            />
+          </div>
+          
+          <div class="saves-content">
+            <div v-if="filteredSaves.length > 0">
+              <div v-for="save in filteredSaves" :key="save.id" class="save-item">
+                <div class="save-info">
+                  <div class="save-header">
+                    <label class="profile-label">{{ save.game }}</label>
+                    <button
+                      @click="confirmDelete(save)"
+                      class="delete-button"
+                      :disabled="isDeleting"
+                    >
+                      Supprimer
+                    </button>
+                  </div>
+                  <br />
+                  <span class="profile-span">
+                    Créé le {{ formatDateTime(save.creation_date) }} /
+                  </span>
+                  <span class="profile-span">
+                    Modifié le {{ formatDateTime(save.change_date) }}
+                  </span>
+                </div>
               </div>
-              <br />
-              <span class="profile-span">
-                Créé le {{ formatDateTime(save?.creation_date ?? "-") + " / " }}
-              </span>
-              <span class="profile-span">
-                Modifié le {{ formatDateTime(save?.change_date ?? "-") }}
-              </span>
+            </div>
+            <div v-else class="no-results">
+              <p class="profile-span">
+                Aucune sauvegarde trouvée pour "{{ searchQuery }}"
+              </p>
             </div>
           </div>
-        </div>
-        <div v-else class="no-results">
-          <p class="profile-span">
-            Aucune sauvegarde trouvée pour "{{ searchQuery }}"
-          </p>
+        </template>
+        
+        <!-- Show this when there are no saves -->
+        <div v-else class="no-saves">
+          <span class="profile-span">
+            Vous n'avez pas encore de sauvegardes enregistrées.
+          </span>
         </div>
       </div>
     </div>
   </div>
+
   <!-- CONFIRM DIALOG -->
   <div v-if="showConfirmDialog" class="confirm-dialog">
     <div class="dialog-content">
@@ -114,8 +125,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
-import { computed } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { useAuthStore } from "../stores/auth";
 import { useRouter } from "vue-router";
 import {
@@ -159,12 +169,12 @@ const fetchUserData = async () => {
     const [profile, extendedProfile, saves] = await Promise.all([
       authApi.getUserProfile(),
       authApi.getUserProfileExtended(),
-      authApi.getUserSaves(),
+      authApi.getUserSaves().catch(() => []), // Return empty array if saves fetch fails
     ]);
 
     userData.value = profile;
     userStats.value = extendedProfile;
-    userSaves.value = saves;
+    userSaves.value = Array.isArray(saves) ? saves : []; // Ensure we always have an array
   } catch (e) {
     error.value = e instanceof Error ? e.message : "An unknown error occurred";
     console.error("Error fetching user data:", e);
@@ -172,6 +182,7 @@ const fetchUserData = async () => {
     loading.value = false;
   }
 };
+
 const confirmDelete = (save: UserSave) => {
   selectedSave.value = save;
   showConfirmDialog.value = true;
@@ -368,11 +379,17 @@ p.profile-error {
 }
 
 .dialog-content {
-  background-color: white;
+  background: rgb(122, 122, 122);
+  border-top: 5px solid rgb(161, 161, 161);
+  border-left: 5px solid rgb(161, 161, 161);
+  border-right: 5px solid rgb(59, 59, 59);
+  border-bottom: 5px solid rgb(59, 59, 59);
   padding: 1.5rem;
   border-radius: 0.5rem;
   max-width: 400px;
   width: 90%;
+  font-family: "Pixelify Sans", serif;
+  font-optical-sizing: auto;
 }
 
 .save-name {
@@ -395,9 +412,24 @@ p.profile-error {
 }
 
 .confirm-button {
-  background-color: #ef4444;
+  font-family: "Pixelify Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  background: #ff4444;
+  border-top: 3px solid #f38a83;
+  border-left: 3px solid #f38a83;
+  border-right: 3px solid #7a151d;
+  border-bottom: 3px solid #7a151d;
   color: white;
-  border: none;
+  cursor: url("/assets/cursor-click.png"), auto;
+}
+
+.confirm-button:active {
+  background: #da3434;
+  border-top: 3px solid #7a151d;
+  border-left: 3px solid #7a151d;
+  border-right: 3px solid #f38a83;
+  border-bottom: 3px solid #f38a83;
 }
 
 .confirm-button:disabled {
@@ -406,8 +438,23 @@ p.profile-error {
 }
 
 .cancel-button {
+  font-family: "Pixelify Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
   background-color: #e5e7eb;
-  border: none;
+  border-top: 3px solid #ffffff;
+  border-left: 3px solid #ffffff;
+  border-right: 3px solid #6a7388;
+  border-bottom: 3px solid #6a7388;
+  cursor: url("/assets/cursor-click.png"), auto;
+}
+
+.cancel-button:active {
+  background-color: #cbced8;
+  border-top: 3px solid #6a7388;
+  border-left: 3px solid #6a7388;
+  border-right: 3px solid #ffffff;
+  border-bottom: 3px solid #ffffff;
 }
 
 /* SEARCH */
