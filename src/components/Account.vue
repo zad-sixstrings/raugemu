@@ -38,7 +38,7 @@
           <div class="info-item">
             <label class="profile-label">Membre depuis:</label>
             <span class="profile-span">{{
-              formatDateTime(profileStore.profile.creation_date)
+              memberdateFormat(profileStore.profile.creation_date)
             }}</span>
           </div>
           <div class="info-item">
@@ -114,11 +114,11 @@ import { useAuthStore } from "../stores/auth";
 import { useUserProfileStore } from "../stores/userProfile";
 import { useUserSavesStore } from "../stores/userSaves";
 import type { UserSave } from "../types/saves";
-import { formatDateTime } from "../utils/dateFormat";
+import { playtimeFormat } from "../utils/playtimeFormat";
+import { memberdateFormat } from "../utils/memberdateFormat";
 import SearchBar from "./SaveSearchBar.vue";
 import SavesList from "./SavesList.vue";
 import DeleteConfirmationDialog from "./DeleteConfirmationDialog.vue";
-import { playtimeFormat } from "../utils/playtimeFormat";
 import type { GamePlaytime } from "../types/playtime";
 
 const router = useRouter();
@@ -128,9 +128,7 @@ const savesStore = useUserSavesStore();
 const searchQuery = ref("");
 const showConfirmDialog = ref(false);
 const selectedSave = ref<UserSave | null>(null);
-
 const gameSearchQuery = ref("");
-
 const sortedAndFilteredPlaytime = computed(() => {
   // First sort by playtime
   const sorted = [...profileStore.playtime].sort(
@@ -274,7 +272,7 @@ h3.account-subtitle {
 .profile-section,
 .stats-section,
 .saves-section {
-  margin: 0;  /* Remove margin-bottom */
+  margin: 0; /* Remove margin-bottom */
   padding: 20px;
 }
 .stats-content {
@@ -282,7 +280,7 @@ h3.account-subtitle {
   flex-direction: column;
   gap: 1rem;
   width: 100%;
-  height: 100%;  /* Add this to match heights */
+  height: 100%; /* Add this to match heights */
 }
 .info-content,
 .stats-content {
