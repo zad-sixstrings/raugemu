@@ -77,11 +77,13 @@
         </div>
       </div>
       <div class="stats-section">
-        <h3 class="account-subtitle">Temps de jeu</h3>
+        <h3 class="account-subtitle">Temps de jeu: {{ getTotalPlaytime(gamePlaytime) }}</h3>
         <div class="stats-content">
-          <template v-if="savesStore.saves.length > 0">
+
+          <template v-if="gamePlaytime.length > 0">
             <SearchBar v-model="gameSearchQuery" />
           </template>
+
           <div class="playtime-grid">
             <div
               v-for="game in sortedAndFilteredPlaytime"
@@ -111,15 +113,20 @@
 import { ref, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "../stores/auth";
+import { authApi } from "../services/api";
 import { useUserProfileStore } from "../stores/userProfile";
 import { useUserSavesStore } from "../stores/userSaves";
 import type { UserSave } from "../types/saves";
-import { playtimeFormat } from "../utils/playtimeFormat";
+import {
+  convertApiTimeFormat,
+  playtimeFormat,
+  getTotalPlaytime,
+} from "../utils/playtimeFormat";
+import type { GamePlaytime } from "../types/playtime";
 import { memberdateFormat } from "../utils/memberdateFormat";
 import SearchBar from "./SaveSearchBar.vue";
 import SavesList from "./SavesList.vue";
 import DeleteConfirmationDialog from "./DeleteConfirmationDialog.vue";
-import type { GamePlaytime } from "../types/playtime";
 
 const router = useRouter();
 const authStore = useAuthStore();
@@ -128,20 +135,21 @@ const savesStore = useUserSavesStore();
 const searchQuery = ref("");
 const showConfirmDialog = ref(false);
 const selectedSave = ref<UserSave | null>(null);
+const gamePlaytime = ref<GamePlaytime[]>([]);
 const gameSearchQuery = ref("");
+
 const sortedAndFilteredPlaytime = computed(() => {
-  // First sort by playtime
-  const sorted = [...profileStore.playtime].sort(
-    (a: GamePlaytime, b: GamePlaytime) =>
-      b.playedtime.seconds - a.playedtime.seconds
-  );
+  const sorted = [...gamePlaytime.value].sort((a, b) => {
+    const aMinutes = (a.playedtime.hours || 0) * 60 + a.playedtime.minutes;
+    const bMinutes = (b.playedtime.hours || 0) * 60 + b.playedtime.minutes;
+    return bMinutes - aMinutes;
+  });
 
-  // Then filter if there's a search query
   if (!gameSearchQuery.value.trim()) return sorted;
-
   const query = gameSearchQuery.value.toLowerCase().trim();
   return sorted.filter((game) => game.gamename.toLowerCase().includes(query));
 });
+
 const filteredSaves = computed(() => {
   if (!searchQuery.value.trim()) return savesStore.saves;
 
@@ -170,11 +178,20 @@ onMounted(async () => {
     return;
   }
 
-  await Promise.all([
-    profileStore.fetchProfile(),
-    savesStore.fetchSaves(),
-    profileStore.fetchPlaytime(),
-  ]);
+  try {
+    // Fetch all data in parallel
+    await Promise.all([
+      profileStore.fetchProfile(),
+      savesStore.fetchSaves(),
+      profileStore.fetchPlaytime(),
+      (async () => {
+        const apiData = await authApi.getPlaytime();
+        gamePlaytime.value = apiData.map((game) => convertApiTimeFormat(game));
+      })(),
+    ]);
+  } catch (error) {
+    console.error("Error in data fetching:", error);
+  }
 });
 </script>
 
@@ -282,7 +299,7 @@ h3.account-subtitle {
   flex-direction: column;
   gap: 1rem;
   width: 100%;
-  height: 100%; 
+  height: 100%;
 }
 
 .info-content,
@@ -296,13 +313,13 @@ h3.account-subtitle {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 100%; 
+  width: 100%;
 }
 
 .stat-item {
   display: flex;
-  flex-direction: column; 
-  width: 100%; 
+  flex-direction: column;
+  width: 100%;
   gap: 1rem;
 }
 
@@ -355,8 +372,16 @@ p.profile-error {
   max-height: 300px;
   overflow-y: auto;
   padding: 0.5rem;
-  mask-image: linear-gradient(to bottom, black calc(100% - 50px), transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 50px), transparent 100%);
+  mask-image: linear-gradient(
+    to bottom,
+    black calc(100% - 50px),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black calc(100% - 50px),
+    transparent 100%
+  );
 }
 
 .playtime-card {
