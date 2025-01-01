@@ -50,7 +50,7 @@ defineEmits<{
 
 .saves-content {
   background-color: transparent;
-  max-height: 400px;
+  height: 350px;
   overflow: scroll;
   flex: 1 1 100%;
   mask-image: linear-gradient(to bottom, black calc(100% - 50px), transparent 100%);

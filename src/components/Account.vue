@@ -77,13 +77,13 @@
         </div>
       </div>
       <div class="stats-section">
-        <h3 class="account-subtitle">Temps de jeu: {{ getTotalPlaytime(gamePlaytime) }}</h3>
-        <div class="stats-content">
-
+        <h3 class="account-subtitle">
+          Temps de jeu: {{ getTotalPlaytime(gamePlaytime) }}
+        </h3>
+        
           <template v-if="gamePlaytime.length > 0">
             <SearchBar v-model="gameSearchQuery" />
           </template>
-
           <div class="playtime-grid">
             <div
               v-for="game in sortedAndFilteredPlaytime"
@@ -96,7 +96,7 @@
               }}</span>
             </div>
           </div>
-        </div>
+        
       </div>
     </div>
   </div>
@@ -284,7 +284,7 @@ h3.account-subtitle {
 }
 
 .stats-section {
-  flex: 2;
+  flex: 1;
 }
 
 .profile-section,
@@ -369,9 +369,8 @@ p.profile-error {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  max-height: 300px;
+  height: 350px;
   overflow-y: auto;
-  padding: 0.5rem;
   mask-image: linear-gradient(
     to bottom,
     black calc(100% - 50px),
