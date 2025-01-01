@@ -269,36 +269,41 @@ h3.account-subtitle {
 .stats-section {
   flex: 2;
 }
+
 .profile-section,
 .stats-section,
 .saves-section {
-  margin: 0; /* Remove margin-bottom */
+  margin: 0;
   padding: 20px;
 }
+
 .stats-content {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   width: 100%;
-  height: 100%; /* Add this to match heights */
+  height: 100%; 
 }
+
 .info-content,
 .stats-content {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
+
 .stats-content {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 100%; /* Add this */
+  width: 100%; 
 }
+
 .stat-item {
   display: flex;
-  flex-direction: column; /* Change to column */
-  width: 100%; /* Add this */
-  gap: 1rem; /* Add this */
+  flex-direction: column; 
+  width: 100%; 
+  gap: 1rem;
 }
 
 .info-item,
@@ -350,6 +355,8 @@ p.profile-error {
   max-height: 300px;
   overflow-y: auto;
   padding: 0.5rem;
+  mask-image: linear-gradient(to bottom, black calc(100% - 50px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 50px), transparent 100%);
 }
 
 .playtime-card {
@@ -366,9 +373,16 @@ p.profile-error {
 .game-name {
   font-weight: bold;
   margin-bottom: 0.5rem;
+  font-family: "Pixelify Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 0.9em;
 }
 
 .game-time {
   color: #4a9eff;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-size: 0.6em;
 }
 </style>

@@ -53,6 +53,8 @@ defineEmits<{
   max-height: 400px;
   overflow: scroll;
   flex: 1 1 100%;
+  mask-image: linear-gradient(to bottom, black calc(100% - 50px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 50px), transparent 100%);
 }
 
 .save-info {
