@@ -11,6 +11,7 @@ export interface UserProfile {
   email: string;
   creation_date: string;
   profile: string;
+  saves: number;
 }
 
 export interface UserSave {
@@ -23,6 +24,14 @@ export interface UserSave {
 
 export interface ApiStatus {
   message: string;
+}
+
+export interface PlaytimeData {
+  gamename: string;
+  playedtime: {
+    seconds: number;
+    milliseconds: number;
+  };
 }
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -194,5 +203,30 @@ export const authApi = {
       console.error("Delete save error:", error);
       throw error;
     }
-  }
+  },
+  async getPlaytime(): Promise<PlaytimeData[]> {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No authentication token found");
+      }
+
+      const response = await fetch(`${API_URL}/user/getplayedtime`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch playtime");
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error("Get playtime error:", error);
+      throw error;
+    }
+  },
 };

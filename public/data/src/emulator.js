@@ -1324,8 +1324,8 @@ class EmulatorJS {
       await this.downloadStartState();
       await this.downloadGameParent();
       await this.downloadGamePatch();
-      console.log("Call to getSaveFile");
       await this.gameManager.getSaveFileFromServer(this.fileName);
+      await this.gameManager.recordStartTime(this.fileName);
       this.startGame();
     })();
   }

@@ -49,11 +49,13 @@
 
       <p class="auth-switch">
         Vous avez déjà un compte?
-        <router-link class="auth-switch-link" to="/login">Connexion</router-link>
+        <router-link class="auth-switch-link" to="/login"
+          >Connexion</router-link
+        >
       </p>
 
       <div v-if="error">
-        <p class="error-message"> {{ error }} </p>
+        <p class="error-message">{{ error }}</p>
       </div>
 
       <button class="loginbutton" type="submit" :disabled="loading">

@@ -665,9 +665,14 @@ button.browser-warning-close:active {
   }
 }
 
-/* Chrome Scrollbars Begone */
+/* Scrollbars Begone */
 #featured-container::-webkit-scrollbar {
   display: none;
+}
+
+#featured-container, .saves-content {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 /* RESPONSIVE */

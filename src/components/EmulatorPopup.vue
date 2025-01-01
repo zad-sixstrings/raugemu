@@ -177,6 +177,7 @@ export default {
 
             // Then wait for server save
             await new Promise((resolve) => {
+              gameManager.recordStopTime();
               gameManager.setSaveFileToServer();
               setTimeout(resolve, 300); // Give it time to complete
             });

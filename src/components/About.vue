@@ -2,18 +2,17 @@
   <div class="api-status-wrapper">
     <div class="api-status-div">
       <p class="api-status">
-        Services: <span class="api-success" v-if="apiStatus"> En ligne</span
-        ><span class="api-error" v-else> Hors ligne</span>
+        Services: 
+        <span :class="apiStatusStore.status ? 'api-success' : 'api-error'">
+          {{ apiStatusStore.status ? 'En ligne' : 'Hors ligne' }}
+        </span>
       </p>
     </div>
     <div class="api-status-tooltip">
       <p class="api-status-under">
-        <span class="api-info" v-if="apiStatus"
-          >Les sauvegardes sont synchronisées.</span
-        >
-        <span class="api-info" v-else
-          >Les sauvegardes ne sont pas synchronisées.</span
-        >
+        <span class="api-info">
+          {{ apiStatusStore.status ? 'Les sauvegardes sont synchronisées.' : 'Les sauvegardes ne sont pas synchronisées.' }}
+        </span>
       </p>
     </div>
   </div>
@@ -75,38 +74,14 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, onMounted } from "vue";
-import { authApi, type ApiStatus } from "../services/api";
+<script setup lang="ts">
+import { onMounted } from "vue";
+import { useApiStatusStore } from "../stores/apiStatus";
 
-export default defineComponent({
-  name: "About",
-  setup() {
-    const apiStatus = ref<ApiStatus | null>(null); // State variable for API status
-    const errorMessage = ref<string | null>(null);
+const apiStatusStore = useApiStatusStore();
 
-    // Fetch API status on component mount
-    const fetchApiStatus = async () => {
-      try {
-        const status = await authApi.getApiStatus();
-        apiStatus.value = status; // Store the fetched status
-      } catch (error) {
-        errorMessage.value =
-          "Failed to fetch API status. Please try again later.";
-        console.error("Error fetching API status:", error);
-      }
-    };
-
-    // Call fetchApiStatus when the component is mounted
-    onMounted(() => {
-      fetchApiStatus();
-    });
-
-    return {
-      apiStatus,
-      errorMessage,
-    };
-  },
+onMounted(() => {
+  apiStatusStore.fetchStatus();
 });
 </script>
 

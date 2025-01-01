@@ -72,6 +72,7 @@ class EJS_GameManager {
       if (!this.EJS.failedToStart) {
         this.functions.saveSaveFiles();
         this.setSaveFileToServer();
+        this.recordStopTime();
       }
       this.FS.unmount("/data/saves");
       setTimeout(() => {
@@ -684,7 +685,7 @@ class EJS_GameManager {
     }
   }
 
-  checkSaveFileExist(gameFileName) {
+  async checkSaveFileExist(gameFileName) {
     const serveraddres = "http://remote.raug-info.ch";
     const serverport = 8083;
 
@@ -719,6 +720,70 @@ class EJS_GameManager {
         console.log("error while retrieving savefile", err);
         return false;
       });
+  }
+
+  async recordStartTime(gameFileName){
+
+    console.log("entering starttime");
+
+    const serveraddress = "http://remote.raug-info.ch";
+    const serverport = 8083;
+    const apicalled = "/api/user/startplaying"
+
+    const token = localStorage.getItem("token");
+
+    const apiUrl = serveraddress+":"+serverport+apicalled;
+
+    return fetch(apiUrl, {
+        method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        body: JSON.stringify({gameName : gameFileName})
+
+
+        
+    })
+    .then(response => response.json())
+    .then(JSONresponse => {
+        localStorage.setItem('playingtimeId',JSONresponse.id);
+    })
+    .catch (err => {
+        console.log('Error while registring start playing time',err);
+    })
+  };
+
+
+  async recordStopTime(){
+
+    console.log("entering stoptime");
+    const serveraddress = "http://remote.raug-info.ch";
+    const serverport = 8083;
+    const apicalled = "/api/user/stopplaying"
+
+    const token = localStorage.getItem("token");
+
+    const apiUrl = serveraddress+":"+serverport+apicalled;
+
+    return fetch(apiUrl, {
+        method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        body: JSON.stringify({historyId : localStorage.getItem("playingtimeId")})
+
+
+        
+    })
+    .catch (err => {
+        console.log('Error while registring stop playing time',err);
+    })
+    .finally(() => {
+        localStorage.removeItem('paylingtimeId');
+    })
+
   }
 }
 

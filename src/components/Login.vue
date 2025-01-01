@@ -2,7 +2,6 @@
   <div class="auth-container">
     <form @submit.prevent="handleSubmit" class="auth-form">
       <h2 class="box-title">Connexion</h2>
-
       <div class="form-group">
         <label for="email">Email</label>
         <input
@@ -13,7 +12,6 @@
           placeholder="Entrez votre adresse email"
         />
       </div>
-
       <div class="form-group">
         <label for="password">Mot de passe</label>
         <input
@@ -30,30 +28,24 @@
           >S'enregistrer</router-link
         >
       </p>
-
-      <div v-if="error" class="error-message">
-        {{ error }}
+      <div v-if="authStore.error" class="error-message">
+        {{ authStore.error }}
       </div>
-
-      <button class="loginbutton" type="submit" :disabled="loading">
-        {{ loading ? "Connexion..." : "Connexion" }}
+      <button class="loginbutton" type="submit" :disabled="authStore.loading">
+        {{ authStore.loading ? "Connexion..." : "Connexion" }}
       </button>
     </form>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from "vue";
+import { reactive } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "../stores/auth";
-import { authApi } from "../services/api";
 import type { LoginCredentials } from "../types/auth";
 
 const router = useRouter();
 const authStore = useAuthStore();
-
-const loading = ref(false);
-const error = ref("");
 
 const form = reactive<LoginCredentials>({
   email: "",
@@ -61,17 +53,9 @@ const form = reactive<LoginCredentials>({
 });
 
 async function handleSubmit() {
-  try {
-    loading.value = true;
-    error.value = '';
-    
-    const user = await authApi.login(form);
-    authStore.setUser(user);
-    router.push('/');
-  } catch (err) {
-    error.value = 'Email ou mot de passe invalide.';
-  } finally {
-    loading.value = false;
+  const success = await authStore.login(form);
+  if (success) {
+    router.push("/");
   }
 }
 </script>

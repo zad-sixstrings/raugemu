@@ -1,32 +1,46 @@
 <template>
   <div class="account-container">
-    <div v-if="loading" class="account-content">
+    <div
+      v-if="profileStore.loading || savesStore.loading"
+      class="account-content"
+    >
       <p class="profile-error">Chargement...</p>
     </div>
-    <div v-else-if="error" class="account-content">
-      <p class="profile-error">Une erreur est survenue: {{ error }}</p>
+    <div
+      v-else-if="profileStore.error || savesStore.error"
+      class="account-content"
+    >
+      <p class="profile-error">
+        Une erreur est survenue: {{ profileStore.error || savesStore.error }}
+      </p>
     </div>
-    <div v-else-if="userData" class="account-content">
+    <div v-else-if="profileStore.profile" class="account-content">
       <div class="profile-section">
         <h3 class="account-subtitle">Profil</h3>
         <div class="info-content">
           <div class="info-item">
             <label class="profile-label">Pseudo:</label>
-            <span class="profile-span">{{ userData.nickname }}</span>
+            <span class="profile-span">{{
+              profileStore.profile.nickname
+            }}</span>
           </div>
           <div class="info-item">
             <label class="profile-label">Email:</label>
-            <span class="profile-span">{{ userData.email || "email" }}</span>
+            <span class="profile-span">{{
+              profileStore.profile.email || "email"
+            }}</span>
           </div>
           <div class="info-item">
             <label class="profile-label">Membre depuis:</label>
             <span class="profile-span">{{
-              formatDateTime(userData.creation_date)
+              formatDateTime(profileStore.profile.creation_date)
             }}</span>
           </div>
           <div class="info-item">
             <label class="profile-label">Bio:</label>
-            <span class="profile-span">{{ userData?.profile ?? "Coming soon..." }}</span>
+            <span class="profile-span">{{
+              profileStore.profile?.profile ?? "Coming soon..."
+            }}</span>
           </div>
         </div>
       </div>
@@ -34,154 +48,86 @@
         <h3 class="account-subtitle">Statistiques</h3>
         <div class="stats-content">
           <div class="stat-item">
-            <label class="profile-label">Temps de jeu:</label>
-            <span class="profile-span">{{ userStats?.playTime ?? "Coming soon..." }}</span>
+            <label class="profile-label">Sauvegardes:</label>
+            <span class="profile-span">{{
+              profileStore.profile?.saves ?? 0
+            }}</span>
           </div>
           <div class="stat-item">
-            <label class="profile-label">Sauvegardes:</label>
-            <span class="profile-span">{{ userStats?.saves ?? 0 }}</span>
+            <label class="profile-label">Temps de jeu:</label>
+            <div class="playtime-grid">
+              <div
+                v-for="game in profileStore.playtime"
+                :key="game.gamename"
+                class="playtime-card"
+              >
+                <span class="game-name">{{ game.gamename }}</span>
+                <span class="game-time">{{
+                  playtimeFormat(game.playedtime)
+                }}</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <div class="saves-section">
         <h3 class="account-subtitle">Sauvegardes enregistrées</h3>
-        
+
         <!-- Show search and saves only if there are saves -->
-        <template v-if="userSaves.length > 0">
-          <div class="search-container">
-            <input
-              type="text"
-              v-model="searchQuery"
-              placeholder="Rechercher une sauvegarde..."
-              class="search-input"
-            />
-          </div>
-          
-          <div class="saves-content">
-            <div v-if="filteredSaves.length > 0">
-              <div v-for="save in filteredSaves" :key="save.id" class="save-item">
-                <div class="save-info">
-                  <div class="save-header">
-                    <label class="profile-label">{{ save.game }}</label>
-                    <button
-                      @click="confirmDelete(save)"
-                      class="delete-button"
-                      :disabled="isDeleting"
-                    >
-                      Supprimer
-                    </button>
-                  </div>
-                  <br />
-                  <span class="profile-span">
-                    Créé le {{ formatDateTime(save.creation_date) }} /
-                  </span>
-                  <span class="profile-span">
-                    Modifié le {{ formatDateTime(save.change_date) }}
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div v-else class="no-results">
-              <p class="profile-span">
-                Aucune sauvegarde trouvée pour "{{ searchQuery }}"
-              </p>
-            </div>
-          </div>
+        <template v-if="savesStore.saves.length > 0">
+          <SearchBar v-model="searchQuery" />
+          <SavesList
+            :saves="filteredSaves"
+            @delete="confirmDelete"
+            :isDeleting="savesStore.isDeleting"
+          />
         </template>
-        
-        <!-- Show this when there are no saves -->
         <div v-else class="no-saves">
-          <span class="profile-span">
-            Vous n'avez pas encore de sauvegardes enregistrées.
-          </span>
+          <span class="profile-span"
+            >Vous n'avez pas encore de sauvegardes enregistrées.</span
+          >
         </div>
       </div>
     </div>
   </div>
-
-  <!-- CONFIRM DIALOG -->
-  <div v-if="showConfirmDialog" class="confirm-dialog">
-    <div class="dialog-content">
-      <p>Êtes-vous sûr de vouloir supprimer cette sauvegarde ?</p>
-      <p class="save-name">{{ selectedSave?.game }}</p>
-      <div class="dialog-buttons">
-        <button
-          @click="handleDelete"
-          class="confirm-button"
-          :disabled="isDeleting"
-        >
-          {{ isDeleting ? "Suppression..." : "Confirmer" }}
-        </button>
-        <button
-          @click="showConfirmDialog = false"
-          class="cancel-button"
-          :disabled="isDeleting"
-        >
-          Annuler
-        </button>
-      </div>
-    </div>
-  </div>
+  <DeleteConfirmationDialog
+    v-if="showConfirmDialog"
+    :save="selectedSave"
+    :isDeleting="savesStore.isDeleting"
+    @confirm="handleDelete"
+    @cancel="showConfirmDialog = false"
+  />
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from "vue";
-import { useAuthStore } from "../stores/auth";
+import { ref, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
-import {
-  authApi,
-  type UserProfile,
-  type ExtendedUserProfile,
-  type UserSave,
-} from "../services/api";
+import { useAuthStore } from "../stores/auth";
+import { useUserProfileStore } from "../stores/userProfile";
+import { useUserSavesStore } from "../stores/userSaves";
+import type { UserSave } from "../types/saves";
+import { formatDateTime } from "../utils/dateFormat";
+import SearchBar from "./SaveSearchBar.vue";
+import SavesList from "./SavesList.vue";
+import DeleteConfirmationDialog from "./DeleteConfirmationDialog.vue";
+import { playtimeFormat } from "../utils/playtimeFormat";
 
-const authStore = useAuthStore();
 const router = useRouter();
-const userData = ref<UserProfile | null>(null);
-const userStats = ref<ExtendedUserProfile | null>(null);
-const userSaves = ref<UserSave[]>([]);
-const loading = ref(true);
-const error = ref<string | null>(null);
+const authStore = useAuthStore();
+const profileStore = useUserProfileStore();
+const savesStore = useUserSavesStore();
+const searchQuery = ref("");
 const showConfirmDialog = ref(false);
 const selectedSave = ref<UserSave | null>(null);
-const isDeleting = ref(false);
-const searchQuery = ref("");
 
-const formatDateTime = (timestamp: string): string => {
-  if (!timestamp) return "";
-  const date = new Date(timestamp);
-  const formattedDate = date.toLocaleDateString("fr-FR");
-  const formattedTime = date.toLocaleTimeString("fr-FR");
-  return `${formattedDate} à ${formattedTime}`;
-};
+const filteredSaves = computed(() => {
+  if (!searchQuery.value.trim()) return savesStore.saves;
 
-const fetchUserData = async () => {
-  try {
-    loading.value = true;
-    error.value = null;
-
-    const userId = authStore.user?.id;
-    if (!userId) {
-      throw new Error("User ID not found");
-    }
-
-    // Fetch all user data in parallel
-    const [profile, extendedProfile, saves] = await Promise.all([
-      authApi.getUserProfile(),
-      authApi.getUserProfileExtended(),
-      authApi.getUserSaves().catch(() => []), // Return empty array if saves fetch fails
-    ]);
-
-    userData.value = profile;
-    userStats.value = extendedProfile;
-    userSaves.value = Array.isArray(saves) ? saves : []; // Ensure we always have an array
-  } catch (e) {
-    error.value = e instanceof Error ? e.message : "An unknown error occurred";
-    console.error("Error fetching user data:", e);
-  } finally {
-    loading.value = false;
-  }
-};
+  const query = searchQuery.value.toLowerCase().trim();
+  return savesStore.saves.filter((save) =>
+    save.game.toLowerCase().includes(query)
+  );
+});
 
 const confirmDelete = (save: UserSave) => {
   selectedSave.value = save;
@@ -191,34 +137,10 @@ const confirmDelete = (save: UserSave) => {
 const handleDelete = async () => {
   if (!selectedSave.value) return;
 
-  try {
-    isDeleting.value = true;
-    await authApi.deleteSave(selectedSave.value.id);
-
-    // Remove the save from the local list
-    userSaves.value = userSaves.value.filter(
-      (save) => save.id !== selectedSave.value?.id
-    );
-
-    showConfirmDialog.value = false;
-    selectedSave.value = null;
-  } catch (e) {
-    error.value = e instanceof Error ? e.message : "Failed to delete save";
-  } finally {
-    isDeleting.value = false;
-  }
+  await savesStore.deleteSave(selectedSave.value.id);
+  showConfirmDialog.value = false;
+  selectedSave.value = null;
 };
-
-const filteredSaves = computed(() => {
-  if (!searchQuery.value.trim()) {
-    return userSaves.value;
-  }
-
-  const query = searchQuery.value.toLowerCase().trim();
-  return userSaves.value.filter((save) =>
-    save.game.toLowerCase().includes(query)
-  );
-});
 
 onMounted(async () => {
   if (!authStore.isAuthenticated) {
@@ -226,7 +148,11 @@ onMounted(async () => {
     return;
   }
 
-  await fetchUserData();
+  await Promise.all([
+    profileStore.fetchProfile(),
+    savesStore.fetchSaves(),
+    profileStore.fetchPlaytime(),
+  ]);
 });
 </script>
 
@@ -306,186 +232,33 @@ p.profile-error {
   font-weight: 400;
 }
 
-/* SAVES SECTION */
-.save-header {
+/* PLAYTIME GRID */
+.playtime-grid {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+.playtime-card {
+  background: rgba(74, 158, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
+}
+
+.game-name {
+  font-weight: bold;
   margin-bottom: 0.5rem;
 }
 
-.saves-content {
-  background-color: transparent;
-  max-height: 400px;
-  overflow: scroll;
-}
-
-.save-info {
-  margin-bottom: 20px;
-  background-color: rgb(70, 70, 70);
-  padding: 10px;
-  border-radius: 10px;
-}
-
-.delete-button {
-  width: 100px;
-  height: 40px;
-  font-family: "Pixelify Sans", serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  background: #ff4444;
-  border-top: 3px solid #f38a83;
-  border-left: 3px solid #f38a83;
-  border-right: 3px solid #7a151d;
-  border-bottom: 3px solid #7a151d;
-  color: white;
-  font-size: 0.8em;
-  padding: 5px 10px;
-  margin-right: 20px;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.delete-button:active {
-  background: #da3434;
-  border-top: 3px solid #7a151d;
-  border-left: 3px solid #7a151d;
-  border-right: 3px solid #f38a83;
-  border-bottom: 3px solid #f38a83;
-}
-
-.delete-button:hover {
-  font-size: 0.9em;
-  cursor: url("/assets/cursor-click.png"), auto;
-}
-
-.delete-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.confirm-dialog {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.dialog-content {
-  background: rgb(122, 122, 122);
-  border-top: 5px solid rgb(161, 161, 161);
-  border-left: 5px solid rgb(161, 161, 161);
-  border-right: 5px solid rgb(59, 59, 59);
-  border-bottom: 5px solid rgb(59, 59, 59);
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  max-width: 400px;
-  width: 90%;
-  font-family: "Pixelify Sans", serif;
-  font-optical-sizing: auto;
-}
-
-.save-name {
-  font-weight: bold;
-  margin: 1rem 0;
-}
-
-.dialog-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: flex-end;
-  margin-top: 1.5rem;
-}
-
-.confirm-button,
-.cancel-button {
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  cursor: pointer;
-}
-
-.confirm-button {
-  font-family: "Pixelify Sans", serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  background: #ff4444;
-  border-top: 3px solid #f38a83;
-  border-left: 3px solid #f38a83;
-  border-right: 3px solid #7a151d;
-  border-bottom: 3px solid #7a151d;
-  color: white;
-  cursor: url("/assets/cursor-click.png"), auto;
-}
-
-.confirm-button:active {
-  background: #da3434;
-  border-top: 3px solid #7a151d;
-  border-left: 3px solid #7a151d;
-  border-right: 3px solid #f38a83;
-  border-bottom: 3px solid #f38a83;
-}
-
-.confirm-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.cancel-button {
-  font-family: "Pixelify Sans", serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  background-color: #e5e7eb;
-  border-top: 3px solid #ffffff;
-  border-left: 3px solid #ffffff;
-  border-right: 3px solid #6a7388;
-  border-bottom: 3px solid #6a7388;
-  cursor: url("/assets/cursor-click.png"), auto;
-}
-
-.cancel-button:active {
-  background-color: #cbced8;
-  border-top: 3px solid #6a7388;
-  border-left: 3px solid #6a7388;
-  border-right: 3px solid #ffffff;
-  border-bottom: 3px solid #ffffff;
-}
-
-/* SEARCH */
-.search-container {
-  margin-bottom: 1.5rem;
-}
-
-.search-input {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: rgb(38, 57, 66);
-  border: 1px solid rgb(74, 158, 255);
-  border-radius: 4px;
-  color: white;
-  font-family: "Pixelify Sans", serif;
-}
-
-.search-input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-  font-family: "Pixelify Sans", serif;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: rgb(74, 158, 255);
-  box-shadow: 0 0 0 2px rgba(74, 158, 255, 0.2);
-}
-
-.no-results {
-  text-align: center;
-  padding: 2rem;
-  color: red;
+.game-time {
+  color: #4a9eff;
 }
 </style>
