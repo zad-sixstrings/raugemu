@@ -135,6 +135,15 @@
     "categories": [""]
   },
   {
+    "title": "Pokémon Snap",
+    "boxArtPath": "/assets/boxart/pkmnsnap.png",
+    "year": "1999",
+    "console": "N64",
+    "developer": "HAL Laboratory",
+    "romPath": "ROM/Nintendo/N64/pkmnsnap.n64",
+    "categories": ["pokemon"]
+  },
+  {
     "title": "Mario Kart 64",
     "boxArtPath": "/assets/boxart/mariokart64.jpg",
     "year": "1997",
@@ -573,7 +582,7 @@
     "console": "GBA",
     "developer": "Game Freak",
     "romPath": "ROM/Nintendo/GBA/pkmnemeraude.gba",
-    "categories": ["pokemon"]
+    "categories": [""]
   },
   {
     "title": "Pokémon Pinball: Ruby & Sapphire",
