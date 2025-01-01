@@ -441,6 +441,15 @@
     "categories": [""]
   },
   {
+    "title": "Revenge of the 'Gator",
+    "boxArtPath": "/assets/boxart/revengeofthegator.jpg",
+    "year": "1990",
+    "console": "GB",
+    "developer": "HAL Laboratory",
+    "romPath": "ROM/Nintendo/GB/revengeofthegator.gb",
+    "categories": [""]
+  },
+  {
     "title": "Kirby's Dream Land",
     "boxArtPath": "/assets/boxart/kirbydl.png",
     "year": "1992",

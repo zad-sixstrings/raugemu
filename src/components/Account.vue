@@ -1,6 +1,6 @@
 <template>
   <div class="account-title-wrapper">
-    <h2 class="featured-games-title">
+    <h2 class="account-title">
       {{ profileStore.profile?.nickname }}
     </h2>
   </div>
@@ -50,34 +50,16 @@
         </div>
       </div>
       <div class="stats-section">
-        <h3 class="account-subtitle">Statistiques</h3>
-        <div class="stats-content">
-          <div class="stat-item">
-            <label class="profile-label">Sauvegardes:</label>
-            <span class="profile-span">{{
-              profileStore.profile?.saves ?? 0
-            }}</span>
-          </div>
-          <div class="stat-item">
-            <label class="profile-label">Temps de jeu:</label>
-            <SearchBar v-model="gameSearchQuery" />
-            <div class="playtime-grid">
-              <div
-                v-for="game in sortedAndFilteredPlaytime"
-                :key="game.gamename"
-                class="playtime-card"
-              >
-                <span class="game-name">{{ game.gamename }}</span>
-                <span class="game-time">{{
-                  playtimeFormat(game.playedtime)
-                }}</span>
-              </div>
-            </div>
-          </div>
+        <h3 class="account-subtitle">Avatar</h3>
+        <div class="account-avatar">
+          <span class="profile-span">Coming soon...</span>
         </div>
       </div>
       <div class="saves-section">
-        <h3 class="account-subtitle">Sauvegardes enregistrées</h3>
+        <h3 class="account-subtitle">
+          Sauvegardes:
+          <span class="saves-span">{{ profileStore.profile?.saves ?? 0 }}</span>
+        </h3>
 
         <!-- Show search and saves only if there are saves -->
         <template v-if="savesStore.saves.length > 0">
@@ -92,6 +74,26 @@
           <span class="profile-span"
             >Vous n'avez pas encore de sauvegardes enregistrées.</span
           >
+        </div>
+      </div>
+      <div class="stats-section">
+        <h3 class="account-subtitle">Temps de jeu</h3>
+        <div class="stats-content">
+          <template v-if="savesStore.saves.length > 0">
+            <SearchBar v-model="gameSearchQuery" />
+          </template>
+          <div class="playtime-grid">
+            <div
+              v-for="game in sortedAndFilteredPlaytime"
+              :key="game.gamename"
+              class="playtime-card"
+            >
+              <span class="game-name">{{ game.gamename }}</span>
+              <span class="game-time">{{
+                playtimeFormat(game.playedtime)
+              }}</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -184,7 +186,7 @@ onMounted(async () => {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  max-width: 1000px;
+  max-width: 1100px;
   border-left: 5px solid rgb(123, 18, 209);
   border-bottom: 5px solid rgb(59, 6, 129);
   border-right: 5px solid rgb(59, 6, 129);
@@ -197,7 +199,8 @@ onMounted(async () => {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  max-width: 1000px;
+  max-width: 1100px;
+  text-align: left;
   background-color: rgb(90, 0, 180);
   border-top: 5px solid rgb(123, 18, 209);
   border-left: 5px solid rgb(123, 18, 209);
@@ -207,6 +210,16 @@ onMounted(async () => {
   border-top-right-radius: 10px;
 }
 
+.account-title {
+  font-family: "Press Start 2P", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: italic;
+  color: white;
+  font-size: 1.4em;
+  line-height: 40px;
+}
+
 .account-content {
   display: flex;
   flex-wrap: wrap;
@@ -214,14 +227,7 @@ onMounted(async () => {
   background-color: transparent;
   border-radius: 8px;
   color: white;
-}
-
-h2.account-title {
-  color: white;
-  margin-bottom: 1.5rem;
-  font-family: "Press Start 2P", serif;
-  font-weight: 400;
-  text-align: center;
+  padding: 20px;
 }
 
 h3.account-subtitle {
@@ -237,6 +243,25 @@ h3.account-subtitle {
   margin-bottom: 2rem;
   flex: 1;
   min-width: 300px;
+  padding: 20px;
+  /*background: transparent;
+  border-top: 5px solid rgb(161, 161, 161);
+  border-left: 5px solid rgb(161, 161, 161);
+  border-right: 5px solid rgb(59, 59, 59);
+  border-bottom: 5px solid rgb(59, 59, 59);
+  border-radius: 10px;*/
+}
+
+.saves-section {
+  margin: 0 auto;
+  width: 450px;
+  /*background: rgb(122, 122, 122);
+  border-top: 5px solid rgb(161, 161, 161);
+  border-left: 5px solid rgb(161, 161, 161);
+  border-right: 5px solid rgb(59, 59, 59);
+  border-bottom: 5px solid rgb(59, 59, 59);
+  border-radius: 10px;
+  padding: 20px;*/
 }
 
 .profile-section {
@@ -246,12 +271,36 @@ h3.account-subtitle {
 .stats-section {
   flex: 2;
 }
-
+.profile-section,
+.stats-section,
+.saves-section {
+  margin: 0;  /* Remove margin-bottom */
+  padding: 20px;
+}
+.stats-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;  /* Add this to match heights */
+}
 .info-content,
 .stats-content {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+.stats-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%; /* Add this */
+}
+.stat-item {
+  display: flex;
+  flex-direction: column; /* Change to column */
+  width: 100%; /* Add this */
+  gap: 1rem; /* Add this */
 }
 
 .info-item,
@@ -279,6 +328,13 @@ span.profile-span {
   font-family: "Pixelify Sans", serif;
   font-optical-sizing: auto;
   font-weight: 400;
+}
+
+span.save-span {
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-size: 1em;
+  color: white;
 }
 
 p.profile-error {
