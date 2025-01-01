@@ -1,4 +1,9 @@
 <template>
+  <div class="account-title-wrapper">
+    <h2 class="featured-games-title">
+      {{ profileStore.profile?.nickname }}
+    </h2>
+  </div>
   <div class="account-container">
     <div
       v-if="profileStore.loading || savesStore.loading"
@@ -55,9 +60,10 @@
           </div>
           <div class="stat-item">
             <label class="profile-label">Temps de jeu:</label>
+            <SearchBar v-model="gameSearchQuery" />
             <div class="playtime-grid">
               <div
-                v-for="game in profileStore.playtime"
+                v-for="game in sortedAndFilteredPlaytime"
                 :key="game.gamename"
                 class="playtime-card"
               >
@@ -111,6 +117,7 @@ import SearchBar from "./SaveSearchBar.vue";
 import SavesList from "./SavesList.vue";
 import DeleteConfirmationDialog from "./DeleteConfirmationDialog.vue";
 import { playtimeFormat } from "../utils/playtimeFormat";
+import type { GamePlaytime } from "../types/playtime";
 
 const router = useRouter();
 const authStore = useAuthStore();
@@ -120,6 +127,21 @@ const searchQuery = ref("");
 const showConfirmDialog = ref(false);
 const selectedSave = ref<UserSave | null>(null);
 
+const gameSearchQuery = ref("");
+
+const sortedAndFilteredPlaytime = computed(() => {
+  // First sort by playtime
+  const sorted = [...profileStore.playtime].sort(
+    (a: GamePlaytime, b: GamePlaytime) =>
+      b.playedtime.seconds - a.playedtime.seconds
+  );
+
+  // Then filter if there's a search query
+  if (!gameSearchQuery.value.trim()) return sorted;
+
+  const query = gameSearchQuery.value.toLowerCase().trim();
+  return sorted.filter((game) => game.gamename.toLowerCase().includes(query));
+});
 const filteredSaves = computed(() => {
   if (!searchQuery.value.trim()) return savesStore.saves;
 
@@ -158,14 +180,38 @@ onMounted(async () => {
 
 <style scoped>
 .account-container {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1000px;
+  border-left: 5px solid rgb(123, 18, 209);
+  border-bottom: 5px solid rgb(59, 6, 129);
+  border-right: 5px solid rgb(59, 6, 129);
+  border-top: none;
+  overflow-y: auto;
+}
+
+.account-title-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1000px;
+  background-color: rgb(90, 0, 180);
+  border-top: 5px solid rgb(123, 18, 209);
+  border-left: 5px solid rgb(123, 18, 209);
+  border-right: 5px solid rgb(59, 6, 129);
+  border-bottom: 5px solid rgb(59, 6, 129);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .account-content {
-  background-color: rgb(26, 45, 54);
-  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  background-color: transparent;
   border-radius: 8px;
   color: white;
 }
@@ -189,6 +235,16 @@ h3.account-subtitle {
 .profile-section,
 .stats-section {
   margin-bottom: 2rem;
+  flex: 1;
+  min-width: 300px;
+}
+
+.profile-section {
+  flex: 1;
+}
+
+.stats-section {
+  flex: 2;
 }
 
 .info-content,
@@ -246,7 +302,7 @@ p.profile-error {
   background: rgba(74, 158, 255, 0.1);
   border-radius: 8px;
   padding: 1rem;
-  min-width: 150px;
+  width: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;

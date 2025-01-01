@@ -52,6 +52,7 @@ defineEmits<{
   background-color: transparent;
   max-height: 400px;
   overflow: scroll;
+  flex: 1 1 100%;
 }
 
 .save-info {
