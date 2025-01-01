@@ -2,6 +2,7 @@
 export interface ApiPlaytimeData {
   gamename: string;
   playedtime: {
+    hours?: number;
     minutes?: number;
     seconds: number;
     milliseconds: number;

@@ -2,10 +2,11 @@ import type { ApiPlaytimeData, PlaytimeData, GamePlaytime } from '../types/playt
 
 export function convertApiTimeFormat(apiPlaytime: ApiPlaytimeData): GamePlaytime {
   // Convert everything to total minutes
-  const totalMinutes = 
-    (apiPlaytime.playedtime.minutes || 0) + // Minutes from API
+  const totalMinutes =
+    (apiPlaytime.playedtime.hours || 0) * 60 + // Hours to minutes
+    (apiPlaytime.playedtime.minutes || 0) +     // Minutes from API
     Math.round(apiPlaytime.playedtime.seconds / 60); // Seconds converted to minutes
-  
+ 
   return {
     gamename: apiPlaytime.gamename,
     playedtime: {
