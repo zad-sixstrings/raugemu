@@ -54,6 +54,15 @@
     "categories": [""]
   },
   {
+    "title": "Earthworm Jim 2",
+    "boxArtPath": "/assets/boxart/earthwormjim2.jpg",
+    "year": "1995",
+    "console": "SNES",
+    "developer": "Shiny Entertainment",
+    "romPath": "ROM/Nintendo/SNES/earthwormjim2.sfc",
+    "categories": [""]
+  },
+  {
     "title": "Chrono Trigger",
     "boxArtPath": "/assets/boxart/chronotrigger.jpg",
     "year": "1995",
