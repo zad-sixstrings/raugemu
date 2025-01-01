@@ -35,11 +35,10 @@ It's just a joke, inspired by a [content creator](https://www.instagram.com/p/DD
 
 ## TODO
 ### High priority
-- Add gamemanager.js per-user save management (@ line 20) to EmulatorPopup.vue close button.
 - Add change/recover password feature
-- Add delete save feature.
+- Add profile picture and custom bio
+- Add playtime tracking
 
 ### Low priority
 - Homogenize Login/Register view with game cards style
 - Homogenize account page with general UI
-- Make dropdown menus last longer
