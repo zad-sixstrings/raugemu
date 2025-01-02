@@ -15,10 +15,10 @@
           </div>
           <br />
           <span class="profile-span">
-            Créé le {{ formatDateTime(save.creation_date) }} /
-          </span>
+            <strong>Créée le</strong> <em>{{ formatDateTime(save.creation_date) }}</em>
+          </span><br />
           <span class="profile-span">
-            Modifié le {{ formatDateTime(save.change_date) }}
+            <strong>Modifiée le</strong> <em>{{ formatDateTime(save.change_date) }}</em>
           </span>
         </div>
       </div>
@@ -62,6 +62,13 @@ defineEmits<{
   background-color: rgb(70, 70, 70);
   padding: 10px;
   border-radius: 10px;
+}
+
+span.profile-span {
+  color: white;
+  font-family: "Pixelify Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
 }
 
 .delete-button {

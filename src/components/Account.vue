@@ -350,13 +350,6 @@ span.profile-span {
   font-weight: 400;
 }
 
-span.save-span {
-  font-family: "Press Start 2P", serif;
-  font-weight: 400;
-  font-size: 1em;
-  color: white;
-}
-
 p.profile-error {
   color: rgb(189, 95, 95);
   font-family: "Pixelify Sans", serif;
