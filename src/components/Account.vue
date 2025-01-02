@@ -21,7 +21,12 @@
     </div>
     <div v-else-if="profileStore.profile" class="account-content">
       <div class="profile-section">
-        <h3 class="account-subtitle">Profil</h3>
+        <div class="section-header">
+          <h3 class="account-subtitle">Profil</h3>
+          <button @click="showEditDialog = true" class="edit-button">
+            Modifier
+          </button>
+        </div>
         <div class="info-content">
           <div class="info-item">
             <label class="profile-label">Pseudo:</label>
@@ -52,7 +57,14 @@
       <div class="stats-section">
         <h3 class="account-subtitle center">Avatar</h3>
         <div class="user-avatar">
-          <img class="avatar" src="/assets/profilepic/default.png" />
+          <img
+            class="avatar"
+            :src="
+              profileStore.profile?.imagePath ||
+              '/assets/profilepic/default.png'
+            "
+            alt="Profile avatar"
+          />
         </div>
       </div>
       <div class="saves-section">
@@ -97,6 +109,13 @@
       </div>
     </div>
   </div>
+  <ProfileEditDialog
+    v-if="showEditDialog"
+    :initial-bio="profileStore.profile?.profile ?? ''"
+    :image-path="profileStore.profile?.imagePath"
+    @close="showEditDialog = false"
+    @saved="handleProfileUpdate"
+  />
   <DeleteConfirmationDialog
     v-if="showConfirmDialog"
     :save="selectedSave"
@@ -124,6 +143,7 @@ import { memberdateFormat } from "../utils/memberdateFormat";
 import SearchBar from "./SaveSearchBar.vue";
 import SavesList from "./SavesList.vue";
 import DeleteConfirmationDialog from "./DeleteConfirmationDialog.vue";
+import ProfileEditDialog from "./ProfileEditDialog.vue";
 
 const router = useRouter();
 const authStore = useAuthStore();
@@ -134,6 +154,10 @@ const showConfirmDialog = ref(false);
 const selectedSave = ref<UserSave | null>(null);
 const gamePlaytime = ref<GamePlaytime[]>([]);
 const gameSearchQuery = ref("");
+const showEditDialog = ref(false);
+const handleProfileUpdate = async () => {
+  await profileStore.fetchProfile();
+};
 
 const sortedAndFilteredPlaytime = computed(() => {
   const sorted = [...gamePlaytime.value].sort((a, b) => {
@@ -422,5 +446,24 @@ img.avatar {
   width: 200px;
   border-radius: 100%;
   border: 5px solid rgb(90, 0, 180);
+}
+
+/* CUSTOMIZE */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.edit-button {
+  background: #4a9eff;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-family: "Pixelify Sans", serif;
+  font-size: 0.9em;
 }
 </style>

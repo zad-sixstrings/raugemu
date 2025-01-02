@@ -25,7 +25,6 @@ export const useUserProfileStore = defineStore("userProfile", () => {
     }
   }
 
-
   async function fetchPlaytime() {
     try {
       playtime.value = await authApi.getPlaytime();
@@ -40,14 +39,47 @@ export const useUserProfileStore = defineStore("userProfile", () => {
 
   function clearProfiles() {
     profile.value = null;
+  }
 
+  async function updateProfile(profileText: string) {
+    try {
+      loading.value = true;
+      error.value = null;
+      const updatedProfile = await authApi.updateProfile({ profileText });
+      profile.value = updatedProfile;
+      notificationStore.addNotification("Profil mis à jour avec succès", "success");
+    } catch (err) {
+      error.value = "Erreur lors de la mise à jour du profil";
+      notificationStore.addNotification("Erreur lors de la mise à jour du profil", "error");
+      throw err;
+    } finally {
+      loading.value = false;
+    }
+  }
+  
+  async function updateAvatar(file: File) {
+    try {
+      loading.value = true;
+      error.value = null;
+      const result = await authApi.updateAvatar(file);
+      if (result.success && profile.value) {
+        profile.value = { ...profile.value, imagePath: result.imagePath };
+      }
+      notificationStore.addNotification("Avatar mis à jour avec succès", "success");
+    } catch (err) {
+      error.value = "Erreur lors de la mise à jour de l'avatar";
+      notificationStore.addNotification("Erreur lors de la mise à jour de l'avatar", "error");
+      throw err;
+    } finally {
+      loading.value = false;
+    }
   }
 
   return {
     profile,
-
     fetchProfile,
-
+    updateProfile,
+    updateAvatar,
     clearProfiles,
     loading,
     error,

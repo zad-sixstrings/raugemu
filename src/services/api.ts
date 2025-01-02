@@ -7,6 +7,7 @@ export interface UserProfile {
   creation_date: string;
   profile: string;
   saves: number;
+  imagePath: string;
 }
 
 export interface UserSave {
@@ -27,6 +28,15 @@ export interface PlaytimeData {
     seconds: number;
     milliseconds: number;
   };
+}
+
+export interface ProfileUpdateData {
+  profileText: string;
+}
+
+export interface AvatarUpdateResponse {
+  success: boolean;
+  imagePath: string;
 }
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -144,18 +154,18 @@ export const authApi = {
           Authorization: `Bearer ${token}`,
         },
       });
-      
+
       if (!response.ok) {
         throw new Error("Failed to fetch user saves");
       }
-  
+
       const data = await response.json();
-      
+
       // Check for the "no saves" response
       if (data.message === "No save file found") {
         return [];
       }
-  
+
       // If we have saves, sort and return them
       return data.sort((a: UserSave, b: UserSave) =>
         a.game.localeCompare(b.game, "fr-FR")
@@ -213,4 +223,60 @@ export const authApi = {
       throw error;
     }
   },
+
+  async updateProfile(profileData: ProfileUpdateData): Promise<UserProfile> {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No authentication token found");
+      }
+      
+      const response = await fetch(`${API_URL}/user/updateprofile`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(profileData),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to update profile");
+      }
+  
+      return await response.json();
+    } catch (error) {
+      console.error("Update profile error:", error);
+      throw error;
+    }
+  },
+  
+  async updateAvatar(file: File): Promise<AvatarUpdateResponse> {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No authentication token found");
+      }
+  
+      const formData = new FormData();
+      formData.append("image", file);
+  
+      const response = await fetch(`${API_URL}/user/uploadavatar`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: "multipart/form-data",
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to update avatar");
+      }
+  
+      return await response.json();
+    } catch (error) {
+      console.error("Update avatar error:", error);
+      throw error;
+    }
+  }
 };
