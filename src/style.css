@@ -679,7 +679,7 @@ button.browser-warning-close:active {
   display: none;
 }
 
-#featured-container, .saves-content {
+#featured-container, .saves-content, .playtime-grid {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }

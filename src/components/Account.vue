@@ -201,7 +201,7 @@ onMounted(async () => {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  max-width: 1100px;
+  max-width: 800px;
   border-left: 5px solid rgb(123, 18, 209);
   border-bottom: 5px solid rgb(59, 6, 129);
   border-right: 5px solid rgb(59, 6, 129);
@@ -214,7 +214,7 @@ onMounted(async () => {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  max-width: 1100px;
+  max-width: 800px;
   text-align: left;
   background-color: rgb(90, 0, 180);
   border-top: 5px solid rgb(123, 18, 209);
@@ -269,7 +269,7 @@ h3.account-subtitle {
 
 .saves-section {
   margin: 0 auto;
-  width: 450px;
+  width: 350px;
   /*background: rgb(122, 122, 122);
   border-top: 5px solid rgb(161, 161, 161);
   border-left: 5px solid rgb(161, 161, 161);
@@ -374,6 +374,10 @@ p.profile-error {
     black calc(100% - 50px),
     transparent 100%
   );
+}
+
+.playtime-grid::-webkit-scrollbar {
+  display: none;
 }
 
 .playtime-card {
