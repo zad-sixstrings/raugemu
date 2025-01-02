@@ -180,10 +180,12 @@ a.about-link:hover {
 /* API STATUS */
 
 .api-status-wrapper {
+  display: block;
   float: right;
   width: 300px;
-  height: 30px;
-  padding-left: 150px;
+  height: 40px;
+  padding-left: 130px;
+  margin-bottom: 50px;
 }
 
 .api-status-tooltip {
@@ -195,8 +197,7 @@ a.about-link:hover {
   border-right: 5px solid rgb(17, 14, 26);
   border-bottom: 5px solid rgb(17, 14, 26);
   top: 100%;
-  left: 0;
-  z-index: 70;
+  z-index: 1000;
   padding: 10px;
   border-radius: 10px;
   opacity: 0;

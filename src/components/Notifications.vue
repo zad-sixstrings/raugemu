@@ -29,6 +29,7 @@ const notificationStore = useNotificationStore();
 .notification {
   margin-bottom: 1.5rem;
   padding: 0.75rem 1.5rem;
+  max-width: 300px;
   border-radius: 10px;
   color: white;
   min-width: 200px;

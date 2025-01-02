@@ -1,10 +1,5 @@
 import type { LoginCredentials, RegisterCredentials } from "../types/auth";
 
-export interface ExtendedUserProfile {
-  playTime: number;
-  saves: number;
-}
-
 export interface UserProfile {
   id: string;
   nickname: string;
@@ -135,28 +130,7 @@ export const authApi = {
       throw error;
     }
   },
-  async getUserProfileExtended(): Promise<ExtendedUserProfile> {
-    try {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        throw new Error("No authentication token found");
-      }
-      const response = await fetch(`${API_URL}/user/userprofileextended`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      if (!response.ok) {
-        throw new Error("Failed to fetch extended user profile");
-      }
-      return await response.json();
-    } catch (error) {
-      console.error("Get extended user profile error:", error);
-      throw error;
-    }
-  },
+
   async getUserSaves(): Promise<UserSave[]> {
     try {
       const token = localStorage.getItem("token");
@@ -170,11 +144,20 @@ export const authApi = {
           Authorization: `Bearer ${token}`,
         },
       });
+      
       if (!response.ok) {
         throw new Error("Failed to fetch user saves");
       }
-      const saves = await response.json();
-      return saves.sort((a: UserSave, b: UserSave) =>
+  
+      const data = await response.json();
+      
+      // Check for the "no saves" response
+      if (data.message === "No save file found") {
+        return [];
+      }
+  
+      // If we have saves, sort and return them
+      return data.sort((a: UserSave, b: UserSave) =>
         a.game.localeCompare(b.game, "fr-FR")
       );
     } catch (error) {
@@ -182,6 +165,7 @@ export const authApi = {
       throw error;
     }
   },
+
   async deleteSave(saveId: string): Promise<void> {
     try {
       const token = localStorage.getItem("token");

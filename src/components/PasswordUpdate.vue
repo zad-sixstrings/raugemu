@@ -1,7 +1,7 @@
 <template>
   <div class="auth-container">
-    <h2 class="pwdrecovery-box-title">Réinitialisation</h2>
     <form @submit.prevent="handleSubmit" class="password-reset-form">
+      <h2 class="pwdrecovery-box-title">Réinitialisation</h2>
       <div class="form-group">
         <label for="password">Nouveau mot de passe:</label>
         <input
@@ -40,7 +40,7 @@
         {{
           passwordRecoveryStore.isLoading
             ? "Mise à jour..."
-            : "Mettre à jour le mot de passe"
+            : "Mettre à jour"
         }}
       </button>
     </form>
@@ -82,7 +82,7 @@ async function handleSubmit() {
 .password-update-form {
   max-width: 400px;
   margin: 0 auto;
-  padding: 20px;
+
 }
 
 .form-group input[type="password"] {
@@ -107,7 +107,7 @@ async function handleSubmit() {
 
 .form-group input {
   width: 100%;
-  padding: 8px;
+
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -129,7 +129,6 @@ async function handleSubmit() {
 }
 
 button:disabled {
-  background-color: #ccc;
   cursor: not-allowed;
 }
 </style>

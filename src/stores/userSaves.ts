@@ -13,14 +13,18 @@ export const useUserSavesStore = defineStore("userSaves", () => {
 
   async function fetchSaves() {
     try {
+      loading.value = true;
       const userSaves = await authApi.getUserSaves();
       saves.value = userSaves;
+      // No notification needed for empty saves
     } catch (error) {
       notificationStore.addNotification(
         "Erreur lors du chargement des sauvegardes",
         "error"
       );
       throw error;
+    } finally {
+      loading.value = false;
     }
   }
 

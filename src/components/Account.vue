@@ -41,18 +41,18 @@
               memberdateFormat(profileStore.profile.creation_date)
             }}</span>
           </div>
-          <div class="info-item">
-            <label class="profile-label">Bio:</label>
-            <span class="profile-span">{{
-              profileStore.profile?.profile ?? "Coming soon..."
-            }}</span>
+          <div class="bio-item">
+            <label class="profile-label">Bio:</label><br />
+            <p class="bio">
+              {{ profileStore.profile?.profile ?? "Coming soon..." }}
+            </p>
           </div>
         </div>
       </div>
       <div class="stats-section">
-        <h3 class="account-subtitle">Avatar</h3>
-        <div class="account-avatar">
-          <span class="profile-span">Coming soon...</span>
+        <h3 class="account-subtitle center">Avatar</h3>
+        <div class="user-avatar">
+          <img class="avatar" src="/assets/profilepics/default.png" />
         </div>
       </div>
       <div class="saves-section">
@@ -80,23 +80,20 @@
         <h3 class="account-subtitle">
           Temps de jeu: {{ getTotalPlaytime(gamePlaytime) }}
         </h3>
-        
-          <template v-if="gamePlaytime.length > 0">
-            <SearchBar v-model="gameSearchQuery" />
-          </template>
-          <div class="playtime-grid">
-            <div
-              v-for="game in sortedAndFilteredPlaytime"
-              :key="game.gamename"
-              class="playtime-card"
-            >
-              <span class="game-name">{{ game.gamename }}</span>
-              <span class="game-time">{{
-                playtimeFormat(game.playedtime)
-              }}</span>
-            </div>
+
+        <template v-if="gamePlaytime.length > 0">
+          <SearchBar v-model="gameSearchQuery" />
+        </template>
+        <div class="playtime-grid">
+          <div
+            v-for="game in sortedAndFilteredPlaytime"
+            :key="game.gamename"
+            class="playtime-card"
+          >
+            <span class="game-name">{{ game.gamename }}</span>
+            <span class="game-time">{{ playtimeFormat(game.playedtime) }}</span>
           </div>
-        
+        </div>
       </div>
     </div>
   </div>
@@ -329,6 +326,13 @@ h3.account-subtitle {
   align-items: center;
 }
 
+p.bio {
+  color: white;
+  font-family: "Pixelify Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+}
+
 /* Added to maintain the label width */
 .info-item label,
 .stat-item label {
@@ -385,6 +389,7 @@ p.profile-error {
   border-radius: 8px;
   padding: 1rem;
   width: 150px;
+  height: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -405,5 +410,17 @@ p.profile-error {
   font-family: "Press Start 2P", serif;
   font-weight: 400;
   font-size: 0.6em;
+}
+
+/* AVATAR */
+.user-avatar {
+  display: flex;
+  justify-content: center;
+}
+
+img.avatar {
+  width: 200px;
+  border-radius: 100%;
+  border: 5px solid rgb(90, 0, 180);
 }
 </style>
