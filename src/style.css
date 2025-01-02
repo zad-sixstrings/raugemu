@@ -460,6 +460,15 @@ footer {
   padding: 2rem;
 }
 
+h2.pwdrecovery-box-title {
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  padding: 2rem;
+  font-size: 1.2em;
+  text-align: center;
+}
+
 .auth-form {
   display: flex;
   flex-direction: column;
@@ -544,7 +553,7 @@ button.loginbutton:disabled {
   cursor: not-allowed;
 }
 
-.auth-switch {
+.auth-switch, .resetpwd {
   text-align: center;
   font-family: "Pixelify Sans", serif;
   font-weight: 400;
@@ -552,7 +561,7 @@ button.loginbutton:disabled {
   padding-bottom: 1.2rem;
 }
 
-a.auth-switch-link {
+a.auth-switch-link, a.resetpwd-link {
   color: rgb(123, 18, 209);
 }
 

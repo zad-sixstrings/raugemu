@@ -22,6 +22,11 @@
           placeholder="Entrez votre mot de passe"
         />
       </div>
+      <div class="resetpwd">
+        <router-link class="resetpwd-link" to="/reset-password"
+          >Mot de passe oublié?</router-link
+        >
+      </div>
       <p class="auth-switch">
         Pas de compte?
         <router-link class="auth-switch-link" to="/register"
@@ -59,3 +64,9 @@ async function handleSubmit() {
   }
 }
 </script>
+
+<style scoped>
+.resetpwd {
+  text-align: center;
+}
+</style>
