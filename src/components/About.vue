@@ -2,16 +2,20 @@
   <div class="api-status-wrapper">
     <div class="api-status-div">
       <p class="api-status">
-        Services: 
+        Services:
         <span :class="apiStatusStore.status ? 'api-success' : 'api-error'">
-          {{ apiStatusStore.status ? 'En ligne' : 'Hors ligne' }}
+          {{ apiStatusStore.status ? "En ligne" : "Hors ligne" }}
         </span>
       </p>
     </div>
     <div class="api-status-tooltip">
       <p class="api-status-under">
         <span class="api-info">
-          {{ apiStatusStore.status ? 'Les sauvegardes sont synchronisées.' : 'Les sauvegardes ne sont pas synchronisées.' }}
+          {{
+            apiStatusStore.status
+              ? "Les sauvegardes sont synchronisées."
+              : "Les sauvegardes ne sont pas synchronisées."
+          }}
         </span>
       </p>
     </div>
@@ -27,7 +31,6 @@
           classiques de leur enfance directement dans leur navigateur.
         </p>
       </section>
-
       <section>
         <h3 class="about-h3">Compatibilité</h3>
         <p class="about-p">
@@ -37,7 +40,6 @@
           garantir une expérience de jeu fluide.
         </p>
       </section>
-
       <section>
         <h3 class="about-h3">Contrôleurs</h3>
         <p class="about-p">
@@ -46,17 +48,26 @@
           qui ont ce problème peuvent le régler en installant
           <a href="https://ds4-windows.com/">DS4Windows</a> pour les systèmes
           Windows, et
-          <a href="https://github.com/chrippa/ds4drv">ds4drv</a> sous Linux.
+          <a href="https://github.com/chrippa/ds4drv">ds4drv</a> sous Linux.<br /><br />
+          Il existe un bug qui superpose C-UP et C-DOWN sur N64. Il est connu,
+          on investigue!
         </p>
       </section>
-
       <section>
         <h3 class="about-h3">A quoi servent les comptes?</h3>
         <p class="about-p">
           En créant un compte, vous aurez accès à vos sauvegardes en tout temps
           sans avoir à les télécharger depuis l'émulateur. De nouvelles
-          fonctionnalités sont aussi prévues, comme le tracking du temps de jeu
-          par exemple.
+          fonctionnalités sont aussi prévues à l'avenir!
+        </p>
+      </section>
+      <section>
+        <h3 class="about-h3">On peut jouer en ligne?</h3>
+        <p class="about-p">
+          Pas pour l'instant. L'équipe de développement d'EmulatorJS est sur le
+          coup, et on proposera ce service dès qu'il sera disponible, et si
+          notre infrastructure nous le permet. En attendant, vous pouvez déjà
+          jouer en multijoueur local avec deux manettes.
         </p>
       </section>
       <section>
@@ -65,6 +76,16 @@
           Oui. L'émulation est possible grâce à EmulatorJS. Le site est une
           application VueJS construite avec Vite qui utilise des ressources
           libres, en plus d'être auto-hébergé.
+        </p>
+      </section>
+      <section>
+        <h3 class="about-h3">L'émulation Nintendo 64 est parfois bancale!</h3>
+        <p class="about-p">
+          Oui. Ca peut arriver. C'est dû à un bug dans Google Chrome (double
+          buffering WebGL), en particulier sur OoT Rando. On peut pas y faire
+          grand chose apparemment, mais c'est tout de même en cours
+          d'investigation. La taille des jeux et surtout des sauvegardes
+          peuventt aussi être la cause de crash.
         </p>
       </section>
       <section>
