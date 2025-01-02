@@ -389,6 +389,7 @@ p.profile-error {
 .playtime-grid {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   gap: 1rem;
   height: 350px;
   overflow-y: auto;
@@ -415,6 +416,7 @@ p.profile-error {
   width: 150px;
   height: 100px;
   display: flex;
+  justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
   text-align: center;
