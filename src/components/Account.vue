@@ -52,7 +52,7 @@
       <div class="stats-section">
         <h3 class="account-subtitle center">Avatar</h3>
         <div class="user-avatar">
-          <img class="avatar" src="/assets/profilepics/default.png" />
+          <img class="avatar" src="/assets/profilepic/default.png" />
         </div>
       </div>
       <div class="saves-section">
