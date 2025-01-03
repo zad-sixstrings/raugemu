@@ -106,7 +106,24 @@
             <span class="game-time">{{ playtimeFormat(game.playedtime) }}</span>
           </div>
         </div>
-      </div>
+      </div><!--
+      <div class="stats-section">
+        <h3 class="account-subtitle">
+          Succès:
+          <span class="achievements-span">{{
+            achievementsStore.achievements.length
+          }}</span>
+        </h3>
+        <template v-if="achievementsStore.achievements.length > 0">
+          <SearchBar v-model="achievementSearchQuery" />
+          <AchievementsList :achievements="filteredAchievements" />
+        </template>
+        <div v-else class="no-achievements">
+          <span class="profile-span"
+            >Vous n'avez pas encore débloqué de succès.</span
+          >
+        </div>
+      </div> -->
     </div>
   </div>
   <ProfileEditDialog
@@ -144,6 +161,8 @@ import SearchBar from "./SaveSearchBar.vue";
 import SavesList from "./SavesList.vue";
 import DeleteConfirmationDialog from "./DeleteConfirmationDialog.vue";
 import ProfileEditDialog from "./ProfileEditDialog.vue";
+import AchievementsList from './AchievementsList.vue';
+import { useAchievementsStore } from '../stores/achievements';
 
 const router = useRouter();
 const authStore = useAuthStore();
@@ -155,9 +174,20 @@ const selectedSave = ref<UserSave | null>(null);
 const gamePlaytime = ref<GamePlaytime[]>([]);
 const gameSearchQuery = ref("");
 const showEditDialog = ref(false);
+const achievementsStore = useAchievementsStore();
+const achievementSearchQuery = ref("");
 const handleProfileUpdate = async () => {
   await profileStore.fetchProfile();
 };
+const filteredAchievements = computed(() => {
+  if (!achievementSearchQuery.value.trim()) return achievementsStore.achievements;
+  const query = achievementSearchQuery.value.toLowerCase().trim();
+  return achievementsStore.achievements.filter((achievement) =>
+    achievement.game.toLowerCase().includes(query) ||
+    achievement.achievementname.toLowerCase().includes(query) ||
+    achievement.description.toLowerCase().includes(query)
+  );
+});
 
 const sortedAndFilteredPlaytime = computed(() => {
   const sorted = [...gamePlaytime.value].sort((a, b) => {
@@ -193,18 +223,19 @@ const handleDelete = async () => {
   selectedSave.value = null;
 };
 
+
 onMounted(async () => {
   if (!authStore.isAuthenticated) {
     router.push("/login");
     return;
   }
-
   try {
     // Fetch all data in parallel
     await Promise.all([
       profileStore.fetchProfile(),
       savesStore.fetchSaves(),
       profileStore.fetchPlaytime(),
+      achievementsStore.fetchAchievements(),
       (async () => {
         const apiData = await authApi.getPlaytime();
         gamePlaytime.value = apiData.map((game) => convertApiTimeFormat(game));
@@ -228,6 +259,8 @@ onMounted(async () => {
   border-right: 5px solid var(--border-dark-purple);
   border-top: none;
   overflow-y: auto;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .account-title-wrapper {

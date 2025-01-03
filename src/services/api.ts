@@ -39,6 +39,13 @@ export interface AvatarUpdateResponse {
   imagePath: string;
 }
 
+export interface Achievement {
+  game: string;
+  achievementname: string;
+  description: string;
+  unlockdate: string;
+}
+
 const API_URL = import.meta.env.VITE_API_URL;
 if (!API_URL) {
   console.error("API_URL not configured. Please check your .env file.");
@@ -276,6 +283,45 @@ export const authApi = {
       return await response.json();
     } catch (error) {
       console.error("Update avatar error:", error);
+      throw error;
+    }
+  },
+  async getAchievements(): Promise<Achievement[]> {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No authentication token found");
+      }
+      
+      const response = await fetch(`${API_URL}/user/getachievement`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to fetch achievements");
+      }
+  
+      const data = await response.json();
+      
+      // Check for the "no achievements" response
+      if (data.message === "No achievements found") {
+        return [];
+      }
+  
+      // If we have achievements, sort them by game name and unlock date
+      return data.sort((a: Achievement, b: Achievement) => {
+        // First sort by game
+        const gameCompare = a.game.localeCompare(b.game, "fr-FR");
+        if (gameCompare !== 0) return gameCompare;
+        // Then by unlock date (most recent first)
+        return new Date(b.unlockdate).getTime() - new Date(a.unlockdate).getTime();
+      });
+    } catch (error) {
+      console.error("Get achievements error:", error);
       throw error;
     }
   }
