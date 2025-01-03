@@ -9,7 +9,7 @@
       v-if="profileStore.loading || savesStore.loading"
       class="account-content"
     >
-      <p class="profile-error">Chargement...</p>
+      <p class="profile-loading">Chargement...</p>
     </div>
     <div
       v-else-if="profileStore.error || savesStore.error"
@@ -378,6 +378,13 @@ span.profile-span {
   font-weight: 400;
 }
 
+p.profile-loading {
+  color: rgb(25, 194, 206);
+  font-family: "Pixelify Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+}
+
 p.profile-error {
   color: rgb(189, 95, 95);
   font-family: "Pixelify Sans", serif;
@@ -389,8 +396,9 @@ p.profile-error {
 .playtime-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: flex-start; /* Aligns items from the start of the row */
+  gap: 1rem; /* Maintains consistent spacing */
+  align-items: flex-start;
   height: 350px;
   overflow-y: auto;
   mask-image: linear-gradient(
@@ -410,6 +418,7 @@ p.profile-error {
 }
 
 .playtime-card {
+  flex: 0 0 auto;
   background: rgba(74, 158, 255, 0.1);
   border-radius: 8px;
   padding: 1rem;
