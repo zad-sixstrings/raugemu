@@ -49,9 +49,7 @@
         qui ont ce problème peuvent le régler en installant
         <a href="https://ds4-windows.com/">DS4Windows</a> pour les systèmes
         Windows, et <a href="https://github.com/chrippa/ds4drv">ds4drv</a> sous
-        Linux.<br /><br />
-        Il existe un bug qui superpose C-UP et C-DOWN sur N64. Il est connu, on
-        investigue!
+        Linux.
       </p>
     </section>
     <section>
@@ -66,9 +64,9 @@
       <h3 class="about-h3">On peut jouer en ligne?</h3>
       <p class="about-p">
         Pas pour l'instant. L'équipe de développement d'EmulatorJS est sur le
-        coup, et on proposera ce service dès qu'il sera disponible, et si notre
-        infrastructure nous le permet. En attendant, vous pouvez déjà jouer en
-        multijoueur local avec deux manettes.
+        coup, et on proposera ce service dès qu'il sera disponible
+        <em>si notre infrastructure nous le permet</em>. En attendant, vous
+        pouvez déjà jouer en multijoueur local avec deux manettes.
       </p>
     </section>
     <section>
@@ -76,17 +74,28 @@
       <p class="about-p">
         Oui. L'émulation est possible grâce à EmulatorJS. Le site est une
         application VueJS construite avec Vite qui utilise des ressources
-        libres, en plus d'être auto-hébergé.
+        libres, en plus d'être auto-hébergé. La source est disponible sur
+        <a href="https://github.com/zad-sixstrings/raugemu">GitHub</a>.
       </p>
     </section>
     <section>
       <h3 class="about-h3">L'émulation Nintendo 64 est parfois bancale!</h3>
       <p class="about-p">
         Oui. Ca peut arriver. C'est dû à un bug dans Google Chrome (double
-        buffering WebGL), en particulier sur OoT Rando. On peut pas y faire
-        grand chose apparemment, mais c'est tout de même en cours
-        d'investigation. La taille des jeux et surtout des sauvegardes peuventt
-        aussi être la cause de crash.
+        buffering WebGL et mémoire navigateur), en particulier sur OoT Rando et
+        007 Goldeneye. On investigue.<br />
+        De plus, pour des raisons encore inconnues, les boutons C-UP et C-DOWN
+        renvoient le même input (C-DOWN en l'occurence). On espère pouvoir
+        résoudre ces problèmes rapidement!
+      </p>
+    </section>
+    <section>
+      <h3 class="about-h3">Est-ce que les consoles CD seront disponibles?</h3>
+      <p class="about-p">
+        Difficile à dire, mais probablement pas. Etant donné que la Nintendo 64
+        provoque déjà des saturations de mémoire dans le navigateur, l'émulation
+        PSX, Saturn, PSP ou même Sega CD s'avère peu probable. Néanmoins, ce
+        sera testé côté développement et bien entendu implémenté si ça ronronne!
       </p>
     </section>
     <section>
