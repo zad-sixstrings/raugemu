@@ -1,6 +1,37 @@
+/* VARIABLES */
+:root {
+  /* COLORS */
+  --blue: rgb(0, 130, 200);
+  --purple: rgb(90, 0, 180);
+  --grey: rgb(128, 124, 120);
+  --red: #f44336;
+  --green: #4caf50;
+  --yellow: rgb(243, 230, 0);
+  --border-light-blue: rgb(44, 174, 235);
+  --border-dark-blue: rgb(10, 60, 117);
+  --border-light-purple: rgb(123, 18, 209);
+  --border-dark-purple: rgb(59, 6, 129);
+  --border-light-grey: rgb(164, 160, 156);
+  --border-dark-grey: rgb(62, 58, 54);
+  --border-light-red: #f16615;
+  --border-dark-red: #911d1d;
+  --border-light-green: #84df6e;
+  --border-dark-green: #276e36;
+  --blue-active: rgb(0, 116, 179);
+  --purple-active: rgb(82, 0, 163);
+  --grey-active: rgb(116, 112, 108);
+  --red-active: #d83b30;
+  --green-active: #419644;
+  --yellow-active: rgb(219, 208, 0);
+  /* FONTS */
+  --font-press-start: "Press Start 2P", serif;
+  --font-pixelify: "Pixelify Sans", serif;
+  --font-micro: "Micro 5", serif;
+}
+
 /*  FONTS */
 .main-title {
-  font-family: "Press Start 2P", serif;
+  font-family: var(--font-press-start);
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
@@ -10,7 +41,7 @@
 }
 
 .main-title-sub {
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-pixelify);
   font-weight: 400;
   font-optical-sizing: auto;
   font-style: normal;
@@ -21,13 +52,13 @@
 }
 
 .game-title {
-  font-family: "Press Start 2P", serif;
+  font-family: var(--font-press-start);
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
   font-size: 1em;
-  background: rgb(122, 122, 122);
-  border-bottom: 2px solid #444;
+  background: var(--grey);
+  border-bottom: 2px solid var(--border-dark-grey);
   color: white;
   margin: 0;
   height: 60px;
@@ -38,7 +69,7 @@
 }
 
 .gameinfo {
-  font-family: "Micro 5", serif;
+  font-family: var(--font-micro);
   font-weight: 400;
   font-style: normal;
   font-size: 1.7em;
@@ -49,7 +80,7 @@
 }
 
 .play-button-text {
-  font-family: "Press Start 2P", serif;
+  font-family: var(--font-press-start);
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
@@ -63,7 +94,7 @@
 }
 
 .featured-games-title {
-  font-family: "Press Start 2P", serif;
+  font-family: var(--font-press-start);
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: italic;
@@ -76,23 +107,23 @@
 }
 
 .press-start-font {
-  font-family: "Press Start 2P", serif;
+  font-family: var(--font-press-start);
   font-weight: 400;
   font-style: normal;
 }
 
 .micro-5-font {
-  font-family: "Micro 5", serif;
+  font-family: var(--font-micro);
   font-weight: 400;
   font-style: normal;
 }
 
 .blue-text {
-  color: rgb(0, 130, 200);
+  color: var(--blue);
 }
 
 .purple-text {
-  color: rgb(90, 0, 180);
+  color: var(--purple);
 }
 
 .center {
@@ -105,7 +136,7 @@
 
 .credentials,
 .copyright {
-  font-family: "Press Start 2P", serif;
+  font-family: var(--font-press-start);
   font-optical-sizing: auto;
   font-weight: 400;
   font-size: 0.6em;
@@ -137,7 +168,7 @@ html {
 }
 
 a {
-  color: rgb(0, 130, 200);
+  color: var(--blue);
   text-decoration: none;
 }
 
@@ -147,7 +178,7 @@ a:hover {
 }
 
 a:visited {
-  color: rgb(0, 130, 200);
+  color: var(--blue);
   text-decoration: none;
 }
 
@@ -167,22 +198,22 @@ a:visited {
   height: 70px;
   margin: 0;
   padding: 0;
-  background: rgb(122, 122, 122);
-  border-top: 5px solid rgb(161, 161, 161);
-  border-left: 5px solid rgb(161, 161, 161);
-  border-right: 5px solid rgb(59, 59, 59);
-  border-bottom: 5px solid rgb(59, 59, 59);
+  background: var(--grey);
+  border-top: 5px solid var(--border-light-grey);
+  border-left: 5px solid var(--border-light-grey);
+  border-right: 5px solid var(--border-dark-grey);
+  border-bottom: 5px solid var(--border-dark-grey);
 }
 
 #main-menu li {
   position: relative;
   float: left;
   height: 60px;
-  background-color: rgb(122, 122, 122);
-  border-top: 5px solid rgb(161, 161, 161);
-  border-left: 5px solid rgb(161, 161, 161);
-  border-right: 5px solid rgb(59, 59, 59);
-  border-bottom: 5px solid rgb(59, 59, 59);
+  background-color: var(--grey);
+  border-top: 5px solid var(--border-light-grey);
+  border-left: 5px solid var(--border-light-grey);
+  border-right: 5px solid var(--border-dark-grey);
+  border-bottom: 5px solid var(--border-dark-grey);
   transition: border 0.2s;
   transition: background-color 0.2s;
 }
@@ -204,11 +235,11 @@ a:visited {
   left: 0;
   width: 170px;
   z-index: 5;
-  background: rgb(122, 122, 122);
-  border-top: 5px solid rgb(161, 161, 161);
-  border-left: 5px solid rgb(161, 161, 161);
-  border-right: 5px solid rgb(59, 59, 59);
-  border-bottom: 5px solid rgb(59, 59, 59);
+  background: var(--grey);
+  border-top: 5px solid var(--border-light-grey);
+  border-left: 5px solid var(--border-light-grey);
+  border-right: 5px solid var(--border-dark-grey);
+  border-bottom: 5px solid var(--border-dark-grey);
   transition: opacity 0.2s ease-in-out, visibility 1s;
 }
 
@@ -227,7 +258,7 @@ a.sub-menu-item {
   display: block;
   line-height: 60px;
   color: black;
-  font-family: "Press Start 2P", serif;
+  font-family: var(--font-press-start);
   font-weight: 400;
   font-size: 0.7em;
   text-align: center;
@@ -238,19 +269,19 @@ a.sub-menu-item {
 }
 
 .sub-menu-item:hover {
-  background-color: rgb(109, 109, 109);
-  border-top: 5px solid rgb(59, 59, 59);
-  border-left: 5px solid rgb(59, 59, 59);
-  border-right: 5px solid rgb(161, 161, 161);
-  border-bottom: 5px solid rgb(161, 161, 161);
+  background-color: var(--grey-active);
+  border-top: 5px solid var(--border-dark-grey);
+  border-left: 5px solid var(--border-dark-grey);
+  border-right: 5px solid var(--border-light-grey);
+  border-bottom: 5px solid var(--border-light-grey);
 }
 
 #main-menu li:hover {
-  background-color: rgb(109, 109, 109);
-  border-top: 5px solid rgb(59, 59, 59);
-  border-left: 5px solid rgb(59, 59, 59);
-  border-right: 5px solid rgb(161, 161, 161);
-  border-bottom: 5px solid rgb(161, 161, 161);
+  background-color: var(--grey-active);
+  border-top: 5px solid var(--border-dark-grey);
+  border-left: 5px solid var(--border-dark-grey);
+  border-right: 5px solid var(--border-light-grey);
+  border-bottom: 5px solid var(--border-light-grey);
 }
 
 /* DIVS LAYOUT */
@@ -281,10 +312,10 @@ a.sub-menu-item {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border-top: 5px solid rgb(161, 161, 161);
-  border-left: 5px solid rgb(161, 161, 161);
-  border-right: 5px solid rgb(59, 59, 59);
-  border-bottom: 5px solid rgb(59, 59, 59);
+  border-top: 5px solid var(--border-light-grey);
+  border-left: 5px solid var(--border-light-grey);
+  border-right: 5px solid var(--border-dark-grey);
+  border-bottom: 5px solid var(--border-dark-grey);
 }
 
 .card-wrapper {
@@ -322,11 +353,11 @@ a.sub-menu-item {
 }
 
 .featured-games-title-wrapper {
-  background-color: rgb(90, 0, 180);
-  border-top: 5px solid rgb(123, 18, 209);
-  border-left: 5px solid rgb(123, 18, 209);
-  border-right: 5px solid rgb(59, 6, 129);
-  border-bottom: 5px solid rgb(59, 6, 129);
+  background-color: var(--purple);
+  border-top: 5px solid var(--border-light-purple);
+  border-left: 5px solid var(--border-light-purple);
+  border-right: 5px solid var(--border-dark-purple);
+  border-bottom: 5px solid var(--border-dark-purple);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -342,9 +373,9 @@ a.sub-menu-item {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  border-left: 5px solid rgb(123, 18, 209);
-  border-bottom: 5px solid rgb(59, 6, 129);
-  border-right: 5px solid rgb(59, 6, 129);
+  border-left: 5px solid var(--border-light-purple);
+  border-bottom: 5px solid var(--border-dark-purple);
+  border-right: 5px solid var(--border-dark-purple);
   border-top: none;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -378,11 +409,11 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgb(0, 130, 200);
-  border-top: 5px solid rgb(44, 174, 235);
-  border-left: 5px solid rgb(44, 174, 235);
-  border-right: 5px solid rgb(10, 60, 117);
-  border-bottom: 5px solid rgb(10, 60, 117);
+  background: var(--blue);
+  border-top: 5px solid var(--border-light-blue);
+  border-left: 5px solid var(--border-light-blue);
+  border-right: 5px solid var(--border-dark-blue);
+  border-bottom: 5px solid var(--border-dark-blue);
   transition: background-color 0.3s;
   transition: border 0.3s;
   transition: font-size 0.2s;
@@ -394,11 +425,11 @@ header {
 }
 
 .play-button:active {
-  background: rgb(3, 115, 175);
-  border-top: 5px solid rgb(10, 60, 117);
-  border-left: 5px solid rgb(10, 60, 117);
-  border-right: 5px solid rgb(44, 174, 235);
-  border-bottom: 5px solid rgb(44, 174, 235);
+  background: var(--blue-active);
+  border-top: 5px solid var(--border-dark-blue);
+  border-left: 5px solid var(--border-dark-blue);
+  border-right: 5px solid var(--border-light-blue);
+  border-bottom: 5px solid var(--border-light-blue);
   cursor: url("/assets/cursor-click.png"), auto;
 }
 
@@ -431,7 +462,7 @@ footer {
 }
 
 #footer-menu li a {
-  font-family: "Press Start 2P", serif;
+  font-family: var(--font-press-start);
   font-weight: 400;
   font-size: 0.7em;
   text-align: center;
@@ -446,22 +477,22 @@ footer {
   max-width: 400px;
   margin: 2rem auto;
   border-radius: 10px;
-  background: rgb(122, 122, 122);
-  border-top: 5px solid rgb(161, 161, 161);
-  border-left: 5px solid rgb(161, 161, 161);
-  border-right: 5px solid rgb(59, 59, 59);
-  border-bottom: 5px solid rgb(59, 59, 59);
+  background: var(--grey);
+  border-top: 5px solid var(--border-light-grey);
+  border-left: 5px solid var(--border-light-grey);
+  border-right: 5px solid var(--border-dark-grey);
+  border-bottom: 5px solid var(--border-dark-grey);
 }
 
 .box-title {
-  font-family: "Press Start 2P", serif;
+  font-family: var(--font-press-start);
   font-weight: 400;
   font-style: normal;
   padding: 2rem;
 }
 
 h2.pwdrecovery-box-title {
-  font-family: "Press Start 2P", serif;
+  font-family: var(--font-press-start);
   font-weight: 400;
   font-style: normal;
   padding: 2rem;
@@ -481,7 +512,7 @@ h2.pwdrecovery-box-title {
 }
 
 label {
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-pixelify);
   font-weight: 400;
   font-size: 1.2em;
   margin-bottom: 7px;
@@ -491,20 +522,20 @@ label {
 .form-group input[type="password"],
 .form-group input[type="text"] {
   padding: 10px;
-  border-top: 5px solid rgb(59, 59, 59);
-  border-left: 5px solid rgb(59, 59, 59);
-  border-right: 5px solid rgb(161, 161, 161);
-  border-bottom: 5px solid rgb(161, 161, 161);
-  font-family: "Pixelify Sans", serif;
+  border-top: 5px solid var(--border-dark-grey);
+  border-left: 5px solid var(--border-dark-grey);
+  border-right: 5px solid var(--border-light-grey);
+  border-bottom: 5px solid var(--border-light-grey);
+  font-family: var(--font-pixelify);
   font-weight: 400;
   font-size: 1em;
 }
 
 .error-message {
-  color: #b91313;
+  color: var(--red);
   font-size: 0.875rem;
   text-align: center;
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-pixelify);
   font-weight: 400;
   font-size: 0.9em;
   padding-bottom: 10px;
@@ -519,12 +550,12 @@ button.loginbutton {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   cursor: url("/assets/cursor-click.png"), auto;
-  background: rgb(0, 130, 200);
-  border-top: 5px solid rgb(44, 174, 235);
-  border-left: 5px solid rgb(44, 174, 235);
-  border-right: 5px solid rgb(10, 60, 117);
-  border-bottom: 5px solid rgb(10, 60, 117);
-  font-family: "Press Start 2P", serif;
+  background: var(--blue);
+  border-top: 5px solid var(--border-light-blue);
+  border-left: 5px solid var(--border-light-blue);
+  border-right: 5px solid var(--border-dark-blue);
+  border-bottom: 5px solid var(--border-dark-blue);
+  font-family: var(--font-press-start);
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
@@ -541,11 +572,11 @@ button.loginbutton:hover {
 }
 
 button.loginbutton:active {
-  background: rgb(3, 115, 175);
-  border-top: 5px solid rgb(10, 60, 117);
-  border-left: 5px solid rgb(10, 60, 117);
-  border-right: 5px solid rgb(44, 174, 235);
-  border-bottom: 5px solid rgb(44, 174, 235);
+  background: var(--blue-active);
+  border-top: 5px solid var(--border-dark-blue);
+  border-left: 5px solid var(--border-dark-blue);
+  border-right: 5px solid var(--border-light-blue);
+  border-bottom: 5px solid var(--border-light-blue);
 }
 
 button.loginbutton:disabled {
@@ -553,16 +584,18 @@ button.loginbutton:disabled {
   cursor: not-allowed;
 }
 
-.auth-switch, .resetpwd {
+.auth-switch,
+.resetpwd {
   text-align: center;
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-pixelify);
   font-weight: 400;
   font-size: 0.9em;
   padding-bottom: 1.2rem;
 }
 
-a.auth-switch-link, a.resetpwd-link {
-  color: rgb(123, 18, 209);
+a.auth-switch-link,
+a.resetpwd-link {
+  color: var(--border-light-purple);
 }
 
 input {
@@ -613,11 +646,11 @@ body::after {
 }
 
 .warning-icon {
-  color: orange;
+  color: var(--yellow);
 }
 
 #browser-warning p {
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-pixelify);
   font-optical-sizing: auto;
   font-weight: 400;
   font-size: 1.2em;
@@ -635,13 +668,13 @@ button.browser-warning-close {
   height: 28px;
   border-top-right-radius: 5px;
   border: none;
-  background: #ff4444;
-  border-top: 3px solid #f38a83;
-  border-left: 3px solid #f38a83;
-  border-right: 3px solid #7a151d;
-  border-bottom: 3px solid #7a151d;
+  background: var(--red);
+  border-top: 3px solid var(--border-light-red);
+  border-left: 3px solid var(--border-light-red);
+  border-right: 3px solid var(--border-dark-red);
+  border-bottom: 3px solid var(--border-dark-red);
   color: white;
-  font-family: "Press Start 2P", serif;
+  font-family: var(--font-press-start);
   font-optical-sizing: auto;
   font-weight: 400;
   font-size: 13px;
@@ -658,11 +691,11 @@ button.browser-warning-close:hover {
 }
 
 button.browser-warning-close:active {
-  background: #da3434;
-  border-top: 3px solid #7a151d;
-  border-left: 3px solid #7a151d;
-  border-right: 3px solid #f38a83;
-  border-bottom: 3px solid #f38a83;
+  background: var(--red-active);
+  border-top: 3px solid var(--border-dark-red);
+  border-left: 3px solid var(--border-dark-red);
+  border-right: 3px solid var(--border-light-red);
+  border-bottom: 3px solid var(--border-light-red);
 }
 
 @keyframes slideDown {
@@ -679,9 +712,11 @@ button.browser-warning-close:active {
   display: none;
 }
 
-#featured-container, .saves-content, .playtime-grid {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+#featured-container,
+.saves-content,
+.playtime-grid {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 /* RESPONSIVE */
@@ -725,7 +760,6 @@ button.browser-warning-close:active {
     top: 0%;
     right: 0;
   }
-
 }
 
 @media (max-width: 420px) {
@@ -784,9 +818,4 @@ button.browser-warning-close:active {
     top: 0%;
     right: 0;
   }
-}
-
-/* Class for identifying elements visually in case we can't find them */
-.catchme {
-  background-color: #e55b50;
 }

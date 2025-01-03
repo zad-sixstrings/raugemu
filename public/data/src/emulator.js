@@ -3801,7 +3801,7 @@ class EmulatorJS {
                   this.gameManager.simulateInput(i, 22, 0x7fff * e.value);
                   this.gameManager.simulateInput(i, 23, 0);
                 } else {
-                  this.gameManager.simulateInput(i, 23, 0x7fff * e.value);
+                  this.gameManager.simulateInput(i, 23, -0x7fff * e.value);
                   this.gameManager.simulateInput(i, 22, 0);
                 }
               }

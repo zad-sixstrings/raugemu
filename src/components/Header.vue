@@ -16,7 +16,7 @@
 <style scoped>
 .header-warning span {
   position: absolute;
-  color: yellow;
+  color: var(--yellow);
   font-family: "Pixelify Sans", serif;
   font-weight: 400;
   font-size: 0.9em;

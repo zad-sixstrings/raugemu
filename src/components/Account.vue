@@ -223,9 +223,9 @@ onMounted(async () => {
   align-items: center;
   margin: 0 auto;
   max-width: 800px;
-  border-left: 5px solid rgb(123, 18, 209);
-  border-bottom: 5px solid rgb(59, 6, 129);
-  border-right: 5px solid rgb(59, 6, 129);
+  border-left: 5px solid var(--border-light-purple);
+  border-bottom: 5px solid var(--border-dark-purple);
+  border-right: 5px solid var(--border-dark-purple);
   border-top: none;
   overflow-y: auto;
 }
@@ -237,11 +237,11 @@ onMounted(async () => {
   margin: 0 auto;
   max-width: 800px;
   text-align: left;
-  background-color: rgb(90, 0, 180);
-  border-top: 5px solid rgb(123, 18, 209);
-  border-left: 5px solid rgb(123, 18, 209);
-  border-right: 5px solid rgb(59, 6, 129);
-  border-bottom: 5px solid rgb(59, 6, 129);
+  background-color: var(--purple);
+  border-top: 5px solid var(--border-light-purple);
+  border-left: 5px solid var(--border-light-purple);
+  border-right: 5px solid var(--border-dark-purple);
+  border-bottom: 5px solid var(--border-dark-purple);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -365,7 +365,7 @@ p.bio {
 }
 
 label.profile-label {
-  color: #4a9eff;
+  color: var(--blue);
   font-family: "Pixelify Sans", serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -379,14 +379,14 @@ span.profile-span {
 }
 
 p.profile-loading {
-  color: rgb(25, 194, 206);
+  color: var(--green);
   font-family: "Pixelify Sans", serif;
   font-optical-sizing: auto;
   font-weight: 400;
 }
 
 p.profile-error {
-  color: rgb(189, 95, 95);
+  color: var(--red);
   font-family: "Pixelify Sans", serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -441,7 +441,7 @@ p.profile-error {
 }
 
 .game-time {
-  color: #4a9eff;
+  color: var(--blue);
   font-family: "Press Start 2P", serif;
   font-weight: 400;
   font-size: 0.6em;
@@ -456,7 +456,7 @@ p.profile-error {
 img.avatar {
   width: 200px;
   border-radius: 100%;
-  border: 5px solid rgb(90, 0, 180);
+  border: 5px solid var(--purple);
 }
 
 /* CUSTOMIZE */
@@ -468,7 +468,7 @@ img.avatar {
 }
 
 .edit-button {
-  background: #4a9eff;
+  background: var(--blue);
   color: white;
   padding: 4px 12px;
   border-radius: 4px;
