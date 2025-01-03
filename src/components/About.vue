@@ -83,11 +83,9 @@
       <p class="about-p">
         Oui. Ca peut arriver. C'est dû à un bug dans Google Chrome (double
         buffering WebGL et mémoire navigateur), en particulier sur OoT Rando et
-        007 Goldeneye. On investigue.<br />
-        De plus, pour des raisons encore inconnues, les boutons C-UP et C-DOWN
-        renvoient le même input (C-DOWN en l'occurence). On espère pouvoir
-        résoudre ces problèmes rapidement!
+        007 Goldeneye. On investigue.
       </p>
+      <p class="solved-p">Le bug des boutons C-UP et C-DOWN a été résolu!</p>
     </section>
     <section>
       <h3 class="about-h3">Est-ce que les consoles CD seront disponibles?</h3>
@@ -174,6 +172,14 @@ p.about-p {
   font-weight: 400;
   font-size: 1em;
   color: white;
+  text-align: justify;
+}
+
+p.solved-p {
+  font-family: "Pixelify Sans", serif;
+  font-weight: 400;
+  font-size: 1em;
+  color: var(--green);
   text-align: justify;
 }
 
