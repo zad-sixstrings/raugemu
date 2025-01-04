@@ -237,7 +237,7 @@ onMounted(async () => {
       achievementsStore.fetchAchievements(),
       (async () => {
         const apiData = await authApi.getPlaytime();
-        gamePlaytime.value = apiData.map(game => convertApiTimeFormat(game));
+        gamePlaytime.value = apiData.map((game) => convertApiTimeFormat(game));
       })(),
     ]);
   } catch (error) {
