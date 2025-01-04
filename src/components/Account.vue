@@ -161,7 +161,7 @@ import SearchBar from "./SaveSearchBar.vue";
 import SavesList from "./SavesList.vue";
 import DeleteConfirmationDialog from "./DeleteConfirmationDialog.vue";
 import ProfileEditDialog from "./ProfileEditDialog.vue";
-import AchievementsList from './AchievementsList.vue';
+// import AchievementsList from './AchievementsList.vue';
 import { useAchievementsStore } from '../stores/achievements';
 
 const router = useRouter();
@@ -175,11 +175,12 @@ const gamePlaytime = ref<GamePlaytime[]>([]);
 const gameSearchQuery = ref("");
 const showEditDialog = ref(false);
 const achievementsStore = useAchievementsStore();
-const achievementSearchQuery = ref("");
+// const achievementSearchQuery = ref("");
 const handleProfileUpdate = async () => {
   await profileStore.fetchProfile();
 };
-const filteredAchievements = computed(() => {
+
+/* const filteredAchievements = computed(() => {
   if (!achievementSearchQuery.value.trim()) return achievementsStore.achievements;
   const query = achievementSearchQuery.value.toLowerCase().trim();
   return achievementsStore.achievements.filter((achievement) =>
@@ -187,7 +188,7 @@ const filteredAchievements = computed(() => {
     achievement.achievementname.toLowerCase().includes(query) ||
     achievement.description.toLowerCase().includes(query)
   );
-});
+}); */
 
 const sortedAndFilteredPlaytime = computed(() => {
   const sorted = [...gamePlaytime.value].sort((a, b) => {
