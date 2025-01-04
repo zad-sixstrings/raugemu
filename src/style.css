@@ -27,6 +27,9 @@
   --font-press-start: "Press Start 2P", serif;
   --font-pixelify: "Pixelify Sans", serif;
   --font-micro: "Micro 5", serif;
+/* CURSOR */
+--cursor: url("/assets/cursor.png"), auto;
+--cursor-click: url("/assets/cursor-click.png"), auto;
 }
 
 /*  FONTS */

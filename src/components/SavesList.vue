@@ -77,26 +77,26 @@ span.profile-span {
   font-family: "Pixelify Sans", serif;
   font-optical-sizing: auto;
   font-weight: 400;
-  background: #ff4444;
-  border-top: 3px solid #f38a83;
-  border-left: 3px solid #f38a83;
-  border-right: 3px solid #7a151d;
-  border-bottom: 3px solid #7a151d;
+  background: var(--red);
+  border-top: 5px solid var(--border-light-red);
+  border-left: 5px solid var(--border-light-red);
+  border-right: 5px solid var(--border-dark-red);
+  border-bottom: 5px solid var(--border-dark-red);
   color: white;
   font-size: 0.8em;
   padding: 5px 10px;
   margin-right: 20px;
   border-radius: 0.25rem;
-  cursor: pointer;
+  cursor: var(--cusror-click);
   transition: all 0.2s;
 }
 
 .delete-button:active {
-  background: #da3434;
-  border-top: 3px solid #7a151d;
-  border-left: 3px solid #7a151d;
-  border-right: 3px solid #f38a83;
-  border-bottom: 3px solid #f38a83;
+  background: var(--red-active);
+  border-top: 3px solid var(--border-dark-red);
+  border-left: 3px solid var(--border-dark-red);
+  border-right: 3px solid var(--border-light-red);
+  border-bottom: 3px solid var(--border-light-red);
 }
 
 .delete-button:hover {

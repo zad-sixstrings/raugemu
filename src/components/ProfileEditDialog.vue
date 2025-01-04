@@ -111,11 +111,11 @@ async function handleSave() {
 }
 
 .dialog-content {
-  background: rgb(122, 122, 122);
-  border-top: 5px solid rgb(161, 161, 161);
-  border-left: 5px solid rgb(161, 161, 161);
-  border-right: 5px solid rgb(59, 59, 59);
-  border-bottom: 5px solid rgb(59, 59, 59);
+  background: var(--grey);
+  border-top: 5px solid var(--border-light-grey);
+  border-left: 5px solid var(--border-light-grey);
+  border-right: 5px solid var(--border-dark-grey);
+  border-bottom: 5px solid var(--border-dark-grey);
   padding: 20px;
   border-radius: 10px;
   width: 90%;
@@ -124,7 +124,7 @@ async function handleSave() {
 
 .dialog-title {
   color: white;
-  font-family: "Press Start 2P", serif;
+  font-family: var(--font-press-start);
   font-weight: 400;
   font-size: 1em;
   margin-bottom: 20px;
@@ -153,12 +153,16 @@ async function handleSave() {
 }
 
 .upload-button {
-  background: #4a9eff;
+  background: var(--blue);
+  border-top: 5px solid var(--border-light-blue);
+  border-left: 5px solid var(--border-light-blue);
+  border-right: 5px solid var(--border-dark-blue);
+  border-bottom: 5px solid var(--border-dark-blue);
   color: white;
   padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-family: "Pixelify Sans", serif;
+  border-radius: 5px;
+  cursor: var(--cursor-click);
+  font-family: var(--font-pixelify);
 
   &.disabled {
     opacity: 0.5;
@@ -170,14 +174,22 @@ async function handleSave() {
   }
 }
 
+.upload-button:active {
+  background: var(--blue-active);
+  border-top: 5px solid var(--border-dark-blue);
+  border-left: 5px solid var(--border-dark-blue);
+  border-right: 5px solid var(--border-light-blue);
+  border-bottom: 5px solid var(--border-light-blue);
+}
+
 .delete-button {
-  background: #ff4a4a;
+  background: var(--red);
   color: white;
   padding: 8px 16px;
   border-radius: 4px;
   border: none;
   cursor: pointer;
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-pixelify);
 
   &:disabled {
     opacity: 0.5;
@@ -193,20 +205,20 @@ async function handleSave() {
   display: block;
   color: white;
   margin-bottom: 8px;
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-pixelify);
 }
 
 .bio-input {
   width: 100%;
   padding: 8px;
   border-radius: 4px;
-  background-color: rgb(109, 109, 109);
-  border-top: 5px solid rgb(59, 59, 59);
-  border-left: 5px solid rgb(59, 59, 59);
-  border-right: 5px solid rgb(161, 161, 161);
-  border-bottom: 5px solid rgb(161, 161, 161);
+  background-color: #13151a;
+  border-top: 5px solid var(--border-dark-grey);
+  border-left: 5px solid var(--border-dark-grey);
+  border-right: 5px solid var(--border-light-grey);
+  border-bottom: 5px solid var(--border-light-grey);
   color: white;
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-pixelify);
   resize: vertical;
 
   &:disabled {
@@ -224,10 +236,10 @@ async function handleSave() {
 .save-button,
 .cancel-button {
   padding: 8px 16px;
-  border-radius: 4px;
+  border-radius: 5px;
   border: none;
   cursor: pointer;
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-pixelify);
 
   &:disabled {
     opacity: 0.5;
@@ -236,12 +248,39 @@ async function handleSave() {
 }
 
 .save-button {
-  background: #4a9eff;
+  background: var(--blue);
+  border-top: 5px solid var(--border-light-blue);
+  border-left: 5px solid var(--border-light-blue);
+  border-right: 5px solid var(--border-dark-blue);
+  border-bottom: 5px solid var(--border-dark-blue);
+  border-radius: 5px;
   color: white;
+  cursor: var(--cursor-click);
+}
+
+.save-button:active {
+  background: var(--blue-active);
+  border-top: 5px solid var(--border-dark-blue);
+  border-left: 5px solid var(--border-dark-blue);
+  border-right: 5px solid var(--border-light-blue);
+  border-bottom: 5px solid var(--border-light-blue);
 }
 
 .cancel-button {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--red);
+  border-top: 5px solid var(--border-light-red);
+  border-left: 5px solid var(--border-light-red);
+  border-right: 5px solid var(--border-dark-red);
+  border-bottom: 5px solid var(--border-dark-red);
   color: white;
+  cursor: var(--cursor-click);
+}
+
+.cancel-button:active {
+  background: var(--red-active);
+  border-top: 5px solid var(--border-dark-red);
+  border-left: 5px solid var(--border-dark-red);
+  border-right: 5px solid var(--border-light-red);
+  border-bottom: 5px solid var(--border-light-red);
 }
 </style>

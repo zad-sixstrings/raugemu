@@ -281,7 +281,7 @@ onMounted(async () => {
 }
 
 .account-title {
-  font-family: "Press Start 2P", serif;
+  font-family: var(--font-press-start);
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: italic;
@@ -303,7 +303,7 @@ onMounted(async () => {
 h3.account-subtitle {
   color: white;
   margin-bottom: 1rem;
-  font-family: "Press Start 2P", serif;
+  font-family: var(--font-press-start);
   font-weight: 400;
   font-size: 1em;
 }
@@ -314,31 +314,14 @@ h3.account-subtitle {
   flex: 1;
   min-width: 300px;
   padding: 20px;
-  /*background: transparent;
-  border-top: 5px solid rgb(161, 161, 161);
-  border-left: 5px solid rgb(161, 161, 161);
-  border-right: 5px solid rgb(59, 59, 59);
-  border-bottom: 5px solid rgb(59, 59, 59);
-  border-radius: 10px;*/
 }
 
 .saves-section {
   margin: 0 auto;
   width: 350px;
-  /*background: rgb(122, 122, 122);
-  border-top: 5px solid rgb(161, 161, 161);
-  border-left: 5px solid rgb(161, 161, 161);
-  border-right: 5px solid rgb(59, 59, 59);
-  border-bottom: 5px solid rgb(59, 59, 59);
-  border-radius: 10px;
-  padding: 20px;*/
 }
 
-.profile-section {
-  flex: 1;
-}
-
-.stats-section {
+.profile-section, .stats-section {
   flex: 1;
 }
 
@@ -386,7 +369,7 @@ h3.account-subtitle {
 
 p.bio {
   color: white;
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-pixelify);
   font-optical-sizing: auto;
   font-weight: 400;
 }
@@ -400,28 +383,28 @@ p.bio {
 
 label.profile-label {
   color: var(--blue);
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-pixelify);
   font-optical-sizing: auto;
   font-weight: 400;
 }
 
 span.profile-span {
   color: white;
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-pixelify);
   font-optical-sizing: auto;
   font-weight: 400;
 }
 
 p.profile-loading {
   color: var(--green);
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-pixelify);
   font-optical-sizing: auto;
   font-weight: 400;
 }
 
 p.profile-error {
   color: var(--red);
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-pixelify);
   font-optical-sizing: auto;
   font-weight: 400;
 }
@@ -468,7 +451,7 @@ p.profile-error {
 .game-name {
   font-weight: bold;
   margin-bottom: 0.5rem;
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-pixelify);
   font-optical-sizing: auto;
   font-weight: 400;
   font-size: 0.9em;
@@ -476,7 +459,7 @@ p.profile-error {
 
 .game-time {
   color: var(--blue);
-  font-family: "Press Start 2P", serif;
+  font-family: var(--font-press-start);
   font-weight: 400;
   font-size: 0.6em;
 }
@@ -503,12 +486,23 @@ img.avatar {
 
 .edit-button {
   background: var(--blue);
+  border-top: 5px solid var(--border-light-blue);
+  border-left: 5px solid var(--border-light-blue);
+  border-right: 5px solid var(--border-dark-blue);
+  border-bottom: 5px solid var(--border-dark-blue);
   color: white;
   padding: 4px 12px;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  font-family: "Pixelify Sans", serif;
+  border-radius: 5px;
+  cursor: var(--cursor-click);
+  font-family: var(--font-pixelify);
   font-size: 0.9em;
+}
+.edit-button:active {
+  background: var(--blue-active);
+  border-top: 5px solid var(--border-dark-blue);
+  border-left: 5px solid var(--border-dark-blue);
+  border-right: 5px solid var(--border-light-blue);
+  border-bottom: 5px solid var(--border-light-blue);
+
 }
 </style>
