@@ -1,6 +1,9 @@
 <template>
   <div id="main-menu">
-    <nav>
+    <button class="mobile-menu-button" @click="toggleMobileMenu">
+      <span class="hamburger"></span>
+    </button>
+    <nav :class="{ 'mobile-active': isMobileMenuOpen }">
       <ul>
         <li>
           <router-link class="main-menu-item" to="/">Home</router-link>
@@ -114,6 +117,12 @@
 <script setup lang="ts">
 import { useAuthStore } from "../stores/auth";
 import { useRouter } from "vue-router";
+import { ref } from "vue";
+
+const isMobileMenuOpen = ref(false);
+const toggleMobileMenu = () => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value;
+};
 
 const authStore = useAuthStore();
 const router = useRouter();
@@ -168,7 +177,7 @@ const handleLogout = () => {
 }
 
 #main-menu li.about:hover .about-icon {
-  content: url('/assets/about-icon.gif');
+  content: url("/assets/about-icon.gif");
 }
 
 .dropdown-menu {
@@ -231,5 +240,136 @@ a.sub-menu-item {
 .account-icon {
   width: 25px;
   border-radius: 100%;
+}
+
+/* Your existing CSS remains the same, then add: */
+
+/* Mobile menu button - hidden by default */
+.mobile-menu-button {
+  display: none;
+  background: var(--grey);
+  border-top: 5px solid var(--border-light-grey);
+  border-left: 5px solid var(--border-light-grey);
+  border-right: 5px solid var(--border-dark-grey);
+  border-bottom: 5px solid var(--border-dark-grey);
+  padding: 1rem;
+  cursor: pointer;
+  position: relative;
+  z-index: 100;
+}
+
+.hamburger {
+  display: block;
+  width: 1.5rem;
+  height: 2px;
+  background: white;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  width: 1.5rem;
+  height: 2px;
+  background: white;
+  transition: all 0.3s;
+}
+
+.hamburger::before {
+  top: -6px;
+}
+
+.hamburger::after {
+  top: 6px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 790px) {
+  #main-menu {
+    height: auto;
+    margin: 0;
+  }
+
+  .mobile-menu-button {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  nav {
+    display: none; /* Hidden by default on mobile */
+  }
+
+  nav.mobile-active {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-main);
+    z-index: 90;
+    padding-top: 5rem;
+  }
+
+  #main-menu ul {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #main-menu li {
+    float: none;
+    width: 100%;
+    height: auto;
+  }
+
+  #main-menu li.last,
+  #main-menu li.about {
+    float: none;
+  }
+
+  .dropdown-menu {
+    position: static;
+    width: 100%;
+    visibility: visible;
+    opacity: 1;
+    display: none;
+  }
+
+  #main-menu li:hover .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-menu-last {
+    left: 0;
+    width: 100%;
+  }
+
+  a.main-menu-item,
+  a.sub-menu-item {
+    padding: 1rem;
+    line-height: 1.5;
+    font-size: 1rem;
+  }
+
+  /* Adjust icon sizes for mobile */
+  .about-icon,
+  .account-icon {
+    width: 20px;
+  }
+}
+
+/* Additional adjustment for very small screens */
+@media screen and (max-width: 480px) {
+  a.main-menu-item,
+  a.sub-menu-item {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
 }
 </style>
