@@ -3,7 +3,7 @@
   /* COLORS */
   --bg-main: #0a0a0e;
   --bg-content: #111317;
-  --bg-featured: #1e232d;
+  --bg-featured: #161a22;
   --blue: rgb(0, 130, 200);
   --purple: rgb(90, 0, 180);
   --grey: rgb(128, 124, 120);
@@ -288,9 +288,6 @@ a:visited {
 }
 
 /* LOGIN AND REGISTER FORMS */
-.account-icon {
-  width: 25px;
-}
 
 .auth-container {
   max-width: 400px;

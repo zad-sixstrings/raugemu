@@ -227,4 +227,9 @@ a.sub-menu-item {
   border-right: 5px solid var(--border-light-grey);
   border-bottom: 5px solid var(--border-light-grey);
 }
+
+.account-icon {
+  width: 25px;
+  border-radius: 100%;
+}
 </style>
