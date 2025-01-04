@@ -179,7 +179,7 @@ const handleLogout = () => {
 <style scoped>
 /* MAIN MENU */
 #main-menu {
-  height: 80px;
+  height: 70px;
   margin: 0 0 30px 0;
 }
 
@@ -208,16 +208,18 @@ const handleLogout = () => {
   transition: background-color 0.2s;
 }
 
-#main-menu li.last {
+#main-menu li.last, #main-menu li.about {
+  display: flex;
   float: right;
+  align-items: center;
+  height: 60px;
 }
 
-#main-menu li.about {
-  float: right;
-}
-
-.about-icon {
+.about-icon, .account-icon, .menu-image {
   width: 25px;
+  height: 25px;
+  object-fit: contain;
+  display: block;
 }
 
 #main-menu li.about:hover .about-icon {
@@ -250,17 +252,23 @@ const handleLogout = () => {
   width: 200px;
 }
 
+a.main-menu-item {
+  margin-top: -2px;
+}
+
 a.main-menu-item,
 a.sub-menu-item {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
-  line-height: 60px;
+  min-height: 60px;
   color: black;
   font-family: var(--font-press-start);
   font-weight: 400;
   font-size: 0.7em;
   text-align: center;
+  line-height: normal;
   padding: 0 20px 0 20px;
   text-decoration: none;
   transition: border 0.1s;
@@ -281,15 +289,6 @@ a.sub-menu-item {
   border-left: 5px solid var(--border-dark-grey);
   border-right: 5px solid var(--border-light-grey);
   border-bottom: 5px solid var(--border-light-grey);
-}
-
-.account-icon {
-  width: 25px;
-  border-radius: 100%;
-}
-
-.menu-image {
-  width: 24px;
 }
 
 /* MOBILE MENU */
