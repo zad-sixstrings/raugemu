@@ -1,4 +1,3 @@
-<!-- components/AchievementsList.vue -->
 <template>
     <div class="achievements-list">
       <div v-for="achievement in achievements" :key="achievement.game" class="achievement-item">

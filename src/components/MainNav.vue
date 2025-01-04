@@ -335,7 +335,7 @@ a.sub-menu-item {
   left: 0;
 }
 
-/* Responsive styles */
+/* RESPONSIVE */
 @media screen and (max-width: 790px) {
   #main-menu {
     height: auto;

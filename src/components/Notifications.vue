@@ -71,7 +71,6 @@ const notificationStore = useNotificationStore();
   border-bottom: 5px solid var(--border-dark-blue);
 }
 
-/* Transition animations */
 .notification-enter-active,
 .notification-leave-active {
   transition: all 0.3s ease;

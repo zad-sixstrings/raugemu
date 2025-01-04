@@ -196,7 +196,6 @@ a.about-link:hover {
 }
 
 /* API STATUS */
-
 .api-status-wrapper {
   display: block;
   float: right;

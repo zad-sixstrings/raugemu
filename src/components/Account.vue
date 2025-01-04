@@ -72,8 +72,6 @@
           Sauvegardes:
           <span class="saves-span">{{ profileStore.profile?.saves ?? 0 }}</span>
         </h3>
-
-        <!-- Show search and saves only if there are saves -->
         <template v-if="savesStore.saves.length > 0">
           <SearchBar v-model="savesSearchQuery" />
           <SavesList
@@ -106,7 +104,8 @@
             <span class="game-time">{{ playtimeFormat(game.playedtime) }}</span>
           </div>
         </div>
-      </div><!--
+      </div>
+      <!--
       <div class="stats-section">
         <h3 class="account-subtitle">
           Succès:
@@ -162,7 +161,7 @@ import SavesList from "./SavesList.vue";
 import DeleteConfirmationDialog from "./DeleteConfirmationDialog.vue";
 import ProfileEditDialog from "./ProfileEditDialog.vue";
 // import AchievementsList from './AchievementsList.vue';
-import { useAchievementsStore } from '../stores/achievements';
+import { useAchievementsStore } from "../stores/achievements";
 
 const router = useRouter();
 const authStore = useAuthStore();
@@ -223,7 +222,6 @@ const handleDelete = async () => {
   showConfirmDialog.value = false;
   selectedSave.value = null;
 };
-
 
 onMounted(async () => {
   if (!authStore.isAuthenticated) {
@@ -321,7 +319,8 @@ h3.account-subtitle {
   width: 350px;
 }
 
-.profile-section, .stats-section {
+.profile-section,
+.stats-section {
   flex: 1;
 }
 
@@ -374,7 +373,6 @@ p.bio {
   font-weight: 400;
 }
 
-/* Added to maintain the label width */
 .info-item label,
 .stat-item label {
   min-width: 150px;
@@ -413,8 +411,8 @@ p.profile-error {
 .playtime-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start; /* Aligns items from the start of the row */
-  gap: 1rem; /* Maintains consistent spacing */
+  justify-content: flex-start;
+  gap: 1rem;
   align-items: flex-start;
   height: 350px;
   overflow-y: auto;
@@ -476,7 +474,7 @@ img.avatar {
   border: 5px solid var(--purple);
 }
 
-/* CUSTOMIZE */
+/* PROFILE CUSTOMIZATION */
 .section-header {
   display: flex;
   justify-content: space-between;
@@ -503,6 +501,5 @@ img.avatar {
   border-left: 5px solid var(--border-dark-blue);
   border-right: 5px solid var(--border-light-blue);
   border-bottom: 5px solid var(--border-light-blue);
-
 }
 </style>

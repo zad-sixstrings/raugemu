@@ -19,9 +19,7 @@ const isVisible = ref(false);
 
 const isChrome = () => {
   const userAgent = navigator.userAgent.toLowerCase();
-  // First check if it's NOT Firefox
   const isFirefox = userAgent.indexOf("firefox") > -1;
-  // Then check if it's Chrome (but not Edge)
   const isChrome =
     userAgent.includes("chrome") &&
     !userAgent.includes("edge") &&
