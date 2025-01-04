@@ -63,11 +63,11 @@ export default {
   height: 100%;
   background: repeating-linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.35),    /* Slightly less dark for better contrast */
     rgba(0, 0, 0, 0.35),
-    transparent 4px,         /* Slightly tighter pattern */
-    transparent 8px
-);
+    /* Slightly less dark for better contrast */ rgba(0, 0, 0, 0.35),
+    transparent 4px,
+    /* Slightly tighter pattern */ transparent 8px
+  );
 }
 
 .game-content {
@@ -76,6 +76,34 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 10px;
+}
+
+.game-title {
+  font-family: var(--font-press-start);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1em;
+  background: var(--grey);
+  border-bottom: 2px solid var(--border-dark-grey);
+  color: white;
+  margin: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+}
+
+.gameinfo {
+  font-family: var(--font-micro);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.7em;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.801);
+  display: block;
+  padding-top: 5px;
 }
 
 .game-title-content {
@@ -90,6 +118,7 @@ export default {
   line-height: 1.2;
   font-size: clamp(0.5em, 1em, 1.2em);
 }
+
 .boxart {
   width: 200px;
   height: 280px;
