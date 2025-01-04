@@ -12,16 +12,28 @@
           <a class="main-menu-item dropdown" href="#">Atari</a>
           <div class="dropdown-menu">
             <router-link class="sub-menu-item" to="/console/2600"
-              >2600</router-link
+              ><img
+                class="menu-image"
+                src="/assets/console-icons/2600.png"
+              />2600</router-link
             >
             <router-link class="sub-menu-item" to="/console/5200"
-              >5200</router-link
+              ><img
+                class="menu-image"
+                src="/assets/console-icons/5200.png"
+              />5200</router-link
             >
             <router-link class="sub-menu-item" to="/console/7800"
-              >7800</router-link
+              ><img
+                class="menu-image"
+                src="/assets/console-icons/7800.png"
+              />7800</router-link
             >
             <router-link class="sub-menu-item" to="/console/LYNX"
-              >LYNX</router-link
+              ><img
+                class="menu-image"
+                src="/assets/console-icons/lynx.png"
+              />LYNX</router-link
             >
           </div>
         </li>
@@ -29,23 +41,46 @@
           <a class="main-menu-item dropdown" href="#">Nintendo</a>
           <div class="dropdown-menu">
             <router-link class="sub-menu-item" to="/console/NES"
-              >NES</router-link
+              ><img
+                class="menu-image"
+                src="/assets/console-icons/nes.png"
+              />NES</router-link
             >
             <router-link class="sub-menu-item" to="/console/SNES"
-              >SNES</router-link
+              ><img
+                class="menu-image"
+                src="/assets/console-icons/snes.png"
+              />SNES</router-link
             >
             <router-link class="sub-menu-item" to="/console/N64"
-              >N64</router-link
+              ><img
+                class="menu-image"
+                src="/assets/console-icons/n64.png"
+              />N64</router-link
             >
-            <router-link class="sub-menu-item" to="/console/GB">GB</router-link>
+            <router-link class="sub-menu-item" to="/console/GB"
+              ><img
+                class="menu-image"
+                src="/assets/console-icons/gb.png"
+              />GB</router-link
+            >
             <router-link class="sub-menu-item" to="/console/GBC"
-              >GBC</router-link
+              ><img
+                class="menu-image"
+                src="/assets/console-icons/gbc.png"
+              />GBC</router-link
             >
             <router-link class="sub-menu-item" to="/console/GBA"
-              >GBA</router-link
+              ><img
+                class="menu-image"
+                src="/assets/console-icons/gba.png"
+              />GBA</router-link
             >
             <router-link class="sub-menu-item" to="/console/NDS"
-              >DS</router-link
+              ><img
+                class="menu-image"
+                src="/assets/console-icons/ds.png"
+              />DS</router-link
             >
           </div>
         </li>
@@ -53,13 +88,22 @@
           <a class="main-menu-item dropdown" href="#">Sega</a>
           <div class="dropdown-menu">
             <router-link class="sub-menu-item" to="/console/SMS"
-              >SMS</router-link
+              ><img
+                class="menu-image"
+                src="/assets/console-icons/sms.png"
+              />SMS</router-link
             >
             <router-link class="sub-menu-item" to="/console/SMD"
-              >SMD</router-link
+              ><img
+                class="menu-image"
+                src="/assets/console-icons/md.png"
+              />SMD</router-link
             >
             <router-link class="sub-menu-item" to="/console/SGG"
-              >SGG</router-link
+              ><img
+                class="menu-image"
+                src="/assets/console-icons/gg.png"
+              />SGG</router-link
             >
           </div>
         </li>
@@ -208,7 +252,9 @@ const handleLogout = () => {
 
 a.main-menu-item,
 a.sub-menu-item {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   line-height: 60px;
   color: black;
   font-family: var(--font-press-start);
@@ -242,9 +288,11 @@ a.sub-menu-item {
   border-radius: 100%;
 }
 
-/* Your existing CSS remains the same, then add: */
+.menu-image {
+  width: 24px;
+}
 
-/* Mobile menu button - hidden by default */
+/* MOBILE MENU */
 .mobile-menu-button {
   display: none;
   background: var(--grey);
