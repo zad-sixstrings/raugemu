@@ -21,7 +21,6 @@
 <script>
 import GameList from "./GameCard.vue";
 import EmulatorPopup from "./EmulatorPopup.vue";
-import BrowserWarning from "./BrowserWarning.vue";
 
 export default {
   components: {

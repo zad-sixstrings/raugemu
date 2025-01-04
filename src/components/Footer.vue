@@ -11,3 +11,39 @@
     </div>
   </footer>
 </template>
+<style scoped>
+footer {
+  display: block;
+  height: 200px;
+  text-align: center;
+  padding-top: 50px;
+  color: white;
+  margin-bottom: 100px;
+}
+
+#footer-menu {
+  display: block;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+#footer-text {
+  padding-top: 100px;
+}
+
+#footer-menu ul {
+  list-style-type: none;
+}
+
+#footer-menu li {
+  position: relative;
+  padding: 5px;
+}
+
+#footer-menu li a {
+  font-family: var(--font-press-start);
+  font-weight: 400;
+  font-size: 0.7em;
+  text-align: center;
+}
+</style>

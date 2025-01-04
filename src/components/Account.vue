@@ -75,7 +75,7 @@
 
         <!-- Show search and saves only if there are saves -->
         <template v-if="savesStore.saves.length > 0">
-          <SearchBar v-model="searchQuery" />
+          <SearchBar v-model="savesSearchQuery" />
           <SavesList
             :saves="filteredSaves"
             @delete="confirmDelete"
@@ -94,7 +94,7 @@
         </h3>
 
         <template v-if="gamePlaytime.length > 0">
-          <SearchBar v-model="gameSearchQuery" />
+          <SearchBar v-model="playtimeSearchQuery" />
         </template>
         <div class="playtime-grid">
           <div
@@ -157,7 +157,7 @@ import {
 } from "../utils/playtimeFormat";
 import type { GamePlaytime } from "../types/playtime";
 import { memberdateFormat } from "../utils/memberdateFormat";
-import SearchBar from "./SaveSearchBar.vue";
+import SearchBar from "./SearchBar.vue";
 import SavesList from "./SavesList.vue";
 import DeleteConfirmationDialog from "./DeleteConfirmationDialog.vue";
 import ProfileEditDialog from "./ProfileEditDialog.vue";
@@ -168,11 +168,11 @@ const router = useRouter();
 const authStore = useAuthStore();
 const profileStore = useUserProfileStore();
 const savesStore = useUserSavesStore();
-const searchQuery = ref("");
+const savesSearchQuery = ref("");
 const showConfirmDialog = ref(false);
 const selectedSave = ref<UserSave | null>(null);
 const gamePlaytime = ref<GamePlaytime[]>([]);
-const gameSearchQuery = ref("");
+const playtimeSearchQuery = ref("");
 const showEditDialog = ref(false);
 const achievementsStore = useAchievementsStore();
 // const achievementSearchQuery = ref("");
@@ -197,15 +197,15 @@ const sortedAndFilteredPlaytime = computed(() => {
     return bMinutes - aMinutes;
   });
 
-  if (!gameSearchQuery.value.trim()) return sorted;
-  const query = gameSearchQuery.value.toLowerCase().trim();
+  if (!playtimeSearchQuery.value.trim()) return sorted;
+  const query = playtimeSearchQuery.value.toLowerCase().trim();
   return sorted.filter((game) => game.gamename.toLowerCase().includes(query));
 });
 
 const filteredSaves = computed(() => {
-  if (!searchQuery.value.trim()) return savesStore.saves;
+  if (!savesSearchQuery.value.trim()) return savesStore.saves;
 
-  const query = searchQuery.value.toLowerCase().trim();
+  const query = savesSearchQuery.value.toLowerCase().trim();
   return savesStore.saves.filter((save) =>
     save.game.toLowerCase().includes(query)
   );

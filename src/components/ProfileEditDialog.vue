@@ -267,20 +267,20 @@ async function handleSave() {
 }
 
 .cancel-button {
-  background: var(--red);
-  border-top: 5px solid var(--border-light-red);
-  border-left: 5px solid var(--border-light-red);
-  border-right: 5px solid var(--border-dark-red);
-  border-bottom: 5px solid var(--border-dark-red);
-  color: white;
+  background-color: var(--cancel);
+  border-top: 5px solid var(--cancel-border-light);
+  border-left: 5px solid var(--cancel-border-light);
+  border-right: 5px solid var(--cancel-border-dark);
+  border-bottom: 5px solid var(--cancel-border-dark);
+  color: black;
   cursor: var(--cursor-click);
 }
 
 .cancel-button:active {
-  background: var(--red-active);
-  border-top: 5px solid var(--border-dark-red);
-  border-left: 5px solid var(--border-dark-red);
-  border-right: 5px solid var(--border-light-red);
-  border-bottom: 5px solid var(--border-light-red);
+  background-color: var(--cancel-active);
+  border-top: 5px solid var(--cancel-border-dark);
+  border-left: 5px solid var(--cancel-border-dark);
+  border-right: 5px solid var(--cancel-border-light);
+  border-bottom: 5px solid var(--cancel-border-light);
 }
 </style>

@@ -40,6 +40,9 @@
         L'émulation des consoles rétro nécessite un navigateur performant pour
         garantir une expérience de jeu fluide.
       </p>
+      <p class="about-p">
+        <span class="warning">/!\ </span>Chrome a tout de même ses défauts! L'émulation au sein même d'un navigateur n'est pas une mince affaire. Chrome reste le meilleur choix, mais n'est pas exempt de limitations.
+      </p>
     </section>
     <section>
       <h3 class="about-h3">Contrôleurs</h3>
@@ -146,7 +149,7 @@ onMounted(() => {
 }
 
 .about-h2 {
-  font-family: "Press Start 2P", serif;
+  font-family: var(--font-press-start);
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: italic;
@@ -162,13 +165,13 @@ section {
 h3.about-h3 {
   color: var(--blue);
   margin-bottom: 1rem;
-  font-family: "Press Start 2P", serif;
+  font-family: var(--font-press-start);
   font-weight: 400;
   font-size: 1em;
 }
 
 p.about-p {
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-pixelify);
   font-weight: 400;
   font-size: 1em;
   color: white;
@@ -176,7 +179,7 @@ p.about-p {
 }
 
 p.solved-p {
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-pixelify);
   font-weight: 400;
   font-size: 1em;
   color: var(--green);
@@ -225,8 +228,8 @@ a.about-link:hover {
 }
 
 .api-status {
-  color: #4a9eff;
-  font-family: "Pixelify Sans", serif;
+  color: var(--blue);
+  font-family: var(--font-pixelify);
   font-weight: 400;
   font-size: 1em;
 }
@@ -234,16 +237,20 @@ a.about-link:hover {
 .api-status-under {
   display: block;
   color: rgb(196, 196, 196);
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-pixelify);
   font-weight: 400;
   font-size: 1em;
 }
 
 .api-success {
-  color: yellowgreen;
+  color: var(--green);
 }
 
 .api-error {
   color: var(--red);
+}
+
+.warning {
+  color: var(--yellow);
 }
 </style>

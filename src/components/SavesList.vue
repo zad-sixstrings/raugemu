@@ -93,10 +93,10 @@ span.profile-span {
 
 .delete-button:active {
   background: var(--red-active);
-  border-top: 3px solid var(--border-dark-red);
-  border-left: 3px solid var(--border-dark-red);
-  border-right: 3px solid var(--border-light-red);
-  border-bottom: 3px solid var(--border-light-red);
+  border-top: 5px solid var(--border-dark-red);
+  border-left: 5px solid var(--border-dark-red);
+  border-right: 5px solid var(--border-light-red);
+  border-bottom: 5px solid var(--border-light-red);
 }
 
 .delete-button:hover {

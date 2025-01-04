@@ -34,41 +34,41 @@ const notificationStore = useNotificationStore();
   color: white;
   min-width: 200px;
   text-align: center;
-  font-family: "Press Start 2P", serif;
+  font-family: var(--font-press-start);
   font-optical-sizing: auto;
   font-weight: 400;
 }
 
 .success {
-  background-color: #4caf50;
-  border-top: 5px solid #84df6e;
-  border-left: 5px solid #84df6e;
-  border-right: 5px solid #276e36;
-  border-bottom: 5px solid #276e36;
+  background-color: var(--green);
+  border-top: 5px solid var(--border-light-green);
+  border-left: 5px solid var(--border-light-green);
+  border-right: 5px solid var(--border-dark-green);
+  border-bottom: 5px solid var(--border-dark-green);
 }
 
 .error {
-  background-color: #f44336;
-  border-top: 5px solid #f16615;
-  border-left: 5px solid #f16615;
-  border-right: 5px solid #911d1d;
-  border-bottom: 5px solid #911d1d;
+  background-color: var(--red);
+  border-top: 5px solid var(--border-light-red);
+  border-left: 5px solid var(--border-light-red);
+  border-right: 5px solid var(--border-dark-red);
+  border-bottom: 5px solid var(--border-dark-red);
 }
 
 .warning {
-  background-color: #ff9800;
-  border-top: 5px solid #ffd13b;
-  border-left: 5px solid #ffd13b;
-  border-right: 5px solid #9e460c;
-  border-bottom: 5px solid #9e460c;
+  background-color: var(--yellow);
+  border-top: 5px solid var(--border-light-yellow);
+  border-left: 5px solid var(--border-light-yellow);
+  border-right: 5px solid var(--border-dark-yellow);
+  border-bottom: 5px solid var(--border-dark-yellow);
 }
 
 .info {
-  background-color: #2196f3;
-  border-top: 5px solid #63ceff;
-  border-left: 5px solid #63ceff;
-  border-right: 5px solid #0c479e;
-  border-bottom: 5px solid #0c479e;
+  background-color: var(--blue);
+  border-top: 5px solid var(--border-light-blue);
+  border-left: 5px solid var(--border-light-blue);
+  border-right: 5px solid var(--border-dark-blue);
+  border-bottom: 5px solid var(--border-dark-blue);
 }
 
 /* Transition animations */

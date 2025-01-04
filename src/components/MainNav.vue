@@ -72,7 +72,9 @@
           </div>
         </li>
         <li class="about">
-          <router-link class="main-menu-item" to="/about"> ? </router-link>
+          <router-link class="main-menu-item" to="/about"
+            ><img class="about-icon" src="/assets/about-icon.png"
+          /></router-link>
         </li>
         <li class="last">
           <a class="main-menu-item dropdown" href="#">
@@ -80,7 +82,7 @@
               class="account-icon"
               :src="
                 authStore.isAuthenticated
-                  ? '/assets/account-loggedin.png'
+                  ? '/assets/profilepic/default.png'
                   : '/assets/account.png'
               "
               :alt="authStore.isAuthenticated ? 'Connecté' : 'Non connecté'"
@@ -121,3 +123,108 @@ const handleLogout = () => {
   router.push("/");
 };
 </script>
+<style scoped>
+/* MAIN MENU */
+#main-menu {
+  height: 80px;
+  margin: 0 0 30px 0;
+}
+
+#main-menu ul {
+  list-style-type: none;
+  height: 70px;
+  margin: 0;
+  padding: 0;
+  background: var(--grey);
+  border-top: 5px solid var(--border-light-grey);
+  border-left: 5px solid var(--border-light-grey);
+  border-right: 5px solid var(--border-dark-grey);
+  border-bottom: 5px solid var(--border-dark-grey);
+}
+
+#main-menu li {
+  position: relative;
+  float: left;
+  height: 60px;
+  background-color: var(--grey);
+  border-top: 5px solid var(--border-light-grey);
+  border-left: 5px solid var(--border-light-grey);
+  border-right: 5px solid var(--border-dark-grey);
+  border-bottom: 5px solid var(--border-dark-grey);
+  transition: border 0.2s;
+  transition: background-color 0.2s;
+}
+
+#main-menu li.last {
+  float: right;
+}
+
+#main-menu li.about {
+  float: right;
+}
+
+.about-icon {
+  width: 25px;
+}
+
+#main-menu li.about:hover .about-icon {
+  content: url('/assets/about-icon.gif');
+}
+
+.dropdown-menu {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 120%;
+  left: 0;
+  width: 170px;
+  z-index: 5;
+  background: var(--grey);
+  border-top: 5px solid var(--border-light-grey);
+  border-left: 5px solid var(--border-light-grey);
+  border-right: 5px solid var(--border-dark-grey);
+  border-bottom: 5px solid var(--border-dark-grey);
+  transition: opacity 0.2s ease-in-out, visibility 1s;
+}
+
+#main-menu li:hover .dropdown-menu {
+  visibility: visible;
+  opacity: 1;
+}
+
+.dropdown-menu-last {
+  left: -220%;
+  width: 200px;
+}
+
+a.main-menu-item,
+a.sub-menu-item {
+  display: block;
+  line-height: 60px;
+  color: black;
+  font-family: var(--font-press-start);
+  font-weight: 400;
+  font-size: 0.7em;
+  text-align: center;
+  padding: 0 20px 0 20px;
+  text-decoration: none;
+  transition: border 0.1s;
+  transition: background-color 0.1s;
+}
+
+.sub-menu-item:hover {
+  background-color: var(--grey-active);
+  border-top: 5px solid var(--border-dark-grey);
+  border-left: 5px solid var(--border-dark-grey);
+  border-right: 5px solid var(--border-light-grey);
+  border-bottom: 5px solid var(--border-light-grey);
+}
+
+#main-menu li:hover {
+  background-color: var(--grey-active);
+  border-top: 5px solid var(--border-dark-grey);
+  border-left: 5px solid var(--border-dark-grey);
+  border-right: 5px solid var(--border-light-grey);
+  border-bottom: 5px solid var(--border-light-grey);
+}
+</style>

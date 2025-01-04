@@ -62,18 +62,18 @@ async function handleSubmit() {
 }
 
 .error-message {
-  color: #dc3545;
+  color: var(--red);
   margin: 10px 0;
   text-align: center;
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-pixelify);
   font-weight: 400;
 }
 
 .success-message {
-  color: #22c922;
+  color: var(--green);
   margin: 10px 0;
   text-align: center;
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-pixelify);
   font-weight: 400;
 }
 
@@ -84,11 +84,11 @@ button:disabled {
 
 .form-group input[type="email"] {
   padding: 10px;
-  border-top: 5px solid rgb(59, 59, 59);
-  border-left: 5px solid rgb(59, 59, 59);
-  border-right: 5px solid rgb(161, 161, 161);
-  border-bottom: 5px solid rgb(161, 161, 161);
-  font-family: "Pixelify Sans", serif;
+  border-top: 5px solid var(--border-dark-grey);
+  border-left: 5px solid var(--border-dark-grey);
+  border-right: 5px solid var(--border-light-grey);
+  border-bottom: 5px solid var(--border-light-grey);
+  font-family: var(--font-pixelify);
   font-weight: 400;
   font-size: 1em;
 }

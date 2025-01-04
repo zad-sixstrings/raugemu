@@ -6,7 +6,7 @@
       @input="
         $emit('update:modelValue', ($event.target as HTMLInputElement).value)
       "
-      placeholder="Rechercher une sauvegarde..."
+      placeholder="Rechercher..."
       class="search-input"
     />
   </div>
@@ -29,27 +29,29 @@ defineEmits<{
 .search-input {
   width: 100%;
   padding: 0.75rem;
-  background-color: rgb(38, 57, 66);
-  border: 1px solid rgb(74, 158, 255);
-  border-radius: 4px;
+  background-color: var(--search-input);
+  border-top: 5px solid var(--border-dark-blue);
+  border-left: 5px solid var(--border-dark-blue);
+  border-right: 5px solid var(--border-light-blue);
+  border-bottom: 5px solid var(--border-light-blue);
+  border-radius: 5px;
   color: white;
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-pixelify);
 }
 
 .search-input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-  font-family: "Pixelify Sans", serif;
+  color: var(--search-input-ph);
+  font-family: var(--font-pixelify);
 }
 
 .search-input:focus {
   outline: none;
-  border-color: rgb(74, 158, 255);
-  box-shadow: 0 0 0 2px rgba(74, 158, 255, 0.2);
+  background-color: var(--search-input-focus);
 }
 
 .no-results {
   text-align: center;
   padding: 2rem;
-  color: red;
+  color: var(--red);
 }
 </style>

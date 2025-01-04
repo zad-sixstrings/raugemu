@@ -265,11 +265,11 @@ export default {
   width: 100%;
   height: 100%;
   max-height: 850px;
-  background: rgb(122, 122, 122);
-  border-top: 5px solid rgb(161, 161, 161);
-  border-left: 5px solid rgb(161, 161, 161);
-  border-right: 5px solid rgb(59, 59, 59);
-  border-bottom: 5px solid rgb(59, 59, 59);
+  background: var(--grey);
+  border-top: 5px solid var(--border-light-grey);
+  border-left: 5px solid var(--border-light-grey);
+  border-right: 5px solid var(--border-dark-grey);
+  border-bottom: 5px solid var(--border-dark-grey);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -282,13 +282,13 @@ button.close-popup {
   height: 28px;
   border-top-right-radius: 5px;
   border: none;
-  background: #ff4444;
-  border-top: 3px solid #f38a83;
-  border-left: 3px solid #f38a83;
-  border-right: 3px solid #7a151d;
-  border-bottom: 3px solid #7a151d;
+  background: var(--red);
+  border-top: 5px solid var(--border-light-red);
+  border-left: 5px solid var(--border-light-red);
+  border-right: 5px solid var(--border-dark-red);
+  border-bottom: 5px solid var(--border-dark-red);
   color: white;
-  font-family: "Press Start 2P", serif;
+  font-family: var(--font-press-start);
   font-optical-sizing: auto;
   font-weight: 400;
   font-size: 10px;
@@ -305,11 +305,11 @@ button.close-popup:hover {
 }
 
 button.close-popup:active {
-  background: #da3434;
-  border-top: 3px solid #7a151d;
-  border-left: 3px solid #7a151d;
-  border-right: 3px solid #f38a83;
-  border-bottom: 3px solid #f38a83;
+  background: var(--red-active);
+  border-top: 5px solid var(--border-dark-red);;
+  border-left: 5px solid var(--border-dark-red);;
+  border-right: 5px solid var(--border-light-red);
+  border-bottom: 5px solid var(--border-light-red);
 }
 
 .game-wrapper {

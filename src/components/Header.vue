@@ -14,6 +14,16 @@
 </template>
 
 <style scoped>
+header {
+  height: 200px;
+  margin: 0 10px 0 10px;
+  pointer-events: none;
+}
+
+.header-wrapper {
+  padding: 50px 0 0 50px;
+}
+
 .header-warning span {
   position: absolute;
   color: var(--yellow);
