@@ -21,7 +21,7 @@ const notificationStore = useNotificationStore();
 <style scoped>
 .notifications-container {
   position: fixed;
-  top: 15%;
+  top: 13%;
   right: 15%;
   z-index: 1005;
 }
