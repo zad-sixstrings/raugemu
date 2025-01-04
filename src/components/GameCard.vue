@@ -15,7 +15,7 @@
         :data-game="game.romPath"
         @click="startGame(game.romPath)"
       >
-        <p class="play-button-text center">PLAY</p>
+        <p class="center">PLAY</p>
       </div>
     </div>
   </template>
@@ -64,9 +64,9 @@ export default {
   background: repeating-linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.35),
-    /* Slightly less dark for better contrast */ rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.35),
     transparent 4px,
-    /* Slightly tighter pattern */ transparent 8px
+    transparent 8px
   );
 }
 
@@ -138,6 +138,14 @@ export default {
   border-left: 5px solid var(--border-light-blue);
   border-right: 5px solid var(--border-dark-blue);
   border-bottom: 5px solid var(--border-dark-blue);
+  font-family: var(--font-press-start);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 5px;
+  text-align: center;
+  color: white;
+  font-size: 1em;
   transition: background-color 0.3s;
   transition: border 0.3s;
   transition: font-size 0.2s;

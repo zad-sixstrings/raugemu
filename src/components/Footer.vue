@@ -14,6 +14,9 @@
 <style scoped>
 footer {
   display: block;
+  margin: 2rem auto;
+  max-width: 80%;
+  width: 100%;
   height: 200px;
   text-align: center;
   padding-top: 50px;
@@ -45,5 +48,18 @@ footer {
   font-weight: 400;
   font-size: 0.7em;
   text-align: center;
+}
+
+.credentials,
+.copyright {
+  font-family: var(--font-press-start);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 0.6em;
+  line-height: 20px;
+}
+
+.credentials {
+  padding-bottom: 15px;
 }
 </style>

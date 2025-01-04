@@ -50,42 +50,15 @@
   --radius-small: 5px;
 }
 
-/*  FONTS */
-.main-title {
-  font-family: var(--font-press-start);
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 4em;
-  position: absolute;
-  margin-left: 100px;
+/* RESET CSS */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.main-title-sub {
-  font-family: var(--font-pixelify);
-  font-weight: 400;
-  font-optical-sizing: auto;
-  font-style: normal;
-  font-size: 1.6em;
-  position: absolute;
-  margin-left: 100px;
-  margin-top: 70px;
-}
-
-.play-button-text {
-  font-family: var(--font-press-start);
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  letter-spacing: 5px;
-  text-align: center;
-  font-size: 0.7em;
-  color: white;
-  pointer-events: none;
-  line-height: 30px;
-  font-size: 1em;
-}
-
+/*  GLOBAL FONTS STYLING */
 .featured-games-title {
   font-family: var(--font-press-start);
   font-optical-sizing: auto;
@@ -95,18 +68,6 @@
   font-size: 1.4em;
   line-height: 40px;
   padding-left: 30px;
-}
-
-.press-start-font {
-  font-family: var(--font-press-start);
-  font-weight: 400;
-  font-style: normal;
-}
-
-.micro-5-font {
-  font-family: var(--font-micro);
-  font-weight: 400;
-  font-style: normal;
 }
 
 .blue-text {
@@ -125,29 +86,22 @@
   font-style: italic;
 }
 
-.credentials,
-.copyright {
-  font-family: var(--font-press-start);
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-size: 0.6em;
-  line-height: 20px;
+a {
+  color: var(--blue);
+  text-decoration: none;
 }
 
-.credentials {
-  padding-bottom: 15px;
+a:hover {
+  text-decoration: underline;
+  cursor: url("/assets/cursor-click.png"), auto;
 }
 
-/* RESET CSS */
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+a:visited {
+  color: var(--blue);
+  text-decoration: none;
 }
 
 /* GLOBAL SETTINGS */
-
 body,
 html {
   background-color: var(--bg-main);
@@ -155,6 +109,7 @@ html {
 }
 
 body::after {
+  /* Scanlines FX */
   content: "";
   position: fixed;
   top: 0;
@@ -173,43 +128,20 @@ body::after {
   z-index: 9999;
 }
 
-.hidden {
+/* SCROLLBARS BEGONE */
+/* Scrollable areas are indicated by alpha gradients instead. */
+*::-webkit-scrollbar {
+  /* Chrome */
   display: none;
 }
 
-a {
-  color: var(--blue);
-  text-decoration: none;
+* {
+  /* Others */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-a:hover {
-  text-decoration: underline;
-  cursor: url("/assets/cursor-click.png"), auto;
-}
-
-a:visited {
-  color: var(--blue);
-  text-decoration: none;
-}
-
-/* SCROLLBARS BEGONE */
-#featured-container::-webkit-scrollbar {
-  display: none; /* Chrome */
-}
-
-#featured-container,
-.saves-content,
-.playtime-grid {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-/* LOGO */
-.logo {
-  width: 60px;
-}
-
-/* DIVS LAYOUT */
+/* GLOBAL DIVS LAYOUT */
 #main-wrapper {
   display: block;
   margin: 3rem auto;
@@ -221,10 +153,6 @@ a:visited {
   border-right: 5px solid var(--border-dark-content);
   border-bottom: 5px solid var(--border-dark-content);
   border-radius: var(--radius-big);
-}
-
-#featured-games::-webkit-scrollbar {
-  display: none;
 }
 
 .featured-games-title-wrapper {
@@ -239,13 +167,18 @@ a:visited {
 
 .featured-games-title-wrapper,
 #content {
-  margin: 0 40px 0 40px;
+  margin: 0 auto;
+  max-width: 80%;
+  width: 100%;
 }
 
 #featured-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  margin: 0 auto;
+  width: 100%;
+  padding: 2rem;
   border-left: 5px solid var(--border-light-purple);
   border-bottom: 5px solid var(--border-dark-purple);
   border-right: 5px solid var(--border-dark-purple);
@@ -254,12 +187,10 @@ a:visited {
   border-bottom-right-radius: 10px;
   margin-bottom: 50px;
   overflow: scroll;
-  padding: 20px;
   background-color: var(--bg-featured);
 }
 
 /* LOGIN AND REGISTER FORMS */
-
 .auth-container {
   max-width: 400px;
   margin: 2rem auto;
@@ -401,12 +332,6 @@ input {
     max-width: 80%;
     width: 100%;
   }
-  .main-title {
-    font-size: 3rem;
-  }
-  .main-title-sub {
-    font-size: 1.2em;
-  }
 }
 @media (max-width: 1024px) {
   #main-wrapper {
@@ -414,24 +339,12 @@ input {
     max-width: 90%;
     width: 100%;
   }
-  .main-title {
-    font-size: 3rem;
-  }
-  .main-title-sub {
-    font-size: 1.2em;
-  }
 }
 @media (max-width: 768px) {
   #main-wrapper {
     margin: 2rem auto;
     max-width: 95%;
     width: 100%;
-  }
-  .main-title {
-    font-size: 3rem;
-  }
-  .main-title-sub {
-    font-size: 1.2em;
   }
 }
 @media (max-width: 640px) {
@@ -441,7 +354,7 @@ input {
     width: 100%;
   }
   .main-title {
-    font-size: 3rem;
+    font-size: 1em;
   }
   .main-title-sub {
     font-size: 1.2em;
@@ -453,10 +366,11 @@ input {
     max-width: 95%;
     width: 100%;
   }
-  .main-title {
-    font-size: 2rem;
-  }
-  .main-title-sub {
-    font-size: 1em;
+
+  .featured-games-title-wrapper,
+  #content {
+    margin: 0 auto;
+    max-width: 95%;
+    width: 100%;
   }
 }

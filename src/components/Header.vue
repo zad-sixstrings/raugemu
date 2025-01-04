@@ -1,35 +1,98 @@
 <template>
   <header>
-    <div class="header-wrapper">
-      <h1 class="main-title blue-text">RaugEmu</h1>
-      <h2 class="main-title-sub purple-text">
-        You rip 'em, we emulate 'em.&reg;
-      </h2>
+    <div class="logo-wrapper">
       <img src="/assets/raugemu-logo.png" alt="Logo" class="logo" />
-      <div class="header-warning">
-        <span>/!\ L'émulation Nintendo 64 est actuellement éclatax.</span>
+    </div>
+    <div class="titles-wrapper">
+      <div class="main-title-wrapper">
+        <h1 class="main-title blue-text">RaugEmu</h1>
+      </div>
+      <div class="sub-title-wrapper">
+        <h2 class="main-title-sub purple-text">
+          You rip 'em, we emulate 'em.&reg;
+        </h2>
       </div>
     </div>
   </header>
+  <div class="header-warning">
+      <span>/!\ L'émulation Nintendo 64 est actuellement éclatax.</span>
+    </div>
 </template>
 
 <style scoped>
 header {
-  height: 200px;
-  margin: 0 10px 0 10px;
+  display: flex;
+  height: 150px;
+  margin: 0 auto;
+  width: 100%;
   pointer-events: none;
 }
 
-.header-wrapper {
-  padding: 50px 0 0 50px;
+.logo-wrapper {
+  height: 100%;
+  margin: 1rem 2rem;
+}
+
+.logo {
+  width: 120px;
+}
+
+.titles-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 3rem auto;
+  width: 100%
+}
+
+.main-title {
+  font-family: var(--font-press-start);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 3rem;
+}
+
+.main-title-sub {
+  font-family: var(--font-pixelify);
+  font-weight: 400;
+  font-optical-sizing: auto;
+  font-size: 1.5rem;
+}
+
+.header-warning {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 1rem;
 }
 
 .header-warning span {
-  position: absolute;
   color: var(--yellow);
   font-family: "Pixelify Sans", serif;
   font-weight: 400;
   font-size: 0.9em;
-  padding-top: 50px;
+}
+
+@media (max-width: 640px) {
+  .main-title {
+    font-size: 2rem;
+  }
+  .main-title-sub {
+    font-size: 1rem;
+  }
+  .logo {
+    width: 80px;
+  }
+}
+@media (max-width: 475px) {
+  .main-title {
+    font-size: 1.4rem;
+  }
+  .main-title-sub {
+    font-size: 0.8rem;
+  }
+  .logo {
+    width: 50px;
+    margin: 2rem auto;
+  }
 }
 </style>

@@ -252,8 +252,9 @@ a.sub-menu-item {
   border-left: 5px solid var(--border-light-grey);
   border-right: 5px solid var(--border-dark-grey);
   border-bottom: 5px solid var(--border-dark-grey);
+  border-radius: 5px;
   padding: 1rem;
-  cursor: pointer;
+  cursor: var(--cursor-click);
   position: relative;
   z-index: 100;
 }
@@ -262,7 +263,7 @@ a.sub-menu-item {
   display: block;
   width: 1.5rem;
   height: 2px;
-  background: white;
+  background: black;
   position: relative;
   transition: all 0.3s;
 }
@@ -273,16 +274,18 @@ a.sub-menu-item {
   position: absolute;
   width: 1.5rem;
   height: 2px;
-  background: white;
+  background: black;
   transition: all 0.3s;
 }
 
 .hamburger::before {
   top: -6px;
+  left: 0;
 }
 
 .hamburger::after {
   top: 6px;
+  left: 0;
 }
 
 /* Responsive styles */
@@ -295,8 +298,8 @@ a.sub-menu-item {
   .mobile-menu-button {
     display: block;
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 2.3rem;
+    right: 1.4rem;
   }
 
   nav {
