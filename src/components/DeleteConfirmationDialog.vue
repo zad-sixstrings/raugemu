@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import type { UserSave } from "../types/saves";
+import type { UserSave } from "../types/user";
 
 defineProps<{
   save: UserSave | null;

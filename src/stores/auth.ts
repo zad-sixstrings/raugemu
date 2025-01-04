@@ -3,7 +3,6 @@ import { ref, computed } from "vue";
 import type { User, LoginCredentials } from "../types/auth";
 import { useNotificationStore } from "./notifications";
 import { authApi } from "../services/api";
-// import { useRouter } from "vue-router";
 import { useUserProfileStore } from "./userProfile";
 import { useUserSavesStore } from "./userSaves";
 
@@ -12,7 +11,6 @@ export const useAuthStore = defineStore("auth", () => {
   const loading = ref(false);
   const error = ref("");
   const isAuthenticated = computed(() => !!user.value);
-
   const notificationStore = useNotificationStore();
   const userProfileStore = useUserProfileStore();
   const userSavesStore = useUserSavesStore();
@@ -20,7 +18,6 @@ export const useAuthStore = defineStore("auth", () => {
   async function login(credentials: LoginCredentials) {
     loading.value = true;
     error.value = "";
-
     try {
       const userData = await authApi.login(credentials);
       setUser(userData);
@@ -57,10 +54,15 @@ export const useAuthStore = defineStore("auth", () => {
     const token = localStorage.getItem("token");
     if (token) {
       try {
+        // Update the temporary user object to match UserProfile structure
         setUserSilently({
           id: "temp-id",
-          username: "temp-username",
+          nickname: "temp-username",
           email: "temp-email",
+          creation_date: new Date().toISOString(),
+          profile: "",
+          saves: 0,
+          imagePath: ""
         } as User);
       } catch (error) {
         console.error("Failed to initialize auth:", error);

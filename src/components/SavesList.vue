@@ -28,7 +28,7 @@
 
 <script setup lang="ts">
 import { formatDateTime } from "../utils/dateFormat";
-import type { UserSave } from "../types/saves";
+import type { UserSave } from "../types/user";
 
 defineProps<{
   saves: UserSave[];

@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import type { UserSave } from "../services/api";
+import type { UserSave } from "../types/user";
 import { authApi } from "../services/api";
 import { useNotificationStore } from "./notifications";
 

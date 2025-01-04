@@ -1,12 +1,13 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import type { UserProfile, PlaytimeData } from "../services/api";
+import type { UserProfile, PlaytimeData } from "../types/user";
+// import type { ApiPlaytimeData } from "../types/api";
 import { authApi } from "../services/api";
 import { useNotificationStore } from "./notifications";
+import { convertApiTimeFormat } from "../utils/playtimeFormat";
 
 export const useUserProfileStore = defineStore("userProfile", () => {
   const profile = ref<UserProfile | null>(null);
-  // const extendedProfile = ref<ExtendedUserProfile | null>(null);
   const notificationStore = useNotificationStore();
   const loading = ref(false);
   const error = ref<string | null>(null);
@@ -27,7 +28,8 @@ export const useUserProfileStore = defineStore("userProfile", () => {
 
   async function fetchPlaytime() {
     try {
-      playtime.value = await authApi.getPlaytime();
+      const apiData = await authApi.getPlaytime();
+      playtime.value = apiData.map(game => convertApiTimeFormat(game));
     } catch (error) {
       notificationStore.addNotification(
         "Erreur lors du chargement du temps de jeu",
@@ -50,13 +52,16 @@ export const useUserProfileStore = defineStore("userProfile", () => {
       notificationStore.addNotification("Profil mis à jour avec succès", "success");
     } catch (err) {
       error.value = "Erreur lors de la mise à jour du profil";
-      notificationStore.addNotification("Erreur lors de la mise à jour du profil", "error");
+      notificationStore.addNotification(
+        "Erreur lors de la mise à jour du profil",
+        "error"
+      );
       throw err;
     } finally {
       loading.value = false;
     }
   }
-  
+
   async function updateAvatar(file: File) {
     try {
       loading.value = true;
@@ -68,7 +73,10 @@ export const useUserProfileStore = defineStore("userProfile", () => {
       notificationStore.addNotification("Avatar mis à jour avec succès", "success");
     } catch (err) {
       error.value = "Erreur lors de la mise à jour de l'avatar";
-      notificationStore.addNotification("Erreur lors de la mise à jour de l'avatar", "error");
+      notificationStore.addNotification(
+        "Erreur lors de la mise à jour de l'avatar",
+        "error"
+      );
       throw err;
     } finally {
       loading.value = false;

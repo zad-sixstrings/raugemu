@@ -1,50 +1,15 @@
 import type { LoginCredentials, RegisterCredentials } from "../types/auth";
-
-export interface UserProfile {
-  id: string;
-  nickname: string;
-  email: string;
-  creation_date: string;
-  profile: string;
-  saves: number;
-  imagePath: string;
-}
-
-export interface UserSave {
-  id: string;
-  game: string;
-  console: string;
-  creation_date: string;
-  change_date: string;
-}
-
-export interface ApiStatus {
-  message: string;
-}
-
-export interface PlaytimeData {
-  gamename: string;
-  playedtime: {
-    seconds: number;
-    milliseconds: number;
-  };
-}
-
-export interface ProfileUpdateData {
-  profileText: string;
-}
-
-export interface AvatarUpdateResponse {
-  success: boolean;
-  imagePath: string;
-}
-
-export interface Achievement {
-  game: string;
-  achievementname: string;
-  description: string;
-  unlockdate: string;
-}
+import type {
+  UserProfile,
+  UserSave,
+  Achievement
+} from "../types/user";
+import type {
+  ApiResponse,
+  ApiStatus,
+  AvatarUpdateResponse,
+  ApiPlaytimeData
+} from "../types/api";
 
 const API_URL = import.meta.env.VITE_API_URL;
 if (!API_URL) {
@@ -71,14 +36,14 @@ export const authApi = {
       }
 
       const data = await response.json();
-      return data; // Return the full API status
+      return data;
     } catch (error) {
       console.error("Get API status error:", error);
       throw error;
     }
   },
 
-  async login(credentials: LoginCredentials) {
+  async login(credentials: LoginCredentials): Promise<UserProfile> {
     try {
       const response = await fetch(`${API_URL}/login`, {
         method: "POST",
@@ -100,7 +65,8 @@ export const authApi = {
       throw error;
     }
   },
-  async register(credentials: RegisterCredentials) {
+
+  async register(credentials: RegisterCredentials): Promise<UserProfile> {
     try {
       const response = await fetch(`${API_URL}/register`, {
         method: "POST",
@@ -114,8 +80,8 @@ export const authApi = {
         throw new Error("Registration failed");
       }
 
-      const data = await response.json();
-      return data.user;
+      const data: ApiResponse<{ user: UserProfile }> = await response.json();
+      return data.data?.user ?? Promise.reject(new Error("No user data received"));
     } catch (error) {
       console.error("Registration error:", error);
       throw error;
@@ -168,12 +134,10 @@ export const authApi = {
 
       const data = await response.json();
 
-      // Check for the "no saves" response
       if (data.message === "No save file found") {
         return [];
       }
 
-      // If we have saves, sort and return them
       return data.sort((a: UserSave, b: UserSave) =>
         a.game.localeCompare(b.game, "fr-FR")
       );
@@ -205,7 +169,8 @@ export const authApi = {
       throw error;
     }
   },
-  async getPlaytime(): Promise<PlaytimeData[]> {
+
+  async getPlaytime(): Promise<ApiPlaytimeData[]> {
     try {
       const token = localStorage.getItem("token");
       if (!token) {
@@ -224,14 +189,15 @@ export const authApi = {
         throw new Error("Failed to fetch playtime");
       }
 
-      return await response.json();
+      const apiData: ApiPlaytimeData[] = await response.json();
+      return apiData;
     } catch (error) {
       console.error("Get playtime error:", error);
       throw error;
     }
   },
 
-  async updateProfile(profileData: ProfileUpdateData): Promise<UserProfile> {
+  async updateProfile(profileData: { profileText: string }): Promise<UserProfile> {
     try {
       const token = localStorage.getItem("token");
       if (!token) {
@@ -273,7 +239,7 @@ export const authApi = {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-        body: "multipart/form-data",
+        body: formData,  // Fixed: removed the string "multipart/form-data"
       });
   
       if (!response.ok) {
@@ -286,6 +252,7 @@ export const authApi = {
       throw error;
     }
   },
+
   async getAchievements(): Promise<Achievement[]> {
     try {
       const token = localStorage.getItem("token");
@@ -307,17 +274,13 @@ export const authApi = {
   
       const data = await response.json();
       
-      // Check for the "no achievements" response
       if (data.message === "No achievements found") {
         return [];
       }
   
-      // If we have achievements, sort them by game name and unlock date
       return data.sort((a: Achievement, b: Achievement) => {
-        // First sort by game
         const gameCompare = a.game.localeCompare(b.game, "fr-FR");
         if (gameCompare !== 0) return gameCompare;
-        // Then by unlock date (most recent first)
         return new Date(b.unlockdate).getTime() - new Date(a.unlockdate).getTime();
       });
     } catch (error) {
@@ -325,4 +288,4 @@ export const authApi = {
       throw error;
     }
   }
-};
+}

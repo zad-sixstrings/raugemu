@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import { authApi, type ApiStatus } from "../services/api";
+import { authApi } from "../services/api";
+import type { ApiStatus } from "../types/api";
 
 export const useApiStatusStore = defineStore("apiStatus", () => {
   const status = ref<ApiStatus | null>(null);

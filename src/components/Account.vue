@@ -148,13 +148,13 @@ import { useAuthStore } from "../stores/auth";
 import { authApi } from "../services/api";
 import { useUserProfileStore } from "../stores/userProfile";
 import { useUserSavesStore } from "../stores/userSaves";
-import type { UserSave } from "../types/saves";
+import type { PlaytimeData, UserSave } from "../types/user";
 import {
   convertApiTimeFormat,
   playtimeFormat,
   getTotalPlaytime,
 } from "../utils/playtimeFormat";
-import type { GamePlaytime } from "../types/playtime";
+// import type { GamePlaytime } from "../types/user";
 import { memberdateFormat } from "../utils/memberdateFormat";
 import SearchBar from "./SearchBar.vue";
 import SavesList from "./SavesList.vue";
@@ -162,6 +162,7 @@ import DeleteConfirmationDialog from "./DeleteConfirmationDialog.vue";
 import ProfileEditDialog from "./ProfileEditDialog.vue";
 // import AchievementsList from './AchievementsList.vue';
 import { useAchievementsStore } from "../stores/achievements";
+// import type { ApiPlaytimeData } from "../types/api";
 
 const router = useRouter();
 const authStore = useAuthStore();
@@ -170,7 +171,7 @@ const savesStore = useUserSavesStore();
 const savesSearchQuery = ref("");
 const showConfirmDialog = ref(false);
 const selectedSave = ref<UserSave | null>(null);
-const gamePlaytime = ref<GamePlaytime[]>([]);
+const gamePlaytime = ref<PlaytimeData[]>([]);
 const playtimeSearchQuery = ref("");
 const showEditDialog = ref(false);
 const achievementsStore = useAchievementsStore();
@@ -229,7 +230,6 @@ onMounted(async () => {
     return;
   }
   try {
-    // Fetch all data in parallel
     await Promise.all([
       profileStore.fetchProfile(),
       savesStore.fetchSaves(),
@@ -237,7 +237,7 @@ onMounted(async () => {
       achievementsStore.fetchAchievements(),
       (async () => {
         const apiData = await authApi.getPlaytime();
-        gamePlaytime.value = apiData.map((game) => convertApiTimeFormat(game));
+        gamePlaytime.value = apiData.map(game => convertApiTimeFormat(game));
       })(),
     ]);
   } catch (error) {

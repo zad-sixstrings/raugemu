@@ -14,7 +14,7 @@
   </template>
   
   <script setup lang="ts">
-  import type { Achievement } from '../services/api';
+  import type { Achievement } from '../types/user';
   import { formatDateTime } from '../utils/dateFormat';
   
   defineProps<{
