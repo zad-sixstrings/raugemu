@@ -6,6 +6,7 @@ export interface UserProfile {
     profile: string;
     saves: number;
     imagePath: string;
+    userright: 'admin' | 'player';
   }
   
   export interface UserSave {
