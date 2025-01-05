@@ -6,7 +6,7 @@ import type {
   AvatarUpdateResponse,
   ApiPlaytimeData,
 } from "../types/api";
-import type { RomData, RomUpdatePayload } from "../types/roms";
+import type { RomData, RomUpdatePayload, ExistingRomUpdatePayload } from "../types/roms";
 
 const API_URL = import.meta.env.VITE_API_URL;
 if (!API_URL) {
@@ -320,9 +320,36 @@ export const romApi = {
     }
   },
 
+  async getAllRoms(): Promise<RomData[]> {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No authentication token found");
+      }
+
+      const response = await fetch(`${API_URL}/roms/getromslist`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch ROM list");
+      }
+
+      return await response.json();
+    } catch (error) {
+      // Only log the error here, let the caller handle it
+      throw new Error("Failed to fetch ROM list");
+    }
+  },
+
   async updateRomInfo(
     romPath: string,
-    updateData: RomUpdatePayload
+    updateData: RomUpdatePayload,
+    consoleid: string
   ): Promise<void> {
     try {
       const token = localStorage.getItem("token");
@@ -338,6 +365,7 @@ export const romApi = {
         },
         body: JSON.stringify({
           romPath,
+          consoleid,
           ...updateData,
         }),
       });
@@ -347,6 +375,31 @@ export const romApi = {
       }
     } catch (error) {
       console.error("Update ROM info error:", error);
+      throw error;
+    }
+  },
+
+  async updateExistingRom(updateData: ExistingRomUpdatePayload): Promise<void> {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No authentication token found");
+      }
+
+      const response = await fetch(`${API_URL}/roms/updateromdata`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(updateData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update ROM information");
+      }
+    } catch (error) {
+      console.error("Update existing ROM error:", error);
       throw error;
     }
   },
