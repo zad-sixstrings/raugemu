@@ -6,7 +6,7 @@ import type {
   AvatarUpdateResponse,
   ApiPlaytimeData,
 } from "../types/api";
-import type { RomData, RomUpdatePayload, ExistingRomUpdatePayload } from "../types/roms";
+import type { RomData, RomUpdatePayload } from "../types/roms";
 
 const API_URL = import.meta.env.VITE_API_URL;
 if (!API_URL) {
@@ -356,7 +356,7 @@ export const romApi = {
       if (!token) {
         throw new Error("No authentication token found");
       }
-
+  
       const response = await fetch(`${API_URL}/roms/registernewroms`, {
         method: "POST",
         headers: {
@@ -364,12 +364,16 @@ export const romApi = {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          romPath,
           consoleid,
-          ...updateData,
+          title: updateData.title,
+          year: updateData.year,
+          developer: updateData.developer,
+          categories: updateData.categories,
+          boxArtPath: updateData.boxArtPath,
+          romPath: romPath // Use the romPath parameter instead of from updateData
         }),
       });
-
+  
       if (!response.ok) {
         throw new Error("Failed to update ROM information");
       }
@@ -379,12 +383,15 @@ export const romApi = {
     }
   },
 
-  async updateExistingRom(updateData: ExistingRomUpdatePayload): Promise<void> {
+
+  async updateExistingRom(updateData: RomUpdatePayload): Promise<void> {
     try {
       const token = localStorage.getItem("token");
       if (!token) {
         throw new Error("No authentication token found");
       }
+
+      console.log("Updating existing ROM with data:", updateData);
 
       const response = await fetch(`${API_URL}/roms/updateromdata`, {
         method: "POST",
@@ -396,11 +403,12 @@ export const romApi = {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to update ROM information");
+        const errorData = await response.text();
+        throw new Error(`Failed to update ROM information: ${errorData}`);
       }
     } catch (error) {
       console.error("Update existing ROM error:", error);
       throw error;
     }
-  },
+  }
 };

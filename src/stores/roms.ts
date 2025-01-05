@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import type { RomData, RomUpdatePayload, ExistingRomUpdatePayload } from "../types/roms";
+import type { RomData, RomUpdatePayload } from "../types/roms";
 import { romApi } from "../services/api";
 
 export const useRomStore = defineStore("rom", () => {
@@ -30,7 +30,8 @@ export const useRomStore = defineStore("rom", () => {
       existingRoms.value = await romApi.getAllRoms();
     } catch (err) {
       console.error("Get all ROMs error:", err);
-      error.value = err instanceof Error ? err.message : "Failed to load existing ROMs";
+      error.value =
+        err instanceof Error ? err.message : "Failed to load existing ROMs";
       existingRoms.value = [];
       throw err;
     } finally {
@@ -38,21 +39,25 @@ export const useRomStore = defineStore("rom", () => {
     }
   }
 
-  async function updateRomInfo(romPath: string, updateData: RomUpdatePayload, consoleid: string) {
+  async function updateRomInfo(
+    romPath: string,
+    updateData: RomUpdatePayload,
+    consoleid: string
+  ) {
     try {
       loading.value = true;
       error.value = null;
 
-      const rom = newRoms.value.find(r => r.romPath === romPath);
+      const rom = newRoms.value.find((r) => r.romPath === romPath);
       if (!rom) {
         throw new Error("ROM not found in current list");
       }
 
       await romApi.updateRomInfo(romPath, updateData, consoleid);
-      
+
       // Remove the updated ROM from the new ROMs list
-      newRoms.value = newRoms.value.filter(rom => rom.romPath !== romPath);
-      
+      newRoms.value = newRoms.value.filter((rom) => rom.romPath !== romPath);
+
       // Refresh the existing ROMs list
       await fetchAllRoms();
     } catch (err) {
@@ -64,14 +69,13 @@ export const useRomStore = defineStore("rom", () => {
     }
   }
 
-  async function updateExistingRom(updateData: ExistingRomUpdatePayload) {
+
+  async function updateExistingRom(updateData: RomUpdatePayload) {
     try {
       loading.value = true;
       error.value = null;
-
+  
       await romApi.updateExistingRom(updateData);
-      
-      // Refresh the existing ROMs list
       await fetchAllRoms();
     } catch (err) {
       error.value = "Failed to update existing ROM";
@@ -90,6 +94,6 @@ export const useRomStore = defineStore("rom", () => {
     fetchNewRoms,
     fetchAllRoms,
     updateRomInfo,
-    updateExistingRom
+    updateExistingRom,
   };
 });

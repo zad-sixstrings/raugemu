@@ -2,25 +2,20 @@ export interface RomData {
   id?: string;           
   title?: string;       
   romPath: string;      
-  boxArtPath?: string;  
+  boxArtPath?: string | null;  
   year?: number;        
   console?: string;
   consoleid: string;    
   developer?: string;   
-  categories?: string[];
-  filename?: string;    // Added filename field
+  categories?: string;  // Changed to string
+  filename?: string;    
 }
 
 export interface RomUpdatePayload {
   title: string;
   year: number;
   developer: string;
-  categories: string[];
-}
-
-export interface ExistingRomUpdatePayload extends RomUpdatePayload {
-  id: string;  
+  categories: string;
+  boxArtPath: string | null;
   romPath: string;
-  boxArtPath?: string;
-  consoleid: string;
 }

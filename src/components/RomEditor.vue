@@ -2,7 +2,7 @@
   <div class="rom-item" :class="{ editing: isEditing }">
     <div class="rom-header">
       <div class="rom-info">
-        <h3 class="rom-title">{{ rom.title || 'Untitled ROM' }}</h3>
+        <h3 class="rom-title">{{ rom.title || "Untitled ROM" }}</h3>
         <p>File: {{ rom.filename || getFileNameFromPath(rom.romPath) }}</p>
         <p>Console: {{ rom.console }}</p>
         <img
@@ -13,11 +13,7 @@
         />
       </div>
       <div class="rom-actions">
-        <button
-          v-if="isEditing"
-          @click="cancelEdit"
-          class="cancel-button"
-        >
+        <button v-if="isEditing" @click="cancelEdit" class="cancel-button">
           Cancel Edit
         </button>
         <button v-else @click="startEdit" class="edit-button">
@@ -25,7 +21,7 @@
         </button>
       </div>
     </div>
-    
+
     <div v-if="isEditing" class="edit-form">
       <div class="form-group">
         <label>Title*</label>
@@ -40,25 +36,33 @@
         <input v-model="editedRom.developer" type="text" required />
       </div>
       <div class="form-group">
+        <label>Box Art URL</label>
+        <input
+          v-model="editedRom.boxArtPath"
+          type="text"
+          class="box-art-input"
+          readonly
+        />
+      </div>
+      <div class="form-group">
         <label>Categories*</label>
         <input
+          v-model="editedRom.categories"
           type="text"
-          :value="editedRom.categories?.join(', ')"
-          placeholder="Separate categories with commas"
-          @input="handleCategoriesInput"
+          placeholder="Enter categories"
           required
         />
       </div>
-      <button @click="saveChanges" class="save-button">
-        Save Changes
-      </button>
+      <div class="button-group">
+        <button @click="saveChanges" class="save-button">Save Changes</button>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, defineEmits } from 'vue';
-import type { RomData } from '../types/roms';
+import { ref, defineProps, defineEmits } from "vue";
+import type { RomData } from "../types/roms";
 
 const props = defineProps<{
   rom: RomData;
@@ -66,7 +70,8 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-  (e: 'update', rom: RomData): void;
+  (e: "update", rom: RomData): void; // Changed from RomData to RomUpdatePayload
+  (e: "beforeEdit", rom: RomData): void;
 }>();
 
 const isEditing = ref(false);
@@ -74,25 +79,60 @@ const editedRom = ref<RomData>({ ...props.rom });
 
 function getFileNameFromPath(path: string | null | undefined): string {
   if (!path) return "";
-  
-  // Extract filename from path (e.g., "SimCity (USA).sfc" from "./dist/ROM/Nintendo/SNES/SimCity (USA).sfc")
+
   const filename = path.split("/").pop();
   return filename || "";
 }
 
-function handleCategoriesInput(event: Event) {
-  const target = event.target as HTMLInputElement;
-  if (target) {
-    const categories = target.value
-      .split(",")
-      .map((cat: string) => cat.trim())
-      .filter(Boolean);
-    editedRom.value.categories = categories.length ? categories : undefined;
-  }
+function getBoxArtPath(romFileName: string | undefined | null): string {
+  if (!romFileName) return "/assets/boxart/";
+
+  // Remove file extension and replace with .jpg
+  const nameWithoutExtension = romFileName.replace(/\.[^/.]+$/, "");
+  return `/assets/boxart/${nameWithoutExtension}.jpg`;
 }
 
 function startEdit() {
-  editedRom.value = { ...props.rom };
+  console.log("Starting edit with ROM data - detailed:", {
+    title: props.rom.title,
+    year: props.rom.year,
+    developer: props.rom.developer,
+    categories: props.rom.categories,
+    romPath: props.rom.romPath,
+    filename: props.rom.filename,
+    console: props.rom.console,
+  });
+
+  let romFileName: string | null = null;
+  if (props.isNew) {
+    romFileName = props.rom.romPath?.split("/").pop() || null;
+  } else {
+    romFileName = props.rom.filename || "";
+  }
+
+  // Remove the direct DOM query and just use the props data
+  editedRom.value = {
+    ...props.rom,
+    title: props.rom.title || "",
+    year: props.rom.year || 0,
+    developer: props.rom.developer || "",
+    categories: props.rom.categories || "None", // Default to "None" if no categories
+    boxArtPath: props.rom.boxArtPath || getBoxArtPath(romFileName),
+    romPath:
+      props.rom.romPath || `/ROM/${props.rom.console}/${props.rom.filename}`,
+    consoleid: props.rom.consoleid,
+  };
+
+  console.log("Initialized editedRom - detailed:", {
+    title: editedRom.value.title,
+    year: editedRom.value.year,
+    developer: editedRom.value.developer,
+    categories: editedRom.value.categories,
+    romPath: editedRom.value.romPath,
+    filename: editedRom.value.filename,
+    console: editedRom.value.console,
+  });
+
   isEditing.value = true;
 }
 
@@ -102,13 +142,35 @@ function cancelEdit() {
 }
 
 function saveChanges() {
-  if (!editedRom.value.title || !editedRom.value.year || 
-      !editedRom.value.developer || !editedRom.value.categories) {
-    // You might want to add some visual feedback here
+  console.log("saveChanges called with isNew:", props.isNew);
+  console.log("Current editedRom data:", editedRom.value);
+
+  // Log each validation check separately
+  console.log("Validation checks:", {
+    title: editedRom.value.title,
+    hasTitle: Boolean(editedRom.value.title),
+    year: editedRom.value.year,
+    hasYear: Boolean(editedRom.value.year),
+    developer: editedRom.value.developer,
+    hasDeveloper: Boolean(editedRom.value.developer),
+    categories: editedRom.value.categories,
+    hasCategories: Boolean(editedRom.value.categories),
+    romPath: editedRom.value.romPath,
+    hasRomPath: Boolean(editedRom.value.romPath),
+  });
+
+  if (
+    !editedRom.value.title ||
+    !editedRom.value.year ||
+    !editedRom.value.developer ||
+    !editedRom.value.categories ||
+    !editedRom.value.romPath
+  ) {
+    console.log("Validation failed:", editedRom.value);
     return;
   }
 
-  emit('update', editedRom.value);
+  emit("update", editedRom.value);
   isEditing.value = false;
 }
 </script>
@@ -165,10 +227,14 @@ function saveChanges() {
   font-weight: bold;
 }
 
-.form-group input {
+.form-group input.box-art-input {
+  font-family: monospace;
   padding: 0.5rem;
   border: 1px solid #ddd;
   border-radius: 4px;
+  width: 100%;
+  background-color: #f5f5f5;
+  cursor: default;
 }
 
 button {
@@ -180,7 +246,7 @@ button {
 }
 
 .edit-button {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
 }
 
@@ -189,10 +255,25 @@ button {
   color: white;
 }
 
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
 .save-button {
-  background-color: #2196F3;
+  background-color: #2196f3;
   color: white;
   align-self: flex-start;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.save-button:hover {
+  background-color: #1976d2;
 }
 
 .rom-actions {
