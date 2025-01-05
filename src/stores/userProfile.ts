@@ -16,21 +16,16 @@ export const useUserProfileStore = defineStore("userProfile", () => {
 
   const avatarPath = computed(() => {
     if (!profile.value?.id) {
-      console.log("No profile ID found, using default avatar at: /assets/profilepic/default.png");
       return '/assets/profilepic/default.png';
     }
 
-    // If we've already found the extension, use it
+    // If we've found the correct extension, use it
     if (foundExtension.value) {
-      const path = `/assets/profilepic/${profile.value.id}.${foundExtension.value}`;
-      console.log("Using cached avatar path:", path);
-      return path;
+      return `/assets/profilepic/${profile.value.id}.${foundExtension.value}`;
     }
-    
-    // Default to first try, will be updated when correct extension is found
-    const path = `/assets/profilepic/${profile.value.id}.jpg`;
-    console.log("First attempt at avatar path:", path);
-    return path;
+
+    // While we're still detecting the extension, use default
+    return '/assets/profilepic/default.png';
   });
 
   // Add a method to check and set the correct extension
@@ -45,12 +40,12 @@ export const useUserProfileStore = defineStore("userProfile", () => {
       try {
         const response = await fetch(path);
         if (response.ok && response.headers.get('content-type')?.includes('image')) {
-          console.log("Found correct avatar extension:", ext);
+          console.log(`Found user avatar: ${path}`);
           foundExtension.value = ext;
           return;
         }
       } catch (error) {
-        console.log(`No avatar found with extension: ${ext}`);
+        // Silent fail - no need to log failed attempts
       }
     }
   };
