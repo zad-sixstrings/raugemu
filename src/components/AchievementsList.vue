@@ -44,8 +44,8 @@
 .achievement-header h4{
   font-family: var(--font-press-start);
   font-size: 1rem;
-  color: var(--purple)
-
+  color: var(--purple);
+  text-shadow: 1px 1px 2px black;
 }
 
 span.achievement-date {
