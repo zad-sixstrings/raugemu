@@ -103,7 +103,7 @@
           </div>
         </div>
       </div>
-      <!--
+      
       <div class="stats-section">
         <h3 class="account-subtitle">
           Succès:
@@ -120,7 +120,7 @@
             >Vous n'avez pas encore débloqué de succès.</span
           >
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
   <ProfileEditDialog
@@ -158,7 +158,7 @@ import SearchBar from "./SearchBar.vue";
 import SavesList from "./SavesList.vue";
 import DeleteConfirmationDialog from "./DeleteConfirmationDialog.vue";
 import ProfileEditDialog from "./ProfileEditDialog.vue";
-// import AchievementsList from './AchievementsList.vue';
+import AchievementsList from './AchievementsList.vue';
 import { useAchievementsStore } from "../stores/achievements";
 // import type { ApiPlaytimeData } from "../types/api";
 
@@ -173,12 +173,12 @@ const gamePlaytime = ref<PlaytimeData[]>([]);
 const playtimeSearchQuery = ref("");
 const showEditDialog = ref(false);
 const achievementsStore = useAchievementsStore();
-// const achievementSearchQuery = ref("");
+const achievementSearchQuery = ref("");
 const handleProfileUpdate = async () => {
   await profileStore.fetchProfile();
 };
 
-/* const filteredAchievements = computed(() => {
+const filteredAchievements = computed(() => {
   if (!achievementSearchQuery.value.trim()) return achievementsStore.achievements;
   const query = achievementSearchQuery.value.toLowerCase().trim();
   return achievementsStore.achievements.filter((achievement) =>
@@ -186,7 +186,7 @@ const handleProfileUpdate = async () => {
     achievement.achievementname.toLowerCase().includes(query) ||
     achievement.description.toLowerCase().includes(query)
   );
-}); */
+});
 
 const sortedAndFilteredPlaytime = computed(() => {
   const sorted = [...gamePlaytime.value].sort((a, b) => {
