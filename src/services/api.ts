@@ -1,15 +1,12 @@
 import type { LoginCredentials, RegisterCredentials } from "../types/auth";
-import type {
-  UserProfile,
-  UserSave,
-  Achievement
-} from "../types/user";
+import type { UserProfile, UserSave, Achievement } from "../types/user";
 import type {
   ApiResponse,
   ApiStatus,
   AvatarUpdateResponse,
-  ApiPlaytimeData
+  ApiPlaytimeData,
 } from "../types/api";
+import type { RomData, RomUpdatePayload } from "../types/roms";
 
 const API_URL = import.meta.env.VITE_API_URL;
 if (!API_URL) {
@@ -81,7 +78,9 @@ export const authApi = {
       }
 
       const data: ApiResponse<{ user: UserProfile }> = await response.json();
-      return data.data?.user ?? Promise.reject(new Error("No user data received"));
+      return (
+        data.data?.user ?? Promise.reject(new Error("No user data received"))
+      );
     } catch (error) {
       console.error("Registration error:", error);
       throw error;
@@ -197,13 +196,15 @@ export const authApi = {
     }
   },
 
-  async updateProfile(profileData: { profileText: string }): Promise<UserProfile> {
+  async updateProfile(profileData: {
+    profileText: string;
+  }): Promise<UserProfile> {
     try {
       const token = localStorage.getItem("token");
       if (!token) {
         throw new Error("No authentication token found");
       }
-      
+
       const response = await fetch(`${API_URL}/user/updateprofile`, {
         method: "POST",
         headers: {
@@ -212,40 +213,40 @@ export const authApi = {
         },
         body: JSON.stringify(profileData),
       });
-  
+
       if (!response.ok) {
         throw new Error("Failed to update profile");
       }
-  
+
       return await response.json();
     } catch (error) {
       console.error("Update profile error:", error);
       throw error;
     }
   },
-  
+
   async updateAvatar(file: File): Promise<AvatarUpdateResponse> {
     try {
       const token = localStorage.getItem("token");
       if (!token) {
         throw new Error("No authentication token found");
       }
-  
+
       const formData = new FormData();
       formData.append("image", file);
-  
+
       const response = await fetch(`${API_URL}/user/uploadavatar`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
         },
-        body: formData,  // Fixed: removed the string "multipart/form-data"
+        body: formData, // Fixed: removed the string "multipart/form-data"
       });
-  
+
       if (!response.ok) {
         throw new Error("Failed to update avatar");
       }
-  
+
       return await response.json();
     } catch (error) {
       console.error("Update avatar error:", error);
@@ -259,7 +260,7 @@ export const authApi = {
       if (!token) {
         throw new Error("No authentication token found");
       }
-      
+
       const response = await fetch(`${API_URL}/user/getachievement`, {
         method: "GET",
         headers: {
@@ -267,25 +268,86 @@ export const authApi = {
           Authorization: `Bearer ${token}`,
         },
       });
-  
+
       if (!response.ok) {
         throw new Error("Failed to fetch achievements");
       }
-  
+
       const data = await response.json();
-      
+
       if (data.message === "No achievements found") {
         return [];
       }
-  
+
       return data.sort((a: Achievement, b: Achievement) => {
         const gameCompare = a.game.localeCompare(b.game, "fr-FR");
         if (gameCompare !== 0) return gameCompare;
-        return new Date(b.unlockdate).getTime() - new Date(a.unlockdate).getTime();
+        return (
+          new Date(b.unlockdate).getTime() - new Date(a.unlockdate).getTime()
+        );
       });
     } catch (error) {
       console.error("Get achievements error:", error);
       throw error;
     }
-  }
-}
+  },
+};
+
+export const romApi = {
+  async getNewRoms(): Promise<RomData[]> {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No authentication token found");
+      }
+
+      const response = await fetch(`${API_URL}/roms/checknewroms`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch ROM list");
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error("Get ROM list error:", error);
+      throw error;
+    }
+  },
+
+  async updateRomInfo(
+    romPath: string,
+    updateData: RomUpdatePayload
+  ): Promise<void> {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No authentication token found");
+      }
+
+      const response = await fetch(`${API_URL}/roms/registernewroms`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          romPath,
+          ...updateData,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update ROM information");
+      }
+    } catch (error) {
+      console.error("Update ROM info error:", error);
+      throw error;
+    }
+  },
+};
