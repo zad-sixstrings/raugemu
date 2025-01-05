@@ -233,6 +233,10 @@ const handleLogout = () => {
   display: block;
 }
 
+.account-icon {
+  border-radius: 100%;
+}
+
 #main-menu li.about:hover .about-icon {
   content: url("/assets/about-icon.gif");
 }
