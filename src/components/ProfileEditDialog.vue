@@ -68,9 +68,10 @@ const isLoading = ref(false);
 // Add error handling for the image
 const handleImageError = (e: Event) => {
   const img = e.target as HTMLImageElement;
+  console.log("Failed to load image at:", img.src);
+  console.log("Falling back to default avatar");
   img.src = '/assets/profilepic/default.png';
 };
-
 async function handleAvatarChange(event: Event) {
   const input = event.target as HTMLInputElement;
   if (!input.files?.length) return;

@@ -224,6 +224,8 @@ const handleDelete = async () => {
 
 const handleImageError = (e: Event) => {
   const img = e.target as HTMLImageElement;
+  console.log("Failed to load image at:", img.src);
+  console.log("Falling back to default avatar");
   img.src = '/assets/profilepic/default.png';
 };
 

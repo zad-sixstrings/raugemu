@@ -14,11 +14,33 @@ export const useUserProfileStore = defineStore("userProfile", () => {
   const playtime = ref<PlaytimeData[]>([]);
 
   const avatarPath = computed(() => {
-    if (!profile.value?.id) return '/assets/profilepic/default.png';
+    if (!profile.value?.id) {
+      console.log("No profile ID found, using default avatar at: /assets/profilepic/default.png");
+      return '/assets/profilepic/default.png';
+    }
     
-    // Return the base path + ID, and let the browser try extensions
-    // The server should handle showing the right file regardless of extension
-    return `/assets/profilepic/${profile.value.id}`;
+    // Try all possible extensions
+    const userId = profile.value.id;
+    // This will try PNG first, then JPG, then GIF
+    for (const ext of ['png', 'jpg', 'gif']) {
+      const path = `/assets/profilepic/${userId}.${ext}`;
+      console.log("Trying to load user avatar at:", path);
+      
+      // Try to fetch the image to see if it exists
+      fetch(path)
+        .then(response => {
+          if (response.ok) {
+            console.log("Found avatar with extension:", ext);
+          }
+        })
+        .catch(() => {
+          console.log("Failed to find avatar with extension:", ext);
+        });
+        
+      return path; // Return the first possible path
+    }
+    
+    return '/assets/profilepic/default.png';
   });
 
   async function fetchProfile() {
