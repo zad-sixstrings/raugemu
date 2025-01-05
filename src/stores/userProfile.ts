@@ -8,6 +8,7 @@ import { convertApiTimeFormat } from "../utils/playtimeFormat";
 
 export const useUserProfileStore = defineStore("userProfile", () => {
   const profile = ref<UserProfile | null>(null);
+  const foundExtension = ref<string | null>(null);
   const notificationStore = useNotificationStore();
   const loading = ref(false);
   const error = ref<string | null>(null);
@@ -18,35 +19,48 @@ export const useUserProfileStore = defineStore("userProfile", () => {
       console.log("No profile ID found, using default avatar at: /assets/profilepic/default.png");
       return '/assets/profilepic/default.png';
     }
-    
-    // Try all possible extensions
-    const userId = profile.value.id;
-    // This will try PNG first, then JPG, then GIF
-    for (const ext of ['png', 'jpg', 'gif']) {
-      const path = `/assets/profilepic/${userId}.${ext}`;
-      console.log("Trying to load user avatar at:", path);
-      
-      // Try to fetch the image to see if it exists
-      fetch(path)
-        .then(response => {
-          if (response.ok) {
-            console.log("Found avatar with extension:", ext);
-          }
-        })
-        .catch(() => {
-          console.log("Failed to find avatar with extension:", ext);
-        });
-        
-      return path; // Return the first possible path
+
+    // If we've already found the extension, use it
+    if (foundExtension.value) {
+      const path = `/assets/profilepic/${profile.value.id}.${foundExtension.value}`;
+      console.log("Using cached avatar path:", path);
+      return path;
     }
     
-    return '/assets/profilepic/default.png';
+    // Default to first try, will be updated when correct extension is found
+    const path = `/assets/profilepic/${profile.value.id}.jpg`;
+    console.log("First attempt at avatar path:", path);
+    return path;
   });
+
+  // Add a method to check and set the correct extension
+  const findCorrectExtension = async () => {
+    if (!profile.value?.id) return;
+    
+    const userId = profile.value.id;
+    const extensions = ['jpg', 'jpeg', 'png', 'gif'];
+
+    for (const ext of extensions) {
+      const path = `/assets/profilepic/${userId}.${ext}`;
+      try {
+        const response = await fetch(path);
+        if (response.ok && response.headers.get('content-type')?.includes('image')) {
+          console.log("Found correct avatar extension:", ext);
+          foundExtension.value = ext;
+          return;
+        }
+      } catch (error) {
+        console.log(`No avatar found with extension: ${ext}`);
+      }
+    }
+  };
 
   async function fetchProfile() {
     try {
       const userProfile = await authApi.getUserProfile();
       profile.value = userProfile;
+      // After getting profile, find the correct extension
+      await findCorrectExtension();
     } catch (error) {
       notificationStore.addNotification(
         "Erreur lors du chargement du profil",
