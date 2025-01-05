@@ -4,7 +4,12 @@
       <h3 class="dialog-title">Modifier le profil</h3>
 
       <div class="avatar-section">
-        <img :src="currentAvatarUrl" alt="Avatar" class="preview-avatar" />
+        <img
+          :src="profileStore.avatarPath"
+          alt="Avatar"
+          class="preview-avatar"
+          @error="handleImageError"
+        />
         <div class="avatar-controls">
           <label class="upload-button" :class="{ disabled: isLoading }">
             Changer l'avatar
@@ -45,12 +50,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { useUserProfileStore } from "../stores/userProfile";
 
 const props = defineProps<{
   initialBio: string;
-  avatarPath?: string;
 }>();
 
 const emit = defineEmits<{
@@ -61,10 +65,11 @@ const emit = defineEmits<{
 const profileStore = useUserProfileStore();
 const bioText = ref(props.initialBio);
 const isLoading = ref(false);
-const currentAvatarUrl = computed(() => {
-  return props.avatarPath || "/assets/profilepic/default.png";
-});
-// const hasCustomAvatar = computed(() => !!props.avatarPath);
+// Add error handling for the image
+const handleImageError = (e: Event) => {
+  const img = e.target as HTMLImageElement;
+  img.src = '/assets/profilepic/default.png';
+};
 
 async function handleAvatarChange(event: Event) {
   const input = event.target as HTMLInputElement;

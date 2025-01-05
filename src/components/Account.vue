@@ -59,10 +59,8 @@
         <div class="user-avatar">
           <img
             class="avatar"
-            :src="
-              profileStore.profile?.imagePath ||
-              '/assets/profilepic/default.png'
-            "
+            :src="profileStore.avatarPath"
+            @error="handleImageError"
             alt="Profile avatar"
           />
         </div>
@@ -222,6 +220,11 @@ const handleDelete = async () => {
   await savesStore.deleteSave(selectedSave.value.id);
   showConfirmDialog.value = false;
   selectedSave.value = null;
+};
+
+const handleImageError = (e: Event) => {
+  const img = e.target as HTMLImageElement;
+  img.src = '/assets/profilepic/default.png';
 };
 
 onMounted(async () => {

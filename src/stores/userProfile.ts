@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import type { UserProfile, PlaytimeData } from "../types/user";
 // import type { ApiPlaytimeData } from "../types/api";
 import { authApi } from "../services/api";
@@ -12,6 +12,14 @@ export const useUserProfileStore = defineStore("userProfile", () => {
   const loading = ref(false);
   const error = ref<string | null>(null);
   const playtime = ref<PlaytimeData[]>([]);
+
+  const avatarPath = computed(() => {
+    if (!profile.value?.id) return '/assets/profilepic/default.png';
+    
+    // Return the base path + ID, and let the browser try extensions
+    // The server should handle showing the right file regardless of extension
+    return `/assets/profilepic/${profile.value.id}`;
+  });
 
   async function fetchProfile() {
     try {
@@ -29,7 +37,7 @@ export const useUserProfileStore = defineStore("userProfile", () => {
   async function fetchPlaytime() {
     try {
       const apiData = await authApi.getPlaytime();
-      playtime.value = apiData.map(game => convertApiTimeFormat(game));
+      playtime.value = apiData.map((game) => convertApiTimeFormat(game));
     } catch (error) {
       notificationStore.addNotification(
         "Erreur lors du chargement du temps de jeu",
@@ -49,7 +57,10 @@ export const useUserProfileStore = defineStore("userProfile", () => {
       error.value = null;
       const updatedProfile = await authApi.updateProfile({ profileText });
       profile.value = updatedProfile;
-      notificationStore.addNotification("Profil mis à jour avec succès", "success");
+      notificationStore.addNotification(
+        "Profil mis à jour avec succès",
+        "success"
+      );
     } catch (err) {
       error.value = "Erreur lors de la mise à jour du profil";
       notificationStore.addNotification(
@@ -70,7 +81,10 @@ export const useUserProfileStore = defineStore("userProfile", () => {
       if (result.success && profile.value) {
         profile.value = { ...profile.value, imagePath: result.imagePath };
       }
-      notificationStore.addNotification("Avatar mis à jour avec succès", "success");
+      notificationStore.addNotification(
+        "Avatar mis à jour avec succès",
+        "success"
+      );
     } catch (err) {
       error.value = "Erreur lors de la mise à jour de l'avatar";
       notificationStore.addNotification(
@@ -93,5 +107,6 @@ export const useUserProfileStore = defineStore("userProfile", () => {
     error,
     playtime,
     fetchPlaytime,
+    avatarPath
   };
 });
