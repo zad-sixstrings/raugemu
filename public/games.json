@@ -82,7 +82,7 @@
   },
   {
     "title": "Kirby's Dream Land 3",
-    "boxArtPath": "/assets/boxart/kirbydl3.png",
+    "boxArtPath": "/assets/boxart/kirbydl3.jpg",
     "year": "1997",
     "console": "SNES",
     "developer": "HAL Laboratory",
@@ -154,7 +154,7 @@
   },
   {
     "title": "Pokémon Snap",
-    "boxArtPath": "/assets/boxart/pkmnsnap.png",
+    "boxArtPath": "/assets/boxart/pkmnsnap.jpg",
     "year": "1999",
     "console": "N64",
     "developer": "HAL Laboratory",
@@ -433,7 +433,7 @@
   },
   {
     "title": "Wario Land",
-    "boxArtPath": "/assets/boxart/warioland.png",
+    "boxArtPath": "/assets/boxart/warioland.jpg",
     "year": "1994",
     "console": "GB",
     "developer": "Nintendo",
@@ -451,7 +451,7 @@
   },
   {
     "title": "Kirby's Dream Land",
-    "boxArtPath": "/assets/boxart/kirbydl.png",
+    "boxArtPath": "/assets/boxart/kirbydl.jpg",
     "year": "1992",
     "console": "GB",
     "developer": "HAL Laboratory",
@@ -460,7 +460,7 @@
   },
   {
     "title": "Kirby's Dream Land",
-    "boxArtPath": "/assets/boxart/kirbydl2.png",
+    "boxArtPath": "/assets/boxart/kirbydl2.jpg",
     "year": "1995",
     "console": "GB",
     "developer": "HAL Laboratory",
@@ -469,7 +469,7 @@
   },
   {
     "title": "Donkey Kong Land",
-    "boxArtPath": "/assets/boxart/dkland.png",
+    "boxArtPath": "/assets/boxart/dkland.jpg",
     "year": "1995",
     "console": "GB",
     "developer": "Rare",
@@ -505,7 +505,7 @@
   },
   {
     "title": "Pokémon Argent",
-    "boxArtPath": "/assets/boxart/pkmnargent.png",
+    "boxArtPath": "/assets/boxart/pkmnargent.jpg",
     "year": "1999",
     "console": "GBC",
     "developer": "Game Freak",
@@ -532,7 +532,7 @@
   },
   {
     "title": "Pokémon Trading Card Game",
-    "boxArtPath": "/assets/boxart/pkmntcg.png",
+    "boxArtPath": "/assets/boxart/pkmntcg.jpg",
     "year": "2000",
     "console": "GBC",
     "developer": "Creatures Inc.",
@@ -550,7 +550,7 @@
   },
   {
     "title": "Mario Tennis",
-    "boxArtPath": "/assets/boxart/mariotennis.png",
+    "boxArtPath": "/assets/boxart/mariotennis.jpg",
     "year": "2000",
     "console": "GBC",
     "developer": "Nintendo",
@@ -586,7 +586,7 @@
   },
   {
     "title": "The Legend of Zelda: Link's Awakening DX",
-    "boxArtPath": "/assets/boxart/zla.png",
+    "boxArtPath": "/assets/boxart/zla.jpg",
     "year": "1998",
     "console": "GBC",
     "developer": "Flagship",
