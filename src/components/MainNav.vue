@@ -129,10 +129,11 @@
               class="account-icon"
               :src="
                 authStore.isAuthenticated
-                  ? '/assets/profilepic/default.png'
+                  ? profileStore.avatarPath
                   : '/assets/account.png'
               "
               :alt="authStore.isAuthenticated ? 'Connecté' : 'Non connecté'"
+              @error="handleImageError"
           /></a>
           <div class="dropdown-menu dropdown-menu-last">
             <template v-if="authStore.isAuthenticated">
@@ -160,6 +161,7 @@
 
 <script setup lang="ts">
 import { useAuthStore } from "../stores/auth";
+import { useUserProfileStore } from "../stores/userProfile";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 
@@ -169,7 +171,13 @@ const toggleMobileMenu = () => {
 };
 
 const authStore = useAuthStore();
+const profileStore = useUserProfileStore();
 const router = useRouter();
+
+const handleImageError = (e: Event) => {
+  const img = e.target as HTMLImageElement;
+  img.src = "/assets/profilepic/default.png";
+};
 
 const handleLogout = () => {
   authStore.logout();
@@ -208,14 +216,17 @@ const handleLogout = () => {
   transition: background-color 0.2s;
 }
 
-#main-menu li.last, #main-menu li.about {
+#main-menu li.last,
+#main-menu li.about {
   display: flex;
   float: right;
   align-items: center;
   height: 60px;
 }
 
-.about-icon, .account-icon, .menu-image {
+.about-icon,
+.account-icon,
+.menu-image {
   width: 25px;
   height: 25px;
   object-fit: contain;
