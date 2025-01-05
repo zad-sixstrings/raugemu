@@ -25,14 +25,21 @@
       <!-- Existing ROMs Section -->
       <div class="existing-roms">
         <h2>Existing ROMs</h2>
-        <div class="rom-list">
+        <SearchBar v-model="searchQuery" />
+        <div v-if="filteredExistingRoms.length > 0" class="rom-list">
           <RomEditor
-            v-for="rom in romStore.existingRoms"
+            v-for="rom in filteredExistingRoms"
             :key="rom.id"
             :rom="rom"
             :isNew="false"
             @update="handleExistingRomUpdate"
           />
+        </div>
+        <div v-else-if="romStore.existingRoms.length > 0" class="no-results">
+          No ROMs match your search criteria
+        </div>
+        <div v-else class="no-results">
+          No existing ROMs found
         </div>
       </div>
     </div>
@@ -40,16 +47,37 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted, ref, computed } from "vue";
 import { useRouter } from "vue-router";
 import { useUserProfileStore } from "../stores/userProfile";
 import { useRomStore } from "../stores/roms";
 import type { RomData } from "../types/roms";
 import RomEditor from "./RomEditor.vue";
+import SearchBar from "./SearchBar.vue";
 
 const userProfileStore = useUserProfileStore();
 const romStore = useRomStore();
 const router = useRouter();
+const searchQuery = ref('');
+
+const filteredExistingRoms = computed(() => {
+  if (!searchQuery.value.trim()) {
+    return romStore.existingRoms;
+  }
+  
+  const query = searchQuery.value.toLowerCase().trim();
+  return romStore.existingRoms.filter(rom => {
+    return (
+      rom.title?.toLowerCase().includes(query) ||
+      rom.developer?.toLowerCase().includes(query) ||
+      rom.console?.toLowerCase().includes(query) ||
+      rom.categories?.some(category => 
+        category?.toLowerCase().includes(query)
+      ) ||
+      rom.filename?.toLowerCase().includes(query)
+    );
+  });
+});
 
 onMounted(async () => {
   try {
