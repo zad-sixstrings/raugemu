@@ -43,9 +43,13 @@
 
 .achievement-header h4{
   font-family: var(--font-press-start);
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--purple);
   text-shadow: 1px 1px 2px black;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
 }
 
 span.achievement-date {

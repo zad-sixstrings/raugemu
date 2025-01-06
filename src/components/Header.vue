@@ -8,7 +8,7 @@
         <h1 class="main-title blue-text">RaugEmu</h1>
       </div>
       <div class="sub-title-wrapper">
-        <h2 class="main-title-sub purple-text">
+        <h2 class="main-title-sub purple-text text-shadow-small">
           You rip 'em, we emulate 'em.&reg;
         </h2>
       </div>

@@ -4,22 +4,22 @@
       <div v-for="save in saves" :key="save.id" class="save-item">
         <div class="save-info">
           <div class="save-header">
-            <label class="profile-label">{{ save.game }}</label>
+            <label class="save-title">{{ save.game }}</label>
             <button
               @click="$emit('delete', save)"
               class="delete-button"
               :disabled="isDeleting"
             >
-              Supprimer
+              <img class="trash-icon" src="/assets/trash-bin.png">
             </button>
           </div>
           <br />
           <span class="profile-span">
-            <strong>Créée le</strong> <em>{{ formatDateTime(save.creation_date) }}</em>
-          </span><br />
-          <span class="profile-span">
-            <strong>Modifiée le</strong> <em>{{ formatDateTime(save.change_date) }}</em>
-          </span>
+            <strong>Créée le </strong></span><span class="save-date"><em>{{ formatDateTime(save.creation_date) }}</em></span><br />
+            <span class="profile-span">
+            
+            <strong>Modifiée le </strong></span><span class="save-date"><em>{{ formatDateTime(save.change_date) }}</em></span><br />
+          
         </div>
       </div>
     </div>
@@ -48,6 +48,17 @@ defineEmits<{
   margin-bottom: 0.5rem;
 }
 
+.save-title {
+  font-family: var(--font-press-start);
+  font-size: 0.9rem;
+  width: 230px;
+  color: var(--blue);
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
 .saves-content {
   background-color: transparent;
   height: 350px;
@@ -66,29 +77,33 @@ defineEmits<{
 
 span.profile-span {
   color: white;
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-pixelify);
   font-optical-sizing: auto;
   font-weight: 400;
 }
 
+span.save-date {
+  font-family: var(--font-micro);
+  font-size: 1.2rem;
+}
+
 .delete-button {
-  width: 100px;
+  width: 40px;
   height: 40px;
-  font-family: "Pixelify Sans", serif;
-  font-optical-sizing: auto;
   font-weight: 400;
   background: var(--red);
   border-top: 5px solid var(--border-light-red);
   border-left: 5px solid var(--border-light-red);
   border-right: 5px solid var(--border-dark-red);
   border-bottom: 5px solid var(--border-dark-red);
+  border-radius: var(--radius-big);
   color: white;
-  font-size: 0.8em;
-  padding: 5px 10px;
-  margin-right: 20px;
-  border-radius: 0.25rem;
   cursor: var(--cusror-click);
   transition: all 0.2s;
+}
+
+.trash-icon {
+  width: 20px;
 }
 
 .delete-button:active {
@@ -100,7 +115,7 @@ span.profile-span {
 }
 
 .delete-button:hover {
-  font-size: 0.9em;
+  font-size: 0.8em;
   cursor: url("/assets/cursor-click.png"), auto;
 }
 
