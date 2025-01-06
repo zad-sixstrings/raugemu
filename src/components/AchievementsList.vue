@@ -48,20 +48,16 @@
   height: 150px;
   padding: 0.8em;
   background-color: rgba(138, 138, 138, 0.1);
-  overflow: scroll;
   border-radius: 5px;
   box-shadow: 1px 1px 5px black;
 }
 
 .achievement-header h4{
   font-family: var(--font-press-start);
-  font-size: 0.9rem;
   color: var(--purple);
   text-shadow: 1px 1px 2px black;
-  line-clamp: 3;
-  -webkit-line-clamp: 3;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
+  font-size: 0.8em;
+
 }
 
 span.achievement-date {
