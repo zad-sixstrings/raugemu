@@ -10,7 +10,7 @@
             :src="consoleIcon"
             :alt="`${props.console} icon`"
             class="console-icon"
-          />{{ console }}
+          />{{ props.console }}
         </h2>
       </div>
       <div id="content">
