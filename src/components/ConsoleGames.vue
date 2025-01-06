@@ -8,7 +8,7 @@
           <img
             v-if="consoleIcon"
             :src="consoleIcon"
-            :alt="`${console} icon`"
+            :alt="`${props.console} icon`"
             class="console-icon"
           />{{ console }}
         </h2>
