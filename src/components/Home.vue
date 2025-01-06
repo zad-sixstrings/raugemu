@@ -53,8 +53,8 @@ const categories = computed(() => {
       games: romStore.existingRoms.filter(game => belongsToCategory(game, "pokemon"))
     },
     {
-      title: "RETOUR VERS LE FUTUR",
-      games: romStore.existingRoms.filter(game => belongsToCategory(game, "retourverslefutur"))
+      title: "LES CLOQUES AUX DOIGTS",
+      games: romStore.existingRoms.filter(game => belongsToCategory(game, "arcade"))
     }
   ].filter(category => category.games.length > 0); // Only show categories with games
 });

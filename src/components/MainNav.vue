@@ -227,8 +227,8 @@ const handleLogout = () => {
 .about-icon,
 .account-icon,
 .menu-image {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   object-fit: contain;
   display: block;
 }

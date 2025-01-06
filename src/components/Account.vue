@@ -1,7 +1,7 @@
 <template>
   <div class="account-title-wrapper">
     <h2 class="account-title">
-      {{ profileStore.profile?.nickname }}
+      MON COMPTE
     </h2>
   </div>
   <div class="account-container">
@@ -30,7 +30,7 @@
         <div class="info-content">
           <div class="info-item">
             <label class="profile-label">Pseudo:</label>
-            <span class="profile-span">{{
+            <span class="nickname-span text-shadow-small">{{
               profileStore.profile.nickname
             }}</span>
           </div>
@@ -41,8 +41,8 @@
             }}</span>
           </div>
           <div class="info-item">
-            <label class="profile-label">Membre depuis:</label>
-            <span class="profile-span">{{
+            <label class="profile-label">Inscription:</label>
+            <span class="date-profile-span">{{
               memberdateFormat(profileStore.profile.creation_date)
             }}</span>
           </div>
@@ -84,7 +84,7 @@
           >
         </div>
       </div>
-      <div class="stats-section">
+      <div class="playtime-section">
         <h3 class="account-subtitle">
           Temps de jeu: {{ getTotalPlaytime(gamePlaytime) }}
         </h3>
@@ -103,8 +103,8 @@
           </div>
         </div>
       </div>
-      
-      <div class="stats-section">
+
+      <div class="achievements-section">
         <h3 class="account-subtitle">
           Succès:
           <span class="achievements-span">{{
@@ -158,7 +158,7 @@ import SearchBar from "./SearchBar.vue";
 import SavesList from "./SavesList.vue";
 import DeleteConfirmationDialog from "./DeleteConfirmationDialog.vue";
 import ProfileEditDialog from "./ProfileEditDialog.vue";
-import AchievementsList from './AchievementsList.vue';
+import AchievementsList from "./AchievementsList.vue";
 import { useAchievementsStore } from "../stores/achievements";
 // import type { ApiPlaytimeData } from "../types/api";
 
@@ -179,12 +179,14 @@ const handleProfileUpdate = async () => {
 };
 
 const filteredAchievements = computed(() => {
-  if (!achievementSearchQuery.value.trim()) return achievementsStore.achievements;
+  if (!achievementSearchQuery.value.trim())
+    return achievementsStore.achievements;
   const query = achievementSearchQuery.value.toLowerCase().trim();
-  return achievementsStore.achievements.filter((achievement) =>
-    achievement.game.toLowerCase().includes(query) ||
-    achievement.achievementname.toLowerCase().includes(query) ||
-    achievement.description.toLowerCase().includes(query)
+  return achievementsStore.achievements.filter(
+    (achievement) =>
+      achievement.game.toLowerCase().includes(query) ||
+      achievement.achievementname.toLowerCase().includes(query) ||
+      achievement.description.toLowerCase().includes(query)
   );
 });
 
@@ -226,7 +228,7 @@ const handleImageError = (e: Event) => {
   const img = e.target as HTMLImageElement;
   console.log("Failed to load image at:", img.src);
   console.log("Falling back to default avatar");
-  img.src = '/assets/profilepic/default.png';
+  img.src = "/assets/profilepic/default.png";
 };
 
 onMounted(async () => {
@@ -258,13 +260,11 @@ onMounted(async () => {
   align-items: center;
   margin: 0 auto;
   max-width: 800px;
-  border-left: 5px solid var(--border-light-purple);
-  border-bottom: 5px solid var(--border-dark-purple);
-  border-right: 5px solid var(--border-dark-purple);
+  border: 5px solid var(--border-dark-purple);
   border-top: none;
+  border-left-color: var(--border-light-purple);
   overflow-y: auto;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-radius: 0 0 10px 10px;
 }
 
 .account-title-wrapper {
@@ -275,12 +275,10 @@ onMounted(async () => {
   max-width: 800px;
   text-align: left;
   background-color: var(--purple);
-  border-top: 5px solid var(--border-light-purple);
-  border-left: 5px solid var(--border-light-purple);
-  border-right: 5px solid var(--border-dark-purple);
-  border-bottom: 5px solid var(--border-dark-purple);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border: 5px solid var(--border-dark-purple);
+  border-top-color: var(--border-light-purple);
+  border-left-color: var(--border-light-purple);
+  border-radius: 10px 10px 0 0;
 }
 
 .account-title {
@@ -312,36 +310,32 @@ h3.account-subtitle {
 }
 
 .profile-section,
-.stats-section {
-  margin-bottom: 2rem;
+.stats-section,
+.saves-section,
+.playtime-section,
+.achievements-section {
   flex: 1;
   min-width: 300px;
-  padding: 20px;
+  margin-bottom: 2rem;
 }
 
-.saves-section {
-  margin: 0 auto;
-  width: 350px;
+.date-profile-span {
+  font-family: var(--font-micro);
+  color: white;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 1.6rem;
 }
 
-.profile-section,
-.stats-section {
-  flex: 1;
-}
-
-.profile-section,
-.stats-section,
-.saves-section {
-  margin: 0;
-  padding: 20px;
-}
-
-.stats-content {
+.info-item label,
+.stat-item label {
+  min-width: 120px;
+  flex-shrink: 0;
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
-  height: 100%;
+  align-items: center; 
+  margin: 0; 
+  padding: 0;
+  line-height: 1; 
 }
 
 .info-content,
@@ -349,39 +343,15 @@ h3.account-subtitle {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}
-
-.stats-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
   width: 100%;
 }
 
-.stat-item {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 1rem;
-}
-
-.info-item,
-.stat-item {
+.stat-item,
+.info-item {
   display: flex;
   align-items: center;
-}
-
-p.bio {
-  color: white;
-  font-family: var(--font-pixelify);
-  font-optical-sizing: auto;
-  font-weight: 400;
-}
-
-.info-item label,
-.stat-item label {
-  min-width: 150px;
-  flex-shrink: 0;
+  width: 100%;
+  gap: 0.3rem;
 }
 
 label.profile-label {
@@ -391,34 +361,65 @@ label.profile-label {
   font-weight: 400;
 }
 
+.nickname {
+  color: var(--purple);
+  font-family: var(--font-press-start);
+  font-size: 2em;
+}
+
 span.profile-span {
+  display: inline-block;
+  margin: 0; 
+  padding: 0;
+  line-height: 1;
+  vertical-align: middle; 
   color: white;
   font-family: var(--font-pixelify);
   font-optical-sizing: auto;
   font-weight: 400;
+  font-size: 1.3rem;
+}
+
+span.nickname-span {
+  display: inline-block;
+  margin: 0; 
+  padding: 0;
+  line-height: 1;
+  vertical-align: middle; 
+  color: var(--blue);
+  font-family: var(--font-press-start);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 1.3rem;
+}
+
+p.bio,
+p.profile-loading,
+p.profile-error {
+  font-family: var(--font-pixelify);
+  font-optical-sizing: auto;
+  font-weight: 400;
+}
+
+p.bio {
+  color: white;
 }
 
 p.profile-loading {
   color: var(--green);
-  font-family: var(--font-pixelify);
-  font-optical-sizing: auto;
-  font-weight: 400;
 }
 
 p.profile-error {
   color: var(--red);
-  font-family: var(--font-pixelify);
-  font-optical-sizing: auto;
-  font-weight: 400;
 }
 
-/* PLAYTIME GRID */
+/* Playtime Grid */
 .playtime-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  gap: 1rem;
   align-items: flex-start;
+  gap: 1rem;
   height: 350px;
   overflow-y: auto;
   mask-image: linear-gradient(
@@ -445,9 +446,9 @@ p.profile-error {
   width: 150px;
   height: 100px;
   display: flex;
-  justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
   text-align: center;
 }
 
@@ -467,7 +468,7 @@ p.profile-error {
   font-size: 0.6em;
 }
 
-/* AVATAR */
+/* Avatar Section */
 .user-avatar {
   display: flex;
   justify-content: center;
@@ -477,9 +478,11 @@ img.avatar {
   width: 200px;
   border-radius: 100%;
   border: 5px solid var(--purple);
+  border-top-color: var(--border-light-purple);
+  border-left-color: var(--border-light-purple);
 }
 
-/* PROFILE CUSTOMIZATION */
+/* Profile Customization */
 .section-header {
   display: flex;
   justify-content: space-between;
@@ -489,10 +492,9 @@ img.avatar {
 
 .edit-button {
   background: var(--blue);
-  border-top: 5px solid var(--border-light-blue);
-  border-left: 5px solid var(--border-light-blue);
-  border-right: 5px solid var(--border-dark-blue);
-  border-bottom: 5px solid var(--border-dark-blue);
+  border: 5px solid var(--border-dark-blue);
+  border-top-color: var(--border-light-blue);
+  border-left-color: var(--border-light-blue);
   color: white;
   padding: 4px 12px;
   border-radius: 5px;
@@ -500,11 +502,12 @@ img.avatar {
   font-family: var(--font-pixelify);
   font-size: 0.9em;
 }
+
 .edit-button:active {
   background: var(--blue-active);
-  border-top: 5px solid var(--border-dark-blue);
-  border-left: 5px solid var(--border-dark-blue);
-  border-right: 5px solid var(--border-light-blue);
-  border-bottom: 5px solid var(--border-light-blue);
+  border-color: var(--border-light-blue);
+  border-top-color: var(--border-dark-blue);
+  border-left-color: var(--border-dark-blue);
 }
+
 </style>

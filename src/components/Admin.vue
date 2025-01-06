@@ -1,16 +1,16 @@
 <!-- Admin.vue -->
 <template>
   <div class="admin-container">
-    <h1>Admin Dashboard</h1>
+    <h2 class="admin-title">Admin Dashboard</h2>
     <div v-if="userProfileStore.profile?.userright === 'admin'">
       <div v-if="romStore.error" class="error">
         <p class="error-message">{{ romStore.error }}</p>
       </div>
-      <div v-if="romStore.loading">Loading...</div>
+      <div class="loading" v-if="romStore.loading">Loading...</div>
 
       <!-- New ROMs Section -->
       <div class="new-roms" v-if="romStore.newRoms.length > 0">
-        <h2>New ROMs Detected</h2>
+        <h2>Pending ROMs</h2>
         <div class="rom-list">
           <RomEditor
             v-for="rom in romStore.newRoms"
@@ -163,7 +163,13 @@ async function handleExistingRomUpdate(rom: RomData) {
   width: 100%;
   margin: 0 auto;
   padding: 2rem;
+}
+
+.admin-title {
+  font-family: var(--font-press-start);
+  text-align: center;
   color: var(--blue);
+  font-size: 2rem;
 }
 
 .rom-list {
@@ -173,12 +179,24 @@ async function handleExistingRomUpdate(rom: RomData) {
   margin-top: 1rem;
 }
 
+.error-message, .loading, .new-roms h2, .existing-roms h2, .no-results {
+  font-family: var(--font-pixelify);
+}
+
+.new-roms h2, .existing-roms h2 {
+  color: white;
+}
+
 .error {
   color: red;
   padding: 1rem;
   margin: 1rem 0;
   border: 1px solid red;
   border-radius: 4px;
+}
+
+.no-results {
+  color: var(--yellow);
 }
 
 .new-roms {

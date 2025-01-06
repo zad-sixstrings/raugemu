@@ -12,7 +12,7 @@
         <router-link
           v-if="profile?.userright === 'admin'"
           to="/admin"
-          class="text-sm hover:text-gray-300 transition-colors"
+          class="admin-link text-shadow-small"
         >
           Admin Dashboard
         </router-link>
@@ -79,5 +79,10 @@ footer {
 
 .credentials {
   padding-bottom: 15px;
+}
+
+.admin-link {
+  font-family: var(--font-pixelify);
+  color: var(--purple);
 }
 </style>

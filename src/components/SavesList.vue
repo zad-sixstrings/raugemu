@@ -10,16 +10,23 @@
               class="delete-button"
               :disabled="isDeleting"
             >
-              <img class="trash-icon" src="/assets/trash-bin.png">
+              <img class="trash-icon" src="/assets/trash-bin.png" />
             </button>
           </div>
-          <br />
-          <span class="profile-span">
-            <strong>Créée le </strong></span><span class="save-date"><em>{{ formatDateTime(save.creation_date) }}</em></span><br />
-            <span class="profile-span">
-            
-            <strong>Modifiée le </strong></span><span class="save-date"><em>{{ formatDateTime(save.change_date) }}</em></span><br />
-          
+          <div class="save-date-wrapper">
+            <p class="profile-span">
+              <strong>Créée le </strong>
+              <span class="save-date"
+                ><em>{{ formatDateTime(save.creation_date) }}</em></span
+              >
+            </p>
+            <p class="profile-span">
+              <strong>Modifiée le </strong>
+              <span class="save-date"
+                ><em>{{ formatDateTime(save.creation_date) }}</em></span
+              >
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -64,8 +71,20 @@ defineEmits<{
   height: 350px;
   overflow: scroll;
   flex: 1 1 100%;
-  mask-image: linear-gradient(to bottom, black calc(100% - 50px), transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 50px), transparent 100%);
+  mask-image: linear-gradient(
+    to bottom,
+    black calc(100% - 50px),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black calc(100% - 50px),
+    transparent 100%
+  );
+}
+
+.save-date-wrapper {
+  text-align: right;
 }
 
 .save-info {
@@ -75,7 +94,7 @@ defineEmits<{
   border-radius: 10px;
 }
 
-span.profile-span {
+p.profile-span {
   color: white;
   font-family: var(--font-pixelify);
   font-optical-sizing: auto;

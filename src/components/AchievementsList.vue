@@ -27,12 +27,24 @@
   display: flex;
   max-width: 100%;
   width: 100%;
+  height: 320px;
+  overflow: scroll;
   flex-wrap: wrap;
   gap: 2rem;
+  mask-image: linear-gradient(
+    to bottom,
+    black calc(100% - 50px),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black calc(100% - 50px),
+    transparent 100%
+  );
 }
 
 .achievement-item {
-  width: 200px;
+  width: 160px;
   height: 150px;
   padding: 0.8em;
   background-color: rgba(138, 138, 138, 0.1);

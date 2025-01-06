@@ -23,19 +23,34 @@
     </div>
 
     <div v-if="isEditing" class="edit-form">
-      <div class="form-group">
+      <div class="edit-form-group">
         <label>Title*</label>
-        <input v-model="editedRom.title" type="text" required />
+        <input
+          class="edit-input"
+          v-model="editedRom.title"
+          type="text"
+          required
+        />
       </div>
-      <div class="form-group">
+      <div class="edit-form-group">
         <label>Year*</label>
-        <input v-model.number="editedRom.year" type="number" required />
+        <input
+          class="edit-input"
+          v-model.number="editedRom.year"
+          type="number"
+          required
+        />
       </div>
-      <div class="form-group">
+      <div class="edit-form-group">
         <label>Developer*</label>
-        <input v-model="editedRom.developer" type="text" required />
+        <input
+          class="edit-input"
+          v-model="editedRom.developer"
+          type="text"
+          required
+        />
       </div>
-      <div class="form-group">
+      <div class="edit-form-group">
         <label>Box Art URL</label>
         <input
           v-model="editedRom.boxArtPath"
@@ -44,9 +59,10 @@
           readonly
         />
       </div>
-      <div class="form-group">
+      <div class="edit-form-group">
         <label>Categories*</label>
         <input
+          class="edit-input"
           v-model="editedRom.categories"
           type="text"
           placeholder="Enter categories"
@@ -198,11 +214,14 @@ function saveChanges() {
   font-size: 1.2rem;
   font-weight: bold;
   margin: 0 0 0.5rem 0;
+  font-family: monospace;
 }
 
 .rom-info p {
   margin: 0.25rem 0;
   color: #666;
+  font-family: monospace;
+  font-size: 1.1em;
 }
 
 .box-art {
@@ -217,17 +236,22 @@ function saveChanges() {
   gap: 1rem;
 }
 
-.form-group {
+.edit-input {
+  font-family: monospace;
+}
+
+.edit-form-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.form-group label {
+.edit-form-group label {
   font-weight: bold;
+  font-family: monospace;
 }
 
-.form-group input.box-art-input {
+.edit-form-group input.box-art-input {
   font-family: monospace;
   padding: 0.5rem;
   border: 1px solid #ddd;
@@ -237,12 +261,24 @@ function saveChanges() {
   cursor: default;
 }
 
+.edit-form-group input[type="email"],
+.edit-form-group input[type="number"],
+.edit-form-group input[type="password"],
+.edit-form-group input[type="text"] {
+  padding: 10px;
+  border: 1px solid var(--border-dark-grey);
+  font-family: monospace;
+  font-weight: 400;
+  font-size: 1em;
+}
+
 button {
   padding: 0.5rem 1rem;
   border-radius: 4px;
   border: none;
   cursor: pointer;
   font-weight: bold;
+  font-family: monospace;
 }
 
 .edit-button {

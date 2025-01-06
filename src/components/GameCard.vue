@@ -11,7 +11,7 @@
             game.boxArtPath ||
             `/assets/boxart/${game.filename?.replace(/\.[^/.]+$/, '')}.jpg`
           "
-          :alt="game.title || game.filename"
+          :alt="`${game.title} box art`"
           class="boxart"
           @error="handleImageError"
         />

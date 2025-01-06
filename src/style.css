@@ -105,6 +105,10 @@ a:visited {
   text-decoration: none;
 }
 
+img {
+  color: var(--blue);
+}
+
 /* GLOBAL SETTINGS */
 body,
 html {
