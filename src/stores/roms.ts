@@ -27,7 +27,8 @@ export const useRomStore = defineStore("rom", () => {
     try {
       loading.value = true;
       error.value = null;
-      existingRoms.value = await romApi.getAllRoms();
+      const apiResponse = await romApi.getAllRoms();
+      existingRoms.value = Object.values(apiResponse);
     } catch (err) {
       console.error("Get all ROMs error:", err);
       error.value =
@@ -47,18 +48,12 @@ export const useRomStore = defineStore("rom", () => {
     try {
       loading.value = true;
       error.value = null;
-
       const rom = newRoms.value.find((r) => r.romPath === romPath);
       if (!rom) {
         throw new Error("ROM not found in current list");
       }
-
       await romApi.updateRomInfo(romPath, updateData, consoleid);
-
-      // Remove the updated ROM from the new ROMs list
       newRoms.value = newRoms.value.filter((rom) => rom.romPath !== romPath);
-
-      // Refresh the existing ROMs list
       await fetchAllRoms();
     } catch (err) {
       error.value = "Failed to update ROM information";
@@ -69,12 +64,10 @@ export const useRomStore = defineStore("rom", () => {
     }
   }
 
-
   async function updateExistingRom(updateData: RomUpdatePayload) {
     try {
       loading.value = true;
       error.value = null;
-  
       await romApi.updateExistingRom(updateData);
       await fetchAllRoms();
     } catch (err) {

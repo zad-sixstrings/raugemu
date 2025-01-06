@@ -1,13 +1,13 @@
 export interface RomData {
-  id?: string;           
-  title?: string;       
+  id?: string;          
+  title?: string;      
   romPath: string;      
   boxArtPath?: string | null;  
   year?: number;        
   console?: string;
   consoleid: string;    
-  developer?: string;   
-  categories?: string;  // Changed to string
+  developer?: string;  
+  categories?: string;  
   filename?: string;    
 }
 
@@ -19,3 +19,4 @@ export interface RomUpdatePayload {
   boxArtPath: string | null;
   romPath: string;
 }
+

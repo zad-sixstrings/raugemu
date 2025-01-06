@@ -1,16 +1,20 @@
 <template>
-  <div v-for="category in categories" :key="category.title">
-    <div class="featured-games-title-wrapper">
-      <h2 class="featured-games-title">{{ category.title }}</h2>
-    </div>
-    <div id="content">
-      <div :id="generateId(category.title)" class="featured-games">
-        <div id="featured-container">
-          <GameList :games="category.games" @game-selected="openEmulator" />
+  <div v-if="loading" class="loading">Loading games...</div>
+  <div v-else-if="error" class="error">{{ error }}</div>
+  <template v-else>
+    <div v-for="category in categories" :key="category.title">
+      <div class="featured-games-title-wrapper">
+        <h2 class="featured-games-title">{{ category.title }}</h2>
+      </div>
+      <div id="content">
+        <div :id="generateId(category.title)" class="featured-games">
+          <div id="featured-container">
+            <GameList :games="category.games" @game-selected="openEmulator" />
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </template>
   <EmulatorPopup
     :is-visible="isEmulatorVisible"
     :game-url="selectedGameUrl"
@@ -18,65 +22,65 @@
   />
 </template>
 
-<script>
+<script setup lang="ts">
+import { ref, onMounted, computed } from 'vue';
 import GameList from "./GameCard.vue";
 import EmulatorPopup from "./EmulatorPopup.vue";
+import { useRomStore } from '../stores/roms';
+import type { RomData } from '../types/roms';
 
-export default {
-  components: {
-    GameList,
-    EmulatorPopup,
-  },
-  data() {
-    return {
-      categories: [],
-      isEmulatorVisible: false,
-      selectedGameUrl: "",
-    };
-  },
-  mounted() {
-    this.loadGamesData();
-  },
-  methods: {
-    async loadGamesData() {
-      try {
-        const response = await fetch("/games.json");
-        const gamesData = await response.json();
-        this.categories = [
-          {
-            title: "SELECTION",
-            games: gamesData.filter((game) =>
-              game.categories.includes("featured")
-            ),
-          },
-          {
-            title: "POKEMON EXTRAVAGANZA",
-            games: gamesData.filter((game) =>
-              game.categories.includes("pokemon")
-            ),
-          },
-          {
-            title: "RETOUR VERS LE FUTUR",
-            games: gamesData.filter((game) =>
-              game.categories.includes("retourverslefutur")
-            ),
-          },
-        ];
-      } catch (error) {
-        console.error("Failed to load games data:", error);
-      }
+const romStore = useRomStore();
+const isEmulatorVisible = ref(false);
+const selectedGameUrl = ref("");
+
+// Helper function to check if a game belongs to a category
+function belongsToCategory(game: RomData, category: string): boolean {
+  if (!game.categories) return false;
+  return game.categories.includes(category);
+}
+
+// Computed properties to organize games by category
+const categories = computed(() => {
+  if (!romStore.existingRoms.length) return [];
+  
+  return [
+    {
+      title: "SELECTION",
+      games: romStore.existingRoms.filter(game => belongsToCategory(game, "featured"))
     },
-    generateId(title) {
-      return title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+    {
+      title: "POKEMON EXTRAVAGANZA",
+      games: romStore.existingRoms.filter(game => belongsToCategory(game, "pokemon"))
     },
-    openEmulator(romPath) {
-      this.selectedGameUrl = romPath;
-      this.isEmulatorVisible = true;
-    },
-    closeEmulator() {
-      this.isEmulatorVisible = false;
-      this.selectedGameUrl = "";
-    },
-  },
-};
+    {
+      title: "RETOUR VERS LE FUTUR",
+      games: romStore.existingRoms.filter(game => belongsToCategory(game, "retourverslefutur"))
+    }
+  ].filter(category => category.games.length > 0); // Only show categories with games
+});
+
+const loading = computed(() => romStore.loading);
+const error = computed(() => romStore.error);
+
+onMounted(async () => {
+  try {
+    await romStore.fetchAllRoms();
+  } catch (error) {
+    console.error("Failed to load games:", error);
+  }
+});
+
+function generateId(title: string): string {
+  return title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+}
+
+function openEmulator(romPath: string): void {
+  selectedGameUrl.value = romPath;
+  isEmulatorVisible.value = true;
+}
+
+function closeEmulator(): void {
+  isEmulatorVisible.value = false;
+  selectedGameUrl.value = "";
+}
 </script>

@@ -2,41 +2,58 @@
   <template v-for="game in games" :key="game.title">
     <div id="card" class="card-wrapper">
       <h3 class="game-title center">
-        <div class="game-title-content">{{ game.title }}</div>
+        <div class="game-title-content">{{ game.title || game.filename }}</div>
       </h3>
 
       <div class="game-content">
-        <img :src="game.boxArtPath" alt="Box art" class="boxart" />
-        <span class="gameinfo">{{ game.year }} - {{ game.console }}</span>
-        <span class="gameinfo">{{ game.developer }}</span>
+        <img
+          :src="
+            game.boxArtPath ||
+            `/assets/boxart/${game.filename?.replace(/\.[^/.]+$/, '')}.jpg`
+          "
+          :alt="game.title || game.filename"
+          class="boxart"
+          @error="handleImageError"
+        />
+        <span class="gameinfo"
+          >{{ game.year || "Unknown" }} - {{ game.console }}</span
+        >
+        <span class="gameinfo">{{ game.developer || "Unknown" }}</span>
       </div>
       <div
+        v-if="game.romPath"
         class="play-button"
         :data-game="game.romPath"
         @click="startGame(game.romPath)"
       >
         <p class="center">PLAY</p>
       </div>
+      <div v-else class="play-button disabled">
+        <p class="center">X</p>
+      </div>
     </div>
   </template>
 </template>
 
-<script>
-export default {
-  name: "GameCard",
-  props: {
-    games: {
-      type: Array,
-      required: true,
-    },
-  },
-  emits: ["game-selected"],
-  methods: {
-    startGame(romPath) {
-      this.$emit("game-selected", romPath);
-    },
-  },
-};
+<script setup lang="ts">
+import type { RomData } from "../types/roms";
+
+defineProps<{
+  games: RomData[];
+}>();
+
+const emit = defineEmits<{
+  (e: "game-selected", romPath: string): void;
+}>();
+
+function startGame(romPath: string) {
+  emit("game-selected", romPath);
+}
+
+function handleImageError(e: Event) {
+  const img = e.target as HTMLImageElement;
+  img.src = "/assets/raugemu-logo.png";
+}
 </script>
 <style scoped>
 #card {
@@ -163,5 +180,10 @@ export default {
   border-right: 5px solid var(--border-light-blue);
   border-bottom: 5px solid var(--border-light-blue);
   cursor: url("/assets/cursor-click.png"), auto;
+}
+
+.disabled:hover {
+  cursor: not-allowed;
+  font-size: 1.1em;
 }
 </style>
