@@ -27,11 +27,13 @@ dist-ssr
 .env*
 !.env.example
 
+# Public folder
 public/assets/boxart/*
 public/assets/achievements/*
 public/ROM/*
-!public/ROM/
+
 !public/assets/boxart/
 !public/assets/achievements/
-
-!.gitkeep
+!public/assets/achievements/.gitkeep
+!public/assets/boxart/.gitkeep
+!public/ROM/.gitkeep
