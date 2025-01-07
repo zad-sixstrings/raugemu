@@ -28,8 +28,10 @@ dist-ssr
 !.env.example
 
 public/assets/boxart/*
+public/assets/achievements/*
 public/ROM/*
 !public/ROM/
 !public/assets/boxart/
+!public/assets/achievements/
 
 !.gitkeep

@@ -13,7 +13,7 @@
           <div class="achievement-icon-wrapper">
             <img
               class="achievement-icon"
-              src="/assets/achievements/default.png"
+              :src="`/assets/achievements/default.png`"
             />
           </div>
         </div>
