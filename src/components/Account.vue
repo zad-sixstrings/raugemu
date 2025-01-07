@@ -75,6 +75,23 @@
           />
         </div>
       </div>
+      <div class="achievements-section">
+        <h3 class="account-subtitle">
+          Succès:
+          <span class="achievements-span">{{
+            achievementsStore.achievements.length
+          }}</span>
+        </h3>
+        <template v-if="achievementsStore.achievements.length > 0">
+          <SearchBar v-model="achievementSearchQuery" />
+          <AchievementsList :achievements="filteredAchievements" />
+        </template>
+        <div v-else class="no-achievements">
+          <span class="profile-span"
+            >Vous n'avez pas encore débloqué de succès.</span
+          >
+        </div>
+      </div>
       <div class="saves-section">
         <h3 class="account-subtitle">
           Sauvegardes:
@@ -111,24 +128,6 @@
             <span class="game-name">{{ game.gamename }}</span>
             <span class="game-time">{{ playtimeFormat(game.playedtime) }}</span>
           </div>
-        </div>
-      </div>
-
-      <div class="achievements-section">
-        <h3 class="account-subtitle">
-          Succès:
-          <span class="achievements-span">{{
-            achievementsStore.achievements.length
-          }}</span>
-        </h3>
-        <template v-if="achievementsStore.achievements.length > 0">
-          <SearchBar v-model="achievementSearchQuery" />
-          <AchievementsList :achievements="filteredAchievements" />
-        </template>
-        <div v-else class="no-achievements">
-          <span class="profile-span"
-            >Vous n'avez pas encore débloqué de succès.</span
-          >
         </div>
       </div>
     </div>
@@ -324,11 +323,16 @@ h3.account-subtitle {
 .profile-section,
 .stats-section,
 .saves-section,
-.playtime-section,
-.achievements-section {
+.playtime-section{
   flex: 1;
   min-width: 300px;
   margin-bottom: 2rem;
+}
+
+.achievements-section {
+  flex: 0 0 100%;
+  width: 100%;
+  margin-bottom: 50px;
 }
 
 .date-profile-span {
@@ -533,7 +537,6 @@ img.avatar {
   cursor: var(--cursor-click);
   font-family: var(--font-pixelify);
   font-size: 0.9em;
-
 }
 
 .admin-link-wrapper:active {
