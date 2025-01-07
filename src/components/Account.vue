@@ -118,17 +118,8 @@
 
         <template v-if="gamePlaytime.length > 0">
           <SearchBar v-model="playtimeSearchQuery" />
+          <PlaytimeList :playtime="sortedAndFilteredPlaytime" />
         </template>
-        <div class="playtime-grid">
-          <div
-            v-for="game in sortedAndFilteredPlaytime"
-            :key="game.gamename"
-            class="playtime-card"
-          >
-            <span class="game-name">{{ game.gamename }}</span>
-            <span class="game-time">{{ playtimeFormat(game.playedtime) }}</span>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -156,21 +147,17 @@ import { authApi } from "../services/api";
 import { useUserProfileStore } from "../stores/userProfile";
 import { useUserSavesStore } from "../stores/userSaves";
 import type { PlaytimeData, UserSave } from "../types/user";
-import {
-  convertApiTimeFormat,
-  playtimeFormat,
-  getTotalPlaytime,
-} from "../utils/playtimeFormat";
-// import type { GamePlaytime } from "../types/user";
+import { convertApiTimeFormat, getTotalPlaytime } from "../utils/playtimeFormat";
 import { memberdateFormat } from "../utils/memberdateFormat";
 import SearchBar from "./SearchBar.vue";
 import SavesList from "./SavesList.vue";
+import PlaytimeList from "./PlaytimeList.vue";
 import DeleteConfirmationDialog from "./DeleteConfirmationDialog.vue";
 import ProfileEditDialog from "./ProfileEditDialog.vue";
 import AchievementsList from "./AchievementsList.vue";
 import { useAchievementsStore } from "../stores/achievements";
 import { storeToRefs } from "pinia";
-// import type { ApiPlaytimeData } from "../types/api";
+
 
 const router = useRouter();
 const authStore = useAuthStore();
@@ -323,7 +310,7 @@ h3.account-subtitle {
 .profile-section,
 .stats-section,
 .saves-section,
-.playtime-section{
+.playtime-section {
   flex: 1;
   min-width: 300px;
   margin-bottom: 2rem;
@@ -427,61 +414,6 @@ p.profile-loading {
 
 p.profile-error {
   color: var(--red);
-}
-
-/* Playtime Grid */
-.playtime-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 1rem;
-  height: 350px;
-  overflow-y: auto;
-  mask-image: linear-gradient(
-    to bottom,
-    black calc(100% - 50px),
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    black calc(100% - 50px),
-    transparent 100%
-  );
-}
-
-.playtime-grid::-webkit-scrollbar {
-  display: none;
-}
-
-.playtime-card {
-  flex: 0 0 auto;
-  background: rgba(74, 158, 255, 0.1);
-  border-radius: 8px;
-  padding: 1rem;
-  width: 150px;
-  height: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  text-align: center;
-}
-
-.game-name {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  font-family: var(--font-pixelify);
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-size: 0.9em;
-}
-
-.game-time {
-  color: var(--blue);
-  font-family: var(--font-press-start);
-  font-weight: 400;
-  font-size: 0.6em;
 }
 
 /* Avatar Section */
