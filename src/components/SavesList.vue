@@ -2,9 +2,11 @@
   <div class="saves-content">
     <div v-if="saves.length > 0">
       <div v-for="save in saves" :key="save.id" class="save-item">
-        <div class="save-info">
-          <div class="save-header">
-            <label class="save-title">{{ save.game }}</label>
+        <div class="save-header">
+          <div class="save-title-wrapper">
+            <h4 class="save-title">{{ save.game }}</h4>
+          </div>
+          <div class="delete-button-wrapper">
             <button
               @click="$emit('delete', save)"
               class="delete-button"
@@ -13,17 +15,21 @@
               <img class="trash-icon" src="/assets/trash-bin.png" />
             </button>
           </div>
+        </div>
+        <div class="save-info">
           <div class="save-date-wrapper">
-            <p class="profile-span">
-              <strong>Créée le </strong>
-              <span class="save-date"
-                ><em>{{ formatDateTime(save.creation_date) }}</em></span
+            <p class="profile-span"><strong>Création </strong>
+              
+              <p class="save-date"
+                ><em>{{ formatDateTime(save.creation_date) }}</em></p
               >
             </p>
-            <p class="profile-span">
-              <strong>Modifiée le </strong>
-              <span class="save-date"
-                ><em>{{ formatDateTime(save.creation_date) }}</em></span
+          </div>
+          <div class="modification-date-wrapper">
+            <p class="profile-span"><strong>Dernière modif. </strong>
+              
+              <p class="save-date"
+                ><em>{{ formatDateTime(save.creation_date) }}</em></p
               >
             </p>
           </div>
@@ -48,27 +54,11 @@ defineEmits<{
 </script>
 
 <style scoped>
-.save-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
-}
-
-.save-title {
-  font-family: var(--font-press-start);
-  font-size: 0.9rem;
-  width: 230px;
-  color: var(--blue);
-  line-clamp: 3;
-  -webkit-line-clamp: 3;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-}
-
 .saves-content {
   background-color: transparent;
   height: 350px;
+  width: 100%;
+  padding: 0.5em;
   overflow: scroll;
   flex: 1 1 100%;
   mask-image: linear-gradient(
@@ -83,40 +73,79 @@ defineEmits<{
   );
 }
 
-.save-date-wrapper {
-  text-align: right;
+.save-item {
+  max-height: 220px;
+  margin-bottom: 20px;
+}
+
+.save-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--purple);
+  border-top: 5px solid var(--border-light-purple);
+  border-left: 5px solid var(--border-light-purple);
+  border-right: 5px solid var(--border-dark-purple);
+  border-bottom: 5px solid var(--border-dark-purple);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.save-title-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+}
+
+.save-title {
+  font-family: var(--font-press-start);
+  color: white;
+  font-size: 0.8em;
 }
 
 .save-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
   margin-bottom: 20px;
-  background-color: rgb(70, 70, 70);
-  padding: 10px;
-  border-radius: 10px;
+  padding: 1.5em;
+  background-color: var(--blue);
+  border-left: 5px solid var(--border-light-blue);
+  border-right: 5px solid var(--border-dark-blue);
+  border-bottom: 5px solid var(--border-dark-blue);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
-p.profile-span {
-  color: white;
-  font-family: var(--font-pixelify);
-  font-optical-sizing: auto;
-  font-weight: 400;
+.save-date-wrapper, .modification-date-wrapper {
+  flex: 1;
 }
 
-span.save-date {
+p.save-date {
   font-family: var(--font-micro);
   font-size: 1.2rem;
 }
 
+.delete-button-wrapper {
+  display: flex;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-top-right-radius: 10px;
+}
+
 .delete-button {
-  width: 40px;
-  height: 40px;
-  font-weight: 400;
+  width: 50px;
+  height: 50px;
   background: var(--red);
   border-top: 5px solid var(--border-light-red);
   border-left: 5px solid var(--border-light-red);
   border-right: 5px solid var(--border-dark-red);
   border-bottom: 5px solid var(--border-dark-red);
-  border-radius: var(--radius-big);
-  color: white;
+  border-top-right-radius: 5px;
   cursor: var(--cusror-click);
   transition: all 0.2s;
 }
@@ -141,5 +170,9 @@ span.save-date {
 .delete-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+p.profile-span {
+  font-family: var(--font-pixelify);
 }
 </style>

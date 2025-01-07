@@ -176,16 +176,15 @@ body::after {
 .featured-games-title-wrapper,
 #content {
   margin: 0 auto;
-  max-width: 80%;
+  max-width: 86%;
   width: 100%;
 }
 
 #featured-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  margin: 0 auto;
-  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 220px);
+  gap: 3rem;
+  min-width: 90%;
   padding: 2rem;
   border-left: 5px solid var(--border-light-purple);
   border-bottom: 5px solid var(--border-dark-purple);
@@ -194,7 +193,7 @@ body::after {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   margin-bottom: 50px;
-  overflow: scroll;
+
   background-color: var(--bg-featured);
 }
 
