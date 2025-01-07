@@ -15,7 +15,7 @@
     </div>
   </header>
   <div class="header-warning">
-      <span>/!\ L'émulation Nintendo 64 est actuellement éclatax.</span>
+      <span>/!\ Certains jeux Nintendo 64 sont actuellement instables</span>
     </div>
 </template>
 
