@@ -8,25 +8,12 @@
         par <a href="https://raug-info.ch">Raug Info</a>
       </p>
       <p class="copyright">2024 - Tous droits réservés</p>
-      <p>
-        <router-link
-          v-if="profile?.userright === 'admin'"
-          to="/admin"
-          class="admin-link text-shadow-small"
-        >
-          Admin Dashboard
-        </router-link>
-      </p>
     </div>
   </footer>
 </template>
 
 <script setup lang="ts">
-import { storeToRefs } from "pinia";
-import { useUserProfileStore } from "../stores/userProfile";
-
-const store = useUserProfileStore();
-const { profile } = storeToRefs(store); // Use storeToRefs for reactive store properties
+// Script
 </script>
 
 <style scoped>
@@ -79,10 +66,5 @@ footer {
 
 .credentials {
   padding-bottom: 15px;
-}
-
-.admin-link {
-  font-family: var(--font-pixelify);
-  color: var(--purple);
 }
 </style>

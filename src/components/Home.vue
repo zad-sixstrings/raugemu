@@ -43,20 +43,22 @@ function belongsToCategory(game: RomData, category: string): boolean {
 const categories = computed(() => {
   if (!romStore.existingRoms.length) return [];
   
+  const activeRoms = romStore.existingRoms.filter(game => game.isAvailable);
+  
   return [
     {
       title: "SELECTION",
-      games: romStore.existingRoms.filter(game => belongsToCategory(game, "featured"))
+      games: activeRoms.filter(game => belongsToCategory(game, "featured"))
     },
     {
       title: "POKEMON EXTRAVAGANZA",
-      games: romStore.existingRoms.filter(game => belongsToCategory(game, "pokemon"))
+      games: activeRoms.filter(game => belongsToCategory(game, "pokemon"))
     },
     {
       title: "LES CLOQUES AUX DOIGTS",
-      games: romStore.existingRoms.filter(game => belongsToCategory(game, "arcade"))
+      games: activeRoms.filter(game => belongsToCategory(game, "arcade"))
     }
-  ].filter(category => category.games.length > 0); // Only show categories with games
+  ].filter(category => category.games.length > 0);
 });
 
 const loading = computed(() => romStore.loading);

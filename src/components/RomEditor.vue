@@ -71,6 +71,39 @@
       </div>
       <div class="button-group">
         <button @click="saveChanges" class="save-button">Save Changes</button>
+        <button
+          type="button"
+          class="remove-button"
+          @click="showConfirmDialog = true"
+          :disabled="loading"
+        >
+          Remove
+        </button>
+      </div>
+      <div v-if="showConfirmDialog" class="dialog-overlay">
+        <div class="dialog-content">
+          <h3>Confirm Removal</h3>
+          <p>
+            Are you sure you want to remove this ROM? User data will be
+            preserved but the ROM will no longer be available on the site.
+          </p>
+          <div class="dialog-buttons">
+            <button
+              @click="handleRemove"
+              :disabled="loading"
+              class="confirm-button"
+            >
+              Yes, Remove
+            </button>
+            <button
+              @click="showConfirmDialog = false"
+              :disabled="loading"
+              class="cancel-button"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -78,7 +111,10 @@
 
 <script setup lang="ts">
 import { ref, defineProps, defineEmits } from "vue";
-import type { RomData } from "../types/roms";
+import type { RomData, RomUpdatePayload } from "../types/roms";
+import { useRomStore } from '../stores/roms';
+
+const romStore = useRomStore();
 
 const props = defineProps<{
   rom: RomData;
@@ -86,24 +122,24 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-  (e: "update", rom: RomData): void; // Changed from RomData to RomUpdatePayload
+  (e: "update", rom: RomData): void;
   (e: "beforeEdit", rom: RomData): void;
+  (e: "update-success"): void;
 }>();
 
 const isEditing = ref(false);
 const editedRom = ref<RomData>({ ...props.rom });
+const showConfirmDialog = ref(false);
+const loading = ref(false);
 
 function getFileNameFromPath(path: string | null | undefined): string {
   if (!path) return "";
-
   const filename = path.split("/").pop();
   return filename || "";
 }
 
 function getBoxArtPath(romFileName: string | undefined | null): string {
   if (!romFileName) return "/assets/boxart/";
-
-  // Remove file extension and replace with .jpg
   const nameWithoutExtension = romFileName.replace(/\.[^/.]+$/, "");
   return `/assets/boxart/${nameWithoutExtension}.jpg`;
 }
@@ -126,17 +162,16 @@ function startEdit() {
     romFileName = props.rom.filename || "";
   }
 
-  // Remove the direct DOM query and just use the props data
   editedRom.value = {
     ...props.rom,
     title: props.rom.title || "",
     year: props.rom.year || 0,
     developer: props.rom.developer || "",
-    categories: props.rom.categories || "None", // Default to "None" if no categories
+    categories: props.rom.categories || "None",
     boxArtPath: props.rom.boxArtPath || getBoxArtPath(romFileName),
-    romPath:
-      props.rom.romPath || `/ROM/${props.rom.console}/${props.rom.filename}`,
+    romPath: props.rom.romPath || `/ROM/${props.rom.console}/${props.rom.filename}`,
     consoleid: props.rom.consoleid,
+    isAvailable: props.rom.isAvailable ?? true // Default to true if not set
   };
 
   console.log("Initialized editedRom - detailed:", {
@@ -155,13 +190,37 @@ function startEdit() {
 function cancelEdit() {
   editedRom.value = { ...props.rom };
   isEditing.value = false;
+  showConfirmDialog.value = false;
 }
 
-function saveChanges() {
+async function handleRemove() {
+  try {
+    loading.value = true;
+    const updatePayload: RomUpdatePayload = {
+      title: editedRom.value.title || "",
+      year: editedRom.value.year || 0,
+      developer: editedRom.value.developer || "",
+      categories: editedRom.value.categories || "None",
+      boxArtPath: editedRom.value.boxArtPath || null,
+      romPath: editedRom.value.romPath,
+      isAvailable: false
+    };
+
+    await romStore.updateExistingRom(updatePayload);
+    showConfirmDialog.value = false;
+    emit('update-success');
+    isEditing.value = false;
+  } catch (error) {
+    console.error('Failed to remove ROM:', error);
+  } finally {
+    loading.value = false;
+  }
+}
+
+async function saveChanges() {
   console.log("saveChanges called with isNew:", props.isNew);
   console.log("Current editedRom data:", editedRom.value);
 
-  // Log each validation check separately
   console.log("Validation checks:", {
     title: editedRom.value.title,
     hasTitle: Boolean(editedRom.value.title),
@@ -186,8 +245,30 @@ function saveChanges() {
     return;
   }
 
-  emit("update", editedRom.value);
-  isEditing.value = false;
+  try {
+    loading.value = true;
+    const updatePayload: RomUpdatePayload = {
+      title: editedRom.value.title,
+      year: editedRom.value.year,
+      developer: editedRom.value.developer,
+      categories: editedRom.value.categories,
+      boxArtPath: editedRom.value.boxArtPath || null,
+      romPath: editedRom.value.romPath,
+      isAvailable: true
+    };
+
+    if (!props.isNew) {
+      await romStore.updateExistingRom(updatePayload);
+    }
+    
+    emit("update", editedRom.value);
+    emit("update-success");
+    isEditing.value = false;
+  } catch (error) {
+    console.error('Failed to save ROM:', error);
+  } finally {
+    loading.value = false;
+  }
 }
 </script>
 

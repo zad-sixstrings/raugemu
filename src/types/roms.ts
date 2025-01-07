@@ -8,7 +8,8 @@ export interface RomData {
   consoleid: string;    
   developer?: string;  
   categories?: string;  
-  filename?: string;    
+  filename?: string;
+  isAvailable: boolean;
 }
 
 export interface RomUpdatePayload {
@@ -18,4 +19,5 @@ export interface RomUpdatePayload {
   categories: string;
   boxArtPath: string | null;
   romPath: string;
+  isAvailable: boolean;
 }

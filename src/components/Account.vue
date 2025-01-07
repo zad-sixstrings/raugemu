@@ -1,8 +1,6 @@
 <template>
   <div class="account-title-wrapper">
-    <h2 class="account-title">
-      MON COMPTE
-    </h2>
+    <h2 class="account-title">MON COMPTE</h2>
   </div>
   <div class="account-container">
     <div
@@ -23,10 +21,22 @@
       <div class="profile-section">
         <div class="section-header">
           <h3 class="account-subtitle">Profil</h3>
+          <div class="admin-link-wrapper">
+            <p>
+              <router-link
+                v-if="profile?.userright === 'admin'"
+                to="/admin"
+                class="admin-link"
+              >
+                Admin
+              </router-link>
+            </p>
+          </div>
           <button @click="showEditDialog = true" class="edit-button">
             Modifier
           </button>
         </div>
+
         <div class="info-content">
           <div class="info-item">
             <label class="profile-label">Pseudo:</label>
@@ -160,11 +170,13 @@ import DeleteConfirmationDialog from "./DeleteConfirmationDialog.vue";
 import ProfileEditDialog from "./ProfileEditDialog.vue";
 import AchievementsList from "./AchievementsList.vue";
 import { useAchievementsStore } from "../stores/achievements";
+import { storeToRefs } from "pinia";
 // import type { ApiPlaytimeData } from "../types/api";
 
 const router = useRouter();
 const authStore = useAuthStore();
 const profileStore = useUserProfileStore();
+const { profile } = storeToRefs(profileStore);
 const savesStore = useUserSavesStore();
 const savesSearchQuery = ref("");
 const showConfirmDialog = ref(false);
@@ -332,10 +344,10 @@ h3.account-subtitle {
   min-width: 120px;
   flex-shrink: 0;
   display: flex;
-  align-items: center; 
-  margin: 0; 
+  align-items: center;
+  margin: 0;
   padding: 0;
-  line-height: 1; 
+  line-height: 1;
 }
 
 .info-content,
@@ -369,10 +381,10 @@ label.profile-label {
 
 span.profile-span {
   display: inline-block;
-  margin: 0; 
+  margin: 0;
   padding: 0;
   line-height: 1;
-  vertical-align: middle; 
+  vertical-align: middle;
   color: white;
   font-family: var(--font-pixelify);
   font-optical-sizing: auto;
@@ -382,10 +394,10 @@ span.profile-span {
 
 span.nickname-span {
   display: inline-block;
-  margin: 0; 
+  margin: 0;
   padding: 0;
   line-height: 1;
-  vertical-align: middle; 
+  vertical-align: middle;
   color: var(--blue);
   font-family: var(--font-press-start);
   font-optical-sizing: auto;
@@ -510,4 +522,35 @@ img.avatar {
   border-left-color: var(--border-dark-blue);
 }
 
+.admin-link-wrapper {
+  background: var(--blue);
+  border: 5px solid var(--border-dark-blue);
+  border-top-color: var(--border-light-blue);
+  border-left-color: var(--border-light-blue);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 5px;
+  cursor: var(--cursor-click);
+  font-family: var(--font-pixelify);
+  font-size: 0.9em;
+
+}
+
+.admin-link-wrapper:active {
+  background: var(--blue-active);
+  border-color: var(--border-light-blue);
+  border-top-color: var(--border-dark-blue);
+  border-left-color: var(--border-dark-blue);
+}
+
+.admin-link {
+  font-family: var(--font-pixelify);
+  text-align: center;
+  margin: 0 auto;
+  color: white;
+  font-size: 0.9em;
+}
+a.admin-link:hover {
+  text-decoration: none;
+}
 </style>

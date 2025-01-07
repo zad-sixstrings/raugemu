@@ -62,7 +62,10 @@ const consoleIcons: Record<string, string> = {
 
 const filteredGames = computed(() => {
   return store.existingRoms
-    .filter(game => game.console?.toUpperCase() === props.console.toUpperCase())
+    .filter(game => 
+      game.isAvailable && 
+      game.console?.toUpperCase() === props.console.toUpperCase()
+    )
     .sort((a, b) => (a.title || '').localeCompare(b.title || ''));
 });
 
