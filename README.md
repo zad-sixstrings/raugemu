@@ -33,12 +33,3 @@ We stand firmly against piracy and encourage everyone to acquire their ROMs **le
 *"You rip 'em, we emulate 'em!"*  
 It's just a joke, inspired by a [content creator](https://www.instagram.com/p/DDclfh1Oesu/) who uses witty catchphrases to deal with phone scammers. Please don’t mistake this as a suggestion that we provide ROMs—we don’t.  
 
-## TODO
-### High priority
-- Add change/recover password feature
-- Add profile picture and custom bio
-- Add playtime tracking
-
-### Low priority
-- Homogenize Login/Register view with game cards style
-- Homogenize account page with general UI
