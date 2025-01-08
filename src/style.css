@@ -136,6 +136,19 @@ body::after {
   z-index: 9999;
 }
 
+.page-transition {
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* SCROLLBARS BEGONE */
 /* Scrollable areas are indicated by alpha gradients instead. */
 *::-webkit-scrollbar {

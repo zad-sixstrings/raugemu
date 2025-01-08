@@ -1,125 +1,129 @@
 <template>
-  <div class="account-title-wrapper">
-    <h2 class="account-title">MON COMPTE</h2>
-  </div>
-  <div class="account-container">
-    <div
-      v-if="profileStore.loading || savesStore.loading"
-      class="account-content"
-    >
-      <p class="profile-loading">Chargement...</p>
+  <div class="page-transition">
+    <div class="account-title-wrapper">
+      <h2 class="account-title">MON COMPTE</h2>
     </div>
-    <div
-      v-else-if="profileStore.error || savesStore.error"
-      class="account-content"
-    >
-      <p class="profile-error">
-        Une erreur est survenue: {{ profileStore.error || savesStore.error }}
-      </p>
-    </div>
-    <div v-else-if="profileStore.profile" class="account-content">
-      <div class="profile-section">
-        <div class="section-header">
-          <h3 class="account-subtitle">Profil</h3>
-          <div class="admin-link-wrapper">
-            <p>
-              <router-link
-                v-if="profile?.userright === 'admin'"
-                to="/admin"
-                class="admin-link"
-              >
-                Admin
-              </router-link>
-            </p>
+    <div class="account-container">
+      <div
+        v-if="profileStore.loading || savesStore.loading"
+        class="account-content"
+      >
+        <p class="profile-loading">Chargement...</p>
+      </div>
+      <div
+        v-else-if="profileStore.error || savesStore.error"
+        class="account-content"
+      >
+        <p class="profile-error">
+          Une erreur est survenue: {{ profileStore.error || savesStore.error }}
+        </p>
+      </div>
+      <div v-else-if="profileStore.profile" class="account-content">
+        <div class="profile-section">
+          <div class="section-header">
+            <h3 class="account-subtitle">Profil</h3>
+            <div class="admin-link-wrapper">
+              <p>
+                <router-link
+                  v-if="profile?.userright === 'admin'"
+                  to="/admin"
+                  class="admin-link"
+                >
+                  Admin
+                </router-link>
+              </p>
+            </div>
+            <button @click="showEditDialog = true" class="edit-button">
+              Modifier
+            </button>
           </div>
-          <button @click="showEditDialog = true" class="edit-button">
-            Modifier
-          </button>
-        </div>
 
-        <div class="info-content">
-          <div class="info-item">
-            <label class="profile-label">Pseudo:</label>
-            <span class="nickname-span text-shadow-small">{{
-              profileStore.profile.nickname
+          <div class="info-content">
+            <div class="info-item">
+              <label class="profile-label">Pseudo:</label>
+              <span class="nickname-span text-shadow-small">{{
+                profileStore.profile.nickname
+              }}</span>
+            </div>
+            <div class="info-item">
+              <label class="profile-label">Email:</label>
+              <span class="profile-span">{{
+                profileStore.profile.email || "email"
+              }}</span>
+            </div>
+            <div class="info-item">
+              <label class="profile-label">Inscription:</label>
+              <span class="date-profile-span">{{
+                memberdateFormat(profileStore.profile.creation_date)
+              }}</span>
+            </div>
+            <div class="bio-item">
+              <label class="profile-label">Bio:</label><br />
+              <p class="bio">
+                {{ profileStore.profile?.profile ?? "Coming soon..." }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="stats-section">
+          <h3 class="account-subtitle center">Avatar</h3>
+          <div class="user-avatar">
+            <img
+              class="avatar"
+              :src="profileStore.avatarPath"
+              @error="handleImageError"
+              alt="Profile avatar"
+            />
+          </div>
+        </div>
+        <div class="achievements-section">
+          <h3 class="account-subtitle">
+            Succès:
+            <span class="achievements-span">{{
+              achievementsStore.achievements.length
             }}</span>
+          </h3>
+          <template v-if="achievementsStore.achievements.length > 0">
+            <SearchBar v-model="achievementSearchQuery" />
+            <AchievementsList :achievements="filteredAchievements" />
+          </template>
+          <div v-else class="no-achievements">
+            <span class="profile-span"
+              >Vous n'avez pas encore débloqué de succès.</span
+            >
           </div>
-          <div class="info-item">
-            <label class="profile-label">Email:</label>
-            <span class="profile-span">{{
-              profileStore.profile.email || "email"
+        </div>
+        <div class="saves-section">
+          <h3 class="account-subtitle">
+            Sauvegardes:
+            <span class="saves-span">{{
+              profileStore.profile?.saves ?? 0
             }}</span>
+          </h3>
+          <template v-if="savesStore.saves.length > 0">
+            <SearchBar v-model="savesSearchQuery" />
+            <SavesList
+              :saves="filteredSaves"
+              @delete="confirmDelete"
+              :isDeleting="savesStore.isDeleting"
+            />
+          </template>
+          <div v-else class="no-saves">
+            <span class="profile-span"
+              >Vous n'avez pas encore de sauvegardes enregistrées.</span
+            >
           </div>
-          <div class="info-item">
-            <label class="profile-label">Inscription:</label>
-            <span class="date-profile-span">{{
-              memberdateFormat(profileStore.profile.creation_date)
-            }}</span>
-          </div>
-          <div class="bio-item">
-            <label class="profile-label">Bio:</label><br />
-            <p class="bio">
-              {{ profileStore.profile?.profile ?? "Coming soon..." }}
-            </p>
-          </div>
         </div>
-      </div>
-      <div class="stats-section">
-        <h3 class="account-subtitle center">Avatar</h3>
-        <div class="user-avatar">
-          <img
-            class="avatar"
-            :src="profileStore.avatarPath"
-            @error="handleImageError"
-            alt="Profile avatar"
-          />
-        </div>
-      </div>
-      <div class="achievements-section">
-        <h3 class="account-subtitle">
-          Succès:
-          <span class="achievements-span">{{
-            achievementsStore.achievements.length
-          }}</span>
-        </h3>
-        <template v-if="achievementsStore.achievements.length > 0">
-          <SearchBar v-model="achievementSearchQuery" />
-          <AchievementsList :achievements="filteredAchievements" />
-        </template>
-        <div v-else class="no-achievements">
-          <span class="profile-span"
-            >Vous n'avez pas encore débloqué de succès.</span
-          >
-        </div>
-      </div>
-      <div class="saves-section">
-        <h3 class="account-subtitle">
-          Sauvegardes:
-          <span class="saves-span">{{ profileStore.profile?.saves ?? 0 }}</span>
-        </h3>
-        <template v-if="savesStore.saves.length > 0">
-          <SearchBar v-model="savesSearchQuery" />
-          <SavesList
-            :saves="filteredSaves"
-            @delete="confirmDelete"
-            :isDeleting="savesStore.isDeleting"
-          />
-        </template>
-        <div v-else class="no-saves">
-          <span class="profile-span"
-            >Vous n'avez pas encore de sauvegardes enregistrées.</span
-          >
-        </div>
-      </div>
-      <div class="playtime-section">
-        <h3 class="account-subtitle">
-          Temps de jeu: {{ getTotalPlaytime(gamePlaytime) }}
-        </h3>
+        <div class="playtime-section">
+          <h3 class="account-subtitle">
+            Temps de jeu: {{ getTotalPlaytime(gamePlaytime) }}
+          </h3>
 
-        <template v-if="gamePlaytime.length > 0">
-          <SearchBar v-model="playtimeSearchQuery" />
-          <PlaytimeList :playtime="sortedAndFilteredPlaytime" />
-        </template>
+          <template v-if="gamePlaytime.length > 0">
+            <SearchBar v-model="playtimeSearchQuery" />
+            <PlaytimeList :playtime="sortedAndFilteredPlaytime" />
+          </template>
+        </div>
       </div>
     </div>
   </div>
@@ -147,7 +151,10 @@ import { authApi } from "../services/api";
 import { useUserProfileStore } from "../stores/userProfile";
 import { useUserSavesStore } from "../stores/userSaves";
 import type { PlaytimeData, UserSave } from "../types/user";
-import { convertApiTimeFormat, getTotalPlaytime } from "../utils/playtimeFormat";
+import {
+  convertApiTimeFormat,
+  getTotalPlaytime,
+} from "../utils/playtimeFormat";
 import { memberdateFormat } from "../utils/memberdateFormat";
 import SearchBar from "./SearchBar.vue";
 import SavesList from "./SavesList.vue";
@@ -157,7 +164,6 @@ import ProfileEditDialog from "./ProfileEditDialog.vue";
 import AchievementsList from "./AchievementsList.vue";
 import { useAchievementsStore } from "../stores/achievements";
 import { storeToRefs } from "pinia";
-
 
 const router = useRouter();
 const authStore = useAuthStore();
