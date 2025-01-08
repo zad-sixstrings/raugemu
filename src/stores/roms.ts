@@ -23,22 +23,20 @@ export const useRomStore = defineStore("rom", () => {
     }
   }
 
-  async function fetchAllRoms() {
-    try {
-      loading.value = true;
-      error.value = null;
-      const apiResponse = await romApi.getAllRoms();
-      existingRoms.value = Object.values(apiResponse);
-    } catch (err) {
-      console.error("Get all ROMs error:", err);
-      error.value =
-        err instanceof Error ? err.message : "Failed to load existing ROMs";
-      existingRoms.value = [];
-      throw err;
-    } finally {
-      loading.value = false;
-    }
+async function fetchAllRoms() {
+  try {
+    loading.value = true;
+    error.value = null;
+    const apiResponse = await romApi.getAllRoms();
+    existingRoms.value = Object.values(apiResponse);
+  } catch (err) {
+    console.error("Get all ROMs error:", err);
+    error.value = "Unable to load games. Please try again later.";
+    existingRoms.value = [];
+  } finally {
+    loading.value = false;
   }
+}
 
   async function updateRomInfo(
     romPath: string,

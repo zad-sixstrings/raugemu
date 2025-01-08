@@ -322,26 +322,27 @@ export const romApi = {
 
   async getAllRoms(): Promise<RomData[]> {
     try {
+      const headers: Record<string, string> = {
+        "Content-Type": "application/json"
+      };
+      
       const token = localStorage.getItem("token");
-      if (!token) {
-        throw new Error("No authentication token found");
+      if (token) {
+        headers.Authorization = `Bearer ${token}`;
       }
-
+  
       const response = await fetch(`${API_URL}/roms/getromslist`, {
         method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
+        headers
       });
-
+  
       if (!response.ok) {
         throw new Error("Failed to fetch ROM list");
       }
-
+  
       return await response.json();
     } catch (error) {
-      // Only log the error here, let the caller handle it
+      console.error("Get ROM list error:", error);
       throw new Error("Failed to fetch ROM list");
     }
   },

@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import type { RouteRecordRaw } from "vue-router";
+import { useAuthStore } from "./stores/auth";
 import Home from "./components/Home.vue";
 import ConsoleGames from "./components/ConsoleGames.vue";
 import Login from "./components/Login.vue";
@@ -9,45 +10,46 @@ import Account from "./components/Account.vue";
 import Admin from "./components/Admin.vue";
 
 const routes: RouteRecordRaw[] = [
-  { path: "/", component: Home },
+  { 
+    path: "/", 
+    component: Home,
+    meta: { requiresAuth: true }
+  },
   { path: "/login", component: Login },
   { path: "/register", component: Register },
   {
     path: "/admin",
     name: "Admin",
     component: Admin,
-    meta: {
-      requiresAuth: true, // If you're using navigation guards
-    },
+    meta: { requiresAuth: true }
   },
   {
     path: "/console/:console",
     component: ConsoleGames,
     props: true,
+    meta: { requiresAuth: true }
   },
   {
     path: "/about",
     name: "about",
-    component: About,
+    component: About
   },
   {
     path: "/compte",
     name: "account",
     component: Account,
-    meta: {
-      requiresAuth: true,
-    },
+    meta: { requiresAuth: true }
   },
   {
     path: "/reset-password",
     name: "ResetPassword",
-    component: () => import("./components/PasswordRequestReset.vue"),
+    component: () => import("./components/PasswordRequestReset.vue")
   },
   {
     path: "/update-password",
     name: "UpdatePassword",
-    component: () => import("./components/PasswordUpdate.vue"),
-  },
+    component: () => import("./components/PasswordUpdate.vue")
+  }
 ];
 
 const router = createRouter({
@@ -56,7 +58,27 @@ const router = createRouter({
 });
 
 router.beforeEach((to, _from, next) => {
-  console.log("Navigating to:", to.path);
+  const authStore = useAuthStore();
+  const isAuthenticated = authStore.isAuthenticated;
+
+  // List of routes accessible without auth
+  const publicPages = ['/login', '/register', '/about', '/reset-password', '/update-password'];
+  
+  // If user is not authenticated and tries to access a protected route
+  if (!isAuthenticated && !publicPages.includes(to.path)) {
+    // If they're not already heading to login, send them there
+    if (to.path !== '/login') {
+      next('/login');
+      return;
+    }
+  }
+  
+  // If user is authenticated and tries to access login/register
+  if (isAuthenticated && ['/login', '/register'].includes(to.path)) {
+    next('/');
+    return;
+  }
+
   next();
 });
 
