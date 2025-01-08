@@ -21,6 +21,8 @@ export const useAuthStore = defineStore("auth", () => {
     try {
       const userData = await authApi.login(credentials);
       setUser(userData);
+      // Fetch profile data right after successful login
+      await userProfileStore.fetchProfile();
       return true;
     } catch (err) {
       error.value = "Email ou mot de passe invalide.";
@@ -50,11 +52,11 @@ export const useAuthStore = defineStore("auth", () => {
     notificationStore.addNotification("Déconnecté", "info");
   }
 
-  function initializeAuth() {
+  async function initializeAuth() {
     const token = localStorage.getItem("token");
     if (token) {
       try {
-        // Update the temporary user object to match UserProfile structure
+        // Set temporary user first
         setUserSilently({
           id: "temp-id",
           nickname: "temp-username",
@@ -64,6 +66,9 @@ export const useAuthStore = defineStore("auth", () => {
           saves: 0,
           imagePath: ""
         } as User);
+        
+        // Then fetch the actual profile
+        await userProfileStore.fetchProfile();
       } catch (error) {
         console.error("Failed to initialize auth:", error);
         logout();

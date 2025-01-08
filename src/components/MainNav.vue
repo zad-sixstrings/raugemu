@@ -185,7 +185,6 @@ const handleLogout = () => {
 };
 </script>
 <style scoped>
-/* MAIN MENU */
 #main-menu {
   height: 70px;
   margin: 0 0 30px 0;
