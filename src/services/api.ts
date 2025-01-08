@@ -370,7 +370,8 @@ export const romApi = {
           developer: updateData.developer,
           categories: updateData.categories,
           boxArtPath: updateData.boxArtPath,
-          romPath: romPath // Use the romPath parameter instead of from updateData
+          romPath: romPath,
+          isAvailable: updateData.isAvailable
         }),
       });
   

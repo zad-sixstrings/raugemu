@@ -18,19 +18,15 @@
         </div>
         <div class="save-info">
           <div class="save-date-wrapper">
-            <p class="profile-span"><strong>Création </strong>
-              
-              <p class="save-date"
-                ><em>{{ formatDateTime(save.creation_date) }}</em></p
-              >
+            <p class="profile-span"><strong>Création </strong></p>
+            <p class="save-date">
+              <em>{{ formatDateTime(save.creation_date) }}</em>
             </p>
           </div>
           <div class="modification-date-wrapper">
-            <p class="profile-span"><strong>Dernière modif. </strong>
-              
-              <p class="save-date"
-                ><em>{{ formatDateTime(save.creation_date) }}</em></p
-              >
+            <p class="profile-span"><strong>Dernière modif. </strong></p>
+            <p class="save-date">
+              <em>{{ formatDateTime(save.creation_date) }}</em>
             </p>
           </div>
         </div>
@@ -120,7 +116,8 @@ defineEmits<{
   border-bottom-right-radius: 10px;
 }
 
-.save-date-wrapper, .modification-date-wrapper {
+.save-date-wrapper,
+.modification-date-wrapper {
   flex: 1;
 }
 
