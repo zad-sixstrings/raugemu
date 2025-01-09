@@ -2,14 +2,14 @@
   <div class="eea-wrapper">
     <img
       v-if="eeStore.hasAchievement('puzzle-solved')"
-      src="/assets/achievements/ee-main.png"
+      :src="`/assets/achievements/ee-main.png`"
       class="ee-icon"
       alt="RaugEmu Master"
       title="A résolu l'énigme RaugEmu"
     />
     <img
       v-if="eeStore.hasAchievement('ghost-in-the-shell')"
-      src="/assets/achievements/ee-gits.png"
+      :src="`/assets/achievements/ee-gits.png`"
       class="ee-icon"
       alt="Ghost in the Shell"
       title="A résolu l'enigme sans laisser aucune trace de son passage"
