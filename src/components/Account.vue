@@ -436,6 +436,7 @@ p.profile-error {
 
 img.avatar {
   width: 200px;
+  height: 200px;
   border-radius: 100%;
   border: 5px solid var(--purple);
   border-top-color: var(--border-light-purple);
