@@ -32,7 +32,12 @@
 </template>
 
 <script>
+import { useEE } from "../stores/ee";
 export default {
+  setup() {
+    const eeStore = useEE();
+    return { eeStore }; // Make it available to the component
+  },
   data() {
     return {
       // Stores the current command being typed
@@ -510,8 +515,8 @@ export default {
 
         // Secret achievement check
         if (filename === "ACCESS.LOG" && this.currentPath === "REMOTE:\\") {
-          // Maybe store this achievement somewhere?
           this.outputLines.push("Journaux d'authentification supprimés.");
+          this.eeStore.unlockAchievement("ghost-in-the-shell");
         }
       } catch (error) {
         throw new Error(
@@ -649,7 +654,7 @@ export default {
           });
         }
 
-        this.$emit("achievement-unlocked", "puzzle-solved");
+        this.eeStore.unlockAchievement("puzzle-solved");
       } else {
         this.outputLines.push("Decryption failed: Invalid code");
       }

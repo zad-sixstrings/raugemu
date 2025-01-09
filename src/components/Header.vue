@@ -43,7 +43,7 @@ export default {
   methods: {
     handleLogoClick() {
       this.logoClicks++;
-      if (this.logoClicks === 2) {
+      if (this.logoClicks === 21) {
         this.showEE = true;
         this.logoClicks = 0;
       }

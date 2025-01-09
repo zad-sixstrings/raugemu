@@ -109,7 +109,7 @@
       <section>
         <h3 class="about-h3 center">Amusez-vous bien!</h3>
       </section>
-      <div class="last-hint"><p>16</p></div>
+      <div class="last-hint"><p>21</p></div>
     </div>
 
   </div>

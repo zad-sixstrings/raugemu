@@ -75,6 +75,7 @@
               alt="Profile avatar"
             />
           </div>
+          <eea v-if="hasEEA" />
         </div>
         <div class="achievements-section">
           <h3 class="account-subtitle">
@@ -164,6 +165,8 @@ import ProfileEditDialog from "./ProfileEditDialog.vue";
 import AchievementsList from "./AchievementsList.vue";
 import { useAchievementsStore } from "../stores/achievements";
 import { storeToRefs } from "pinia";
+import eea from "./eea.vue";
+import { useEE } from "../stores/ee";
 
 const router = useRouter();
 const authStore = useAuthStore();
@@ -181,6 +184,9 @@ const achievementSearchQuery = ref("");
 const handleProfileUpdate = async () => {
   await profileStore.fetchProfile();
 };
+
+const eeStore = useEE();
+const hasEEA = computed(() => eeStore.userAchievements.length > 0);
 
 const filteredAchievements = computed(() => {
   if (!achievementSearchQuery.value.trim())
