@@ -226,8 +226,8 @@ export default {
           contents: {
             "ACCESS.LOG": {
               type: "file",
-              content:
-                "Dernière connexion: THU JAN 09 03:14:15 2025\nAccès non autorisé depuis 103.58.232.90",
+              dynamic: true,
+              content: "Accès non autorisé depuis 103.58.232.90",
             },
             PRIVE: {
               type: "dir",
@@ -479,7 +479,16 @@ export default {
         const file = dir.contents[filename];
 
         if (file && file.type === "file") {
-          this.outputLines.push(file.content);
+          // If it's ACCESS.LOG, prepend the current timestamp
+          if (filename === "ACCESS.LOG") {
+            this.outputLines.push(
+              `Dernière connexion: ${new Date().toLocaleString("fr-FR")}\n${
+                file.content
+              }`
+            );
+          } else {
+            this.outputLines.push(file.content);
+          }
         } else {
           throw new Error("Fichier introuvable");
         }
