@@ -32,7 +32,8 @@
         <p class="about-p">
           RaugEmu est une plateforme d'émulation dédiée aux jeux rétro développé
           par deux amis hyperactifs, permettant aux passionnés de rejouer aux
-          classiques de leur enfance directement dans leur navigateur.
+          classiques de <span class="hint">L</span>eur enfance directement dans
+          leur navigateur.
         </p>
       </section>
       <section>
@@ -40,8 +41,8 @@
         <p class="about-p">
           Pour une expérience optimale, nous recommandons l'utilisation de
           <a href="https://www.google.com/intl/fr/chrome/">Google Chrome</a>.
-          L'émulation des consoles rétro nécessite un navigateur performant pour
-          garantir une expérience de jeu fluide.
+          L'émulati<span class="hint">O</span>n des consoles rétro nécessite un
+          navigateur performant pour garantir une expérience de jeu fluide.
         </p>
         <p class="about-p">
           <span class="warning">/!\ </span>Chrome a tout de même ses défauts!
@@ -89,9 +90,9 @@
       <section>
         <h3 class="about-h3">L'émulation Nintendo 64 est parfois bancale!</h3>
         <p class="about-p">
-          Oui. Ca peut arriver. C'est dû à un bug dans Google Chrome (double
-          buffering WebGL et mémoire navigateur), en particulier sur OoT Rando
-          et 007 Goldeneye. On investigue.
+          Oui. Ca peut arriver. C'est dû à un bu<span class="hint">G</span> dans
+          Google Chrome (double buffering WebGL et mémoire navigateur), en
+          particulier sur OoT Rando et 007 Goldeneye. On investigue.
         </p>
         <p class="solved-p">Le bug des boutons C-UP et C-DOWN a été résolu!</p>
       </section>
@@ -99,16 +100,18 @@
         <h3 class="about-h3">Est-ce que les consoles CD seront disponibles?</h3>
         <p class="about-p">
           Difficile à dire, mais probablement pas. Etant donné que la Nintendo
-          64 provoque déjà des saturations de mémoire dans le navigateur,
-          l'émulation PSX, Saturn, PSP ou même Sega CD s'avère peu probable.
-          Néanmoins, ce sera testé côté développement et bien entendu implémenté
-          si ça ronronne!
+          64 provoque déjà des saturations de mém<span class="hint">O</span>ire
+          dans le navigateur, l'émulation PSX, Saturn, PSP ou même Sega CD
+          s'avère peu probable. Néanmoins, ce sera testé côté développement et
+          bien entendu implémenté si ça ronronne!
         </p>
       </section>
       <section>
         <h3 class="about-h3 center">Amusez-vous bien!</h3>
       </section>
+      <div class="last-hint"><p>16</p></div>
     </div>
+
   </div>
 </template>
 
@@ -258,5 +261,20 @@ a.about-link:hover {
 
 .warning {
   color: var(--yellow);
+}
+
+.hint {
+  color: yellowgreen;
+}
+.last-hint {
+  display: flex;
+  max-width: 100%;
+  width: 100%;
+  justify-content: right;
+  height: 10px;
+  margin: 0;
+  padding: 0;
+  color: pink;
+  font-family: var(--font-micro);
 }
 </style>

@@ -38,7 +38,7 @@
           </div>
         </li>
         <li>
-          <a class="main-menu-item dropdown" href="#">Nintendo</a>
+          <a class="main-menu-item dropdown" href="#">Nintendo</a>a
           <div class="dropdown-menu">
             <router-link class="sub-menu-item" to="/console/NES"
               ><img

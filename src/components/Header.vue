@@ -1,23 +1,60 @@
 <template>
-  <header>
-    <div class="logo-wrapper">
-      <img src="/assets/raugemu-logo.png" alt="Logo" class="logo" />
-    </div>
-    <div class="titles-wrapper">
-      <div class="main-title-wrapper">
-        <h1 class="main-title blue-text">RaugEmu</h1>
+  <div class="header-container">
+    <header>
+      <div class="logo-wrapper">
+        <img
+          @click="handleLogoClick"
+          src="/assets/raugemu-logo.png"
+          alt="Logo"
+          class="logo"
+        />
       </div>
-      <div class="sub-title-wrapper">
-        <h2 class="main-title-sub purple-text text-shadow-small">
-          You rip 'em, we emulate 'em.&reg;
-        </h2>
+      <div class="titles-wrapper">
+        <div class="main-title-wrapper">
+          <h1 class="main-title blue-text">RaugEmu</h1>
+        </div>
+        <div class="sub-title-wrapper">
+          <h2 class="main-title-sub purple-text text-shadow-small">
+            You rip 'em, we emulate 'em.&reg;
+          </h2>
+        </div>
       </div>
-    </div>
-  </header>
-  <div class="header-warning">
+    </header>
+    <div class="header-warning">
       <span>/!\ Certains jeux Nintendo 64 sont actuellement instables</span>
     </div>
+    <ee v-if="showEE" @close="showEE = false" />
+  </div>
 </template>
+
+<script>
+import ee from "./ee.vue";
+
+export default {
+  components: {
+    ee,
+  },
+  data() {
+    return {
+      logoClicks: 0,
+      showEE: false,
+    };
+  },
+  methods: {
+    handleLogoClick() {
+      this.logoClicks++;
+      if (this.logoClicks === 2) {
+        this.showEE = true;
+        this.logoClicks = 0;
+      }
+    },
+  },
+  watch: {
+    showEE(newVal) {
+    }
+  }
+};
+</script>
 
 <style scoped>
 header {
@@ -25,7 +62,7 @@ header {
   height: 150px;
   margin: 0 auto;
   width: 100%;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .logo-wrapper {
@@ -41,7 +78,7 @@ header {
   display: flex;
   flex-direction: column;
   margin: 3rem auto;
-  width: 100%
+  width: 100%;
 }
 
 .main-title {
