@@ -11,7 +11,7 @@
       </div>
       <div class="titles-wrapper">
         <div class="main-title-wrapper">
-          <h1 class="main-title blue-text">RaugEmu</h1>
+          <h1 class="main-title blue-text">RaugEmu<span class="beta-span">(beta)</span></h1>
         </div>
         <div class="sub-title-wrapper">
           <h2 class="main-title-sub purple-text text-shadow-small">

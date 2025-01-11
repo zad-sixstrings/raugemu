@@ -90,6 +90,13 @@
   text-shadow: 1px 1px 2px black;
 }
 
+.beta-span {
+  position: relative;
+  top: -35px;
+  font-size: 0.2em;
+  color: var(--yellow);
+}
+
 a {
   color: var(--blue);
   text-decoration: none;

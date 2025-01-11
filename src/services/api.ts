@@ -1,7 +1,7 @@
 import type { LoginCredentials, RegisterCredentials } from "../types/auth";
 import type { UserProfile, UserSave, Achievement } from "../types/user";
 import type {
-  ApiResponse,
+  
   ApiStatus,
   AvatarUpdateResponse,
   ApiPlaytimeData,
@@ -72,15 +72,24 @@ export const authApi = {
         },
         body: JSON.stringify(credentials),
       });
-
+  
       if (!response.ok) {
         throw new Error("Registration failed");
       }
-
-      const data: ApiResponse<{ user: UserProfile }> = await response.json();
-      return (
-        data.data?.user ?? Promise.reject(new Error("No user data received"))
-      );
+  
+      const data = await response.json();
+      
+      // Store the token since it's provided
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+      }
+      
+      // Return the user data
+      if (data.user) {
+        return data.user;
+      }
+      
+      throw new Error("No user data received");
     } catch (error) {
       console.error("Registration error:", error);
       throw error;
