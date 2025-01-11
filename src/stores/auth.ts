@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
-import type { User, LoginCredentials } from "../types/auth";
+import type { User, LoginCredentials, RegisterCredentials } from "../types/auth";
 import { useNotificationStore } from "./notifications";
 import { authApi } from "../services/api";
 import { useUserProfileStore } from "./userProfile";
@@ -26,6 +26,21 @@ export const useAuthStore = defineStore("auth", () => {
       return true;
     } catch (err) {
       error.value = "Email ou mot de passe invalide.";
+      return false;
+    } finally {
+      loading.value = false;
+    }
+  }
+  async function register(credentials: RegisterCredentials) {
+    loading.value = true;
+    error.value = "";
+    try {
+      await authApi.register(credentials); // Just await the call
+      notificationStore.addNotification("Compte créé avec succès!", "success");
+      return true;
+    } catch (err) {
+      error.value = "Echec de création de compte, veuillez réessayer";
+      notificationStore.addNotification("Echec de création de compte, veuillez réessayer", "error");
       return false;
     } finally {
       loading.value = false;
@@ -86,5 +101,6 @@ export const useAuthStore = defineStore("auth", () => {
     setUserSilently,
     logout,
     initializeAuth,
+    register,
   };
 });

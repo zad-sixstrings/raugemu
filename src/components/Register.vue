@@ -68,12 +68,13 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
 import { useRouter } from "vue-router";
-import { authApi } from "../services/api";
 import type { RegisterCredentials } from "../types/auth";
+import { useAuthStore } from "../stores/auth";
 
 const router = useRouter();
 const loading = ref(false);
 const error = ref("");
+const authStore = useAuthStore();
 
 const form = reactive<RegisterCredentials>({
   username: "",
@@ -92,10 +93,10 @@ async function handleSubmit() {
     loading.value = true;
     error.value = "";
 
-    await authApi.register(form);
-    router.push("/login");
-  } catch (err) {
-    error.value = "Echec de création de compte, veuillez réessayer";
+    const success = await authStore.register(form);
+    if (success) {
+      router.push("/login");
+    }
   } finally {
     loading.value = false;
   }

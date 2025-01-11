@@ -70,10 +70,13 @@ export const useUserProfileStore = defineStore("userProfile", () => {
       const apiData = await authApi.getPlaytime();
       playtime.value = apiData.map((game) => convertApiTimeFormat(game));
     } catch (error) {
-      notificationStore.addNotification(
-        "Erreur lors du chargement du temps de jeu",
-        "error"
-      );
+      // Only notify if it's a real error accessing the API
+      if (error instanceof Error && error.message !== "No playtime data found") {
+        notificationStore.addNotification(
+          "Erreur lors du chargement du temps de jeu",
+          "error"
+        );
+      }
       throw error;
     }
   }

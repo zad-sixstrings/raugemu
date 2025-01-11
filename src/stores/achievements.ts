@@ -16,10 +16,13 @@ export const useAchievementsStore = defineStore("achievements", () => {
       const userAchievements = await authApi.getAchievements();
       achievements.value = userAchievements;
     } catch (error) {
-      notificationStore.addNotification(
-        "Erreur lors du chargement des succès",
-        "error"
-      );
+      // Only notify if it's a real error, not just no achievements
+      if (error instanceof Error && error.message !== "No achievements found") {
+        notificationStore.addNotification(
+          "Erreur lors du chargement des succès",
+          "error"
+        );
+      }
       throw error;
     } finally {
       loading.value = false;

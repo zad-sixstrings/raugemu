@@ -22,17 +22,13 @@
         <div class="profile-section">
           <div class="section-header">
             <h3 class="account-subtitle">Profil</h3>
-            <div class="admin-link-wrapper">
-              <p>
-                <router-link
-                  v-if="profile?.userright === 'admin'"
-                  to="/admin"
-                  class="admin-link"
-                >
-                  Admin
-                </router-link>
-              </p>
-            </div>
+            <button
+              v-if="profile?.userright === 'admin'"
+              @click="router.push('/admin')"
+              class="edit-button"
+            >
+              Admin
+            </button>
             <button @click="showEditDialog = true" class="edit-button">
               Modifier
             </button>
@@ -148,12 +144,12 @@
 import { ref, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "../stores/auth";
-import { authApi } from "../services/api";
+// import { authApi } from "../services/api";
 import { useUserProfileStore } from "../stores/userProfile";
 import { useUserSavesStore } from "../stores/userSaves";
 import type { PlaytimeData, UserSave } from "../types/user";
 import {
-  convertApiTimeFormat,
+  // convertApiTimeFormat,
   getTotalPlaytime,
 } from "../utils/playtimeFormat";
 import { memberdateFormat } from "../utils/memberdateFormat";
@@ -247,16 +243,30 @@ onMounted(async () => {
     return;
   }
   try {
-    await Promise.all([
-      profileStore.fetchProfile(),
-      savesStore.fetchSaves(),
-      profileStore.fetchPlaytime(),
-      achievementsStore.fetchAchievements(),
-      (async () => {
-        const apiData = await authApi.getPlaytime();
-        gamePlaytime.value = apiData.map((game) => convertApiTimeFormat(game));
-      })(),
-    ]);
+    // Only fetch profile if we don't have it yet
+    if (!profileStore.profile) {
+      await profileStore.fetchProfile();
+    }
+
+    // These other fetches are still needed as they're not loaded elsewhere
+    try {
+      await savesStore.fetchSaves();
+    } catch (error) {
+      console.error("Error fetching saves:", error);
+    }
+
+    try {
+      await profileStore.fetchPlaytime();
+      gamePlaytime.value = profileStore.playtime;
+    } catch (error) {
+      console.error("Error fetching playtime:", error);
+    }
+
+    try {
+      await achievementsStore.fetchAchievements();
+    } catch (error) {
+      console.error("Error fetching achievements:", error);
+    }
   } catch (error) {
     console.error("Error in data fetching:", error);
   }

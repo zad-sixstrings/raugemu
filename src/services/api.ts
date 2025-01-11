@@ -1,7 +1,6 @@
 import type { LoginCredentials, RegisterCredentials } from "../types/auth";
 import type { UserProfile, UserSave, Achievement } from "../types/user";
 import type {
-  
   ApiStatus,
   AvatarUpdateResponse,
   ApiPlaytimeData,
@@ -72,23 +71,23 @@ export const authApi = {
         },
         body: JSON.stringify(credentials),
       });
-  
+
       if (!response.ok) {
         throw new Error("Registration failed");
       }
-  
+
       const data = await response.json();
-      
+
       // Store the token since it's provided
       if (data.token) {
         localStorage.setItem("token", data.token);
       }
-      
+
       // Return the user data
       if (data.user) {
         return data.user;
       }
-      
+
       throw new Error("No user data received");
     } catch (error) {
       console.error("Registration error:", error);
@@ -193,6 +192,11 @@ export const authApi = {
         },
       });
 
+      // Handle 204 No Content as a valid empty response
+      if (response.status === 204) {
+        return [];
+      }
+
       if (!response.ok) {
         throw new Error("Failed to fetch playtime");
       }
@@ -278,13 +282,19 @@ export const authApi = {
         },
       });
 
+      // Handle 304 Not Modified
+      if (response.status === 304) {
+        return [];
+      }
+
       if (!response.ok) {
         throw new Error("Failed to fetch achievements");
       }
 
       const data = await response.json();
 
-      if (data.message === "No achievements found") {
+      // Handle the "No achievement unlocked" message
+      if (data.message === "No achievement unlocked") {
         return [];
       }
 
@@ -332,23 +342,23 @@ export const romApi = {
   async getAllRoms(): Promise<RomData[]> {
     try {
       const headers: Record<string, string> = {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       };
-      
+
       const token = localStorage.getItem("token");
       if (token) {
         headers.Authorization = `Bearer ${token}`;
       }
-  
+
       const response = await fetch(`${API_URL}/roms/getromslist`, {
         method: "GET",
-        headers
+        headers,
       });
-  
+
       if (!response.ok) {
         throw new Error("Failed to fetch ROM list");
       }
-  
+
       return await response.json();
     } catch (error) {
       console.error("Get ROM list error:", error);
@@ -366,7 +376,7 @@ export const romApi = {
       if (!token) {
         throw new Error("No authentication token found");
       }
-  
+
       const response = await fetch(`${API_URL}/roms/registernewroms`, {
         method: "POST",
         headers: {
@@ -381,10 +391,10 @@ export const romApi = {
           categories: updateData.categories,
           boxArtPath: updateData.boxArtPath,
           romPath: romPath,
-          isAvailable: updateData.isAvailable
+          isAvailable: updateData.isAvailable,
         }),
       });
-  
+
       if (!response.ok) {
         throw new Error("Failed to update ROM information");
       }
@@ -393,7 +403,6 @@ export const romApi = {
       throw error;
     }
   },
-
 
   async updateExistingRom(updateData: RomUpdatePayload): Promise<void> {
     try {
@@ -421,5 +430,5 @@ export const romApi = {
       console.error("Update existing ROM error:", error);
       throw error;
     }
-  }
+  },
 };
