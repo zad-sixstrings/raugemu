@@ -68,12 +68,14 @@ class EJS_GameManager {
     this.initShaders();
 
     this.EJS.on("exit", () => {
-      this.toggleMainLoop(0);
       if (!this.EJS.failedToStart) {
+        this.functions.saveSaveFiles();
+        this.functions.restart();
         this.functions.saveSaveFiles();
         this.setSaveFileToServer();
         this.recordStopTime();
       }
+      this.toggleMainLoop(0);
       this.FS.unmount("/data/saves");
       setTimeout(() => {
         try {
@@ -205,10 +207,7 @@ class EJS_GameManager {
       "slowmotion_ratio = 3.0\n" +
       (this.EJS.rewindEnabled ? "rewind_enable = true\n" : "") +
       (this.EJS.rewindEnabled ? "rewind_granularity = 6\n" : "") +
-      'savefile_directory = "/data/saves"\n' +
-      "video_rotation = " +
-      this.EJS.videoRotation +
-      "\n";
+      'savefile_directory = "/data/saves"\n';
 
     if (this.EJS.retroarchOpts && Array.isArray(this.EJS.retroarchOpts)) {
       this.EJS.retroarchOpts.forEach((option) => {
@@ -546,7 +545,7 @@ class EJS_GameManager {
   }
   // Load savefile from server
   async getSaveFileFromServer(loadedROM) {
-    const serveraddres = "http://remote.raug-info.ch";
+    const serveraddres = "https://remote.raug-info.ch";
     const serverport = 8083;
 
     const filePath = EJS_emulator.gameManager.getSaveFilePath();
@@ -609,7 +608,7 @@ class EJS_GameManager {
   //push savefile to server
 
   async setSaveFileToServer() {
-    const serveraddres = "http://remote.raug-info.ch";
+    const serveraddres = "https://remote.raug-info.ch";
     const serverport = 8083;
 
     const filePath = EJS_emulator.gameManager.getSaveFilePath();
@@ -686,7 +685,7 @@ class EJS_GameManager {
   }
 
   async checkSaveFileExist(gameFileName) {
-    const serveraddres = "http://remote.raug-info.ch";
+    const serveraddres = "https://remote.raug-info.ch";
     const serverport = 8083;
 
     const token = localStorage.getItem("token");
@@ -722,68 +721,60 @@ class EJS_GameManager {
       });
   }
 
-  async recordStartTime(gameFileName){
-
+  async recordStartTime(gameFileName) {
     console.log("entering starttime");
 
-    const serveraddress = "http://remote.raug-info.ch";
+    const serveraddress = "https://remote.raug-info.ch";
     const serverport = 8083;
-    const apicalled = "/api/user/startplaying"
+    const apicalled = "/api/user/startplaying";
 
     const token = localStorage.getItem("token");
 
-    const apiUrl = serveraddress+":"+serverport+apicalled;
+    const apiUrl = serveraddress + ":" + serverport + apicalled;
 
     return fetch(apiUrl, {
-        method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        body: JSON.stringify({gameName : gameFileName})
-
-
-        
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ gameName: gameFileName }),
     })
-    .then(response => response.json())
-    .then(JSONresponse => {
-        localStorage.setItem('playingtimeId',JSONresponse.id);
-    })
-    .catch (err => {
-        console.log('Error while registring start playing time',err);
-    })
-  };
+      .then((response) => response.json())
+      .then((JSONresponse) => {
+        localStorage.setItem("playingtimeId", JSONresponse.id);
+      })
+      .catch((err) => {
+        console.log("Error while registring start playing time", err);
+      });
+  }
 
-
-  async recordStopTime(){
-
+  async recordStopTime() {
     console.log("entering stoptime");
-    const serveraddress = "http://remote.raug-info.ch";
+    const serveraddress = "https://remote.raug-info.ch";
     const serverport = 8083;
-    const apicalled = "/api/user/stopplaying"
+    const apicalled = "/api/user/stopplaying";
 
     const token = localStorage.getItem("token");
 
-    const apiUrl = serveraddress+":"+serverport+apicalled;
+    const apiUrl = serveraddress + ":" + serverport + apicalled;
 
     return fetch(apiUrl, {
-        method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        body: JSON.stringify({historyId : localStorage.getItem("playingtimeId")})
-
-
-        
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        historyId: localStorage.getItem("playingtimeId"),
+      }),
     })
-    .catch (err => {
-        console.log('Error while registring stop playing time',err);
-    })
-    .finally(() => {
-        localStorage.removeItem('paylingtimeId');
-    })
-
+      .catch((err) => {
+        console.log("Error while registring stop playing time", err);
+      })
+      .finally(() => {
+        localStorage.removeItem("paylingtimeId");
+      });
   }
 }
 

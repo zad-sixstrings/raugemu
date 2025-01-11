@@ -21,7 +21,7 @@
       </div>
     </header>
     <div class="header-warning">
-      <span>/!\ Certains jeux Nintendo 64 sont actuellement instables</span>
+      <span>/!\ Certains jeux Nintendo 64 sont actuellement instables.<br>La gestion des sauvegardes DS n'est pas encore assurée.</span>
     </div>
     <ee v-if="showEE" @close="showEE = false" />
   </div>
