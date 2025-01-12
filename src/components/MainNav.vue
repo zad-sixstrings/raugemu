@@ -40,6 +40,9 @@
         <li>
           <a class="main-menu-item dropdown" href="#">Nintendo</a>
           <div class="dropdown-menu">
+            <router-link class="sub-menu-item" to="/console/VB">
+              <img class="menu-image" src="/assets/console-icons/vb.png" />VB
+            </router-link>
             <router-link class="sub-menu-item" to="/console/NES"
               ><img
                 class="menu-image"
@@ -99,12 +102,26 @@
                 src="/assets/console-icons/md.png"
               />SMD</router-link
             >
+            <router-link class="sub-menu-item" to="/console/32X">
+              <img class="menu-image" src="/assets/console-icons/32x.png" />32X
+            </router-link>
             <router-link class="sub-menu-item" to="/console/SGG"
               ><img
                 class="menu-image"
                 src="/assets/console-icons/gg.png"
               />SGG</router-link
             >
+          </div>
+        </li>
+        <li>
+          <a class="main-menu-item dropdown" href="#">Autres</a>
+          <div class="dropdown-menu">
+            <router-link class="sub-menu-item" to="/console/COLECOVISION">
+              <img
+                class="menu-image"
+                src="/assets/console-icons/cv.png"
+              />CV
+            </router-link>
           </div>
         </li>
         <li>

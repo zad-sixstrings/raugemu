@@ -50,6 +50,7 @@ const consoleIcons: Record<string, string> = {
   "5200": "/assets/console-icons/5200.png",
   "7800": "/assets/console-icons/7800.png",
   LYNX: "/assets/console-icons/lynx.png",
+  VB: "/assets/console-icons/vb.png",
   NES: "/assets/console-icons/nes.png",
   SNES: "/assets/console-icons/snes.png",
   N64: "/assets/console-icons/n64.png",
@@ -60,6 +61,8 @@ const consoleIcons: Record<string, string> = {
   SMS: "/assets/console-icons/sms.png",
   SMD: "/assets/console-icons/md.png",
   SGG: "/assets/console-icons/gg.png",
+  "32X": "/assets/console-icons/32x.png",
+  "COLECOVISION": "/assets/console-icons/cv.png",
 };
 
 const filteredGames = computed(() => {

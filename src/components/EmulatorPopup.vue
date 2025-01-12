@@ -38,6 +38,7 @@ export default {
       gb: ["gb", "gbc"],
       nds: ["nds"],
       n64: ["n64", "z64", "v64"],
+      vb: ["vb"],
       atari2600: ["a26"],
       atari5200: ["a52"],
       atari7800: ["a78"],
@@ -45,6 +46,8 @@ export default {
       segaMS: ["sms", "SMS"],
       segaMD: ["md"],
       segaGG: ["gg"],
+      sega32x: ["32x"],
+      coleco: ["col"], 
     };
 
     const determineCore = (url) => {
