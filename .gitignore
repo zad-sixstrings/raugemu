@@ -31,7 +31,10 @@ dist-ssr
 public/assets/boxart/*
 public/assets/achievements/*
 public/ROM/*
+public/bios/*
 
+!public/bios/
+!public/bios/.gitkeep
 !public/assets/boxart/
 !public/assets/achievements/
 !public/assets/achievements/.gitkeep
