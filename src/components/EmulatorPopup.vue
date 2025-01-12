@@ -43,6 +43,7 @@ export default {
       atari5200: ["a52"],
       atari7800: ["a78"],
       lynx: ["lnx"],
+      jaguar: ["j64"],
       segaMS: ["sms", "SMS"],
       segaMD: ["md"],
       segaGG: ["gg"],
