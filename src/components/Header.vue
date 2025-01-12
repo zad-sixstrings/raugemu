@@ -21,7 +21,9 @@
       </div>
     </header>
     <div class="header-warning">
-      <span>/!\ Certains jeux Nintendo 64 sont actuellement instables.<br>&#10004; La gestion des sauvegardes Nintendo DS a été implémentée!</span>
+      <span class="header-warning-span">&#9888; Certains jeux Nintendo 64 sont actuellement instables.</span>
+      <span class="header-info-span">&#10004; La gestion des sauvegardes Nintendo DS a été implémentée!</span>
+      <span class="header-info-span">&#10004; Support pour Sega 32X, Virtual Boy et ColecoVision ajouté!</span>
     </div>
     <ee v-if="showEE" @close="showEE = false" />
   </div>
@@ -101,13 +103,19 @@ span.green {
 
 .header-warning {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
   padding: 1rem;
 }
 
-.header-warning span {
+span.header-warning-span {
   color: var(--yellow);
+  font-family: "Pixelify Sans", serif;
+  font-weight: 400;
+  font-size: 0.9em;
+}
+span.header-info-span {
+  color: var(--green);
   font-family: "Pixelify Sans", serif;
   font-weight: 400;
   font-size: 0.9em;

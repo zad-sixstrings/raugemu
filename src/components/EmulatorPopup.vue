@@ -47,16 +47,26 @@ export default {
       segaMD: ["md"],
       segaGG: ["gg"],
       sega32x: ["32x"],
-      coleco: ["col"], 
+      coleco: ["col"],
     };
 
     const determineCore = (url) => {
       const extension = url.split(".").pop().toLowerCase();
-      return (
-        Object.entries(SUPPORTED_CORES).find(([core, extensions]) =>
-          extensions.includes(extension)
-        )?.[0] || null
-      );
+      console.log("File extension:", extension);
+
+      const matchedCore = Object.entries(SUPPORTED_CORES).find(
+        ([core, extensions]) => extensions.includes(extension)
+      )?.[0];
+
+      console.log("Matched core:", matchedCore);
+      return matchedCore || null;
+    };
+
+    const CORES_REQUIRING_BIOS = {
+      coleco: {
+        path: "colecovision.rom",
+        md5: "2c66f5911e5b42b8ebe113403548eee7",
+      },
     };
 
     const setupEmulator = async (gameUrl) => {
@@ -65,6 +75,7 @@ export default {
       }
 
       const core = determineCore(gameUrl);
+      console.log("Core for BIOS lookup:", core);
       console.log("Selected core:", core);
       console.log("Game URL:", gameUrl);
 
@@ -90,14 +101,21 @@ export default {
         }
         window.EJS_core = core;
         window.EJS_pathtodata = "/data/";
+
+        // Add BIOS configuration if needed for this core
+        if (CORES_REQUIRING_BIOS[core]) {
+          window.EJS_biosUrl = "/bios/colecovision.rom";
+          console.log("BIOS path set to:", window.EJS_biosUrl);
+        }
+
         window.EJS_startOnLoad = true;
 
         console.log("EJS configuration:", {
-          // Add this debug block
           player: window.EJS_player,
           gameUrl: window.EJS_gameUrl,
           core: window.EJS_core,
           pathtodata: window.EJS_pathtodata,
+          biosUrl: window.EJS_biosUrl,
         });
 
         // Add ready callback before loading script
@@ -309,8 +327,8 @@ button.close-popup:hover {
 
 button.close-popup:active {
   background: var(--red-active);
-  border-top: 5px solid var(--border-dark-red);;
-  border-left: 5px solid var(--border-dark-red);;
+  border-top: 5px solid var(--border-dark-red);
+  border-left: 5px solid var(--border-dark-red);
   border-right: 5px solid var(--border-light-red);
   border-bottom: 5px solid var(--border-light-red);
 }

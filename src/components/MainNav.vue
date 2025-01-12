@@ -116,7 +116,7 @@
         <li>
           <a class="main-menu-item dropdown" href="#">Autres</a>
           <div class="dropdown-menu">
-            <router-link class="sub-menu-item" to="/console/COLECOVISION">
+            <router-link class="sub-menu-item" to="/console/CV">
               <img
                 class="menu-image"
                 src="/assets/console-icons/cv.png"

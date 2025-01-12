@@ -2,7 +2,7 @@
   <Transition name="fade">
     <div v-if="isVisible" id="browser-warning">
       <p>
-        <span class="warning-icon">/!\ </span>Cette page est optimisée pour
+        <span class="warning-icon">&#9888; </span>Cette page est optimisée pour
         <a href="https://www.google.com/intl/fr/chrome/">Google Chrome</a>.
         Utiliser un autre navigateur mênera inévitablement à des bugs et à une
         émulation moins performante.
