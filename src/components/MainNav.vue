@@ -29,6 +29,12 @@
                 src="/assets/console-icons/7800.png"
               />7800</router-link
             >
+            <!-- <router-link class="sub-menu-item" to="/console/JAGUAR"
+              ><img
+                class="menu-image"
+                src="/assets/console-icons/jag.png"
+              />JAGUAR</router-link
+            > -->
             <router-link class="sub-menu-item" to="/console/LYNX"
               ><img
                 class="menu-image"
