@@ -49,6 +49,7 @@ export default {
       segaGG: ["gg"],
       sega32x: ["32x"],
       coleco: ["col"],
+      psx: ["chd"],
     };
 
     const determineCore = (url) => {
@@ -68,6 +69,9 @@ export default {
         path: "colecovision.rom",
         md5: "2c66f5911e5b42b8ebe113403548eee7",
       },
+      psx: {
+        path: "scph5502.bin",
+      }
     };
 
     const setupEmulator = async (gameUrl) => {

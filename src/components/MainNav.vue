@@ -120,6 +120,17 @@
           </div>
         </li>
         <li>
+          <a class="main-menu-item dropdown" href="#">Sony</a>
+          <div class="dropdown-menu">
+            <router-link class="sub-menu-item" to="/console/PSX">
+              <img
+                class="menu-image"
+                src="/assets/console-icons/psx.png"
+              />PSX
+            </router-link>
+          </div>
+        </li>
+        <li>
           <a class="main-menu-item dropdown" href="#">Autres</a>
           <div class="dropdown-menu">
             <router-link class="sub-menu-item" to="/console/CV">
