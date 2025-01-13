@@ -317,7 +317,7 @@ a.sub-menu-item {
   font-size: 0.7em;
   text-align: center;
   line-height: normal;
-  padding: 0 20px 0 20px;
+  padding: 0 10px 0 10px;
   text-decoration: none;
   transition: border 0.1s;
   transition: background-color 0.1s;
