@@ -147,7 +147,7 @@
             <router-link class="sub-menu-item" to="/console/RANDO"
               >Randomizer</router-link
             >
-            <router-link class="sub-menu-item" to="/console/ROMHACK"
+            <router-link class="sub-menu-item" to="/console/HACKS"
               >RomHacks</router-link
             >
           </div>
