@@ -153,7 +153,7 @@
           </div>
         </li>
         <li class="about">
-          <router-link class="main-menu-item" to="/about"
+          <router-link class="main-menu-item" to="/REPedia"
             ><img class="about-icon" src="/assets/about-icon.png"
           /></router-link>
         </li>

@@ -1,8 +1,5 @@
 <template>
   <div class="page-transition">
-    <div class="about-title-wrapper">
-      <h2 class="about-h2">Manuel d'utilisateur</h2>
-    </div>
     <div class="about-container">
       <section>
         <div class="api-status-wrapper">
@@ -143,85 +140,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.about-container {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  max-width: 800px;
-  padding: 2rem 2rem;
-  border-left: 5px solid var(--border-light-purple);
-  border-bottom: 5px solid var(--border-dark-purple);
-  border-right: 5px solid var(--border-dark-purple);
-  border-top: none;
-  overflow-y: auto;
-  justify-content: center;
-  align-items: center;
-}
-
-.about-title-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  max-width: 800px;
-  text-align: left;
-  background-color: var(--purple);
-  border-top: 5px solid var(--border-light-purple);
-  border-left: 5px solid var(--border-light-purple);
-  border-right: 5px solid var(--border-dark-purple);
-  border-bottom: 5px solid var(--border-dark-purple);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.about-h2 {
-  font-family: var(--font-press-start);
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: italic;
-  color: white;
-  font-size: 1.4em;
-  line-height: 40px;
-}
-
-section {
-  margin-bottom: 4rem;
-}
-
-h3.about-h3 {
-  color: var(--blue);
-  margin-bottom: 1rem;
-  font-family: var(--font-press-start);
-  font-weight: 400;
-  font-size: 1em;
-}
-
-.about-p {
-  font-family: var(--font-pixelify);
-  font-weight: 400;
-  font-size: 1em;
-  color: white;
-  text-align: justify;
-  margin-bottom: 10px;
-}
-
-p.solved-p {
-  font-family: var(--font-pixelify);
-  font-weight: 400;
-  font-size: 1em;
-  color: var(--green);
-  text-align: justify;
-}
-
-a.about-link {
-  color: var(--blue);
-  text-decoration: none;
-}
-
-a.about-link:hover {
-  text-decoration: underline;
-}
-
 /* API STATUS */
 .api-status-wrapper {
   display: block;
@@ -283,6 +201,7 @@ a.about-link:hover {
 .hint {
   color: yellowgreen;
 }
+
 .last-hint {
   display: flex;
   max-width: 100%;
@@ -291,6 +210,10 @@ a.about-link:hover {
   height: 10px;
   margin: 0;
   padding: 0;
+
+}
+
+.last-hint p {
   color: pink;
   font-family: var(--font-micro);
 }

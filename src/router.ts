@@ -5,7 +5,7 @@ import Home from "./components/Home.vue";
 import ConsoleGames from "./components/ConsoleGames.vue";
 import Login from "./components/Login.vue";
 import Register from "./components/Register.vue";
-import About from "./components/About.vue";
+import REPedia from "./components/PediaMain.vue";
 import Account from "./components/Account.vue";
 import Admin from "./components/Admin.vue";
 
@@ -30,9 +30,9 @@ const routes: RouteRecordRaw[] = [
     meta: { requiresAuth: true }
   },
   {
-    path: "/about",
-    name: "about",
-    component: About
+    path: "/REPedia",
+    name: "RaugEmuPedia",
+    component: REPedia
   },
   {
     path: "/compte",
