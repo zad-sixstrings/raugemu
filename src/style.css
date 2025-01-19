@@ -202,7 +202,8 @@ body::after {
 
 #featured-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 220px);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 250px));
+  justify-content: center;
   gap: 3rem;
   min-width: 90%;
   padding: 2rem;
