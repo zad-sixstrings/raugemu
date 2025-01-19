@@ -5,7 +5,7 @@
     <template v-else>
       <div v-for="category in categories" :key="category.title">
         <div class="featured-games-title-wrapper">
-          <h2 class="featured-games-title">{{ category.title }}</h2>
+          <h2 class="featured-games-title-h2 push-right">{{ category.title }}</h2>
         </div>
         <div id="content">
           <div :id="generateId(category.title)" class="featured-games">
@@ -88,3 +88,9 @@ function closeEmulator(): void {
   selectedGameUrl.value = "";
 }
 </script>
+
+<style scoped>
+.push-right {
+  margin-left: 15px;
+}
+</style>

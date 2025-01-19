@@ -7,7 +7,7 @@
         <a href="https://github.com/zad-sixstrings">Zad Sixstrings</a> - Hébergé
         par <a href="https://raug-info.ch">Raug Info</a>
       </p>
-      <p class="copyright">2024 - Tous droits réservés</p>
+      <p class="copyright">2025 - Tous droits réservés</p>
     </div>
   </footer>
 </template>

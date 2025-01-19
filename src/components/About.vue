@@ -60,13 +60,27 @@
           Windows, et
           <a href="https://github.com/chrippa/ds4drv">ds4drv</a> sous Linux.
         </p>
+        <p class="about-p">
+          Rendez-vous à la section manettes (coming soon) pour savoir comment
+          mapper au mieux vos contrôles.
+        </p>
       </section>
       <section>
         <h3 class="about-h3">A quoi servent les comptes?</h3>
         <p class="about-p">
-          En créant un compte, vous aurez accès à vos sauvegardes en tout temps
-          sans avoir à les télécharger depuis l'émulateur. De nouvelles
-          fonctionnalités sont aussi prévues à l'avenir!
+          Afin de pouvoir accéder au contenu du site, vous devez vous créer un
+          compte - et ce pour des raisons légales et de sécurité. En effet, il
+          est interdit de mettre à disposition des ROMs en téléchargement, et
+          nous encourageons nos utilisateurs à ne se procurer les jeux que via
+          les canaux légaux et officiels. En contrepartie, nous offrons diverses
+          fonctionnalités comme la gestion des sauvegardes, le tracking du temps
+          de jeu et des succès!
+        </p>
+        <p class="about-p">
+          Le succès le plus simple à obtenir se trouve dans The Legend of Zelda:
+          A Link to the Past. Essayez! Et si vous vous sentez l'âme d'un
+          Sherlock Holmes en herbe, un easter egg est caché sur le site, avec
+          deux succès exclusifs à la clé.
         </p>
       </section>
       <section>
@@ -92,18 +106,21 @@
         <p class="about-p">
           Oui. Ca peut arriver. C'est dû à un bu<span class="hint">G</span> dans
           Google Chrome (double buffering WebGL et mémoire navigateur), en
-          particulier sur OoT Rando et 007 Goldeneye. On investigue.
+          particulier sur Ocarina of Time et 007 Goldeneye. Les jeux N64 sont
+          donc à l'essai, et il est pour l'instant impossible d'en garantir la
+          stabilité. Emuler la Nintendo 64 n'est pas une mince affaire pour des
+          raisons techniques difficiles à expliquer en quelque lignes.
         </p>
-        <p class="solved-p">Le bug des boutons C-UP et C-DOWN a été résolu!</p>
       </section>
       <section>
         <h3 class="about-h3">Est-ce que les consoles CD seront disponibles?</h3>
         <p class="about-p">
-          Difficile à dire, mais probablement pas. Etant donné que la Nintendo
-          64 provoque déjà des saturations de mém<span class="hint">O</span>ire
-          dans le navigateur, l'émulation PSX, Saturn, PSP ou même Sega CD
-          s'avère peu probable. Néanmoins, ce sera testé côté développement et
-          bien entendu implémenté si ça ronronne!
+          Le support Playstation vient d'être implémenté! Difficile de promettre
+          l'implémentation de consoles CD supplémentaires pour le moment. Etant
+          donné que l'émulation s'effectue dans votre navigateur web, la mémoire
+          disponible est limitée et plus les jeux sont dodus, plus la mémoire
+          est limitée. Nous ferons de notre mieux pour proposer plus de c<span class="hint">O</span>nsoles
+          CD, mais c'est un long processus qui requiert de nombreux tests.
         </p>
       </section>
       <section>
@@ -111,7 +128,6 @@
       </section>
       <div class="last-hint"><p>21</p></div>
     </div>
-
   </div>
 </template>
 
@@ -180,12 +196,13 @@ h3.about-h3 {
   font-size: 1em;
 }
 
-p.about-p {
+.about-p {
   font-family: var(--font-pixelify);
   font-weight: 400;
   font-size: 1em;
   color: white;
   text-align: justify;
+  margin-bottom: 10px;
 }
 
 p.solved-p {

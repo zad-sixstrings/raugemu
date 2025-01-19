@@ -59,7 +59,7 @@
 }
 
 /*  GLOBAL FONTS STYLING */
-.featured-games-title {
+.featured-games-title-h2 {
   font-family: var(--font-press-start);
   font-optical-sizing: auto;
   font-weight: 400;
@@ -67,7 +67,7 @@
   color: white;
   font-size: 1.4em;
   line-height: 40px;
-  padding-left: 30px;
+  margin: 0;
 }
 
 .blue-text {

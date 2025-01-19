@@ -5,14 +5,19 @@
       <div v-else-if="error" class="error">{{ error }}</div>
       <template v-else>
         <div class="featured-games-title-wrapper">
-          <h2 class="featured-games-title">
-            <img
-              v-if="consoleIcon"
-              :src="consoleIcon"
-              :alt="`${props.console} icon`"
-              class="console-icon"
-            />{{ props.console }}
-          </h2>
+          <div class="featured-games-title">
+            <h2 class="featured-games-title-h2">
+              <img
+                v-if="consoleIcon"
+                :src="consoleIcon"
+                :alt="`${props.console} icon`"
+                class="console-icon"
+              />{{ props.console }}
+            </h2>
+            <div class="title-search-box">
+              <SearchBarConsoles v-model="searchQuery" />
+            </div>
+          </div>
         </div>
         <div id="content">
           <div class="featured-games">
@@ -36,6 +41,7 @@ import { ref, computed, onMounted, watch } from "vue";
 import GameCard from "./GameCard.vue";
 import EmulatorPopup from "./EmulatorPopup.vue";
 import { useRomStore } from "../stores/roms";
+import SearchBarConsoles from "./searchBarConsoles.vue";
 
 const props = defineProps<{
   console: string;
@@ -44,6 +50,7 @@ const props = defineProps<{
 const store = useRomStore();
 const isEmulatorVisible = ref(false);
 const selectedGameUrl = ref("");
+const searchQuery = ref("");
 
 const consoleIcons: Record<string, string> = {
   "2600": "/assets/console-icons/2600.png",
@@ -63,17 +70,23 @@ const consoleIcons: Record<string, string> = {
   SGG: "/assets/console-icons/gg.png",
   "32X": "/assets/console-icons/32x.png",
   PSX: "/assets/console-icons/psx.png",
-  "COLECOVISION": "/assets/console-icons/cv.png",
+  COLECOVISION: "/assets/console-icons/cv.png",
 };
 
 const filteredGames = computed(() => {
-  return store.existingRoms
-    .filter(
-      (game) =>
-        game.isAvailable &&
-        game.console?.toUpperCase() === props.console.toUpperCase()
-    )
-    .sort((a, b) => (a.title || "").localeCompare(b.title || ""));
+  let games = store.existingRoms.filter(
+    (game) =>
+      game.isAvailable &&
+      game.console?.toUpperCase() === props.console.toUpperCase()
+  );
+
+  // Apply search filter if there's a search query
+  if (searchQuery.value.trim()) {
+    const query = searchQuery.value.toLowerCase().trim();
+    games = games.filter((game) => game.title?.toLowerCase().includes(query));
+  }
+
+  return games.sort((a, b) => (a.title || "").localeCompare(b.title || ""));
 });
 
 const consoleIcon = computed(() => {
@@ -108,12 +121,27 @@ function closeEmulator() {
 <style scoped>
 .featured-games-title {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 15px;
+}
+
+.title-search-box {
+  max-width: 350px;
 }
 
 .console-icon {
   width: 32px;
-  object-fit: contain;
+  margin-right: 15px;
 }
+
+@media (max-width: 475px) {
+  .featured-games-title {
+    flex-direction: column;
+    margin-bottom: 5px;
+  }
+}
+
 </style>
