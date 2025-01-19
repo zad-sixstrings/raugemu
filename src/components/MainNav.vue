@@ -117,6 +117,12 @@
                 src="/assets/console-icons/gg.png"
               />SGG</router-link
             >
+            <router-link class="sub-menu-item" to="/console/SSN"
+              ><img
+                class="menu-image"
+                src="/assets/console-icons/ssn.png"
+              />Saturn</router-link
+            >
           </div>
         </li>
         <li>
@@ -127,7 +133,13 @@
                 class="menu-image"
                 src="/assets/console-icons/psx.png"
               />PSX
-            </router-link>
+            </router-link><!--
+            <router-link class="sub-menu-item" to="/console/PSP">
+              <img
+                class="menu-image"
+                src="/assets/console-icons/psp.png"
+              />PSP
+            </router-link> -->
           </div>
         </li>
         <li>

@@ -23,7 +23,7 @@
     <div class="header-warning">
       <span class="header-warning-span">&#9888; Certains jeux Nintendo 64 sont actuellement instables.</span>
       <span class="header-info-span">&#10004; La gestion des sauvegardes Nintendo DS a été implémentée!</span>
-      <span class="header-info-span">&#10004; Support pour Playstation 1, 32X, Virtual Boy et ColecoVision ajouté!</span>
+      <span class="header-info-span">&#10004; Sega Saturn ajoutée à l'essai!</span>
     </div>
     <ee v-if="showEE" @close="showEE = false" />
   </div>

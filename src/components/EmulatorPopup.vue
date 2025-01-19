@@ -48,12 +48,34 @@ export default {
       segaMD: ["md"],
       segaGG: ["gg"],
       sega32x: ["32x"],
+      segaSaturn: ["chd"],
       coleco: ["col"],
       psx: ["chd"],
+      psp: ["chd"],
     };
 
     const determineCore = (url) => {
+      // First check if it's a CHD file that needs path checking
       const extension = url.split(".").pop().toLowerCase();
+      if (extension === "chd") {
+        // Split the path and look for known console folders
+        const parts = url.split("/");
+        // Look for Saturn, PSX, or PSP in the path
+        if (parts.includes("Saturn")) {
+          console.log("Detected Saturn game from path");
+          return "segaSaturn";
+        }
+        if (parts.includes("PSX")) {
+          console.log("Detected PlayStation game from path");
+          return "psx";
+        }
+        if (parts.includes("PSP")) {
+          console.log("Detected PSP game from path");
+          return "psp";
+        }
+      }
+
+      // Fall back to regular extension matching for other consoles
       console.log("File extension:", extension);
 
       const matchedCore = Object.entries(SUPPORTED_CORES).find(
@@ -71,7 +93,26 @@ export default {
       },
       psx: {
         path: "scph5502.bin",
-      }
+      },
+      gb: {
+        path: (gameUrl) => {
+          // Make sure we have a URL to check
+          if (!gameUrl) return "gb_bios.bin"; // default to GB bios if no url
+          const extension = gameUrl.split(".").pop().toLowerCase();
+          return extension === "gbc" ? "gbc_bios.bin" : "gb_bios.bin";
+        },
+      },
+      gba: {
+        path: "gba_bios.bin",
+      },
+      segaSaturn: {
+        path: "saturn_bios.bin",
+      },
+    };
+
+    const requiresThreads = (core) => {
+      // PSP is currently the only core that requires threads
+      return core === "psp";
     };
 
     const setupEmulator = async (gameUrl) => {
@@ -107,11 +148,25 @@ export default {
         window.EJS_core = core;
         window.EJS_pathtodata = "/data/";
 
-        // Add BIOS configuration if needed for this core
+        if (requiresThreads(core)) {
+          window.EJS_threads = true;
+        }
+
         if (CORES_REQUIRING_BIOS[core]) {
-          window.EJS_biosUrl = "/bios/colecovision.rom";
+          const biosPath = CORES_REQUIRING_BIOS[core].path;
+          if (typeof biosPath === "function") {
+            window.EJS_biosUrl = `/bios/${biosPath(window.EJS_gameUrl)}`;
+          } else {
+            window.EJS_biosUrl = `/bios/${biosPath}`;
+          }
           console.log("BIOS path set to:", window.EJS_biosUrl);
         }
+
+        // Add BIOS configuration if needed for this core
+        // if (CORES_REQUIRING_BIOS[core]) {
+        //   window.EJS_biosUrl = `/bios/${CORES_REQUIRING_BIOS[core].path}`;
+        //   console.log("BIOS path set to:", window.EJS_biosUrl);
+        // }
 
         window.EJS_startOnLoad = true;
 

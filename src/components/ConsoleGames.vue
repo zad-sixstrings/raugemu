@@ -69,7 +69,9 @@ const consoleIcons: Record<string, string> = {
   SMD: "/assets/console-icons/md.png",
   SGG: "/assets/console-icons/gg.png",
   "32X": "/assets/console-icons/32x.png",
+  SSN: "/assets/console-icons/ssn.png",
   PSX: "/assets/console-icons/psx.png",
+  PSP: "/assets/console-icons/psp.png",
   COLECOVISION: "/assets/console-icons/cv.png",
 };
 
