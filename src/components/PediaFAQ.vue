@@ -116,8 +116,22 @@
           l'implémentation de consoles CD supplémentaires pour le moment. Etant
           donné que l'émulation s'effectue dans votre navigateur web, la mémoire
           disponible est limitée et plus les jeux sont dodus, plus la mémoire
-          est limitée. Nous ferons de notre mieux pour proposer plus de c<span class="hint">O</span>nsoles
-          CD, mais c'est un long processus qui requiert de nombreux tests.
+          est limitée. Nous ferons de notre mieux pour proposer plus de c<span
+            class="hint"
+            >O</span
+          >nsoles CD, mais c'est un long processus qui requiert de nombreux
+          tests.
+        </p>
+      </section>
+      <section>
+        <h3 class="about-h3">Manuel LSDJ</h3>
+        <p class="about-p">
+          Le manuel d'utilisation de la ROM Little Sound DJ sur Game Boy se
+          trouve
+          <a
+            href="https://www.littlesounddj.com/lsd/latest/documentation/LSDj_9_2_6.pdf"
+            >ici</a
+          >.
         </p>
       </section>
       <section>
@@ -210,7 +224,6 @@ onMounted(() => {
   height: 10px;
   margin: 0;
   padding: 0;
-
 }
 
 .last-hint p {
