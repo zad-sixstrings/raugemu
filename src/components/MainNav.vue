@@ -12,34 +12,37 @@
           <a class="main-menu-item dropdown" href="#">Atari</a>
           <div class="dropdown-menu">
             <router-link class="sub-menu-item" to="/console/2600"
-              ><img
-                class="menu-image"
-                src="/assets/console-icons/2600.png"
-              />2600</router-link
+              ><div class="sub-menu-item-image">
+                <img class="menu-image" src="/assets/console-icons/2600.png" />
+              </div>
+              <div class="sub-menu-item-name">2600</div></router-link
             >
             <router-link class="sub-menu-item" to="/console/5200"
-              ><img
-                class="menu-image"
-                src="/assets/console-icons/5200.png"
-              />5200</router-link
+              ><div class="sub-menu-item-image">
+                <img class="menu-image" src="/assets/console-icons/5200.png" />
+              </div>
+              <div class="sub-menu-item-name">5200</div></router-link
             >
             <router-link class="sub-menu-item" to="/console/7800"
-              ><img
-                class="menu-image"
-                src="/assets/console-icons/7800.png"
-              />7800</router-link
+              ><div class="sub-menu-item-image">
+                <img class="menu-image" src="/assets/console-icons/7800.png" />
+              </div>
+              <div class="sub-menu-item-name">7800</div></router-link
             >
             <!-- <router-link class="sub-menu-item" to="/console/JAGUAR"
-              ><img
-                class="menu-image"
-                src="/assets/console-icons/jag.png"
-              />JAGUAR</router-link
+              ><div class="sub-menu-item-image">
+                <img
+                  class="menu-image"
+                  src="/assets/console-icons/jag.png"
+                />
+              </div>
+              <div class="sub-menu-item-name">JAGUAR</div></router-link
             > -->
             <router-link class="sub-menu-item" to="/console/LYNX"
-              ><img
-                class="menu-image"
-                src="/assets/console-icons/lynx.png"
-              />LYNX</router-link
+              ><div class="sub-menu-item-image">
+                <img class="menu-image" src="/assets/console-icons/lynx.png" />
+              </div>
+              <div class="sub-menu-item-name">LYNX</div></router-link
             >
           </div>
         </li>
@@ -47,49 +50,52 @@
           <a class="main-menu-item dropdown" href="#">Nintendo</a>
           <div class="dropdown-menu">
             <router-link class="sub-menu-item" to="/console/VB">
-              <img class="menu-image" src="/assets/console-icons/vb.png" />VB
+              <div class="sub-menu-item-image">
+                <img class="menu-image" src="/assets/console-icons/vb.png" />
+              </div>
+              <div class="sub-menu-item-name">VB</div>
             </router-link>
             <router-link class="sub-menu-item" to="/console/NES"
-              ><img
-                class="menu-image"
-                src="/assets/console-icons/nes.png"
-              />NES</router-link
+              ><div class="sub-menu-item-image">
+                <img class="menu-image" src="/assets/console-icons/nes.png" />
+              </div>
+              <div class="sub-menu-item-name">NES</div></router-link
             >
             <router-link class="sub-menu-item" to="/console/SNES"
-              ><img
-                class="menu-image"
-                src="/assets/console-icons/snes.png"
-              />SNES</router-link
+              ><div class="sub-menu-item-image">
+                <img class="menu-image" src="/assets/console-icons/snes.png" />
+              </div>
+              <div class="sub-menu-item-name">SNES</div></router-link
             >
             <router-link class="sub-menu-item" to="/console/N64"
-              ><img
-                class="menu-image"
-                src="/assets/console-icons/n64.png"
-              />N64</router-link
+              ><div class="sub-menu-item-image">
+                <img class="menu-image" src="/assets/console-icons/n64.png" />
+              </div>
+              <div class="sub-menu-item-name">N64</div></router-link
             >
             <router-link class="sub-menu-item" to="/console/GB"
-              ><img
-                class="menu-image"
-                src="/assets/console-icons/gb.png"
-              />GB</router-link
+              ><div class="sub-menu-item-image">
+                <img class="menu-image" src="/assets/console-icons/gb.png" />
+              </div>
+              <div class="sub-menu-item-name">GB</div></router-link
             >
             <router-link class="sub-menu-item" to="/console/GBC"
-              ><img
-                class="menu-image"
-                src="/assets/console-icons/gbc.png"
-              />GBC</router-link
+              ><div class="sub-menu-item-image">
+                <img class="menu-image" src="/assets/console-icons/gbc.png" />
+              </div>
+              <div class="sub-menu-item-name">GBC</div></router-link
             >
             <router-link class="sub-menu-item" to="/console/GBA"
-              ><img
-                class="menu-image"
-                src="/assets/console-icons/gba.png"
-              />GBA</router-link
+              ><div class="sub-menu-item-image">
+                <img class="menu-image" src="/assets/console-icons/gba.png" />
+              </div>
+              <div class="sub-menu-item-name">GBA</div></router-link
             >
             <router-link class="sub-menu-item" to="/console/NDS"
-              ><img
-                class="menu-image"
-                src="/assets/console-icons/ds.png"
-              />DS</router-link
+              ><div class="sub-menu-item-image">
+                <img class="menu-image" src="/assets/console-icons/ds.png" />
+              </div>
+              <div class="sub-menu-item-name">DS</div></router-link
             >
           </div>
         </li>
@@ -97,31 +103,34 @@
           <a class="main-menu-item dropdown" href="#">Sega</a>
           <div class="dropdown-menu">
             <router-link class="sub-menu-item" to="/console/SMS"
-              ><img
-                class="menu-image"
-                src="/assets/console-icons/sms.png"
-              />SMS</router-link
+              ><div class="sub-menu-item-image">
+                <img class="menu-image" src="/assets/console-icons/sms.png" />
+              </div>
+              <div class="sub-menu-item-name">SMS</div></router-link
             >
             <router-link class="sub-menu-item" to="/console/SMD"
-              ><img
-                class="menu-image"
-                src="/assets/console-icons/md.png"
-              />SMD</router-link
+              ><div class="sub-menu-item-image">
+                <img class="menu-image" src="/assets/console-icons/md.png" />
+              </div>
+              <div class="sub-menu-item-name">SMD</div></router-link
             >
             <router-link class="sub-menu-item" to="/console/32X">
-              <img class="menu-image" src="/assets/console-icons/32x.png" />32X
+              <div class="sub-menu-item-image">
+                <img class="menu-image" src="/assets/console-icons/32x.png" />
+              </div>
+              <div class="sub-menu-item-name">32X</div>
             </router-link>
             <router-link class="sub-menu-item" to="/console/SGG"
-              ><img
-                class="menu-image"
-                src="/assets/console-icons/gg.png"
-              />SGG</router-link
+              ><div class="sub-menu-item-image">
+                <img class="menu-image" src="/assets/console-icons/gg.png" />
+              </div>
+              <div class="sub-menu-item-name">SGG</div></router-link
             >
             <router-link class="sub-menu-item" to="/console/SSN"
-              ><img
-                class="menu-image"
-                src="/assets/console-icons/ssn.png"
-              />Saturn</router-link
+              ><div class="sub-menu-item-image">
+                <img class="menu-image" src="/assets/console-icons/ssn.png" />
+              </div>
+              <div class="sub-menu-item-name">Saturn</div></router-link
             >
           </div>
         </li>
@@ -129,16 +138,19 @@
           <a class="main-menu-item dropdown" href="#">Sony</a>
           <div class="dropdown-menu">
             <router-link class="sub-menu-item" to="/console/PSX">
-              <img
-                class="menu-image"
-                src="/assets/console-icons/psx.png"
-              />PSX
-            </router-link><!--
+              <div class="sub-menu-item-image">
+                <img class="menu-image" src="/assets/console-icons/psx.png" />
+              </div>
+              <div class="sub-menu-item-name">PSX</div> </router-link
+            ><!--
             <router-link class="sub-menu-item" to="/console/PSP">
-              <img
-                class="menu-image"
-                src="/assets/console-icons/psp.png"
-              />PSP
+              <div class="sub-menu-item-image">
+                <img
+                  class="menu-image"
+                  src="/assets/console-icons/psp.png"
+                />
+              </div>
+              <div class="sub-menu-item-name">PSP</div>
             </router-link> -->
           </div>
         </li>
@@ -146,10 +158,10 @@
           <a class="main-menu-item dropdown" href="#">Autres</a>
           <div class="dropdown-menu">
             <router-link class="sub-menu-item" to="/console/CV">
-              <img
-                class="menu-image"
-                src="/assets/console-icons/cv.png"
-              />CV
+              <div class="sub-menu-item-image">
+                <img class="menu-image" src="/assets/console-icons/cv.png" />
+              </div>
+              <div class="sub-menu-item-name">CV</div>
             </router-link>
           </div>
         </li>
@@ -319,6 +331,7 @@ a.main-menu-item {
 a.main-menu-item,
 a.sub-menu-item {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 1rem;
@@ -327,7 +340,6 @@ a.sub-menu-item {
   font-family: var(--font-primary);
   font-weight: 400;
   font-size: 0.7em;
-  text-align: center;
   line-height: normal;
   padding: 0 10px 0 10px;
   text-decoration: none;
@@ -481,5 +493,20 @@ a.sub-menu-item {
     font-size: 0.9rem;
     padding: 0.8rem;
   }
+}
+
+.sub-menu-item-image {
+  flex: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.sub-menu-item-name {
+  flex: 5;
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 </style>
