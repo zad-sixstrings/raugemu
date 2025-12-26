@@ -171,6 +171,7 @@ body::after {
 
 /* GLOBAL DIVS LAYOUT */
 #main-wrapper {
+  position: relative;
   display: block;
   margin: 3rem auto;
   max-width: 70%;
@@ -181,6 +182,11 @@ body::after {
   border-right: 5px solid var(--border-dark-content);
   border-bottom: 5px solid var(--border-dark-content);
   border-radius: var(--radius-big);
+  z-index: 9;
+}
+
+#app {
+  position: relative;
   z-index: 10;
 }
 
