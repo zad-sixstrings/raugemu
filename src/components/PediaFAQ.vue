@@ -58,8 +58,8 @@
           <a href="https://github.com/chrippa/ds4drv">ds4drv</a> sous Linux.
         </p>
         <p class="about-p">
-          Rendez-vous à la section manettes (coming soon) pour savoir comment
-          mapper au mieux vos contrôles.
+          Rendez-vous à la section "Contrôles" en haut de cette page pour savoir comment mapper au mieux
+          vos boutons.
         </p>
       </section>
       <section>
