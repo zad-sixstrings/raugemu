@@ -119,15 +119,15 @@ span.green {
 
 span.header-warning-span {
   color: var(--yellow);
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-secondary);
   font-weight: 400;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 span.header-info-span {
   color: var(--green);
-  font-family: "Pixelify Sans", serif;
+  font-family: var(--font-secondary);
   font-weight: 400;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 
 @media (max-width: 640px) {

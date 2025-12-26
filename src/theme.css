@@ -42,8 +42,8 @@
 
   /* FONTS */
   --font-primary: "Press Start 2P", serif;
-  --font-secondary: "Pixelify Sans", serif;
-  --font-tertiary: "Micro 5", serif;
+  --font-secondary: "VT323", monospace;
+  --font-tertiary: "VT323", monospace;
 
   /* CURSOR */
   --cursor: url("/assets/cursor.png"), auto;
