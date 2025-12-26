@@ -181,6 +181,7 @@ body::after {
   border-right: 5px solid var(--border-dark-content);
   border-bottom: 5px solid var(--border-dark-content);
   border-radius: var(--radius-big);
+  z-index: 10;
 }
 
 .featured-games-title-wrapper {

@@ -176,13 +176,14 @@ span.header-info-span {
 
 /* ============ CHRISTMAS SNOWFALL CSS - REMOVE AFTER SEASON ============ */
 .snowfall-container {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
   overflow: hidden;
+  z-index: 99;
 }
 
 .snowflake {
@@ -194,7 +195,6 @@ span.header-info-span {
   pointer-events: none;
   animation: fall linear infinite;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-  z-index: 999;
 }
 
 @keyframes fall {
@@ -202,9 +202,12 @@ span.header-info-span {
     transform: translateY(-10px) translateX(0) rotate(0deg);
     opacity: 1;
   }
+  70% {
+    opacity: 1;
+  }
   100% {
     transform: translateY(100vh) translateX(20px) rotate(360deg);
-    opacity: 0.7;
+    opacity: 0;
   }
 }
 
