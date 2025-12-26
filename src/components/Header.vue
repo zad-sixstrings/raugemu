@@ -121,13 +121,14 @@ span.header-warning-span {
   color: var(--yellow);
   font-family: var(--font-secondary);
   font-weight: 400;
-  font-size: 1em;
+  font-size: 1.1em;
 }
+
 span.header-info-span {
   color: var(--green);
   font-family: var(--font-secondary);
   font-weight: 400;
-  font-size: 1em;
+  font-size: 1.1em;
 }
 
 @media (max-width: 640px) {

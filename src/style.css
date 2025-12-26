@@ -132,11 +132,6 @@ body::after {
   z-index: 9;
 }
 
-#app {
-  position: relative;
-  z-index: 10;
-}
-
 .featured-games-title-wrapper {
   background-color: var(--accent-secondary);
   border-top: 5px solid var(--border-secondary-light);

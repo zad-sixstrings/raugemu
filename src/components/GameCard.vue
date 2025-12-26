@@ -116,7 +116,7 @@ function handleImageError(e: Event) {
   font-family: var(--font-tertiary);
   font-weight: 400;
   font-style: normal;
-  font-size: 1.7em;
+  font-size: 1.5em;
   text-align: center;
   color: rgba(255, 255, 255, 0.801);
   display: block;

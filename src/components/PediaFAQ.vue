@@ -212,6 +212,14 @@ onMounted(() => {
   color: var(--yellow);
 }
 
+p.about-p {
+  font-size: 1.2em;
+}
+
+h3.about-h3 {
+  font-size: 1.4em;
+}
+
 .hint {
   color: yellowgreen;
 }

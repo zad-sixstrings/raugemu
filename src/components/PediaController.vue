@@ -126,6 +126,14 @@ const openImage = (console: { id: string; name: string }) => {
 </script>
 
 <style scoped>
+section p {
+  font-size: 1.2em;
+}
+
+section h3 {
+  font-size: 1.4em;
+}
+
 .mapping-image {
   display: flex;
   justify-content: center;

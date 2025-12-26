@@ -165,12 +165,12 @@ span.achievement-date {
 
 .achievement-name {
   font-family: var(--font-secondary);
-  font-size: 0.8em;
+  font-size: 1.2em;
   font-weight: 700;
 }
 
 .achievement-description {
   font-family: var(--font-secondary);
-  font-size: 0.7em;
+  font-size: 1em;
 }
 </style>

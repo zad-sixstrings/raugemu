@@ -96,14 +96,15 @@ defineProps<{
   font-family: var(--font-secondary);
   font-optical-sizing: auto;
   font-weight: 400;
-  font-size: 0.9em;
+  font-size: 1em;
   text-align: center;
+  padding: 5px;
 }
 
 .game-time {
-  font-family: var(--font-primary);
+  font-family: var(--font-secondary);
   font-weight: 400;
-  font-size: 0.6em;
+  font-size: 1.5em;
   color: white;
 }
 </style>

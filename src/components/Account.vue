@@ -49,7 +49,7 @@
             </div>
             <div class="info-item">
               <label class="profile-label">Inscription:</label>
-              <span class="date-profile-span">{{
+              <span class="profile-span">{{
                 memberdateFormat(profileStore.profile.creation_date)
               }}</span>
             </div>
@@ -349,7 +349,7 @@ h3.account-subtitle {
   color: white;
   font-optical-sizing: auto;
   font-weight: 400;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
 }
 
 .info-item label,

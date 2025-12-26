@@ -2,7 +2,7 @@
   <div class="page-transition">
     <div class="pedia-main-wrapper">
       <div class="pedia-main-title">
-        <h2>RaugEmu Pedia</h2>
+        <h2>RaugEmu-pedia</h2>
       </div>
       <div class="pedia-menu">
         <div
@@ -88,6 +88,7 @@ const currentComponent = computed(() => {
   height: 40px;
   color: white;
   font-family: var(--font-secondary);
+  font-size: 1.4em;
   background-color: var(--accent-secondary);
   border: 5px solid;
   border-top-color: var(--border-secondary-light);
