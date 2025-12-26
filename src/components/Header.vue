@@ -17,7 +17,7 @@
         </div>
         <div class="sub-title-wrapper">
           <h2 class="main-title-sub purple-text text-shadow-small">
-            You rip 'em, we emulate 'em.&reg;
+            You rip 'em, we emulate 'em.
           </h2>
         </div>
       </div>
@@ -108,6 +108,7 @@ span.green {
   font-weight: 400;
   font-optical-sizing: auto;
   font-size: 1.5rem;
+  font-style: italic;
 }
 
 .header-warning {
