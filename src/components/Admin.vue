@@ -251,11 +251,11 @@ async function handleExistingRomUpdate(rom: RomData) {
 .disabled-roms {
   margin-top: 2rem;
   padding-top: 1rem;
-  border-top: 5px solid var(--border-dark-grey);
+  border-top: 5px solid var(--border-dark);
 }
 
 .disabled-count {
-  font-family: var(--font-micro);
+  font-family: var(--font-tertiary);
   color: rgba(255, 255, 255, 0.6);
   font-size: 0.9em;
   margin-left: 1rem;
@@ -268,9 +268,9 @@ async function handleExistingRomUpdate(rom: RomData) {
 }
 
 .admin-title {
-  font-family: var(--font-press-start);
+  font-family: var(--font-primary);
   text-align: center;
-  color: var(--blue);
+  color: var(--accent-primary);
   font-size: 2rem;
 }
 
@@ -287,7 +287,7 @@ async function handleExistingRomUpdate(rom: RomData) {
 .existing-roms h2,
 .disabled-roms h2,
 .no-results {
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
 }
 
 .new-roms h2,
@@ -325,7 +325,7 @@ async function handleExistingRomUpdate(rom: RomData) {
 }
 
 .section-header:hover {
-  background-color: var(--blue);
+  background-color: var(--accent-primary);
 }
 
 .toggle-icon {
@@ -336,8 +336,8 @@ async function handleExistingRomUpdate(rom: RomData) {
 }
 
 .count {
-  font-family: var(--font-micro);
-  color: var(--grey);
+  font-family: var(--font-tertiary);
+  color: var(--main-light);
   font-size: 0.9em;
   margin-left: 0.5rem;
 }
@@ -349,6 +349,6 @@ async function handleExistingRomUpdate(rom: RomData) {
 .disabled-roms {
   margin-top: 2rem;
   padding-top: 1rem;
-  border-top: 5px solid var(--blue);
+  border-top: 5px solid var(--accent-primary);
 }
 </style>

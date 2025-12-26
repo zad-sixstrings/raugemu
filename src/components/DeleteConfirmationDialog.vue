@@ -52,11 +52,11 @@ defineEmits<{
 }
 
 .dialog-content {
-  background: var(--grey);
-  border-top: 5px solid var(--border-light-grey);
-  border-left: 5px solid var(--border-light-grey);
-  border-right: 5px solid var(--border-dark-grey);
-  border-bottom: 5px solid var(--border-dark-grey);
+  background: var(--main-light);
+  border-top: 5px solid var(--border-light);
+  border-left: 5px solid var(--border-light);
+  border-right: 5px solid var(--border-dark);
+  border-bottom: 5px solid var(--border-dark);
   padding: 1.5rem;
   border-radius: 0.5rem;
   max-width: 400px;
@@ -89,20 +89,20 @@ defineEmits<{
   font-optical-sizing: auto;
   font-weight: 400;
   background: var(--red);
-  border-top: 5px solid var(--border-light-red);
-  border-left: 5px solid var(--border-light-red);
-  border-right: 5px solid var(--border-dark-red);
-  border-bottom: 5px solid var(--border-dark-red);
+  border-top: 5px solid var(--border-danger-light);
+  border-left: 5px solid var(--border-danger-light);
+  border-right: 5px solid var(--border-danger-dark);
+  border-bottom: 5px solid var(--border-danger-dark);
   color: white;
   cursor: url("/assets/cursor-click.png"), auto;
 }
 
 .confirm-button:active {
   background: var(--red-active);
-  border-top: 5px solid var(--border-dark-red);
-  border-left: 5px solid var(--border-dark-red);
-  border-right: 5px solid var(--border-light-red);
-  border-bottom: 5px solid var(--border-light-red);
+  border-top: 5px solid var(--border-danger-dark);
+  border-left: 5px solid var(--border-danger-dark);
+  border-right: 5px solid var(--border-danger-light);
+  border-bottom: 5px solid var(--border-danger-light);
 }
 
 .confirm-button:disabled {
@@ -114,19 +114,19 @@ defineEmits<{
   font-family: "Pixelify Sans", serif;
   font-optical-sizing: auto;
   font-weight: 400;
-  background-color: var(--cancel);
-  border-top: 5px solid var(--cancel-border-light);
-  border-left: 5px solid var(--cancel-border-light);
-  border-right: 5px solid var(--cancel-border-dark);
-  border-bottom: 5px solid var(--cancel-border-dark);
+  background-color: var(--cancel-btn);
+  border-top: 5px solid var(--cancel-btn-border-light);
+  border-left: 5px solid var(--cancel-btn-border-light);
+  border-right: 5px solid var(--cancel-btn-border-dark);
+  border-bottom: 5px solid var(--cancel-btn-border-dark);
   cursor: url("/assets/cursor-click.png"), auto;
 }
 
 .cancel-button:active {
-  background-color: var(--cancel-active);
-  border-top: 5px solid var(--cancel-border-dark);
-  border-left: 5px solid var(--cancel-border-dark);
-  border-right: 5px solid var(--cancel-border-light);
-  border-bottom: 5px solid var(--cancel-border-light);
+  background-color: var(--cancel-btn-active);
+  border-top: 5px solid var(--cancel-btn-border-dark);
+  border-left: 5px solid var(--cancel-btn-border-dark);
+  border-right: 5px solid var(--cancel-btn-border-light);
+  border-bottom: 5px solid var(--cancel-btn-border-light);
 }
 </style>

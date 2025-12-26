@@ -1,57 +1,4 @@
-/* VARIABLES */
-:root {
-
-  --bg-main: #0a0a0e;
-  --bg-content: #111317;
-  --bg-featured: #161a22;
-  --blue: rgb(0, 130, 200);
-  --purple: rgb(90, 0, 180);
-  --grey: rgb(128, 124, 120);
-  --red: #f44336;
-  --green: #4caf50;
-  --yellow: rgb(243, 230, 0);
-  --border-light-content: #353f4b;
-  --border-dark-content: #0b0f1f;
-  --border-light-blue: rgb(55, 185, 245);
-  --border-dark-blue: rgb(8, 48, 94);
-  --border-light-purple: rgb(123, 18, 209);
-  --border-dark-purple: rgb(59, 6, 129);
-  --border-light-grey: rgb(175, 171, 167);
-  --border-dark-grey: rgb(54, 50, 46);
-  --border-light-red: #f16615;
-  --border-dark-red: #911d1d;
-  --border-light-green: #84df6e;
-  --border-dark-green: #276e36;
-  --border-light-yellow: rgb(255, 232, 131);
-  --border-dark-yellow: rgb(150, 167, 6);
-  --blue-active: rgb(0, 105, 162);
-  --purple-active: rgb(82, 0, 163);
-  --grey-active: rgb(106, 102, 98);
-  --red-active: #d83b30;
-  --green-active: #419644;
-  --yellow-active: rgb(219, 208, 0);
-  --search-input: rgb(19, 29, 34);
-  --search-input-ph: rgba(255, 255, 255, 0.5);
-  --search-input-focus: rgb(29, 44, 51);
-
-  --cancel: #e5e7eb;
-  --cancel-active: #cbced8;
-  --cancel-border-light: #ffffff;
-  --cancel-border-dark: #6a7388;
-
-  --font-press-start: "Press Start 2P", serif;
-  --font-pixelify: "Pixelify Sans", serif;
-  --font-micro: "Micro 5", serif;
-
-  --cursor: url("/assets/cursor.png"), auto;
-  --cursor-click: url("/assets/cursor-click.png"), auto;
-
-  --radius-big: 10px;
-  --radius-small: 5px;
-}
-
 /* RESET CSS */
-
 * {
   padding: 0;
   margin: 0;
@@ -60,7 +7,7 @@
 
 /*  GLOBAL FONTS STYLING */
 .featured-games-title-h2 {
-  font-family: var(--font-press-start);
+  font-family: var(--font-primary);
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: italic;
@@ -71,11 +18,11 @@
 }
 
 .blue-text {
-  color: var(--blue);
+  color: var(--accent-primary);
 }
 
 .purple-text {
-  color: var(--purple);
+  color: var(--accent-secondary);
 }
 
 .center {
@@ -98,7 +45,7 @@
 }
 
 a {
-  color: var(--blue);
+  color: var(--accent-primary);
   text-decoration: none;
 }
 
@@ -108,12 +55,12 @@ a:hover {
 }
 
 a:visited {
-  color: var(--blue);
+  color: var(--accent-primary);
   text-decoration: none;
 }
 
 img {
-  color: var(--blue);
+  color: var(--accent-primary);
 }
 
 /* GLOBAL SETTINGS */
@@ -177,8 +124,8 @@ body::after {
   max-width: 70%;
   width: 100%;
   background-color: var(--bg-content);
-  border-top: 5px solid var(--border-light-content);
-  border-left: 5px solid var(--border-light-content);
+  border-top: 5px solid var(--border-content-light);
+  border-left: 5px solid var(--border-content-light);
   border-right: 5px solid var(--border-dark-content);
   border-bottom: 5px solid var(--border-dark-content);
   border-radius: var(--radius-big);
@@ -191,11 +138,11 @@ body::after {
 }
 
 .featured-games-title-wrapper {
-  background-color: var(--purple);
-  border-top: 5px solid var(--border-light-purple);
-  border-left: 5px solid var(--border-light-purple);
-  border-right: 5px solid var(--border-dark-purple);
-  border-bottom: 5px solid var(--border-dark-purple);
+  background-color: var(--accent-secondary);
+  border-top: 5px solid var(--border-secondary-light);
+  border-left: 5px solid var(--border-secondary-light);
+  border-right: 5px solid var(--border-secondary-dark);
+  border-bottom: 5px solid var(--border-secondary-dark);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -214,9 +161,9 @@ body::after {
   gap: 3rem;
   min-width: 90%;
   padding: 2rem;
-  border-left: 5px solid var(--border-light-purple);
-  border-bottom: 5px solid var(--border-dark-purple);
-  border-right: 5px solid var(--border-dark-purple);
+  border-left: 5px solid var(--border-secondary-light);
+  border-bottom: 5px solid var(--border-secondary-dark);
+  border-right: 5px solid var(--border-secondary-dark);
   border-top: none;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -230,22 +177,22 @@ body::after {
   max-width: 400px;
   margin: 2rem auto;
   border-radius: 10px;
-  background: var(--grey);
-  border-top: 5px solid var(--border-light-grey);
-  border-left: 5px solid var(--border-light-grey);
-  border-right: 5px solid var(--border-dark-grey);
-  border-bottom: 5px solid var(--border-dark-grey);
+  background: var(--main-light);
+  border-top: 5px solid var(--border-light);
+  border-left: 5px solid var(--border-light);
+  border-right: 5px solid var(--border-dark);
+  border-bottom: 5px solid var(--border-dark);
 }
 
 .box-title {
-  font-family: var(--font-press-start);
+  font-family: var(--font-primary);
   font-weight: 400;
   font-style: normal;
   padding: 2rem;
 }
 
 h2.pwdrecovery-box-title {
-  font-family: var(--font-press-start);
+  font-family: var(--font-primary);
   font-weight: 400;
   font-style: normal;
   padding: 2rem;
@@ -265,7 +212,7 @@ h2.pwdrecovery-box-title {
 }
 
 label {
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
   font-weight: 400;
   font-size: 1.2em;
   margin-bottom: 7px;
@@ -275,11 +222,11 @@ label {
 .form-group input[type="password"],
 .form-group input[type="text"] {
   padding: 10px;
-  border-top: 5px solid var(--border-dark-grey);
-  border-left: 5px solid var(--border-dark-grey);
-  border-right: 5px solid var(--border-light-grey);
-  border-bottom: 5px solid var(--border-light-grey);
-  font-family: var(--font-pixelify);
+  border-top: 5px solid var(--border-dark);
+  border-left: 5px solid var(--border-dark);
+  border-right: 5px solid var(--border-light);
+  border-bottom: 5px solid var(--border-light);
+  font-family: var(--font-secondary);
   font-weight: 400;
   font-size: 1em;
 }
@@ -288,7 +235,7 @@ label {
   color: var(--red);
   font-size: 0.875rem;
   text-align: center;
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
   font-weight: 400;
   font-size: 0.9em;
   padding-bottom: 10px;
@@ -303,12 +250,12 @@ button.loginbutton {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   cursor: url("/assets/cursor-click.png"), auto;
-  background: var(--blue);
-  border-top: 5px solid var(--border-light-blue);
-  border-left: 5px solid var(--border-light-blue);
-  border-right: 5px solid var(--border-dark-blue);
-  border-bottom: 5px solid var(--border-dark-blue);
-  font-family: var(--font-press-start);
+  background: var(--accent-primary);
+  border-top: 5px solid var(--border-primary-light);
+  border-left: 5px solid var(--border-primary-light);
+  border-right: 5px solid var(--border-primary-dark);
+  border-bottom: 5px solid var(--border-primary-dark);
+  font-family: var(--font-primary);
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
@@ -325,11 +272,11 @@ button.loginbutton:hover {
 }
 
 button.loginbutton:active {
-  background: var(--blue-active);
-  border-top: 5px solid var(--border-dark-blue);
-  border-left: 5px solid var(--border-dark-blue);
-  border-right: 5px solid var(--border-light-blue);
-  border-bottom: 5px solid var(--border-light-blue);
+  background: var(--accent-primary-active);
+  border-top: 5px solid var(--border-primary-dark);
+  border-left: 5px solid var(--border-primary-dark);
+  border-right: 5px solid var(--border-primary-light);
+  border-bottom: 5px solid var(--border-primary-light);
 }
 
 button.loginbutton:disabled {
@@ -340,7 +287,7 @@ button.loginbutton:disabled {
 .auth-switch,
 .resetpwd {
   text-align: center;
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
   font-weight: 400;
   font-size: 0.9em;
   padding-bottom: 1.2rem;
@@ -348,7 +295,7 @@ button.loginbutton:disabled {
 
 a.auth-switch-link,
 a.resetpwd-link {
-  color: var(--border-light-purple);
+  color: var(--border-secondary-light);
 }
 
 input {

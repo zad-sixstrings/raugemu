@@ -78,11 +78,11 @@ defineEmits<{
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: var(--purple);
-  border-top: 5px solid var(--border-light-purple);
-  border-left: 5px solid var(--border-light-purple);
-  border-right: 5px solid var(--border-dark-purple);
-  border-bottom: 5px solid var(--border-dark-purple);
+  background-color: var(--accent-secondary);
+  border-top: 5px solid var(--border-secondary-light);
+  border-left: 5px solid var(--border-secondary-light);
+  border-right: 5px solid var(--border-secondary-dark);
+  border-bottom: 5px solid var(--border-secondary-dark);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -96,7 +96,7 @@ defineEmits<{
 }
 
 .save-title {
-  font-family: var(--font-press-start);
+  font-family: var(--font-primary);
   color: white;
   font-size: 0.8em;
 }
@@ -108,10 +108,10 @@ defineEmits<{
   height: 80px;
   margin-bottom: 20px;
   padding: 1.5em;
-  background-color: var(--blue);
-  border-left: 5px solid var(--border-light-blue);
-  border-right: 5px solid var(--border-dark-blue);
-  border-bottom: 5px solid var(--border-dark-blue);
+  background-color: var(--accent-primary);
+  border-left: 5px solid var(--border-primary-light);
+  border-right: 5px solid var(--border-primary-dark);
+  border-bottom: 5px solid var(--border-primary-dark);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
@@ -122,7 +122,7 @@ defineEmits<{
 }
 
 p.save-date {
-  font-family: var(--font-micro);
+  font-family: var(--font-tertiary);
   font-size: 1.2rem;
 }
 
@@ -138,10 +138,10 @@ p.save-date {
   width: 50px;
   height: 50px;
   background: var(--red);
-  border-top: 5px solid var(--border-light-red);
-  border-left: 5px solid var(--border-light-red);
-  border-right: 5px solid var(--border-dark-red);
-  border-bottom: 5px solid var(--border-dark-red);
+  border-top: 5px solid var(--border-danger-light);
+  border-left: 5px solid var(--border-danger-light);
+  border-right: 5px solid var(--border-danger-dark);
+  border-bottom: 5px solid var(--border-danger-dark);
   border-top-right-radius: 5px;
   cursor: var(--cusror-click);
   transition: all 0.2s;
@@ -153,10 +153,10 @@ p.save-date {
 
 .delete-button:active {
   background: var(--red-active);
-  border-top: 5px solid var(--border-dark-red);
-  border-left: 5px solid var(--border-dark-red);
-  border-right: 5px solid var(--border-light-red);
-  border-bottom: 5px solid var(--border-light-red);
+  border-top: 5px solid var(--border-danger-dark);
+  border-left: 5px solid var(--border-danger-dark);
+  border-right: 5px solid var(--border-danger-light);
+  border-bottom: 5px solid var(--border-danger-light);
 }
 
 .delete-button:hover {
@@ -170,6 +170,6 @@ p.save-date {
 }
 
 p.profile-span {
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
 }
 </style>

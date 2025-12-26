@@ -65,9 +65,9 @@ const currentComponent = computed(() => {
 /* Main Title */
 .pedia-main-title {
   width: 100%;
-  color: var(--blue);
+  color: var(--accent-primary);
   text-align: center;
-  font-family: var(--font-press-start);
+  font-family: var(--font-primary);
   margin-bottom: 50px;
 }
 
@@ -87,23 +87,23 @@ const currentComponent = computed(() => {
   width: 200px;
   height: 40px;
   color: white;
-  font-family: var(--font-pixelify);
-  background-color: var(--purple);
+  font-family: var(--font-secondary);
+  background-color: var(--accent-secondary);
   border: 5px solid;
-  border-top-color: var(--border-light-purple);
-  border-left-color: var(--border-light-purple);
-  border-right-color: var(--border-dark-purple);
-  border-bottom-color: var(--border-dark-purple);
+  border-top-color: var(--border-secondary-light);
+  border-left-color: var(--border-secondary-light);
+  border-right-color: var(--border-secondary-dark);
+  border-bottom-color: var(--border-secondary-dark);
   border-radius: 10px;
   cursor: var(--cursor-click);
 }
 
 .pedia-menu-item.active {
-  background-color: var(--purple-active);
-  border-top-color: var(--border-dark-purple);
-  border-left-color: var(--border-dark-purple);
-  border-right-color: var(--border-light-purple);
-  border-bottom-color: var(--border-light-purple);
+  background-color: var(--accent-secondary-active);
+  border-top-color: var(--border-secondary-dark);
+  border-left-color: var(--border-secondary-dark);
+  border-right-color: var(--border-secondary-light);
+  border-bottom-color: var(--border-secondary-light);
 }
 
 /* Content Section */
@@ -117,15 +117,15 @@ const currentComponent = computed(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--purple);
-  border: 5px solid var(--border-dark-purple);
-  border-top-color: var(--border-light-purple);
-  border-left-color: var(--border-light-purple);
+  background-color: var(--accent-secondary);
+  border: 5px solid var(--border-secondary-dark);
+  border-top-color: var(--border-secondary-light);
+  border-left-color: var(--border-secondary-light);
   border-radius: 10px 10px 0 0;
 }
 
 .pedia-title {
-  font-family: var(--font-press-start);
+  font-family: var(--font-primary);
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: italic;
@@ -138,24 +138,24 @@ const currentComponent = computed(() => {
 /* Content Area */
 .pedia-content {
   padding: 2rem;
-  border-left: 5px solid var(--border-light-purple);
-  border-right: 5px solid var(--border-dark-purple);
-  border-bottom: 5px solid var(--border-dark-purple);
+  border-left: 5px solid var(--border-secondary-light);
+  border-right: 5px solid var(--border-secondary-dark);
+  border-bottom: 5px solid var(--border-secondary-dark);
   border-top: none;
   overflow-y: auto;
 }
 
 /* Shared Text Styles */
 :deep(h3) {
-  color: var(--blue);
+  color: var(--accent-primary);
   margin-bottom: 1rem;
-  font-family: var(--font-press-start);
+  font-family: var(--font-primary);
   font-weight: 400;
   font-size: 1em;
 }
 
 :deep(p) {
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
   font-weight: 400;
   font-size: 1em;
   color: white;

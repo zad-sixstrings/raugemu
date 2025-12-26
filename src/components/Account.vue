@@ -280,9 +280,9 @@ onMounted(async () => {
   align-items: center;
   margin: 0 auto;
   max-width: 800px;
-  border: 5px solid var(--border-dark-purple);
+  border: 5px solid var(--border-secondary-dark);
   border-top: none;
-  border-left-color: var(--border-light-purple);
+  border-left-color: var(--border-secondary-light);
   overflow-y: auto;
   border-radius: 0 0 10px 10px;
 }
@@ -294,15 +294,15 @@ onMounted(async () => {
   margin: 0 auto;
   max-width: 800px;
   text-align: left;
-  background-color: var(--purple);
-  border: 5px solid var(--border-dark-purple);
-  border-top-color: var(--border-light-purple);
-  border-left-color: var(--border-light-purple);
+  background-color: var(--accent-secondary);
+  border: 5px solid var(--border-secondary-dark);
+  border-top-color: var(--border-secondary-light);
+  border-left-color: var(--border-secondary-light);
   border-radius: 10px 10px 0 0;
 }
 
 .account-title {
-  font-family: var(--font-press-start);
+  font-family: var(--font-primary);
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: italic;
@@ -324,7 +324,7 @@ onMounted(async () => {
 h3.account-subtitle {
   color: white;
   margin-bottom: 1rem;
-  font-family: var(--font-press-start);
+  font-family: var(--font-primary);
   font-weight: 400;
   font-size: 1em;
 }
@@ -345,7 +345,7 @@ h3.account-subtitle {
 }
 
 .date-profile-span {
-  font-family: var(--font-micro);
+  font-family: var(--font-tertiary);
   color: white;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -380,15 +380,15 @@ h3.account-subtitle {
 }
 
 label.profile-label {
-  color: var(--blue);
-  font-family: var(--font-pixelify);
+  color: var(--accent-primary);
+  font-family: var(--font-secondary);
   font-optical-sizing: auto;
   font-weight: 400;
 }
 
 .nickname {
-  color: var(--purple);
-  font-family: var(--font-press-start);
+  color: var(--accent-secondary);
+  font-family: var(--font-primary);
   font-size: 2em;
 }
 
@@ -399,7 +399,7 @@ span.profile-span {
   line-height: 1;
   vertical-align: middle;
   color: white;
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
   font-optical-sizing: auto;
   font-weight: 400;
   font-size: 1.3rem;
@@ -411,8 +411,8 @@ span.nickname-span {
   padding: 0;
   line-height: 1;
   vertical-align: middle;
-  color: var(--blue);
-  font-family: var(--font-press-start);
+  color: var(--accent-primary);
+  font-family: var(--font-primary);
   font-optical-sizing: auto;
   font-weight: 400;
   font-size: 1.3rem;
@@ -421,7 +421,7 @@ span.nickname-span {
 p.bio,
 p.profile-loading,
 p.profile-error {
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
   font-optical-sizing: auto;
   font-weight: 400;
 }
@@ -448,9 +448,9 @@ img.avatar {
   width: 200px;
   height: 200px;
   border-radius: 100%;
-  border: 5px solid var(--purple);
-  border-top-color: var(--border-light-purple);
-  border-left-color: var(--border-light-purple);
+  border: 5px solid var(--accent-secondary);
+  border-top-color: var(--border-secondary-light);
+  border-left-color: var(--border-secondary-light);
 }
 
 /* Profile Customization */
@@ -462,47 +462,47 @@ img.avatar {
 }
 
 .edit-button {
-  background: var(--blue);
-  border: 5px solid var(--border-dark-blue);
-  border-top-color: var(--border-light-blue);
-  border-left-color: var(--border-light-blue);
+  background: var(--accent-primary);
+  border: 5px solid var(--border-primary-dark);
+  border-top-color: var(--border-primary-light);
+  border-left-color: var(--border-primary-light);
   color: white;
   padding: 4px 12px;
   border-radius: 5px;
   cursor: var(--cursor-click);
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
   font-size: 0.9em;
 }
 
 .edit-button:active {
-  background: var(--blue-active);
-  border-color: var(--border-light-blue);
-  border-top-color: var(--border-dark-blue);
-  border-left-color: var(--border-dark-blue);
+  background: var(--accent-primary-active);
+  border-color: var(--border-primary-light);
+  border-top-color: var(--border-primary-dark);
+  border-left-color: var(--border-primary-dark);
 }
 
 .admin-link-wrapper {
-  background: var(--blue);
-  border: 5px solid var(--border-dark-blue);
-  border-top-color: var(--border-light-blue);
-  border-left-color: var(--border-light-blue);
+  background: var(--accent-primary);
+  border: 5px solid var(--border-primary-dark);
+  border-top-color: var(--border-primary-light);
+  border-left-color: var(--border-primary-light);
   color: white;
   padding: 4px 12px;
   border-radius: 5px;
   cursor: var(--cursor-click);
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
   font-size: 0.9em;
 }
 
 .admin-link-wrapper:active {
-  background: var(--blue-active);
-  border-color: var(--border-light-blue);
-  border-top-color: var(--border-dark-blue);
-  border-left-color: var(--border-dark-blue);
+  background: var(--accent-primary-active);
+  border-color: var(--border-primary-light);
+  border-top-color: var(--border-primary-dark);
+  border-left-color: var(--border-primary-dark);
 }
 
 .admin-link {
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
   text-align: center;
   margin: 0 auto;
   color: white;

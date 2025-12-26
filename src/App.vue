@@ -45,7 +45,7 @@ import Notifications from './components/Notifications.vue';
   height: 100vh;
   pointer-events: none;
   overflow: hidden;
-  z-index: -100;
+  z-index: 8;
 }
 
 .snowflake {

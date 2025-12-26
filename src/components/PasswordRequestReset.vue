@@ -65,7 +65,7 @@ async function handleSubmit() {
   color: var(--red);
   margin: 10px 0;
   text-align: center;
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
   font-weight: 400;
 }
 
@@ -73,7 +73,7 @@ async function handleSubmit() {
   color: var(--green);
   margin: 10px 0;
   text-align: center;
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
   font-weight: 400;
 }
 
@@ -84,11 +84,11 @@ button:disabled {
 
 .form-group input[type="email"] {
   padding: 10px;
-  border-top: 5px solid var(--border-dark-grey);
-  border-left: 5px solid var(--border-dark-grey);
-  border-right: 5px solid var(--border-light-grey);
-  border-bottom: 5px solid var(--border-light-grey);
-  font-family: var(--font-pixelify);
+  border-top: 5px solid var(--border-dark);
+  border-left: 5px solid var(--border-dark);
+  border-right: 5px solid var(--border-light);
+  border-bottom: 5px solid var(--border-light);
+  font-family: var(--font-secondary);
   font-weight: 400;
   font-size: 1em;
 }

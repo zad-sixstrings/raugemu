@@ -347,7 +347,7 @@ async function saveChanges() {
 .edit-form-group input[type="password"],
 .edit-form-group input[type="text"] {
   padding: 10px;
-  border: 1px solid var(--border-dark-grey);
+  border: 1px solid var(--border-dark);
   font-family: monospace;
   font-weight: 400;
   font-size: 1em;

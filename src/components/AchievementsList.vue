@@ -91,11 +91,11 @@ const sortedAchievements = computed(() => {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: var(--purple);
-  border-top: 5px solid var(--border-light-purple);
-  border-left: 5px solid var(--border-light-purple);
-  border-right: 5px solid var(--border-dark-purple);
-  border-bottom: 5px solid var(--border-dark-purple);
+  background-color: var(--accent-secondary);
+  border-top: 5px solid var(--border-secondary-light);
+  border-left: 5px solid var(--border-secondary-light);
+  border-right: 5px solid var(--border-secondary-dark);
+  border-bottom: 5px solid var(--border-secondary-dark);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -109,7 +109,7 @@ const sortedAchievements = computed(() => {
 }
 
 .achievement-header h4 {
-  font-family: var(--font-press-start);
+  font-family: var(--font-primary);
   margin: 0 auto;
   color: white;
   font-size: 0.8em;
@@ -118,10 +118,10 @@ const sortedAchievements = computed(() => {
 .achievement-icon-wrapper {
   width: 50px;
   padding: 5px;
-  border-top: 5px solid var(--border-light-purple);
-  border-left: 5px solid var(--border-light-purple);
-  border-right: 5px solid var(--border-dark-purple);
-  border-bottom: 5px solid var(--border-dark-purple);
+  border-top: 5px solid var(--border-secondary-light);
+  border-left: 5px solid var(--border-secondary-light);
+  border-right: 5px solid var(--border-secondary-dark);
+  border-bottom: 5px solid var(--border-secondary-dark);
 }
 
 .achievement-icon {
@@ -131,10 +131,10 @@ const sortedAchievements = computed(() => {
 .achievement-content {
   height: 120px;
   padding: 10px;
-  background-color: var(--blue);
-  border-left: 5px solid var(--border-light-blue);
-  border-right: 5px solid var(--border-dark-blue);
-  border-bottom: 5px solid var(--border-dark-blue);
+  background-color: var(--accent-primary);
+  border-left: 5px solid var(--border-primary-light);
+  border-right: 5px solid var(--border-primary-dark);
+  border-bottom: 5px solid var(--border-primary-dark);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
@@ -158,19 +158,19 @@ const sortedAchievements = computed(() => {
 }
 
 span.achievement-date {
-  font-family: var(--font-micro);
+  font-family: var(--font-tertiary);
   font-size: 1.2em;
   color: white;
 }
 
 .achievement-name {
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
   font-size: 0.8em;
   font-weight: 700;
 }
 
 .achievement-description {
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
   font-size: 0.7em;
 }
 </style>

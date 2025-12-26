@@ -34,41 +34,41 @@ const notificationStore = useNotificationStore();
   color: white;
   min-width: 200px;
   text-align: center;
-  font-family: var(--font-press-start);
+  font-family: var(--font-primary);
   font-optical-sizing: auto;
   font-weight: 400;
 }
 
 .success {
   background-color: var(--green);
-  border-top: 5px solid var(--border-light-green);
-  border-left: 5px solid var(--border-light-green);
-  border-right: 5px solid var(--border-dark-green);
-  border-bottom: 5px solid var(--border-dark-green);
+  border-top: 5px solid var(--border-success-light);
+  border-left: 5px solid var(--border-success-light);
+  border-right: 5px solid var(--border-success-dark);
+  border-bottom: 5px solid var(--border-success-dark);
 }
 
 .error {
   background-color: var(--red);
-  border-top: 5px solid var(--border-light-red);
-  border-left: 5px solid var(--border-light-red);
-  border-right: 5px solid var(--border-dark-red);
-  border-bottom: 5px solid var(--border-dark-red);
+  border-top: 5px solid var(--border-danger-light);
+  border-left: 5px solid var(--border-danger-light);
+  border-right: 5px solid var(--border-danger-dark);
+  border-bottom: 5px solid var(--border-danger-dark);
 }
 
 .warning {
   background-color: var(--yellow);
-  border-top: 5px solid var(--border-light-yellow);
-  border-left: 5px solid var(--border-light-yellow);
-  border-right: 5px solid var(--border-dark-yellow);
-  border-bottom: 5px solid var(--border-dark-yellow);
+  border-top: 5px solid var(--border-warning-light);
+  border-left: 5px solid var(--border-warning-light);
+  border-right: 5px solid var(--border-warning-dark);
+  border-bottom: 5px solid var(--border-warning-dark);
 }
 
 .info {
-  background-color: var(--blue);
-  border-top: 5px solid var(--border-light-blue);
-  border-left: 5px solid var(--border-light-blue);
-  border-right: 5px solid var(--border-dark-blue);
-  border-bottom: 5px solid var(--border-dark-blue);
+  background-color: var(--accent-primary);
+  border-top: 5px solid var(--border-primary-light);
+  border-left: 5px solid var(--border-primary-light);
+  border-right: 5px solid var(--border-primary-dark);
+  border-bottom: 5px solid var(--border-primary-dark);
 }
 
 .notification-enter-active,

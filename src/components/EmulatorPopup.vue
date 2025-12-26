@@ -346,11 +346,11 @@ export default {
   width: 100%;
   height: 100%;
   max-height: 850px;
-  background: var(--grey);
-  border-top: 5px solid var(--border-light-grey);
-  border-left: 5px solid var(--border-light-grey);
-  border-right: 5px solid var(--border-dark-grey);
-  border-bottom: 5px solid var(--border-dark-grey);
+  background: var(--main-light);
+  border-top: 5px solid var(--border-light);
+  border-left: 5px solid var(--border-light);
+  border-right: 5px solid var(--border-dark);
+  border-bottom: 5px solid var(--border-dark);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -364,12 +364,12 @@ button.close-popup {
   border-top-right-radius: 5px;
   border: none;
   background: var(--red);
-  border-top: 5px solid var(--border-light-red);
-  border-left: 5px solid var(--border-light-red);
-  border-right: 5px solid var(--border-dark-red);
-  border-bottom: 5px solid var(--border-dark-red);
+  border-top: 5px solid var(--border-danger-light);
+  border-left: 5px solid var(--border-danger-light);
+  border-right: 5px solid var(--border-danger-dark);
+  border-bottom: 5px solid var(--border-danger-dark);
   color: white;
-  font-family: var(--font-press-start);
+  font-family: var(--font-primary);
   font-optical-sizing: auto;
   font-weight: 400;
   font-size: 10px;
@@ -387,10 +387,10 @@ button.close-popup:hover {
 
 button.close-popup:active {
   background: var(--red-active);
-  border-top: 5px solid var(--border-dark-red);
-  border-left: 5px solid var(--border-dark-red);
-  border-right: 5px solid var(--border-light-red);
-  border-bottom: 5px solid var(--border-light-red);
+  border-top: 5px solid var(--border-danger-dark);
+  border-left: 5px solid var(--border-danger-dark);
+  border-right: 5px solid var(--border-danger-light);
+  border-bottom: 5px solid var(--border-danger-light);
 }
 
 .game-wrapper {

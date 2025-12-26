@@ -1,0 +1,55 @@
+:root {
+  /* COLORS */
+  --bg-main: #0a0a0e;
+  --bg-content: #111317;
+  --bg-featured: #161a22;
+  --accent-primary: rgb(0, 130, 200);
+  --accent-secondary: rgb(90, 0, 180);
+  --accent-primary-active: rgb(0, 105, 162);
+  --accent-secondary-active: rgb(82, 0, 163);
+  --main-light: rgb(128, 124, 120);
+  --main-light-active: rgb(106, 102, 98);
+  --red: #f44336;
+  --green: #4caf50;
+  --yellow: rgb(243, 230, 0);
+  --red-active: #d83b30;
+  --green-active: #419644;
+  --yellow-active: rgb(219, 208, 0);
+
+  --border-content-light: #353f4b;
+  --border-dark-content: #0b0f1f;
+  --border-primary-light: rgb(55, 185, 245);
+  --border-primary-dark: rgb(8, 48, 94);
+  --border-secondary-light: rgb(123, 18, 209);
+  --border-secondary-dark: rgb(59, 6, 129);
+  --border-light: rgb(175, 171, 167);
+  --border-dark: rgb(54, 50, 46);
+  --border-danger-light: #f16615;
+  --border-danger-dark: #911d1d;
+  --border-success-light: #84df6e;
+  --border-success-dark: #276e36;
+  --border-warning-light: rgb(255, 232, 131);
+  --border-warning-dark: rgb(150, 167, 6);
+
+  --search-input: rgb(19, 29, 34);
+  --search-input-placeholder: rgba(255, 255, 255, 0.5);
+  --search-input-focus: rgb(29, 44, 51);
+
+  --cancel-btn: #e5e7eb;
+  --cancel-btn-active: #cbced8;
+  --cancel-btn-border-light: #ffffff;
+  --cancel-btn-border-dark: #6a7388;
+
+  /* FONTS */
+  --font-primary: "Press Start 2P", serif;
+  --font-secondary: "Pixelify Sans", serif;
+  --font-tertiary: "Micro 5", serif;
+
+  /* CURSOR */
+  --cursor: url("/assets/cursor.png"), auto;
+  --cursor-click: url("/assets/cursor-click.png"), auto;
+  
+  /* RADII */
+  --radius-big: 10px;
+  --radius-small: 5px;
+}

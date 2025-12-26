@@ -68,10 +68,10 @@ function handleImageError(e: Event) {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border-top: 5px solid var(--border-light-grey);
-  border-left: 5px solid var(--border-light-grey);
-  border-right: 5px solid var(--border-dark-grey);
-  border-bottom: 5px solid var(--border-dark-grey);
+  border-top: 5px solid var(--border-light);
+  border-left: 5px solid var(--border-light);
+  border-right: 5px solid var(--border-dark);
+  border-bottom: 5px solid var(--border-dark);
 }
 
 .card-wrapper {
@@ -96,13 +96,13 @@ function handleImageError(e: Event) {
 }
 
 .game-title {
-  font-family: var(--font-press-start);
+  font-family: var(--font-primary);
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
   font-size: 1em;
-  background: var(--grey);
-  border-bottom: 2px solid var(--border-dark-grey);
+  background: var(--main-light);
+  border-bottom: 2px solid var(--border-dark);
   color: white;
   margin: 0;
   height: 60px;
@@ -113,7 +113,7 @@ function handleImageError(e: Event) {
 }
 
 .gameinfo {
-  font-family: var(--font-micro);
+  font-family: var(--font-tertiary);
   font-weight: 400;
   font-style: normal;
   font-size: 1.7em;
@@ -150,12 +150,12 @@ function handleImageError(e: Event) {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--blue);
-  border-top: 5px solid var(--border-light-blue);
-  border-left: 5px solid var(--border-light-blue);
-  border-right: 5px solid var(--border-dark-blue);
-  border-bottom: 5px solid var(--border-dark-blue);
-  font-family: var(--font-press-start);
+  background: var(--accent-primary);
+  border-top: 5px solid var(--border-primary-light);
+  border-left: 5px solid var(--border-primary-light);
+  border-right: 5px solid var(--border-primary-dark);
+  border-bottom: 5px solid var(--border-primary-dark);
+  font-family: var(--font-primary);
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
@@ -174,11 +174,11 @@ function handleImageError(e: Event) {
 }
 
 .play-button:active {
-  background: var(--blue-active);
-  border-top: 5px solid var(--border-dark-blue);
-  border-left: 5px solid var(--border-dark-blue);
-  border-right: 5px solid var(--border-light-blue);
-  border-bottom: 5px solid var(--border-light-blue);
+  background: var(--accent-primary-active);
+  border-top: 5px solid var(--border-primary-dark);
+  border-left: 5px solid var(--border-primary-dark);
+  border-right: 5px solid var(--border-primary-light);
+  border-bottom: 5px solid var(--border-primary-light);
   cursor: url("/assets/cursor-click.png"), auto;
 }
 

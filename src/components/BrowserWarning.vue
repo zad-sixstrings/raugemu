@@ -80,7 +80,7 @@ onMounted(() => {
 }
 
 #browser-warning p {
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
   font-optical-sizing: auto;
   font-weight: 400;
   font-size: 1.2em;
@@ -99,12 +99,12 @@ button.browser-warning-close {
   border-top-right-radius: 5px;
   border: none;
   background: var(--red);
-  border-top: 5px solid var(--border-light-red);
-  border-left: 5px solid var(--border-light-red);
-  border-right: 5px solid var(--border-dark-red);
-  border-bottom: 5px solid var(--border-dark-red);
+  border-top: 5px solid var(--border-danger-light);
+  border-left: 5px solid var(--border-danger-light);
+  border-right: 5px solid var(--border-danger-dark);
+  border-bottom: 5px solid var(--border-danger-dark);
   color: white;
-  font-family: var(--font-press-start);
+  font-family: var(--font-primary);
   font-optical-sizing: auto;
   font-weight: 400;
   font-size: 13px;
@@ -122,10 +122,10 @@ button.browser-warning-close:hover {
 
 button.browser-warning-close:active {
   background: var(--red-active);
-  border-top: 5px solid var(--border-dark-red);
-  border-left: 5px solid var(--border-dark-red);
-  border-right: 5px solid var(--border-light-red);
-  border-bottom: 5px solid var(--border-light-red);
+  border-top: 5px solid var(--border-danger-dark);
+  border-left: 5px solid var(--border-danger-dark);
+  border-right: 5px solid var(--border-danger-light);
+  border-bottom: 5px solid var(--border-danger-light);
 }
 
 .fade-enter-active,

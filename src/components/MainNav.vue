@@ -241,22 +241,22 @@ const handleLogout = () => {
   height: 70px;
   margin: 0;
   padding: 0;
-  background: var(--grey);
-  border-top: 5px solid var(--border-light-grey);
-  border-left: 5px solid var(--border-light-grey);
-  border-right: 5px solid var(--border-dark-grey);
-  border-bottom: 5px solid var(--border-dark-grey);
+  background: var(--main-light);
+  border-top: 5px solid var(--border-light);
+  border-left: 5px solid var(--border-light);
+  border-right: 5px solid var(--border-dark);
+  border-bottom: 5px solid var(--border-dark);
 }
 
 #main-menu li {
   position: relative;
   float: left;
   height: 60px;
-  background-color: var(--grey);
-  border-top: 5px solid var(--border-light-grey);
-  border-left: 5px solid var(--border-light-grey);
-  border-right: 5px solid var(--border-dark-grey);
-  border-bottom: 5px solid var(--border-dark-grey);
+  background-color: var(--main-light);
+  border-top: 5px solid var(--border-light);
+  border-left: 5px solid var(--border-light);
+  border-right: 5px solid var(--border-dark);
+  border-bottom: 5px solid var(--border-dark);
   transition: border 0.2s;
   transition: background-color 0.2s;
 }
@@ -294,11 +294,11 @@ const handleLogout = () => {
   left: 0;
   width: 170px;
   z-index: 5;
-  background: var(--grey);
-  border-top: 5px solid var(--border-light-grey);
-  border-left: 5px solid var(--border-light-grey);
-  border-right: 5px solid var(--border-dark-grey);
-  border-bottom: 5px solid var(--border-dark-grey);
+  background: var(--main-light);
+  border-top: 5px solid var(--border-light);
+  border-left: 5px solid var(--border-light);
+  border-right: 5px solid var(--border-dark);
+  border-bottom: 5px solid var(--border-dark);
   transition: opacity 0.2s ease-in-out, visibility 1s;
 }
 
@@ -324,7 +324,7 @@ a.sub-menu-item {
   gap: 1rem;
   min-height: 60px;
   color: black;
-  font-family: var(--font-press-start);
+  font-family: var(--font-primary);
   font-weight: 400;
   font-size: 0.7em;
   text-align: center;
@@ -336,29 +336,29 @@ a.sub-menu-item {
 }
 
 .sub-menu-item:hover {
-  background-color: var(--grey-active);
-  border-top: 5px solid var(--border-dark-grey);
-  border-left: 5px solid var(--border-dark-grey);
-  border-right: 5px solid var(--border-light-grey);
-  border-bottom: 5px solid var(--border-light-grey);
+  background-color: var(--main-light-active);
+  border-top: 5px solid var(--border-dark);
+  border-left: 5px solid var(--border-dark);
+  border-right: 5px solid var(--border-light);
+  border-bottom: 5px solid var(--border-light);
 }
 
 #main-menu li:hover {
-  background-color: var(--grey-active);
-  border-top: 5px solid var(--border-dark-grey);
-  border-left: 5px solid var(--border-dark-grey);
-  border-right: 5px solid var(--border-light-grey);
-  border-bottom: 5px solid var(--border-light-grey);
+  background-color: var(--main-light-active);
+  border-top: 5px solid var(--border-dark);
+  border-left: 5px solid var(--border-dark);
+  border-right: 5px solid var(--border-light);
+  border-bottom: 5px solid var(--border-light);
 }
 
 /* MOBILE MENU */
 .mobile-menu-button {
   display: none;
-  background: var(--grey);
-  border-top: 5px solid var(--border-light-grey);
-  border-left: 5px solid var(--border-light-grey);
-  border-right: 5px solid var(--border-dark-grey);
-  border-bottom: 5px solid var(--border-dark-grey);
+  background: var(--main-light);
+  border-top: 5px solid var(--border-light);
+  border-left: 5px solid var(--border-light);
+  border-right: 5px solid var(--border-dark);
+  border-bottom: 5px solid var(--border-dark);
   border-radius: 5px;
   padding: 1rem;
   cursor: var(--cursor-click);

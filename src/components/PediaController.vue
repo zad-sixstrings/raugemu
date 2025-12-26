@@ -136,7 +136,7 @@ const openImage = (console: { id: string; name: string }) => {
   max-width: 100%;
   height: auto;
   border-radius: 10px;
-  border: 5px solid var(--border-dark-purple);
+  border: 5px solid var(--border-secondary-dark);
 }
 
 .controllers-grid {
@@ -150,13 +150,13 @@ const openImage = (console: { id: string; name: string }) => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: var(--grey);
+  background: var(--main-light);
   padding: 1rem;
   border-radius: 10px;
-  border-top: 5px solid var(--border-light-grey);
-  border-left: 5px solid var(--border-light-grey);
-  border-right: 5px solid var(--border-dark-grey);
-  border-bottom: 5px solid var(--border-dark-grey);
+  border-top: 5px solid var(--border-light);
+  border-left: 5px solid var(--border-light);
+  border-right: 5px solid var(--border-dark);
+  border-bottom: 5px solid var(--border-dark);
   cursor: var(--cursor-click);
   transition: transform 0.2s ease;
 }
@@ -166,7 +166,7 @@ const openImage = (console: { id: string; name: string }) => {
 }
 
 .controller-card h4 {
-  font-family: var(--font-press-start);
+  font-family: var(--font-primary);
   color: white;
   font-size: 0.8em;
   margin-bottom: 1rem;
@@ -205,7 +205,7 @@ const openImage = (console: { id: string; name: string }) => {
 
 .playstation-x {
   background-color: black;
-  color: var(--blue);
+  color: var(--accent-primary);
 }
 
 .playstation-o {

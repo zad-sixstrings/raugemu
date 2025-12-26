@@ -4,8 +4,9 @@
       <p class="credentials">
         Propulsé par <a href="https://emulatorjs.org/">EmulatorJS</a> -
         Developpé par
-        <a href="https://github.com/zad-sixstrings">Zad Sixstrings</a> - Hébergé
-        par <a href="https://raug-info.ch">Raug Info</a>
+        <a href="https://github.com/zad-sixstrings">Zad Sixstrings</a> et
+        <a href="https://github.com/raugdae">Raugdae</a> - Hébergé par
+        <a href="https://raug-info.ch">Raug Info</a>
       </p>
       <p class="copyright">2025 - Tous droits réservés</p>
     </div>
@@ -49,7 +50,7 @@ footer {
 }
 
 #footer-menu li a {
-  font-family: var(--font-press-start);
+  font-family: var(--font-primary);
   font-weight: 400;
   font-size: 0.7em;
   text-align: center;
@@ -57,7 +58,7 @@ footer {
 
 .credentials,
 .copyright {
-  font-family: var(--font-press-start);
+  font-family: var(--font-primary);
   font-optical-sizing: auto;
   font-weight: 400;
   font-size: 0.6em;

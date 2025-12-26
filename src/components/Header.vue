@@ -97,14 +97,14 @@ span.green {
 }
 
 .main-title {
-  font-family: var(--font-press-start);
+  font-family: var(--font-primary);
   font-optical-sizing: auto;
   font-weight: 400;
   font-size: 3rem;
 }
 
 .main-title-sub {
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
   font-weight: 400;
   font-optical-sizing: auto;
   font-size: 1.5rem;

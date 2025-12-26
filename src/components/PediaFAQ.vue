@@ -186,8 +186,8 @@ onMounted(() => {
 }
 
 .api-status {
-  color: var(--blue);
-  font-family: var(--font-pixelify);
+  color: var(--accent-primary);
+  font-family: var(--font-secondary);
   font-weight: 400;
   font-size: 1em;
 }
@@ -195,7 +195,7 @@ onMounted(() => {
 .api-status-under {
   display: block;
   color: rgb(196, 196, 196);
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
   font-weight: 400;
   font-size: 1em;
 }
@@ -228,6 +228,6 @@ onMounted(() => {
 
 .last-hint p {
   color: pink;
-  font-family: var(--font-micro);
+  font-family: var(--font-tertiary);
 }
 </style>

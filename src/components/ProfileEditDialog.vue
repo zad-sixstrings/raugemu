@@ -117,11 +117,11 @@ async function handleSave() {
 }
 
 .dialog-content {
-  background: var(--grey);
-  border-top: 5px solid var(--border-light-grey);
-  border-left: 5px solid var(--border-light-grey);
-  border-right: 5px solid var(--border-dark-grey);
-  border-bottom: 5px solid var(--border-dark-grey);
+  background: var(--main-light);
+  border-top: 5px solid var(--border-light);
+  border-left: 5px solid var(--border-light);
+  border-right: 5px solid var(--border-dark);
+  border-bottom: 5px solid var(--border-dark);
   padding: 20px;
   border-radius: 10px;
   width: 90%;
@@ -130,7 +130,7 @@ async function handleSave() {
 
 .dialog-title {
   color: white;
-  font-family: var(--font-press-start);
+  font-family: var(--font-primary);
   font-weight: 400;
   font-size: 1em;
   margin-bottom: 20px;
@@ -159,16 +159,16 @@ async function handleSave() {
 }
 
 .upload-button {
-  background: var(--blue);
-  border-top: 5px solid var(--border-light-blue);
-  border-left: 5px solid var(--border-light-blue);
-  border-right: 5px solid var(--border-dark-blue);
-  border-bottom: 5px solid var(--border-dark-blue);
+  background: var(--accent-primary);
+  border-top: 5px solid var(--border-primary-light);
+  border-left: 5px solid var(--border-primary-light);
+  border-right: 5px solid var(--border-primary-dark);
+  border-bottom: 5px solid var(--border-primary-dark);
   color: white;
   padding: 8px 16px;
   border-radius: 5px;
   cursor: var(--cursor-click);
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
 
   &.disabled {
     opacity: 0.5;
@@ -181,11 +181,11 @@ async function handleSave() {
 }
 
 .upload-button:active {
-  background: var(--blue-active);
-  border-top: 5px solid var(--border-dark-blue);
-  border-left: 5px solid var(--border-dark-blue);
-  border-right: 5px solid var(--border-light-blue);
-  border-bottom: 5px solid var(--border-light-blue);
+  background: var(--accent-primary-active);
+  border-top: 5px solid var(--border-primary-dark);
+  border-left: 5px solid var(--border-primary-dark);
+  border-right: 5px solid var(--border-primary-light);
+  border-bottom: 5px solid var(--border-primary-light);
 }
 
 .delete-button {
@@ -195,7 +195,7 @@ async function handleSave() {
   border-radius: 4px;
   border: none;
   cursor: pointer;
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
 
   &:disabled {
     opacity: 0.5;
@@ -211,7 +211,7 @@ async function handleSave() {
   display: block;
   color: white;
   margin-bottom: 8px;
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
 }
 
 .bio-input {
@@ -219,12 +219,12 @@ async function handleSave() {
   padding: 8px;
   border-radius: 4px;
   background-color: #13151a;
-  border-top: 5px solid var(--border-dark-grey);
-  border-left: 5px solid var(--border-dark-grey);
-  border-right: 5px solid var(--border-light-grey);
-  border-bottom: 5px solid var(--border-light-grey);
+  border-top: 5px solid var(--border-dark);
+  border-left: 5px solid var(--border-dark);
+  border-right: 5px solid var(--border-light);
+  border-bottom: 5px solid var(--border-light);
   color: white;
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
   resize: vertical;
 
   &:disabled {
@@ -245,7 +245,7 @@ async function handleSave() {
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
 
   &:disabled {
     opacity: 0.5;
@@ -254,39 +254,39 @@ async function handleSave() {
 }
 
 .save-button {
-  background: var(--blue);
-  border-top: 5px solid var(--border-light-blue);
-  border-left: 5px solid var(--border-light-blue);
-  border-right: 5px solid var(--border-dark-blue);
-  border-bottom: 5px solid var(--border-dark-blue);
+  background: var(--accent-primary);
+  border-top: 5px solid var(--border-primary-light);
+  border-left: 5px solid var(--border-primary-light);
+  border-right: 5px solid var(--border-primary-dark);
+  border-bottom: 5px solid var(--border-primary-dark);
   border-radius: 5px;
   color: white;
   cursor: var(--cursor-click);
 }
 
 .save-button:active {
-  background: var(--blue-active);
-  border-top: 5px solid var(--border-dark-blue);
-  border-left: 5px solid var(--border-dark-blue);
-  border-right: 5px solid var(--border-light-blue);
-  border-bottom: 5px solid var(--border-light-blue);
+  background: var(--accent-primary-active);
+  border-top: 5px solid var(--border-primary-dark);
+  border-left: 5px solid var(--border-primary-dark);
+  border-right: 5px solid var(--border-primary-light);
+  border-bottom: 5px solid var(--border-primary-light);
 }
 
 .cancel-button {
-  background-color: var(--cancel);
-  border-top: 5px solid var(--cancel-border-light);
-  border-left: 5px solid var(--cancel-border-light);
-  border-right: 5px solid var(--cancel-border-dark);
-  border-bottom: 5px solid var(--cancel-border-dark);
+  background-color: var(--cancel-btn);
+  border-top: 5px solid var(--cancel-btn-border-light);
+  border-left: 5px solid var(--cancel-btn-border-light);
+  border-right: 5px solid var(--cancel-btn-border-dark);
+  border-bottom: 5px solid var(--cancel-btn-border-dark);
   color: black;
   cursor: var(--cursor-click);
 }
 
 .cancel-button:active {
-  background-color: var(--cancel-active);
-  border-top: 5px solid var(--cancel-border-dark);
-  border-left: 5px solid var(--cancel-border-dark);
-  border-right: 5px solid var(--cancel-border-light);
-  border-bottom: 5px solid var(--cancel-border-light);
+  background-color: var(--cancel-btn-active);
+  border-top: 5px solid var(--cancel-btn-border-dark);
+  border-left: 5px solid var(--cancel-btn-border-dark);
+  border-right: 5px solid var(--cancel-btn-border-light);
+  border-bottom: 5px solid var(--cancel-btn-border-light);
 }
 </style>

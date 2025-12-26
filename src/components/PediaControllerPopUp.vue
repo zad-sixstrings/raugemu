@@ -45,9 +45,9 @@
     max-width: 100%;
     max-height: 90vh;
     object-fit: contain;
-    border: 5px solid var(--border-dark-purple);
-    border-top-color: var(--border-light-purple);
-    border-left-color: var(--border-light-purple);
+    border: 5px solid var(--border-secondary-dark);
+    border-top-color: var(--border-secondary-light);
+    border-left-color: var(--border-secondary-light);
     border-radius: 10px;
   }
   
@@ -62,17 +62,17 @@
     border: none;
     border-radius: 50%;
     cursor: var(--cursor-click);
-    font-family: var(--font-press-start);
-    border: 3px solid var(--border-dark-red);
-    border-top-color: var(--border-light-red);
-    border-left-color: var(--border-light-red);
+    font-family: var(--font-primary);
+    border: 3px solid var(--border-danger-dark);
+    border-top-color: var(--border-danger-light);
+    border-left-color: var(--border-danger-light);
   }
   
   .close-button:active {
     background-color: var(--red-active);
-    border-color: var(--border-light-red);
-    border-top-color: var(--border-dark-red);
-    border-left-color: var(--border-dark-red);
+    border-color: var(--border-danger-light);
+    border-top-color: var(--border-danger-dark);
+    border-left-color: var(--border-danger-dark);
   }
   
   @keyframes fadeIn {

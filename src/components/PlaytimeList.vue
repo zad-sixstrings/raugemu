@@ -71,21 +71,21 @@ defineProps<{
 .playtime-game {
   height: 70px;
   margin: 0 auto;
-  background-color: var(--blue);
-  border-top: 5px solid var(--border-light-blue);
-  border-left: 5px solid var(--border-light-blue);
-  border-right: 5px solid var(--border-dark-blue);
+  background-color: var(--accent-primary);
+  border-top: 5px solid var(--border-primary-light);
+  border-left: 5px solid var(--border-primary-light);
+  border-right: 5px solid var(--border-primary-dark);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
 
 .playtime-time {
   height: 40px;
-  background-color: var(--purple);
-  border-top: 5px solid var(--border-light-purple);
-  border-left: 5px solid var(--border-light-purple);
-  border-right: 5px solid var(--border-dark-purple);
-  border-bottom: 5px solid var(--border-dark-purple);
+  background-color: var(--accent-secondary);
+  border-top: 5px solid var(--border-secondary-light);
+  border-left: 5px solid var(--border-secondary-light);
+  border-right: 5px solid var(--border-secondary-dark);
+  border-bottom: 5px solid var(--border-secondary-dark);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
@@ -93,7 +93,7 @@ defineProps<{
 .game-name {
   font-weight: bold;
   margin-bottom: 0.5rem;
-  font-family: var(--font-pixelify);
+  font-family: var(--font-secondary);
   font-optical-sizing: auto;
   font-weight: 400;
   font-size: 0.9em;
@@ -101,7 +101,7 @@ defineProps<{
 }
 
 .game-time {
-  font-family: var(--font-press-start);
+  font-family: var(--font-primary);
   font-weight: 400;
   font-size: 0.6em;
   color: white;
