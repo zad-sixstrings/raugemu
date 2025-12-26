@@ -194,7 +194,7 @@ span.header-info-span {
   pointer-events: none;
   animation: fall linear infinite;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-  z-index: 99999;
+  z-index: 999;
 }
 
 @keyframes fall {
