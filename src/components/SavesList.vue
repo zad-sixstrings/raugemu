@@ -20,13 +20,19 @@
           <div class="save-date-wrapper">
             <p class="profile-span"><strong>Création </strong></p>
             <p class="save-date">
-              <em>{{ formatDateTime(save.creation_date) }}</em>
+              <em>{{ formatDate(save.creation_date) }}</em>
+            </p>
+            <p class="save-time">
+              <em>{{ formatTime(save.creation_date) }}</em>
             </p>
           </div>
           <div class="modification-date-wrapper">
             <p class="profile-span"><strong>Dernière modif. </strong></p>
             <p class="save-date">
-              <em>{{ formatDateTime(save.creation_date) }}</em>
+              <em>{{ formatDate(save.change_date) }}</em>
+            </p>
+            <p class="save-time">
+              <em>{{ formatTime(save.change_date) }}</em>
             </p>
           </div>
         </div>
@@ -36,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { formatDateTime } from "../utils/dateFormat";
+import { formatDate, formatTime } from "../utils/dateFormat";
 import type { UserSave } from "../types/user";
 
 defineProps<{
@@ -103,8 +109,9 @@ defineEmits<{
 
 .save-info {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   height: 80px;
   margin-bottom: 20px;
   padding: 1.5em;
@@ -119,9 +126,11 @@ defineEmits<{
 .save-date-wrapper,
 .modification-date-wrapper {
   flex: 1;
+  max-width: 120px;
 }
 
-p.save-date {
+p.save-date,
+p.save-time {
   font-family: var(--font-tertiary);
   font-size: 1.2rem;
 }
