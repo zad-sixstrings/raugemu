@@ -26,7 +26,7 @@
         :data-game="game.romPath"
         @click="startGame(game.romPath)"
       >
-        <p class="center">PLAY</p>
+        <p class="center">JOUER</p>
       </div>
       <div v-else class="play-button disabled">
         <p class="center">X</p>
