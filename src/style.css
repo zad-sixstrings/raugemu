@@ -1,6 +1,6 @@
 /* VARIABLES */
 :root {
-  /* COLORS */
+
   --bg-main: #0a0a0e;
   --bg-content: #111317;
   --bg-featured: #161a22;
@@ -33,19 +33,19 @@
   --search-input: rgb(19, 29, 34);
   --search-input-ph: rgba(255, 255, 255, 0.5);
   --search-input-focus: rgb(29, 44, 51);
-  /* CANCEL BUTTON */
+
   --cancel: #e5e7eb;
   --cancel-active: #cbced8;
   --cancel-border-light: #ffffff;
   --cancel-border-dark: #6a7388;
-  /* FONTS */
+
   --font-press-start: "Press Start 2P", serif;
   --font-pixelify: "Pixelify Sans", serif;
   --font-micro: "Micro 5", serif;
-  /* CURSOR */
+
   --cursor: url("/assets/cursor.png"), auto;
   --cursor-click: url("/assets/cursor-click.png"), auto;
-  /* RADIUS */
+
   --radius-big: 10px;
   --radius-small: 5px;
 }
