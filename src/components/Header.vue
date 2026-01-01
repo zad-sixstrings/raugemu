@@ -23,7 +23,7 @@
       </div>
     </header>
     <div class="header-warning">
-      <span class="header-info-span"> Joyeuses fêtes de fin d'année! </span>
+      <span class="header-info-span">Bonne année 2026 à tous!</span>
       <span class="header-warning-span"
         >&#9888; Certains jeux Nintendo 64 sont actuellement instables.</span
       >

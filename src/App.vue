@@ -1,5 +1,5 @@
 <template>
-  <Season />
+
   <BrowserWarning />
   <Notifications />
   <Header />
@@ -9,7 +9,6 @@
 </template>
 
 <script setup lang="ts">
-import Season from "./components/Season.vue";
 import BrowserWarning from "./components/BrowserWarning.vue";
 import Header from "./components/Header.vue";
 import MainNav from "./components/MainNav.vue";
